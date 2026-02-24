@@ -1,0 +1,19 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.layout{
+    display: grid;
+    grid-template: 1fr / 250px 1fr;
+    grid-template-areas: 
+        "sideBar main"
+    ;
+}
+.sideBar{
+    grid-area: sideBar;
+}
+.main{
+    grid-area: main;
+}
