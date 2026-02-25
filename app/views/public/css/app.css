@@ -10,6 +10,8 @@
     grid-template-areas: 
         "sideBar main"
     ;
+    border: 1px solid;
+    background-color: red;
 }
 .sideBar{
     grid-area: sideBar;

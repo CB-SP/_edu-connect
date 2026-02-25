@@ -1,7 +1,7 @@
 <?php
     class UserController extends Controller {
         public function index() {
-            $this->show_page("home");
+            $this->show_page("admin");
         }
 
         public function teste() {
