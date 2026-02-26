@@ -1,4 +1,4 @@
-# Edu Connect - Rede Social Acadêmica KeySolutions
+# Edu Connect - Rede Social Acadêmica CBSP
 Sistema de gestão escolar que conecta professores e alunos.
 Projecto para TCC desenvolvido com HTML, CSS, JS e PHP.
 
@@ -92,8 +92,11 @@ Projecto para TCC desenvolvido com HTML, CSS, JS e PHP.
 
 # 🤝 Contribuindo
 **1.** Crie uma branch para a sua feature: `git checkout -b feature/nova-feature`
+
 **2.** Commit suas mudanças: `git commit -m "Adiciona nova feature"`
+
 **3.** Push para branch: `git push origin feature/nova-feature`
+
 **4.** Abra um **Pull Request**
 
 # ⚠️ Problemas Comuns
@@ -102,4 +105,4 @@ Projecto para TCC desenvolvido com HTML, CSS, JS e PHP.
 - Erro de roteamento MVC: verifique se as rotas são chamadas correctamente no front
 
 # 📄 Licença
-Este projecto é propriedade da **Key Solutions Company.**
+Este projecto é propriedade da **CBSP, Lda.**
