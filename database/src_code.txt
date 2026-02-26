@@ -1,0 +1,251 @@
+create database edu_connect
+default charset utf8mb4
+default collate utf8mb4_general_ci;
+
+use edu_connect;
+
+-- =========================
+-- ESCOLAS
+-- =========================
+create table escolas (
+    id int auto_increment primary key,
+    nome varchar(100) not null unique,
+    endereco varchar(150) not null,
+    contacto_1 varchar(16) not null unique,
+    contacto_2 varchar(16) default null,
+    logo varchar(255) default null,
+    created_at timestamp default current_timestamp,
+    deleted_at timestamp default null
+);
+
+-- =========================
+-- USUÁRIOS
+-- =========================
+create table usuarios (
+    id int auto_increment primary key,
+    nome varchar(100) not null,
+    contacto_1 varchar(16) not null,
+    contacto_2 varchar(16) default null,
+    nif varchar(14) not null unique not null,
+    email varchar(100) default null unique,
+    foto varchar(255) default null,
+    password varchar(255) not null,
+    role enum('admin','director','professor','aluno') not null,
+    escola int not null,
+    created_at timestamp default current_timestamp,
+    deleted_at timestamp default null,
+    unique(nome, escola),
+    foreign key (escola) references escolas(id) on delete cascade
+);
+
+-- =========================
+-- COORDENADORES (subtipo de professor)
+-- =========================
+create table coordenadores (
+    id int primary key,
+    foreign key (id) references usuarios(id) on delete cascade
+);
+
+-- =========================
+-- NÍVEIS
+-- =========================
+create table niveis (
+    id int auto_increment primary key,
+    nome varchar(100) not null unique,
+    created_at timestamp default current_timestamp,
+    deleted_at timestamp default null
+);
+
+create table niveis_escolas (
+    id int auto_increment primary key,
+    nivel int not null,
+    escola int not null,
+    unique(nivel, escola),
+    foreign key (nivel) references niveis(id) on delete cascade,
+    foreign key (escola) references escolas(id) on delete cascade
+);
+
+-- =========================
+-- CURSOS
+-- =========================
+create table cursos (
+    id int auto_increment primary key,
+    nome varchar(100) not null unique,
+    descricao varchar(500) not null,
+    coordenador int default null,
+    created_at timestamp default current_timestamp,
+    deleted_at timestamp default null,
+    foreign key (coordenador) references coordenadores(id) on delete set null
+);
+
+create table cursos_escolas (
+    id int auto_increment primary key,
+    curso int not null,
+    escola int not null,
+    unique(curso, escola),
+    foreign key (curso) references cursos(id) on delete cascade,
+    foreign key (escola) references escolas(id) on delete cascade
+);
+
+create table cursos_niveis (
+    id int auto_increment primary key,
+    curso int not null,
+    nivel int not null,
+    unique(curso, nivel),
+    foreign key (curso) references cursos(id) on delete cascade,
+    foreign key (nivel) references niveis(id) on delete cascade
+);
+
+-- =========================
+-- DISCIPLINAS
+-- =========================
+create table disciplinas (
+    id int auto_increment primary key,
+    nome varchar(100) not null,
+    escola int not null,
+    created_at timestamp default current_timestamp,
+    deleted_at timestamp default null,
+    unique(nome, escola),
+    foreign key (escola) references escolas(id) on delete cascade
+);
+
+-- =========================
+-- PROFESSORES-DISCIPLINAS
+-- =========================
+create table professores_disciplinas (
+    id int auto_increment primary key,
+    professor int not null,
+    disciplina int not null,
+    unique(professor, disciplina),
+    foreign key (professor) references usuarios(id) on delete cascade,
+    foreign key (disciplina) references disciplinas(id) on delete cascade
+);
+
+-- =========================
+-- TURMAS
+-- =========================
+create table turmas (
+    id int auto_increment primary key,
+    nome varchar(100) not null,
+    escola int not null,
+    professor int not null,
+    created_at timestamp default current_timestamp,
+    deleted_at timestamp default null,
+    unique(nome, escola),
+    foreign key (escola) references escolas(id) on delete cascade,
+    foreign key (professor) references usuarios(id) on delete cascade
+);
+
+create table alunos_turmas (
+    id int auto_increment primary key,
+    aluno int not null,
+    turma int not null,
+    unique(aluno, turma),
+    foreign key (aluno) references usuarios(id) on delete cascade,
+    foreign key (turma) references turmas(id) on delete cascade
+);
+
+-- =========================
+-- POSTS
+-- =========================
+create table posts (
+    id int auto_increment primary key,
+    conteudo varchar(1000) not null,
+    tipo enum('post','aviso') not null,
+    usuario int not null,
+    escola int not null,
+    created_at timestamp default current_timestamp,
+    deleted_at timestamp default null,
+    foreign key (usuario) references usuarios(id) on delete cascade,
+    foreign key (escola) references escolas(id) on delete cascade
+);
+
+-- =========================
+-- COMENTÁRIOS
+-- =========================
+create table comentarios (
+    id int auto_increment primary key,
+    conteudo varchar(1000) not null,
+    usuario int not null,
+    post int not null,
+    escola int not null,
+    created_at timestamp default current_timestamp,
+    deleted_at timestamp default null,
+    foreign key (usuario) references usuarios(id) on delete cascade,
+    foreign key (post) references posts(id) on delete cascade,
+    foreign key (escola) references escolas(id) on delete cascade
+);
+
+-- =========================
+-- REAÇÕES
+-- =========================
+create table reacoes (
+    id int auto_increment primary key,
+    usuario int not null,
+    post int not null,
+    tipo enum('like','apoio','love') default 'like',
+    unique(usuario, post),
+    foreign key (usuario) references usuarios(id) on delete cascade,
+    foreign key (post) references posts(id) on delete cascade
+);
+
+-- =========================
+-- CHATS
+-- =========================
+create table chats (
+    id int auto_increment primary key,
+    turma int not null,
+    escola int not null,
+    created_at timestamp default current_timestamp,
+    deleted_at timestamp default null,
+    foreign key (turma) references turmas(id) on delete cascade,
+    foreign key (escola) references escolas(id) on delete cascade
+);
+
+-- =========================
+-- MENSAGENS
+-- =========================
+create table mensagens (
+    id int auto_increment primary key,
+    conteudo varchar(1000) not null,
+    chat int not null,
+    usuario int not null,
+    escola int not null,
+    created_at timestamp default current_timestamp,
+    deleted_at timestamp default null,
+    foreign key (chat) references chats(id) on delete cascade,
+    foreign key (usuario) references usuarios(id) on delete cascade,
+    foreign key (escola) references escolas(id) on delete cascade
+);
+
+-- =========================
+-- ANEXOS
+-- =========================
+create table anexos (
+    id int auto_increment primary key,
+    ficheiro varchar(500) not null,
+    usuario int not null,
+    post int default null,
+    comentario int default null,
+    mensagem int default null,
+    escola int not null,
+    created_at timestamp default current_timestamp,
+    deleted_at timestamp default null,
+    foreign key (usuario) references usuarios(id) on delete cascade,
+    foreign key (post) references posts(id) on delete cascade,
+    foreign key (comentario) references comentarios(id) on delete cascade,
+    foreign key (mensagem) references mensagens(id) on delete cascade,
+    foreign key (escola) references escolas(id) on delete cascade
+);
+
+-- =========================
+-- INSERTS
+-- =========================
+-- =========================
+-- NÍVEIS
+-- =========================
+insert into niveis(nome)
+	values
+		('Ensino Primário'),
+		('I Ciclo do Ensino Secundário'),
+		('II Ciclo do Ensino Secundário');
