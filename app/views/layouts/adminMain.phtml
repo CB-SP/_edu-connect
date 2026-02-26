@@ -7,18 +7,22 @@
     <title>eduConnect</title>
     <link rel="stylesheet" href="<?= URL ?>public/css/app.css">
     <link rel="stylesheet" href="<?= URL ?>public/css/tokens.css">
+    <link rel="stylesheet" href="<?= URL ?>public/css/admin.css">
+    <script src="<?= URL ?>public/js/app.js" defer></script>
+
 </head>
 
 <body>
-    <div class="layout">
+    <div class="layout-admin">
         <aside class="sideBar">
             <div class="show-info">
                 <div class="logo-system">
                     <h2>EduConnect</h2>
+                    <img src="<?= URL ?>public/assets/images/x.png" alt=" " id="close-menu">
                 </div>
                 <div class="info-profile">
                     <div class="profile-poto">
-                        <img src="" alt="photo">
+                        <img src="" alt=" ">
                     </div>
                     <div class="user-details">
                         <h3>User Name</h3>
@@ -29,23 +33,23 @@
             <nav class="nav-bar">
                 <div class="main-nav">
                     <ul class="nav-list">
-                        <li class="nav-item"><a href="" class="nav-link">Nav Item</a></li>
-                        <li class="nav-item"><a href="" class="nav-link">Nav Item</a></li>
-                        <li class="nav-item"><a href="" class="nav-link">Nav Item</a></li>
+                        <li class="nav-item"><a href="" class="nav-link"><span class="nav-icon"><img src="" alt=" "></span>Feed</a></li>
+                        <li class="nav-item"><a href="" class="nav-link"><span class="nav-icon"><img src="" alt=" "></span>Painel Administrador</a></li>
                     </ul>
                 </div>
-                <div class="settings-nav">
+                <div class="set-nav">
                     <ul class="nav-list">
-                        <li class="nav-item"><a href="" class="nav-link">Nav Item</a></li>
-                        <li class="nav-item"><a href="" class="nav-link">Nav Item</a></li>
+                        <li class="nav-item"><a href="" class="nav-link"><span class="nav-icon"><img src="" alt=" "></span>Configurações</a></li>
+                        <li class="nav-item"><a href="" class="nav-link"><span class="nav-icon"><img src="" alt=" "></span>Sair</a></li>
                     </ul>
                 </div>
             </nav>
         </aside>
+        <div class="overlay"></div>
         <header class="header">
-            <div class="school-img">
-                <img src="" alt="photo">
+            <div class="open-menu">
+                <img src="<?= URL ?>public/assets/images/menu.png" alt="icon-menu">
             </div>
-            <h2>School Name</h2>
+            <h2>EduConnect</h2>
         </header>
         <main class="main">

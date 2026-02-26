@@ -20,16 +20,19 @@
 
 
     /*TIPOGRAFIA*/
-    --BaseFont: System Ui (system-ui, -apple-system, BlinkMacSystemFont, Roboto);
-    -webkit-font-smoothing: antialiased;
+    --BaseFont: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    
 
     /*TOKENS de TAMANHO*/
     /*Text Size--*/
     --text-xs: 12px;
     --text-sm: 14px;
     --text-md: 16px;
+    --text-xm: 1.05em;
     --text-lg: 18px;
     --text-xl: 20px;
+    --text-2xl: 24px;
+    --text-3xl: 28px;
 
     /*Spacing*/
     --space-xs: 4px;
@@ -47,4 +50,11 @@
     --radius-lg: 16px;
     --radius-xl: 24px;
     --radius-full: 9999px;
+
+    /*Text Weigth*/
+    --weight-lg: lighter;
+    --weight-nl: normal;
+    --weight-sb: 400;
+    --weight-bd: 500;
+    --weight-br: bold;
 }

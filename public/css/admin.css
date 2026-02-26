@@ -1,0 +1,99 @@
+@media screen and (max-width: 768px) {
+    .painel-dash {
+        height: 100%;
+        padding: 15px;
+    }
+
+    .painel-dash .header-painel {
+        display: flex;
+        align-items: center;
+    }
+
+    .header-painel .title h2 {
+        font-weight: var(--weight-bd);
+        width: 60%;
+        font-size: var(--text-xl);
+        line-height: 1.5;
+    }
+
+    .header-painel .title p {
+        font-weight: 300;
+        width: 90%;
+        line-height: 1.4;
+    }
+
+    .header-painel .role-info {
+        background-color: var(--AccentBlue);
+        padding: 3px 10px;
+        border-radius: var(--radius-md);
+        color: var(--Background);
+        display: flex;
+        align-items: center;
+        height: 26px;
+        justify-content: center;
+        gap: 7px;
+    }
+
+    .painel-dash .dash-info {
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+    }
+
+    .dash-info .statistics-info {}
+
+    .dash-info .statistics-info {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+    }
+
+    .dash-info .statistics-info .cards-info {
+        border: 1px solid var(--SwitchBackground);
+        padding: 19px 15px;
+        border-radius: var(--radius-md);
+    }
+
+    .cards-info p {
+        font-weight: var(--weight-lg);
+    }
+
+    .cards-info h2 {
+        font-weight: var(--weight-sb);
+        font-size: var(--text-2xl);
+    }
+
+    .painel-dash .list-info {
+        margin: 25px 0;
+        padding: 0 10px;
+    }
+
+    .painel-dash .list-info .change-list .school-user-nav {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+        padding: 3px;
+        background-color: var(--Muted);
+        width: 210px;
+        border-radius: var(--radius-lg);
+    }
+    .school-user-nav .school-user-nav-item{
+        list-style: none;
+        align-self: center;
+    }
+    .school-user-nav .school-user-nav-link{
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        color: var(--Primary);
+         border-radius: var(--radius-lg);
+        padding: 3px 12px;
+    }
+    .school-user-nav-item:nth-child(1) .school-user-nav-link{
+        background-color: var(--AccentBlue);
+       
+        color: var(--Background);
+    }
+}
