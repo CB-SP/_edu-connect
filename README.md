@@ -23,6 +23,7 @@ Projecto para TCC desenvolvido com HTML, CSS, JS e PHP.
 ```php
     <?php
         define("URL", "http://localhost/_edu-connect/");
+        define("DATE", date("Y-m-d"). " ". date("G:i:s"));
         define("DB_NAME", "edu_connect");
         define("DB_HOST", "localhost");
         define("DB_USER", "root");
