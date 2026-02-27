@@ -239,6 +239,27 @@ create table anexos (
 );
 
 -- =========================
+-- CLASSES
+-- =========================
+create table classes (
+    id int auto_increment primary key,
+    nome varchar(30)  unique not null,
+    nivel int not null,
+    created_at timestamp default current_timestamp,
+    deleted_at timestamp default null,
+    foreign key (nivel) references niveis(id) on delete cascade
+);
+
+create table classes_disciplinas (
+    id int auto_increment primary key,
+    classe int not null,
+    disciplina int not null,
+    unique(classe, disciplina),
+    foreign key (classe) references classes(id) on delete cascade,
+    foreign key (disciplina) references disciplinas(id) on delete cascade
+);
+
+-- =========================
 -- INSERTS
 -- =========================
 -- =========================
@@ -249,3 +270,45 @@ insert into niveis(nome)
 		('Ensino Primário'),
 		('I Ciclo do Ensino Secundário'),
 		('II Ciclo do Ensino Secundário');
+
+-- =========================
+-- CURSOS
+-- =========================
+insert into cursos(nome, descricao)
+	values
+		("Informática e Gestão", "Integra tecnologias de informação com práticas de gestão, preparando para administrar sistemas, dados e processos organizacionais."),
+        ("Contabilidade e Gestão", "Foca no controlo financeiro, análise contabilística e gestão de recursos para apoiar a tomada de decisões nas empresas."),
+        ("Estatística e Planeamento", "Aborda análise de dados, métodos estatísticos e técnicas de planeamento para apoiar estratégias e previsões."),
+        ("Secretariado", "Forma profissionais para organização administrativa, atendimento, gestão de documentos e apoio executivo."),
+        ("Administração Pública", "Prepara para atuar em instituições públicas, com foco em gestão, políticas públicas e funcionamento do Estado."),
+        ("Produção Vegetal", "Ensina técnicas de cultivo, manejo de culturas e produção agrícola sustentável."),
+        ("Engenharia Informática", "Desenvolve competências em programação, sistemas, redes e desenvolvimento de software."),
+        ("Enfermagem", "Forma profissionais para cuidados de saúde, assistência a pacientes e promoção do bem-estar."),
+        ("Análises Clínicas", "Foca em exames laboratoriais, diagnóstico e apoio à medicina através de análises biológicas."),
+        ("Construção Civil", "Prepara para planeamento, execução e supervisão de obras e infraestruturas."),
+        ("Mecânica", "Ensina manutenção, reparação e funcionamento de máquinas e sistemas mecânicos."),
+        ("Electrônica e Telecomunicações", "Aborda sistemas eletrónicos, redes de comunicação e tecnologias de transmissão de dados."),
+        ("Electricidade", "Foca na instalação, manutenção e operação de sistemas elétricos residenciais e industriais."),
+        ("Ciências Econômicas e Jurídicas", "Integra conhecimentos de economia e direito, preparando para compreender mercados, legislação e gestão de organizações."),
+        ("Ciências Físicas e Biológicas", "Abrange fundamentos de física, química e biologia, desenvolvendo bases científicas para áreas da saúde, ambiente e tecnologia."),
+        ("Ciências Humanas", "Foca no estudo da sociedade, cultura e comportamento humano, incluindo áreas como história, geografia, filosofia e sociologia.");
+
+-- =========================
+-- CLASSES
+-- =========================
+insert into classes (nome, nivel)
+	values
+		("Pré Classe", 1),
+        ("1º Classe", 1),
+        ("2º Classe", 1),
+        ("3º Classe", 1),
+        ("4º Classe", 1),
+        ("5º Classe", 1),
+        ("6º Classe", 1),
+        ("7º Classe", 2),
+        ("8º Classe", 2),
+        ("9º Classe", 2),
+        ("10º Classe", 3),
+        ("11º Classe", 3),
+        ("12º Classe", 3),
+        ("13º Classe", 3);
