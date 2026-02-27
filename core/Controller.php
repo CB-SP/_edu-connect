@@ -16,5 +16,16 @@
             }
 
         }
+
+        protected function redirect($path) {
+            header('Location: '. URL. $path);
+            exit;
+        }
+
+        protected function isLoged() {
+            if (!isset($_SESSION['id'], $_SESSION['name'])) {
+                $this->redirect("");
+            }
+        }
     }
 ?>
