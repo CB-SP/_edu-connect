@@ -5,6 +5,7 @@
     --Primary: #030213;
     --Secondary: #F3F2F7;
     --AccentBlue: #2563EB;
+    --AccentBlueHover: #296dff;
     --Destructive: #D4183D;
 
     /*CORES DE INTERFACE*/
@@ -28,7 +29,7 @@
     --text-xs: 12px;
     --text-sm: 14px;
     --text-md: 16px;
-    --text-xm: 1.05em;
+    --text-xm: 1.05rem;
     --text-lg: 18px;
     --text-xl: 20px;
     --text-2xl: 24px;

@@ -8,7 +8,7 @@ const body = document.body
 openMenu.addEventListener('click', () => {
     if (sidebar.classList.contains('open')) {
         sidebar.classList.remove('open')
-        overlay, classList.remove('active')
+        overlay.classList.remove('active')
         body.classList.remove('no-scroll')
     } else {
         sidebar.classList.add('open')
@@ -44,5 +44,3 @@ closeMenu.addEventListener('click', () => {
     }
 })
 
-
-console.log(body)

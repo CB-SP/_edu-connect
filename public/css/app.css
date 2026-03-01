@@ -4,6 +4,7 @@
     box-sizing: border-box;
 }
 
+
 body {
     height: 100vh;
     font-family: var(--BaseFont);
@@ -156,11 +157,16 @@ body {
         border-radius: var(--radius-md);
         padding-left: 15px;
     }
-
-    .layout-admin .main-nav .nav-item:hover,
+    
+    .layout-admin .main-nav .nav-item:not(.visited):hover,
     .layout-admin .set-nav .nav-item:hover {
         background-color: var(--Muted);
-
+    }
+    .nav-item.visited{
+        background-color: var(--AccentBlue);
+    }
+    .nav-item.visited:hover{
+        background-color: var(--AccentBlueHover);
     }
 
     .layout-admin .main-nav .nav-list .nav-link {
@@ -233,7 +239,6 @@ body {
         display: grid;
         grid-template: 100px 1fr / 1fr;
         grid-template-areas: "header" "main";
-        bordr: 1px solid var(--SwitchBackground);
         height: 100%;
     }
 

@@ -3,6 +3,7 @@ require_once './app/views/layouts/adminMain.phtml'
 ?>
 
 <section class="painel-dash">
+    <div class="overlay-modal"></div>
     <section class="dash-info">
         <div class="header-painel">
             <div class="title">
@@ -42,19 +43,331 @@ require_once './app/views/layouts/adminMain.phtml'
         </div>
     </section>
     <section class="list-info">
-        <div class="change-list">
-            <ul class="school-user-nav">
-                <li class="school-user-nav-item"><a href="" class="school-user-nav-link"><span><img src="" alt=" "></span>Escolas</a></li>
-                <li class="school-user-nav-item"><a href="" class="school-user-nav-link"><span><img src="" alt=" "></span>Usuários</a></li>
-            </ul>
+        <div class="tabs">
+            <button class="tab active" data-target="schools-section">
+                <img src="" alt=" ">
+                <span>Escolas</span>
+            </button>
+            <button class="tab" data-target="users-section">
+                <img src="" alt=" ">
+                <span>Usuários</span>
+            </button>
         </div>
-        <div class="search-add-area">
 
-        </div>
-        <div class="list">
+        <!--SCHOOL SECTION-->
+        <section class="tab-content active" id="schools-section">
+            <div class="search-add-area">
+                <div class="search-school-box">
+                    <img src="" alt=" ">
+                    <input type="search" name="searchSchool" id="searchSchool" placeholder="Pesquisar escolas">
+                </div>
+                <div class="add-school-btn">
+                    <img src="" alt=" ">
+                    <button class="add-button" id="btn-add-school">Nova Escola</button>
+                </div>
+                <!--ADD-SCHOOL-MODAL-->
+                <div class="add-modal" id="add-school-modal">
+                    <div class="desc-form">
+                        <h3>Nova escola</h3>
+                        <p>Cadastre uma nova instituição de ensino no sistema</p>
+                        <img src="<?= URL ?>public/assets/images/x.png" alt="" class="close-modal-icon">
+                    </div>
+                    <form action="" method="">
+                        <div class="input-box" id="input-school">
+                            <label for="scholName">Nome da escola</label>
+                            <input type="text" name="scholName" id="scholName" placeholder="Nome completo da instituição">
+                        </div>
+                        <div class="input-box">
+                            <label for="schoolAddress">Endereço</label>
+                            <input type="text" name="schoolAddress" id="schoolAddress" placeholder="Rua, número, bairro, município, província ">
+                        </div>
+                        <div class="contacts-box">
+                            <div class="input-box">
+                                <label for="primaryContact">Contacto principal</label>
+                                <input type="text" name="primaryContact" id="primaryContact" placeholder="+244 XXX XXX XXX">
+                            </div>
+                            <div class="input-box">
+                                <label for="secundaryContact">Contacto secundário</label>
+                                <input type="text" name="secundaryContact" id="secundaryContact" placeholder="+244 XXX XXX XXX">
+                            </div>
+                        </div>
+                        <div class="input-box">
+                            <label for="">Logo da escola</label>
+                            <label for="logoFile" class="labelFile">
+                                <input type="file" name="logoFile" id="logoFile" class="logoFile" hidden>
+                                Escolher ficheiro.
+                                <span class="fileName">Nenhum ficheiro escolhido</span>
+                            </label>
+                        </div>
+                        <div class="final-btn-actions">
+                            <button class="btn" id="btn-cancel">Cancelar</button>
+                            <button class="btn" id="btn-create">Criar escola</button>
+                        </div>
+                    </form>
+                </div>
+                <!--EDIT-SCHOOL-MODAL-->
+                <div class="edit-modal" id="edit-school-modal">
+                    <div class="desc-form">
+                        <h3>Editar escola</h3>
+                        <p>Editar as informações da escola</p>
+                        <img src="<?= URL ?>public/assets/images/x.png" alt="" class="close-modal-icon">
+                    </div>
+                    <form action="" method="">
+                        <div class="input-box" id="input-school">
+                            <label for="scholName">Nome da escola</label>
+                            <input type="text" name="scholName" id="scholName" value="Exemplo">
+                        </div>
+                        <div class="input-box">
+                            <label for="schoolAddress">Endereço</label>
+                            <input type="text" name="schoolAddress" id="schoolAddress" value="Exemplo">
+                        </div>
+                        <div class="contacts-box">
+                            <div class="input-box">
+                                <label for="primaryContact">Contacto principal</label>
+                                <input type="text" name="primaryContact" id="primaryContact" value="Exemplo">
+                            </div>
+                            <div class="input-box">
+                                <label for="secundaryContact">Contacto secundário</label>
+                                <input type="text" name="secundaryContact" id="secundaryContact" value="Exemplo">
+                            </div>
+                        </div>
+                        <div class="input-box">
+                            <label for="">Logo da escola</label>
+                            <label for="logoFile" class="labelFile">
+                                <input type="file" name="logoFile" id="logoFile" class="logoFile" hidden>
+                                Escolher ficheiro.
+                                <span class="fileName">Nenhum ficheiro escolhido</span>
+                            </label>
+                        </div>
+                        <div class="final-btn-actions">
+                            <button class="btn" id="btn-cancel">Cancelar</button>
+                            <button class="btn" id="btn-create">Editar escola</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
 
-        </div>
+            <!--SCHOOLS LIST-->
+            <div class="school-list">
+                <table class="tbl-schools">
+                    <thead>
+                        <tr>
+                            <th>Escola</th>
+                            <th>Contacto</th>
+                            <th>Nível de Ensino</th>
+                            <th>Estado</th>
+                            <th>Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        <tr>
+                            <td>Ipolub</td>
+                            <td>963763746</td>
+                            <td>Ensino médio</td>
+                            <td>Activa</td>
+                            <td class="btn-down-actions ">
+                                <button class="action-btn">Ações</button>
+                                <div class="drop-actions">
+                                    <button class="edit-action"><img src="" alt=" ">Editar</button>
+                                    <button class="delete-action"><img src="" alt=" ">Eliminar</button>
+                                </div>
+                            </td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!--USERS SECTION-->
+        <section class="tab-content" id="users-section">
+            <div class="search-add-area">
+                <div class="search-user-box">
+                    <img src="" alt=" ">
+                    <input type="search" name="searchUser" id="searchUser" placeholder="Pesquisar usuários">
+                </div>
+                <div class="add-user-btn">
+                    <img src="" alt=" ">
+                    <button class="add-button" id="btn-add-user">Novo Usuário</button>
+                </div>
+                <!--ADD USER MODAL-->
+                <div class="add-modal" id="add-user-modal">
+                    <div class="desc-form">
+                        <h3>Novo usuário</h3>
+                        <p>Cadastre um novo utilizador no sistema</p>
+                        <img src="<?= URL ?>public/assets/images/x.png" alt="" class="close-modal-icon">
+                    </div>
+                    <form action="" method="">
+                        <div class="input-box">
+                            <label for="userName">Nome Completo</label>
+                            <input type="text" name="userName" id="userName" placeholder="Nome completo do usuário">
+                        </div>
+                        <div class="contacts-box">
+                            <div class="input-box">
+                                <label for="primaryContact">Contacto principal</label>
+                                <input type="text" name="primaryContact" id="primaryContact" placeholder="+244 XXX XXX XXX">
+                            </div>
+                            <div class="input-box">
+                                <label for="secundaryContact">Contacto secundário</label>
+                                <input type="text" name="secundaryContact" id="secundaryContact" placeholder="+244 XXX XXX XXX">
+                            </div>
+                        </div>
+                        <div class="contacts-box">
+                            <div class="input-box">
+                                <label for="nifUser">NIF</label>
+                                <input type="text" name="nifUser" id="nifUser" placeholder="H244875734543">
+                            </div>
+                            <div class="input-box">
+                                <label for="emailUser">Email</label>
+                                <input type="text" name="emailUser" id="emailUser" placeholder="usuario@email.com">
+                            </div>
+                        </div>
+                        <div class="input-box">
+                            <label for="userPassword">Senha</label>
+                            <input type="text" name="userPassword" id="userPassword" placeholder="Digite uma senha segura">
+                        </div>
+                        <div class="input-box">
+                            <label for="">Foto do usuário</label>
+                            <label for="fotoFile" class="labelFile">
+                                <input type="file" name="fotoFile" id="fotoFile" class="fotoFile" hidden>
+                                Escolher ficheiro.
+                                <span class="fileName">Nenhum ficheiro escolhido</span>
+                            </label>
+                        </div>
+                        <div class="input-box">
+                            <label for="userSchool">Escola</label>
+                            <select name="userSchool" id="userSchool">
+                                <option value="">Selecione uma escola</option>
+                            </select>
+                        </div>
+                        <div class="input-box">
+                            <label for="role">Nível de acesso</label>
+                            <select name="role" id="role">
+                                <option value="">Aluno</option>
+                            </select>
+                        </div>
+                        <div class="final-btn-actions">
+                            <button class="btn" id="btn-cancel">Cancelar</button>
+                            <button class="btn" id="btn-create">Criar usuário</button>
+                        </div>
+                    </form>
+                </div>
+                <!--EDIT USER MODAL-->
+                <div class="edit-modal" id="edit-user-modal">
+                    <div class="desc-form">
+                        <h3>Editar usuário</h3>
+                        <p>Edite as informações de usuário</p>
+                        <img src="<?= URL ?>public/assets/images/x.png" alt="" class="close-modal-icon">
+                    </div>
+                    <form action="" method="">
+                        <div class="input-box">
+                            <label for="userName">Nome Completo</label>
+                            <input type="text" name="userName" id="userName" value="Exemplo">
+                        </div>
+                        <div class="contacts-box">
+                            <div class="input-box">
+                                <label for="primaryContact">Contacto principal</label>
+                                <input type="text" name="primaryContact" id="primaryContact" value="Exemplo">
+                            </div>
+                            <div class="input-box">
+                                <label for="secundaryContact">Contacto secundário</label>
+                                <input type="text" name="secundaryContact" id="secundaryContact" value="Exemplo">
+                            </div>
+                        </div>
+                        <div class="contacts-box">
+                            <div class="input-box">
+                                <label for="nifUser">NIF</label>
+                                <input type="text" name="nifUser" id="nifUser" value="Exemplo">
+                            </div>
+                            <div class="input-box">
+                                <label for="emailUser">Email</label>
+                                <input type="text" name="emailUser" id="emailUser" value="Exemplo">
+                            </div>
+                        </div>
+                        <div class="input-box">
+                            <label for="userPassword">Senha</label>
+                            <input type="text" name="userPassword" id="userPassword" value="Exemplo">
+                        </div>
+                        <div class="input-box">
+                            <label for="">Foto do usuário</label>
+                            <label for="fotoFile" class="labelFile">
+                                <input type="file" name="fotoFile" id="fotoFile" class="fotoFile" hidden>
+                                Escolher ficheiro.
+                                <span class="fileName">Nenhum ficheiro escolhido</span>
+                            </label>
+                        </div>
+                        <div class="input-box">
+                            <label for="userSchool">Escola</label>
+                            <select name="userSchool" id="userSchool">
+                                <option value="">Selecione uma escola</option>
+                            </select>
+                        </div>
+                        <div class="input-box">
+                            <label for="role">Nível de acesso</label>
+                            <select name="role" id="role">
+                                <option value="">Aluno</option>
+                            </select>
+                        </div>
+                        <div class="final-btn-actions">
+                            <button class="btn" id="btn-cancel">Cancelar</button>
+                            <button class="btn" id="btn-create">Editar usuário</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <!--USERS LIST-->
+            <div class="users-list">
+
+                <div class="text-users-header">
+                    <p><span>Todos os usuários do sistema.</span> <br> Usuários de todas as escolas cadastradas.</p>
+                </div>
+                <table class="tbl-users">
+                    <thead>
+                        <tr>
+                            <th>Usuário</th>
+                            <th>Escola</th>
+                            <th>Role</th>
+                            <th>Estado</th>
+                            <th>Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        <tr>
+                            <td>Sérgio Sapalalo</td>
+                            <td>Ipolub</td>
+                            <td>Administrador</td>
+                            <td>Activo</td>
+                            <td class="btn-down-actions ">
+                                <button class="action-btn">Ações</button>
+                                <div class="drop-actions">
+                                    <button class="edit-action"><img src="" alt=" ">Editar</button>
+                                    <button class="delete-action"><img src="" alt=" ">Eliminar</button>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Kelson de Sousa</td>
+                            <td>Ipolub</td>
+                            <td>Administrador</td>
+                            <td>Activo</td>
+                            <td class="btn-down-actions ">
+                                <button class="action-btn">Ações</button>
+                                <div class="drop-actions">
+                                    <button class="edit-action"><img src="" alt=" ">Editar</button>
+                                    <button class="delete-action"><img src="" alt=" ">Eliminar</button>
+                                </div>
+                            </td>
+                        </tr>
+
+
+                    </tbody>
+                </table>
+            </div>
+
     </section>
+</section>
 </section>
 
 <?php

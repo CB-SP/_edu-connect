@@ -2,6 +2,7 @@
     .painel-dash {
         height: 100%;
         padding: 15px;
+
     }
 
     .painel-dash .header-painel {
@@ -64,11 +65,14 @@
     }
 
     .painel-dash .list-info {
-        margin: 25px 0;
         padding: 0 10px;
     }
 
-    .painel-dash .list-info .change-list .school-user-nav {
+    .painel-dash .tabs {
+        margin: 25px 0;
+    }
+
+    .painel-dash .list-info .tabs {
         display: flex;
         justify-content: center;
         align-items: center;
@@ -78,22 +82,379 @@
         width: 210px;
         border-radius: var(--radius-lg);
     }
-    .school-user-nav .school-user-nav-item{
-        list-style: none;
-        align-self: center;
-    }
-    .school-user-nav .school-user-nav-link{
+
+
+    .tabs .tab {
+        width: 50%;
         text-decoration: none;
         display: flex;
+        justify-content: center;
         align-items: center;
         gap: 10px;
         color: var(--Primary);
-         border-radius: var(--radius-lg);
-        padding: 3px 12px;
+        border: none;
+        border-radius: var(--radius-lg);
+        padding: 8px 12px;
+        overflow: hidden;
     }
-    .school-user-nav-item:nth-child(1) .school-user-nav-link{
+
+
+    .list-info .search-add-area {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 10px;
+        margin-top: 25px;
+        margin-bottom: 15px;
+        width: 100%;
+        margin-right: auto;
+        margin-left: auto;
+        position: relative;
+    }
+
+    body {}
+
+    .search-school-box,
+    .add-school-btn,
+    .search-user-box,
+    .add-user-btn {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        border-radius: var(--radius-sm);
+    }
+
+    .search-school-box,
+    .search-user-box {
+        width: 55%;
+        background-color: var(--Muted);
+    }
+
+    .add-school-btn,
+    .add-user-btn {
+        width: 45%;
         background-color: var(--AccentBlue);
-       
+        padding: 10px;
+
+    }
+
+    .search-add-area .search-school-box input,
+    .search-add-area .search-user-box input {
+        border: none;
+        font-size: var(--text-md);
+        background-color: var(--Muted);
+        padding: 10px;
+        width: 100%;
+        outline: none;
+        border-radius: var(--radius-sm);
+        color: var(--Primary);
+    }
+
+    .search-add-area .search-school-box img,
+    .search-add-area .search-user-box img {
+        padding-left: 15px;
+    }
+
+    .search-add-area .add-school-btn button,
+    .search-add-area .add-user-btn button {
+        border: none;
+        font-size: var(--text-md);
+        color: var(--Background);
+        background-color: var(--AccentBlue);
+        width: 100%;
+
+    }
+
+    /* .add-school-btn button:hover ~ .add-school-btn,
+    .add-user-btn:hover{
+        background-color: var(--AccentBlueHover);
+
+    }*/
+
+    .search-add-area .add-school-btn img,
+    .search-add-area .add-user-btn img {
+        padding-left: 5px;
+    }
+
+    /*ADD USER MODAL*/
+    .search-add-area .add-modal,
+    .edit-modal {
+        position: fixed;
+        inset: 0;
+        max-height: 500px;
+        overflow-y: scroll;
+        width: 95vw;
+        background-color: var(--Background);
+        z-index: 900;
+        border-radius: var(--radius-lg);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, .8);
+        padding: 18px;
+        display: none;
+        margin: auto;
+        overflow-y: auto;
+    }
+
+    .add-modal.show,
+    .edit-modal.show {
+        display: block;
+    }
+
+    .no-scroll {
+        overflow: hidden;
+    }
+
+    .add-modal .desc-form,
+    .edit-modal .desc-form {
+        padding: 5px;
+        text-align: center;
+    }
+
+    .add-modal .desc-form img,
+    .edit-modal .desc-form img {
+        position: absolute;
+        top: 12px;
+        right: 12px;
+        width: 20px;
+        height: 20px;
+    }
+
+    .add-modal form,
+    .edit-modal form {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .add-modal form .contacts-box,
+    .edit-modal form .contacts-box {
+        display: flex;
+        width: 100%;
+        gap: 10px;
+    }
+
+    .contacts-box .input-box {
+        width: 50%;
+    }
+
+    .add-modal form .input-box,
+      .edit-modal form .input-box {
+        margin-bottom: 5px;
+        display: flex;
+        flex-direction: column;
+        gap: 3px;
+    }
+
+    .add-modal .input-box label,
+    .edit-modal .input-box label {
+        font-weight: var(--weight-sb);
+    }
+
+    .add-modal .input-box input,
+    .add-modal .input-box select,
+    .edit-modal .input-box input,
+    .edit-modal .input-box select {
+        height: 40px;
+        border: none;
+        border-radius: var(--radius-sm);
+        outline-color: var(--MutedForeground);
+        padding: 5px 10px;
+        background-color: var(--InputBackground);
+        font-size: var(--text-md);
+    }
+
+    .input-box input[type="file"] {
+        border: none;
+    }
+
+    .labelFile {
+        font-size: var(text-sm);
+        border: none;
+        border-radius: var(--radius-sm);
+        outline-color: var(--MutedForeground);
+        padding: 5px 10px;
+        background-color: var(--Muted);
+        font-size: var(--text-md);
+    }
+
+    form .final-btn-actions {
+        display: flex;
+        gap: 10px;
+        justify-content: end;
+    }
+
+    .final-btn-actions .btn {
+        padding: 10px 13px;
+        border: 1px solid var(--SwitchBackground);
+        border-radius: var(--radius-md);
+        background-color: var(--Background);
+        transition: all .1s ease-in-out;
+    }
+
+    .final-btn-actions #btn-create {
+        background-color: var(--AccentBlue);
         color: var(--Background);
     }
+
+    #btn-cancel:hover {
+        background-color: var(--InputBackground);
+    }
+
+    #btn-create:hover {
+        background-color: var(--AccentBlueHover);
+    }
+
+    .list-info .school-list,
+    .list-info .users-list {
+        overflow: scroll;
+        border: 1px solid var(--SwitchBackground);
+        border-radius: var(--radius-lg);
+        max-height: 400px;
+        width: 100%;
+        margin: auto;
+    }
+
+    .users-list .text-users-header {
+        padding: 12px;
+
+    }
+
+    .text-users-header span {
+        font-weight: var(--weight-bd);
+    }
+
+    .text-users-header p {
+        font-weight: var(--weight-lg);
+    }
+
+    .school-list .tbl-schools,
+    .users-list .tbl-users {
+        font-size: var(--text-md);
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    .tbl-schools thead th,
+    .tbl-users thead th {
+        position: sticky;
+        top: -1px;
+        background-color: var(--Background);
+        border-bottom: 1px solid var(--SwitchBackground);
+        text-align: left;
+        font-weight: var(--weight-sb);
+    }
+
+    .tbl-schools th,
+    .tbl-users th {
+        height: 50px;
+        width: 500px;
+        padding: 0 10px;
+        border-bottom: 1px solid var(--SwitchBackground);
+    }
+
+    .tbl-schools td,
+    .tbl-users td {
+        /*TBL*/
+        border-bottom: 1px solid var(--SwitchBackground);
+        padding: 10px;
+    }
+
+    .tbl-schools .btn-down-actions,
+    .tbl-users .btn-down-actions {
+        position: relative;
+    }
+
+    .tbl-schools .action-btn,
+    .tbl-users .action-btn {
+        border: none;
+        background-color: var(--Background);
+        cursor: pointer;
+        padding: 5px 12px;
+        border-radius: var(--radius-md);
+    }
+
+    .tbl-schools .action-btn:hover,
+    .tbl-users .action-btn:hover {
+        background-color: var(--Muted);
+    }
+
+    .tbl-schools .drop-actions,
+    .tbl-users .drop-actions {
+        position: absolute;
+        top: 30px;
+        right: 30px;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        width: 100px;
+        border-radius: var(--radius-md);
+        border: 1px solid var(--SwitchBackground);
+        gap: 5px;
+        justify-content: center;
+        background-color: var(--Background);
+        z-index: 999;
+        overflow: hidden;
+        display: none;
+    }
+
+    .tbl-schools .drop-actions.drop,
+    .tbl-users .drop-actions.drop {
+        display: block;
+    }
+
+    .drop-actions button {
+        border: none;
+        background: var(--Background);
+        padding: 6px 10px;
+        padding-right: 30px;
+        width: 100%;
+        display: flex;
+        gap: 10px;
+    }
+
+    .drop-actions button:hover {
+        cursor: pointer;
+        background-color: var(--Muted);
+    }
+
+    .drop-actions .delete-action {
+        color: var(--Destructive);
+    }
+
+    .drop-actions .delete-action:hover {
+        color: var(--Primary);
+    }
+
+
+    /*ALTERNATE BETWEEN USERS AND SCHOOLS SECTIONS EFFECT*/
+    .tab.active {
+        background-color: var(--AccentBlue);
+        color: var(--Background);
+    }
+
+    .tab-content {
+        width: 96vw;
+        display: none;
+    }
+
+    .tab-content.active {
+        display: block;
+    }
+
+    /*MODAL OVERLAY*/
+    .overlay-modal {
+        position: fixed;
+        inset: 0;
+        background-color: rgba(0, 0, 0, .4);
+        backdrop-filter: blur(4px);
+        opacity: 0;
+        visibility: hidden;
+        transition: .8s ease;
+        z-index: 900;
+    }
+
+    .overlay-modal.active {
+        opacity: 1;
+        visibility: visible;
+    }
+
 }
