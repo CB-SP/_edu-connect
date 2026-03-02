@@ -25,7 +25,7 @@
         //search for every users of a school
         public function fetch_users() {
             try {
-                $this->stmt = $this->pdo->prepare("SELECT u.id, u.nome, u.contacto_1, u.contacto_2, u.nif, u.email, u.foto, u.role, e.nome AS escola FROM usuarios AS u JOIN escolas AS e ON u.escola = e.id WHERE u.deleted_at IS NULL");
+                $this->stmt = $this->pdo->prepare("SELECT u.id, u.nome, u.contacto_1, u.contacto_2, u.nif, u.email, u.foto, u.role, e.nome AS escola FROM usuarios AS u JOIN escolas AS e ON u.escola = e.id WHERE u.deleted_at IS NULL AND e.deleted_at IS NULL");
                 $this->stmt->execute();
 
                 $users = [];
@@ -40,12 +40,26 @@
             }
         }
 
+        //search for a unic user
+        public function fetch_user($id) {
+            try {
+                $this->stmt = $this->pdo->prepare("SELECT u.id, u.nome, u.contacto_1, u.contacto_2, u.nif, u.email, u.foto, u.role, e.nome AS escola FROM usuarios AS u JOIN escolas AS e ON u.escola = e.id WHERE u.id = ? AND u.deleted_at IS NULL AND e.deleted_at IS NULL");
+                $this->stmt->execute([$id]);
+
+                $user = $this->stmt->fetch(PDO::FETCH_ASSOC);
+
+                return !empty($user) ? $user : null;
+            } catch (PDOException $e) {
+                throw $e;
+            }
+        }
+
         //delete users
-        public function delete_user($id, $date) {
+        public function delete_user($id) {
             try {
                 $this->stmt = $this->pdo->prepare("UPDATE usuarios SET deleted_at = ? WHERE id = ?");
 
-                return $this->stmt->execute([$date, $id]) ?: false;
+                return $this->stmt->execute([DATE, $id]) ?: false;
             } catch (PDOException $e) {
                 throw $e;
             }
