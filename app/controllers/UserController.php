@@ -58,6 +58,16 @@
             }
         }
 
+        //search for a unic user
+        public function fetch_user($id) {
+            try {
+                return $this->user->fetch_user($id);
+            } catch (PDOException $e) {
+                error_log("ERRO_BUSCAR_USUARIO: ". $e->getMessage(). "\n". $e->getTraceAsString());
+                return null;
+            }
+        }
+
         //delete users
         public function delete_user($id) {
             if (empty($id)) {
@@ -65,7 +75,7 @@
             }
 
             try {
-                if (!($this->user->delete_user($id, DATE))) {
+                if (!($this->user->delete_user($id))) {
                     return false;
                 }
             } catch (PDOException $e) {
