@@ -19,6 +19,20 @@ Armazena informações das escolas cadastradas no sistema.
 
 ---
 
+## 👤 Tabela: `admins`
+
+Contém todos os admins responsáveis por administrar o sistema inteiro.
+
+- **id**: int (PK) — Identificador único do admin
+- **nome**: varchar(100) — Nome do admin
+- **foto**: varchar(255) — URL da foto de perfil
+- **email**: varchar(100) — Email do admin (único)
+- **password**: varchar(255) — Senha criptografada
+- **created_at**: timestamp — Data de criação
+- **deleted_at**: timestamp — Data de eliminação (soft delete)
+
+---
+
 ## 👤 Tabela: `usuarios`
 
 Contém todos os usuários do sistema, incluindo admins, directores, professores e alunos.
@@ -31,7 +45,7 @@ Contém todos os usuários do sistema, incluindo admins, directores, professores
 - **email**: varchar(100) — Email do usuário (opcional e único)
 - **foto**: varchar(255) — URL da foto de perfil
 - **password**: varchar(255) — Senha criptografada
-- **role**: enum — Função do usuário (`admin`, `director`, `professor`, `aluno`)
+- **role**: enum — Função do usuário (`director`, `professor`, `aluno`)
 - **escola**: int (FK) — Referência à tabela `escolas`
 - **created_at**: timestamp — Data de criação
 - **deleted_at**: timestamp — Data de eliminação (soft delete)

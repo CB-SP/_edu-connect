@@ -12,8 +12,21 @@ create table escolas (
     nome varchar(100) not null unique,
     endereco varchar(150) not null,
     contacto_1 varchar(16) not null unique,
-    contacto_2 varchar(16) default null,
+    contacto_2 varchar(16) default null unique,
     logo varchar(255) default null,
+    created_at timestamp default current_timestamp,
+    deleted_at timestamp default null
+);
+
+-- =========================
+-- ADMINS
+-- =========================
+create table admins (
+	id int auto_increment primary key,
+    nome varchar(100) not null,
+    foto varchar(255) default null,
+    email varchar(100) not null unique,
+    password varchar(255) not null,
     created_at timestamp default current_timestamp,
     deleted_at timestamp default null
 );
@@ -24,13 +37,13 @@ create table escolas (
 create table usuarios (
     id int auto_increment primary key,
     nome varchar(100) not null,
-    contacto_1 varchar(16) not null,
-    contacto_2 varchar(16) default null,
+    contacto_1 varchar(16) not null unique,
+    contacto_2 varchar(16) default null unique,
     nif varchar(14) not null unique not null,
     email varchar(100) default null unique,
     foto varchar(255) default null,
     password varchar(255) not null,
-    role enum('admin','director','professor','aluno') not null,
+    role enum('director','professor','aluno') not null,
     escola int not null,
     created_at timestamp default current_timestamp,
     deleted_at timestamp default null,
