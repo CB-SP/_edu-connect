@@ -43,7 +43,7 @@
         //search for a unic user
         public function fetch_user($id) {
             try {
-                $this->stmt = $this->pdo->prepare("SELECT u.id, u.nome, u.contacto_1, u.contacto_2, u.nif, u.email, u.foto, u.role, e.nome AS escola FROM usuarios AS u JOIN escolas AS e ON u.escola = e.id WHERE u.id = ? AND u.deleted_at IS NULL AND e.deleted_at IS NULL");
+                $this->stmt = $this->pdo->prepare("SELECT u.nome, u.contacto_1, u.contacto_2, u.nif, u.email, u.foto, u.role, e.nome AS escola FROM usuarios AS u JOIN escolas AS e ON u.escola = e.id WHERE u.id = ? AND u.deleted_at IS NULL AND e.deleted_at IS NULL");
                 $this->stmt->execute([$id]);
 
                 $user = $this->stmt->fetch(PDO::FETCH_ASSOC);
@@ -63,6 +63,34 @@
             } catch (PDOException $e) {
                 throw $e;
             }
+        }
+
+        //search users password hash
+        public function fetch_password_hash($nif) {
+            try {
+                $this->stmt = $this->pdo->prepare("SELECT u.password FROM usuarios AS u JOIN escolas AS e ON e.id = u.escola WHERE nif = ? AND u.deleted_at IS NULL AND e.deleted_at IS NULL");
+                $this->stmt->execute([$nif]);
+
+                $user = $this->stmt->fetch(PDO::FETCH_ASSOC)['password'];
+
+                return !empty($user) ? $user : null;
+            } catch (PDOException $e) {
+                throw $e;
+            }
+        }
+
+        //fetch user id
+        public function fetch_user_data_login($nif) {
+            try {
+                $this->stmt = $this->pdo->prepare("SELECT u.id, u.nome, u.role, u.foto, e.nome AS escola FROM usuarios AS u JOIN escolas AS e ON e.id = u.escola WHERE u.nif = ? AND u.deleted_at IS NULL AND e.deleted_at IS NULL");
+                $this->stmt->execute([$nif]);
+
+                $user = $this->stmt->fetch(PDO::FETCH_ASSOC);
+
+                return !empty($user) ? $user : null;
+            } catch (PDOException $e) {
+                throw $e;
+            }          
         }
     }
 ?>
