@@ -52,7 +52,7 @@
                 return false;
             }
 
-            if (!($this->verify_password($password, $this->fetch_password_hash($email)))) {
+            if (!(Utils::verify_password($password, $this->fetch_password_hash($email)))) {
                 return false;
             }
 
@@ -147,15 +147,6 @@
                 error_log("ERRO_BUSCAR_HASH_ADMIN: ". $e->getMessage(). "\n". $e->getTraceAsString());
                 return null;
             }
-        }
-
-        //verify admin password
-        private function verify_password($password, $hash) {
-            if (empty($password) || empty($hash)) {
-                return false;
-            }
-
-            return password_verify($password, $hash);
         }
     }
 ?>
