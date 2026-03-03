@@ -46,6 +46,33 @@
             return true;
         }
 
+        //admins login
+        public function login($email, $password) {
+            if (empty($email) || empty($password)) {
+                return false;
+            }
+
+            if (!($this->verify_password($password, $this->fetch_password_hash($email)))) {
+                return false;
+            }
+
+            try {
+                $admin = $this->admin->fetch_admin($email);
+
+                if (empty($admin)) {
+                    return false;
+                }
+
+                $_SESSION['id'] = $admin['id'];
+                $_SESSION['nome'] = $admin['nome'];
+            } catch (PDOException $e) {
+                error_log("ERRO_LOGIN_ADMIN: ". $e->getMessage(). "\n". $e->getTraceAsString());
+                return false;
+            }
+
+            return true;
+        }
+
         //==========schools managemant==========
         //create
         public function add_school($name, $address, $contact_1, $contact_2, $logo) {
@@ -106,6 +133,29 @@
                 error_log("ERRO_VERIFICAR_EXISTENCIA_DE_ADMINS: ". $e->getMessage(). "\n". $e->getTraceAsString());
                 return false;
             }
+        }
+
+        //search admins password hash
+        private function fetch_password_hash($email) {
+            if (empty($email)) {
+                return null;
+            }
+
+            try {
+                return $this->admin->fetch_password_hash($email);
+            } catch (PDOException $e) {
+                error_log("ERRO_BUSCAR_HASH_ADMIN: ". $e->getMessage(). "\n". $e->getTraceAsString());
+                return null;
+            }
+        }
+
+        //verify admin password
+        private function verify_password($password, $hash) {
+            if (empty($password) || empty($hash)) {
+                return false;
+            }
+
+            return password_verify($password, $hash);
         }
     }
 ?>

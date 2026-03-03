@@ -23,5 +23,33 @@
                 throw $e;
             }
         }
+
+        //search admins password hash
+        public function fetch_password_hash($email) {
+            try {
+                $this->stmt = $this->pdo->prepare("SELECT password FROM admins WHERE email = ? AND deleted_at IS NULL");
+                $this->stmt->execute([$email]);
+
+                $hash = $this->stmt->fetch(PDO::FETCH_ASSOC)['password'];
+
+                return !empty($hash) ? $hash: null;
+            } catch (PDOException $e) {
+                throw $e;
+            }
+        }
+
+        //fetch admin
+        public function fetch_admin($email) {
+            try {
+                $this->stmt = $this->pdo->prepare("SELECT id, nome FROM admins WHERE email = ? AND deleted_at IS NULL");
+                $this->stmt->execute([$email]);
+
+                $admin = $this->stmt->fetch(PDO::FETCH_ASSOC);
+
+                return !empty($admin) ? $admin : null;
+            } catch (PDOException $e) {
+                throw $e;
+            }
+        }
     }
 ?>
