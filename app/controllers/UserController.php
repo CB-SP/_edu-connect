@@ -10,6 +10,36 @@
             $this->show_page("login");
         }
 
+        //users login
+        public function login($nif, $password) {
+            if (empty($nif) || empty($password)) {
+                return false;
+            }
+
+            if (!(Utils::verify_password($password, $this->fetch_password_hash($nif)))) {
+                return false;
+            }
+
+            try {
+                $user_login = $this->user->fetch_user_data_login($nif);
+
+                if (empty($user_login)) {
+                    return false;
+                }
+
+                $_SESSION['id'] = $user_login['id'];
+                $_SESSION['nome'] = $user_login['nome'];
+                $_SESSION['escola'] = $user_login['escola'];
+                $_SESSION['role'] = $user_login['role'];
+                $_SESSION['foto'] = $user_login['foto'];
+            } catch (PDOException $e) {
+                error_log("ERRO_LOGIN_USUARIO: ". $e->getMessage(). "\n". $e->getTraceAsString());
+                return false;
+            }
+
+            return true;
+        }
+
         //add users
         public function add_user($name, $email, $contact_1, $contact_2, $nif, $school, $role, $photo, $password) {
             if (empty($name) || empty($contact_1) || empty($nif) || empty($password) || empty($role) || empty($school)) {
@@ -87,11 +117,25 @@
         }
 
         //users logout
-        protected function logout() {
+        public function logout() {
             $this->isLoged();
             session_unset();
             session_destroy();
-            $this->redirect("");
+            return true;
+        }
+
+        //search users password hash
+        private function fetch_password_hash($nif) {
+            if (empty($nif)) {
+                return null;
+            }
+
+            try {
+                return $this->user->fetch_password_hash($nif);
+            } catch (PDOException $e) {
+                error_log("ERRO_BUSCAR_HASH_USUARIO: ". $e->getMessage(). "\n". $e->getTraceAsString());
+                return null;
+            }
         }
     }
 ?>
