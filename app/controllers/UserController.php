@@ -153,7 +153,7 @@
             $this->isLoged();
             session_unset();
             session_destroy();
-            return true;
+            $this->redirect("");
         }
 
         //search users password hash
