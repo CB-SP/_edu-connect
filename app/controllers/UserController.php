@@ -7,7 +7,7 @@
         }
 
         public function index() {
-            $this->show_page("admin");
+            $this->show_page("login");
         }
 
         //users login

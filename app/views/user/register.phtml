@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="pt-AO">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EduConnect</title>
+    <link rel="stylesheet" href="../../../public/css/forms.css">
+    <link rel="stylesheet" href="<?= URL ?>public/css/tokens.css">
+
+</head>
+
+<body>
+
+    <div class="register-modal">
+
+        <div class="logo">
+            <img src="" alt=" ">
+        </div>
+
+        <h2>Criar Conta</h2>
+        <p class="subtitle">Cadastre-se na plataforma EduConnect</p>
+
+        <form action="" method="post" class="form">
+
+            <div class="input-box">
+                <label for="userName">Nome Completo</label>
+                <input type="text" placeholder="Seu nome Completo" required id="userName" name="userName">
+            </div>
+
+            <div class="input-box">
+                <label for="userNif">Nif</label>
+                <input type="text" placeholder="Seu nif" required id="userNif" name="userNif">
+            </div>
+
+            <div class="input-box">
+                <label for="userTelephone">Telefone</label>
+                <input type="tel" placeholder="+244 XXX XXX XXX" id="userTelephone" name="userTelephone">
+            </div>
+
+            <div class="input-box">
+                <label for="userSchool">Escola</label>
+                <select required>
+                    <option value="">Selecione sua escola</option>
+                    <option>Escola de exemplo</option>
+                    <option>Escola de exemplo</option>
+                    <option>Escola de exemplo</option>
+                </select>
+            </div>
+
+            <div class="input-box">
+                <label>Perfil</label>
+                <select required>
+                    <option>Aluno</option>
+                    <option>Professor</option>
+                    <option>Coordenador</option>
+                </select>
+            </div>
+             <div class="input-box">
+                <label for="">Perfil</label>
+                <label for="fotoUser" class="labelFile">
+                    <input type="file" name="fotoUser" id="fotoUser" class="" hidden>
+                    Escolher ficheiro.
+                    <span class="fileName">Nenhum ficheiro escolhido</span>
+                </label>
+            </div>
+            <div class="input-box">
+                <label for="userPassword">Senha</label>
+                <input type="password" placeholder="Sua senha" required id="userPassword" name="userPassword">
+            </div>
+
+            <div class="input-box">
+                <label for="confirmPassowrd">Confirmar Senha</label>
+                <input type="password" placeholder="Confirme sua senha" required id="confirmPassowrd" name="confirmPassowrd">
+            </div>
+
+            <input type="submit" value="Criar Conta" class="btn">
+
+        </form>
+
+        <hr>
+
+        <div class="back-login">
+            ← <a href="<?= URL ?>app/views/user/login.phtml">Voltar para o Login</a>
+        </div>
+
+    </div>
+
+</body>
+
+</html>

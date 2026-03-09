@@ -5,9 +5,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>EduConnect</title>
-    <link rel="stylesheet" href="<?= URL ?>public/css/forms.css">
-    <link rel="stylesheet" href="../../../public/css/forms.css">
-    <link rel="stylesheet" href="../../../public/css/tokens.css">
+    <link rel="stylesheet" href="public/css/forms.css">
+    <link rel="stylesheet" href="../../../../public/css/forms.css">
+    <link rel="stylesheet" href="../../../../public/css/tokens.css">
+
 
 </head>
 
@@ -21,12 +22,13 @@
 
         <h3>EduConnect</h3>
         <p class="subtitle">Plataforma Educacional Multi-Escola</p>
-        <a href="<?= URL ?>app/views/user/admin/loginAdmin.phtml" class="admin-link">Entrar como Administrador</a>
 
+        <a href="../login.phtml" class="admin-link">Entrar como Usuário normal</a>
         <form action="" method="post" class="form">
+
             <div class="input-box">
-                <label for="nif">Nif</label>
-                <input type="text" placeholder="Seu nif" id="nif" name="nif">
+                <label for="email">Email</label>
+                <input type="email" placeholder="seuemail@gmail.com" id="email" name="email">
             </div>
 
             <div class="input-box">
@@ -39,7 +41,7 @@
         <div class="register">
             <p>
                 Não tem uma conta?
-                <a href="<?= URL ?>app/views/user/register.phtml">Cadastre-se aqui</a>
+                <a href="registerAdmin.phtml">Cadastre-se aqui</a>
             </p>
         </div>
 

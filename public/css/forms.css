@@ -1,0 +1,331 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+}
+
+body {
+    background: #f4f6f9;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+
+@media screen and (max-width: 768px) {
+
+    .login-modal,
+    .register-modal {
+        background: white;
+        padding: 30px;
+        border: 1px solid var(--MutedB);
+        border-radius: 12px;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        grid-auto-flow: 10px;
+        width: 90%;
+        height: 100%;
+        overflow: auto;
+        margin: 20px 0;
+
+    }
+
+
+
+    .logo {
+        width: 60px;
+        height: 60px;
+        background: var(--AccentBlue);
+        border-radius: 16px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 15px;
+    }
+
+    .login-modal h3 {
+        font-weight: normal;
+        font-size: 16px;
+        padding: 5px;
+    }
+
+    .subtitle {
+        font-size: 15px;
+        color: #666;
+    }
+
+    .form {
+        display: flex;
+        flex-direction: column;
+        margin-top: 20px;
+        width: 100%;
+        height: 100%;
+    }
+
+    .input-box {
+        text-align: left;
+        margin-bottom: 18px;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .input-box label {
+        font-size: 14px;
+        font-weight: 500;
+        margin-bottom: 6px;
+    }
+
+    .input-box input,
+    select {
+        width: 100%;
+        height: 38px;
+        padding: 10px;
+        border: 2px solid transparent;
+        border-radius: 8px;
+        background-color: #f0f1f1;
+        font-size: 14px;
+        transition: 0.2s;
+        color: black;
+    }
+
+    input:focus,
+    select:focus {
+        outline: none;
+        border-color: #a1a1a1;
+        background: white;
+    }
+
+    .btn {
+        width: 100%;
+        height: 38px;
+        padding: 10px;
+        background-color: var(--AccentBlue);
+        border: none;
+        border-radius: 8px;
+        color: white;
+        font-weight: 500;
+        font-size: 15px;
+        cursor: pointer;
+        margin-top: 10px;
+        transition: 0.2s;
+    }
+
+    .btn:hover {
+        background-color: var(--AccentBlueHover);
+
+    }
+
+    .register p,
+    .admin-link {
+        margin-top: 18px;
+        font-size: 14px;
+    }
+
+    .register a,
+    .admin-link {
+        color: var(--AccentBlue);
+        text-decoration: none;
+        font-weight: 500;
+    }
+
+    .register a:hover,
+    .admin-link:hover {
+        text-decoration: underline;
+    }
+
+    .admin-link {
+        font-size: var(--text-md);
+    }
+
+    .back-login {
+        margin-top: 15px;
+        text-align: center;
+        font-size: 14px;
+        padding: 8px;
+        border-radius: 8px;
+        transform: all .2s ease;
+    }
+
+    .back-login a {
+        text-decoration: none;
+        color: #141414;
+        font-weight: 500;
+    }
+
+    .back-login:hover {
+        background-color: #f0f1f1;
+
+    }
+
+
+    .register-modal hr {
+        margin-top: 20px;
+        width: 100%;
+        border: none;
+        border-top: 1px solid #f1efef;
+    }
+}
+
+@media screen and (min-width: 768px) {
+
+
+    .login-modal,
+    .register-modal {
+        background: white;
+        padding: 30px;
+        border: 1px solid var(--MutedB);
+        border-radius: 12px;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 470px;
+        height: 100%;
+        overflow: auto;
+        margin: 25px 0;
+        box-shadow: 0 6px 18px rgba(0, 0, 0, .08);
+
+    }
+
+    .logo {
+        width: 65px;
+        height: 65px;
+        background: #2f5eea;
+        border-radius: 16px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 15px;
+    }
+
+    .login-modal h3 {
+        font-weight: 550;
+        font-size: 16px;
+        padding: 5px;
+    }
+
+    .subtitle {
+        font-size: 15px;
+        color: #666;
+    }
+
+    .form {
+        display: flex;
+        flex-direction: column;
+        margin-top: 20px;
+        width: 100%;
+        height: 100%;
+    }
+
+    .input-box {
+        text-align: left;
+        margin-bottom: 18px;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .input-box label {
+        font-size: 14px;
+        font-weight: 500;
+        margin-bottom: 6px;
+    }
+
+    .input-box input,
+    select,
+    .labelFile {
+        width: 100%;
+        height: 38px;
+        padding: 10px;
+        border: 2px solid transparent;
+        border-radius: 8px;
+        background-color: #f0f1f1;
+        font-size: 14px;
+        transition: 0.2s;
+        color: black;
+    }
+
+    input:focus,
+    select:focus {
+        outline: none;
+        border-color: #a1a1a1;
+        background: white;
+    }
+
+
+
+    .btn {
+        width: 100%;
+        height: 38px;
+        padding: 10px;
+        background-color: var(--AccentBlue);
+        border: none;
+        border-radius: 8px;
+        color: white;
+        font-weight: 500;
+        font-size: 15px;
+        cursor: pointer;
+        margin-top: 10px;
+        transition: 0.2s;
+    }
+
+
+    .btn:hover {
+        background-color: var(--AccentBlueHover);
+    }
+
+    .register p,
+    .admin-link {
+        margin-top: 18px;
+        font-size: 14px;
+    }
+
+    .register a,
+    .admin-link {
+        color: #2f5eea;
+        text-decoration: none;
+        font-weight: 500;
+    }
+
+
+    .register a:hover,
+    .admin-link:hover {
+        text-decoration: underline;
+    }
+
+    .register-modal hr {
+        margin-top: 20px;
+        width: 100%;
+        border: none;
+        border-top: 1px solid #f1efef;
+    }
+
+    .back-login {
+        margin-top: 15px;
+        text-align: center;
+        font-size: 14px;
+        padding: 8px;
+        border-radius: 8px;
+        transform: all .2s ease;
+    }
+
+    .back-login a {
+        text-decoration: none;
+        color: #141414;
+        font-weight: 500;
+    }
+
+    .back-login:hover {
+        background-color: #f0f1f1;
+
+    }
+
+
+}

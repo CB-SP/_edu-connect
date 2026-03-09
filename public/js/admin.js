@@ -63,6 +63,8 @@ navItens.forEach(navItem => {
 const fileNames = document.querySelectorAll('.fileName')
 const logoFiles = document.querySelectorAll('.logoFile')
 const fotoFiles = document.querySelectorAll('.fotoFile')
+const fotoAdmins = document.querySelectorAll('.fotoAdmin')
+const fotoUsers = document.querySelectorAll('.fotoUser')
 
 logoFiles.forEach(logoFile => {
     logoFile.addEventListener('change', () => {
