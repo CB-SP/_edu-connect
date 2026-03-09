@@ -45,11 +45,11 @@ Projecto para TCC desenvolvido com HTML, CSS, JS e PHP.
     │   ├── models/                 # interacção com bancos de dados e APIs (dados do sistema)
     │   └── views/                  # interfaces do usuário
     │       ├── errors/             # todas as páginas de erro do sistema
-    │       ├── layouts/            # layout padrão do sistema
-    │       └── public/             # arquivos estáticos como imagens, fontes, css e js
+    │       └── layouts/            # layout padrão do sistema
     ├── config/                     # configuração do sistema
     ├── core/                       # rotas, controllers e models
     ├── database/                   # código do banco de dados
+    ├── public/                     # arquivos estáticos como imagens, fontes, css e js
     ├── .htaccess                   # configuração do servidor Apache
     ├── index.php                   # autoload
     └── .gitignore                  # arquivos ignorados pelo Git
