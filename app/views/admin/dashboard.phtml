@@ -1,5 +1,8 @@
-<?php
-require_once './app/views/layouts/adminMain.phtml'
+<?php 
+    require_once './app/views/layouts/adminMain.phtml';
+    $admin = new AdminController;
+    $schools = $admin->fetch_schools();
+    $users = $admin->fetch_users();
 ?>
 
 <section class="painel-dash">
@@ -7,7 +10,7 @@ require_once './app/views/layouts/adminMain.phtml'
     <section class="dash-info">
         <div class="header-painel">
             <div class="title">
-                <h2>Painel de Administração</h2>
+                <h2>Dashboard</h2>
                 <p>Gestão de escolas e usuários do sistema</p>
             </div>
             <div class="role-info">
@@ -72,29 +75,29 @@ require_once './app/views/layouts/adminMain.phtml'
                         <p>Cadastre uma nova instituição de ensino no sistema</p>
                         <img src="<?= URL ?>public/assets/images/x.png" alt="" class="close-modal-icon">
                     </div>
-                    <form action="" method="">
+                    <form action="<?= URL ?>admin/add_school" method="post">
                         <div class="input-box" id="input-school">
                             <label for="scholName">Nome da escola</label>
-                            <input type="text" name="scholName" id="scholName" placeholder="Nome completo da instituição">
+                            <input type="text" name="name" placeholder="Nome completo da instituição">
                         </div>
                         <div class="input-box">
                             <label for="schoolAddress">Endereço</label>
-                            <input type="text" name="schoolAddress" id="schoolAddress" placeholder="Rua, número, bairro, município, província ">
+                            <input type="text" name="address" placeholder="Rua, número, bairro, município, província ">
                         </div>
                         <div class="contacts-box">
                             <div class="input-box">
                                 <label for="primaryContact">Contacto principal</label>
-                                <input type="text" name="primaryContact" id="primaryContact" placeholder="+244 XXX XXX XXX">
+                                <input type="text" name="contact_1" placeholder="+244 XXX XXX XXX">
                             </div>
                             <div class="input-box">
                                 <label for="secundaryContact">Contacto secundário</label>
-                                <input type="text" name="secundaryContact" id="secundaryContact" placeholder="+244 XXX XXX XXX">
+                                <input type="text" name="contact_2" placeholder="+244 XXX XXX XXX">
                             </div>
                         </div>
                         <div class="input-box">
                             <label for="">Logo da escola</label>
                             <label for="logoFile" class="labelFile">
-                                <input type="file" name="logoFile" id="logoFile" class="logoFile" hidden>
+                                <input type="file" name="logo" class="logoFile" hidden>
                                 Escolher ficheiro.
                                 <span class="fileName">Nenhum ficheiro escolhido</span>
                             </label>
@@ -112,33 +115,35 @@ require_once './app/views/layouts/adminMain.phtml'
                         <p>Editar as informações da escola</p>
                         <img src="<?= URL ?>public/assets/images/x.png" alt="" class="close-modal-icon">
                     </div>
-                    <form action="" method="">
+                    <form action="<?= URL ?>admin/edit_school" method="post">
                         <div class="input-box" id="input-school">
                             <label for="scholName">Nome da escola</label>
-                            <input type="text" name="scholName" id="scholName" value="Exemplo">
+                            <input type="text" name="name" id="schoolName">
                         </div>
                         <div class="input-box">
                             <label for="schoolAddress">Endereço</label>
-                            <input type="text" name="schoolAddress" id="schoolAddress" value="Exemplo">
+                            <input type="text" name="address" id="schoolAddress" value="Exemplo">
                         </div>
                         <div class="contacts-box">
                             <div class="input-box">
                                 <label for="primaryContact">Contacto principal</label>
-                                <input type="text" name="primaryContact" id="primaryContact" value="Exemplo">
+                                <input type="text" name="contact_1" id="primaryContact" value="Exemplo">
                             </div>
                             <div class="input-box">
                                 <label for="secundaryContact">Contacto secundário</label>
-                                <input type="text" name="secundaryContact" id="secundaryContact" value="Exemplo">
+                                <input type="text" name="contact_2" id="secundaryContact" value="Exemplo">
                             </div>
                         </div>
                         <div class="input-box">
                             <label for="">Logo da escola</label>
                             <label for="logoFile" class="labelFile">
-                                <input type="file" name="logoFile" id="logoFile" class="logoFile" hidden>
+                                <input type="file" name="logo" id="logoFile" class="logoFile" hidden>
                                 Escolher ficheiro.
                                 <span class="fileName">Nenhum ficheiro escolhido</span>
                             </label>
                         </div>
+
+                        <input type="hidden" name="id" id="id">
                         <div class="final-btn-actions">
                             <button class="btn" id="btn-cancel">Cancelar</button>
                             <button class="btn" id="btn-create">Editar escola</button>
@@ -149,34 +154,40 @@ require_once './app/views/layouts/adminMain.phtml'
 
             <!--SCHOOLS LIST-->
             <div class="school-list">
-                <table class="tbl-schools">
-                    <thead>
-                        <tr>
-                            <th>Escola</th>
-                            <th>Contacto</th>
-                            <th>Nível de Ensino</th>
-                            <th>Estado</th>
-                            <th>Ações</th>
-                        </tr>
-                    </thead>
-                    <tbody>
+                <?php if (empty($schools)):?>
+                    <h1>Dados não encontrados</h1>
+                <?php else:?>
+                    <table class="tbl-schools">
+                        <thead>
+                            <tr>
+                                <th>Escola</th>
+                                <th>Contacto</th>
+                                <th>Estado</th>
+                                <th>Acções</th>
+                            </tr>
+                        </thead>
+                        <tbody>
 
-                        <tr>
-                            <td>Ipolub</td>
-                            <td>963763746</td>
-                            <td>Ensino médio</td>
-                            <td>Activa</td>
-                            <td class="btn-down-actions ">
-                                <button class="action-btn">Ações</button>
-                                <div class="drop-actions">
-                                    <button class="edit-action"><img src="" alt=" ">Editar</button>
-                                    <button class="delete-action"><img src="" alt=" ">Eliminar</button>
-                                </div>
-                            </td>
-                        </tr>
+                            <?php foreach ($schools as $school):?>  
+                                <tr>
+                                    <td><?= $school['nome']?></td>
+                                    <td><?= $school['contacto_1']?></td>
+                                    <td>
+                                        <?= empty($school['deleted_at']) ? 'Activa' : 'Inactiva'?>
+                                    </td>
+                                    <td class="btn-down-actions ">
+                                        <button class="action-btn">Acções</button>
+                                        <div class="drop-actions">
+                                            <button class="edit-action" data-id=<?= $school['id'] ?>><img src="" alt=" ">Editar</button>
+                                            <button class="delete-action" onclick="window.location.href='<?= URL ?>admin/delete_school/<?= $school['id'] ?>'"><img src="" alt=" ">Eliminar</button>
+                                        </div>
+                                    </td>
+                                </tr>
+                            <?php endforeach;?>
 
-                    </tbody>
-                </table>
+                        </tbody>
+                    </table>
+                <?php endif;?>
             </div>
         </section>
 
@@ -198,53 +209,64 @@ require_once './app/views/layouts/adminMain.phtml'
                         <p>Cadastre um novo utilizador no sistema</p>
                         <img src="<?= URL ?>public/assets/images/x.png" alt="" class="close-modal-icon">
                     </div>
-                    <form action="" method="">
+                    <form action="<?= URL ?>admin/add_user" method="post">
                         <div class="input-box">
                             <label for="userName">Nome Completo</label>
-                            <input type="text" name="userName" id="userName" placeholder="Nome completo do usuário">
+                            <input type="text" name="name" placeholder="Nome completo do usuário">
                         </div>
                         <div class="contacts-box">
                             <div class="input-box">
                                 <label for="primaryContact">Contacto principal</label>
-                                <input type="text" name="primaryContact" id="primaryContact" placeholder="+244 XXX XXX XXX">
+                                <input type="text" name="contact_1" placeholder="+244 XXX XXX XXX">
                             </div>
                             <div class="input-box">
                                 <label for="secundaryContact">Contacto secundário</label>
-                                <input type="text" name="secundaryContact" id="secundaryContact" placeholder="+244 XXX XXX XXX">
+                                <input type="text" name="contact_2" placeholder="+244 XXX XXX XXX">
                             </div>
                         </div>
                         <div class="contacts-box">
                             <div class="input-box">
                                 <label for="nifUser">NIF</label>
-                                <input type="text" name="nifUser" id="nifUser" placeholder="H244875734543">
+                                <input type="text" name="nif" placeholder="H244875734543">
                             </div>
                             <div class="input-box">
                                 <label for="emailUser">Email</label>
-                                <input type="text" name="emailUser" id="emailUser" placeholder="usuario@email.com">
+                                <input type="text" name="email" placeholder="usuario@email.com">
                             </div>
                         </div>
                         <div class="input-box">
                             <label for="userPassword">Senha</label>
-                            <input type="text" name="userPassword" id="userPassword" placeholder="Digite uma senha segura">
+                            <input type="text" name="password" placeholder="Digite uma senha segura">
                         </div>
                         <div class="input-box">
                             <label for="">Foto do usuário</label>
                             <label for="fotoFile" class="labelFile">
-                                <input type="file" name="fotoFile" id="fotoFile" class="fotoFile" hidden>
+                                <input type="file" name="photo" class="fotoFile" hidden>
                                 Escolher ficheiro.
                                 <span class="fileName">Nenhum ficheiro escolhido</span>
                             </label>
                         </div>
                         <div class="input-box">
                             <label for="userSchool">Escola</label>
-                            <select name="userSchool" id="userSchool">
-                                <option value="">Selecione uma escola</option>
+                            <select name="school" id="userSchool">
+                                <?php if(empty($schools)):?>
+                                    <option>Dados não encontrados</option>
+                                <?php else:?>
+                                    <?php 
+                                        $schools = array_filter($schools, function ($n) {return empty($n['deleted_at']);})
+                                    ?>
+                                    <?php foreach ($schools as $school):?>
+                                        <option value="<?= $school['id'] ?>"><?= $school['nome'] ?></option>
+                                    <?php endforeach;?>
+                                <?php endif;?>
                             </select>
                         </div>
                         <div class="input-box">
                             <label for="role">Nível de acesso</label>
                             <select name="role" id="role">
-                                <option value="">Aluno</option>
+                                <option value="director">Director</option>
+                                <option value="aluno">Aluno</option>
+                                <option value="professor">Professor</option>
                             </select>
                         </div>
                         <div class="final-btn-actions">
@@ -322,54 +344,46 @@ require_once './app/views/layouts/adminMain.phtml'
                 <div class="text-users-header">
                     <p><span>Todos os usuários do sistema.</span> <br> Usuários de todas as escolas cadastradas.</p>
                 </div>
-                <table class="tbl-users">
-                    <thead>
-                        <tr>
-                            <th>Usuário</th>
-                            <th>Escola</th>
-                            <th>Role</th>
-                            <th>Estado</th>
-                            <th>Ações</th>
-                        </tr>
-                    </thead>
-                    <tbody>
+                <?php if(empty($users)):?>
+                    <h1>Dados não encontrados</h1>
+                <?php else:?>
+                    <table class="tbl-users">
+                        <thead>
+                            <tr>
+                                <th>Usuário</th>
+                                <th>Escola</th>
+                                <th>Role</th>
+                                <th>Estado</th>
+                                <th>Ações</th>
+                            </tr>
+                        </thead>
+                        <tbody>
 
-                        <tr>
-                            <td>Sérgio Sapalalo</td>
-                            <td>Ipolub</td>
-                            <td>Administrador</td>
-                            <td>Activo</td>
-                            <td class="btn-down-actions ">
-                                <button class="action-btn">Ações</button>
-                                <div class="drop-actions">
-                                    <button class="edit-action"><img src="" alt=" ">Editar</button>
-                                    <button class="delete-action"><img src="" alt=" ">Eliminar</button>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Kelson de Sousa</td>
-                            <td>Ipolub</td>
-                            <td>Administrador</td>
-                            <td>Activo</td>
-                            <td class="btn-down-actions ">
-                                <button class="action-btn">Ações</button>
-                                <div class="drop-actions">
-                                    <button class="edit-action"><img src="" alt=" ">Editar</button>
-                                    <button class="delete-action"><img src="" alt=" ">Eliminar</button>
-                                </div>
-                            </td>
-                        </tr>
-
-
-                    </tbody>
-                </table>
+                                <?php foreach ($users as $user):?>
+                                    <tr>
+                                        <td><?= $user['nome'] ?></td>
+                                        <td><?= $user['escola'] ?></td>
+                                        <td><?= $user['role'] ?></td>
+                                        <td>
+                                            <?= empty($user['deleted_at']) && empty($user['estado_escola']) ? 'Activo' : 'Inactivo'?>
+                                        </td>
+                                        <td class="btn-down-actions ">
+                                            <button class="action-btn">Ações</button>
+                                            <div class="drop-actions">
+                                                <button class="edit-action"><img src="" alt=" ">Editar</button>
+                                                <button class="delete-action" onclick="window.location.href='<?= URL ?>admin/delete_user/<?= $user['id'] ?>'"><img src="" alt=" ">Eliminar</button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                <?php endforeach;?>
+                                
+                            </tbody>
+                    </table>
+                <?php endif;?>
             </div>
 
     </section>
 </section>
 </section>
 
-<?php
-require_once './app/views/layouts/closure.phtml'
-?>
+<?php require_once './app/views/layouts/closure.phtml'?>

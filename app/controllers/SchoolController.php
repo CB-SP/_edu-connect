@@ -59,7 +59,7 @@
             }
 
             try {
-                return $this->school->fetch_school($id);
+                return json_encode($this->school->fetch_school($id));
             } catch (PDOException $e) {
                 error_log("ERRO_BUSCAR_ESCOLA: ". $e->getMessage(). "\n". $e->getTraceAsString());
                 return null;

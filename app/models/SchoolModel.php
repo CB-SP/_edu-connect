@@ -26,7 +26,7 @@
         //search for every shools
         public function fetch_schools() {
             try {
-                $this->stmt = $this->pdo->prepare("SELECT id, nome, endereco, contacto_1, contacto_2, logo, created_at FROM escolas WHERE deleted_at IS NULL");
+                $this->stmt = $this->pdo->prepare("SELECT id, nome, endereco, contacto_1, contacto_2, logo, deleted_at FROM escolas ORDER BY nome");
                 $this->stmt->execute();
 
                 $schools = [];
