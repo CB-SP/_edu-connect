@@ -7,11 +7,16 @@
         }
 
         public function index() {
+            $this->isLoged();
+            $this->show_page("home");
+        }
+
+        public function login() {
             $this->show_page("login");
         }
 
         //users login
-        public function login($nif, $password) {
+        public function login_user($nif, $password) {
             if (empty($nif) || empty($password)) {
                 return false;
             }
@@ -121,7 +126,7 @@
             $this->isLoged();
             session_unset();
             session_destroy();
-            return true;
+            $this->redirect("");
         }
 
         //search users password hash

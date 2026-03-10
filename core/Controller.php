@@ -24,7 +24,7 @@
 
         protected function isLoged() {
             if (!isset($_SESSION['id'], $_SESSION['name'])) {
-                $this->redirect("");
+                $this->redirect("user/login");
             }
         }
     }

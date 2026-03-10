@@ -141,8 +141,21 @@ const editBtns = document.querySelectorAll('.edit-action')
 editModais = document.querySelectorAll('.edit-modal')
 
 editBtns.forEach(editBtn => {
-    editBtn.addEventListener('click', (e) => {
+    editBtn.addEventListener('click', async (e) => {
         e.stopPropagation()
+
+        const id = e.currentTarget.dataset.id
+
+        //document.getElementById('id').value = id
+        //document.getElementById('schoolName').value = id
+
+        const result = await fetch(`http://localhost/_edu-connect/admin/fetch_school/${id}`)
+        //const data = await result.json()
+
+        //console.log(data)
+        const text = await result.text()
+        console.log(text)
+
         editModais.forEach(editModal => {
             editModal.classList.add('show')
             document.body.classList.add('no-scroll')
@@ -178,6 +191,3 @@ editModais.forEach(editModal => {
         e.stopPropagation()
     })
 })
-
-
-

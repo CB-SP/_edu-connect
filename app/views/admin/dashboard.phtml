@@ -1,0 +1,389 @@
+<?php 
+    require_once './app/views/layouts/adminMain.phtml';
+    $admin = new AdminController;
+    $schools = $admin->fetch_schools();
+    $users = $admin->fetch_users();
+?>
+
+<section class="painel-dash">
+    <div class="overlay-modal"></div>
+    <section class="dash-info">
+        <div class="header-painel">
+            <div class="title">
+                <h2>Dashboard</h2>
+                <p>Gestão de escolas e usuários do sistema</p>
+            </div>
+            <div class="role-info">
+                <img src="" alt=" ">
+                <p>Administrador</p>
+            </div>
+        </div>
+        <div class="statistics-info">
+            <div class="cards-info">
+                <p>Total algo</p>
+                <h2>3</h2>
+            </div>
+            <div class="cards-info">
+                <p>Total algo</p>
+                <h2>3</h2>
+            </div>
+            <div class="cards-info">
+                <p>Total algo</p>
+                <h2>3</h2>
+            </div>
+            <div class="cards-info">
+                <p>Total algo</p>
+                <h2>3</h2>
+            </div>
+            <div class="cards-info">
+                <p>Total algo</p>
+                <h2>3</h2>
+            </div>
+            <div class="cards-info">
+                <p>Total algo</p>
+                <h2>3</h2>
+            </div>
+        </div>
+    </section>
+    <section class="list-info">
+        <div class="tabs">
+            <button class="tab active" data-target="schools-section">
+                <img src="" alt=" ">
+                <span>Escolas</span>
+            </button>
+            <button class="tab" data-target="users-section">
+                <img src="" alt=" ">
+                <span>Usuários</span>
+            </button>
+        </div>
+
+        <!--SCHOOL SECTION-->
+        <section class="tab-content active" id="schools-section">
+            <div class="search-add-area">
+                <div class="search-school-box">
+                    <img src="" alt=" ">
+                    <input type="search" name="searchSchool" id="searchSchool" placeholder="Pesquisar escolas">
+                </div>
+                <div class="add-school-btn">
+                    <img src="" alt=" ">
+                    <button class="add-button" id="btn-add-school">Nova Escola</button>
+                </div>
+                <!--ADD-SCHOOL-MODAL-->
+                <div class="add-modal" id="add-school-modal">
+                    <div class="desc-form">
+                        <h3>Nova escola</h3>
+                        <p>Cadastre uma nova instituição de ensino no sistema</p>
+                        <img src="<?= URL ?>public/assets/images/x.png" alt="" class="close-modal-icon">
+                    </div>
+                    <form action="<?= URL ?>admin/add_school" method="post">
+                        <div class="input-box" id="input-school">
+                            <label for="scholName">Nome da escola</label>
+                            <input type="text" name="name" placeholder="Nome completo da instituição">
+                        </div>
+                        <div class="input-box">
+                            <label for="schoolAddress">Endereço</label>
+                            <input type="text" name="address" placeholder="Rua, número, bairro, município, província ">
+                        </div>
+                        <div class="contacts-box">
+                            <div class="input-box">
+                                <label for="primaryContact">Contacto principal</label>
+                                <input type="text" name="contact_1" placeholder="+244 XXX XXX XXX">
+                            </div>
+                            <div class="input-box">
+                                <label for="secundaryContact">Contacto secundário</label>
+                                <input type="text" name="contact_2" placeholder="+244 XXX XXX XXX">
+                            </div>
+                        </div>
+                        <div class="input-box">
+                            <label for="">Logo da escola</label>
+                            <label for="logoFile" class="labelFile">
+                                <input type="file" name="logo" class="logoFile" hidden>
+                                Escolher ficheiro.
+                                <span class="fileName">Nenhum ficheiro escolhido</span>
+                            </label>
+                        </div>
+                        <div class="final-btn-actions">
+                            <button class="btn" id="btn-cancel">Cancelar</button>
+                            <button class="btn" id="btn-create">Criar escola</button>
+                        </div>
+                    </form>
+                </div>
+                <!--EDIT-SCHOOL-MODAL-->
+                <div class="edit-modal" id="edit-school-modal">
+                    <div class="desc-form">
+                        <h3>Editar escola</h3>
+                        <p>Editar as informações da escola</p>
+                        <img src="<?= URL ?>public/assets/images/x.png" alt="" class="close-modal-icon">
+                    </div>
+                    <form action="<?= URL ?>admin/edit_school" method="post">
+                        <div class="input-box" id="input-school">
+                            <label for="scholName">Nome da escola</label>
+                            <input type="text" name="name" id="schoolName">
+                        </div>
+                        <div class="input-box">
+                            <label for="schoolAddress">Endereço</label>
+                            <input type="text" name="address" id="schoolAddress" value="Exemplo">
+                        </div>
+                        <div class="contacts-box">
+                            <div class="input-box">
+                                <label for="primaryContact">Contacto principal</label>
+                                <input type="text" name="contact_1" id="primaryContact" value="Exemplo">
+                            </div>
+                            <div class="input-box">
+                                <label for="secundaryContact">Contacto secundário</label>
+                                <input type="text" name="contact_2" id="secundaryContact" value="Exemplo">
+                            </div>
+                        </div>
+                        <div class="input-box">
+                            <label for="">Logo da escola</label>
+                            <label for="logoFile" class="labelFile">
+                                <input type="file" name="logo" id="logoFile" class="logoFile" hidden>
+                                Escolher ficheiro.
+                                <span class="fileName">Nenhum ficheiro escolhido</span>
+                            </label>
+                        </div>
+
+                        <input type="hidden" name="id" id="id">
+                        <div class="final-btn-actions">
+                            <button class="btn" id="btn-cancel">Cancelar</button>
+                            <button class="btn" id="btn-create">Editar escola</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <!--SCHOOLS LIST-->
+            <div class="school-list">
+                <?php if (empty($schools)):?>
+                    <h1>Dados não encontrados</h1>
+                <?php else:?>
+                    <table class="tbl-schools">
+                        <thead>
+                            <tr>
+                                <th>Escola</th>
+                                <th>Contacto</th>
+                                <th>Estado</th>
+                                <th>Acções</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                            <?php foreach ($schools as $school):?>  
+                                <tr>
+                                    <td><?= $school['nome']?></td>
+                                    <td><?= $school['contacto_1']?></td>
+                                    <td>
+                                        <?= empty($school['deleted_at']) ? 'Activa' : 'Inactiva'?>
+                                    </td>
+                                    <td class="btn-down-actions ">
+                                        <button class="action-btn">Acções</button>
+                                        <div class="drop-actions">
+                                            <button class="edit-action" data-id=<?= $school['id'] ?>><img src="" alt=" ">Editar</button>
+                                            <button class="delete-action" onclick="window.location.href='<?= URL ?>admin/delete_school/<?= $school['id'] ?>'"><img src="" alt=" ">Eliminar</button>
+                                        </div>
+                                    </td>
+                                </tr>
+                            <?php endforeach;?>
+
+                        </tbody>
+                    </table>
+                <?php endif;?>
+            </div>
+        </section>
+
+        <!--USERS SECTION-->
+        <section class="tab-content" id="users-section">
+            <div class="search-add-area">
+                <div class="search-user-box">
+                    <img src="" alt=" ">
+                    <input type="search" name="searchUser" id="searchUser" placeholder="Pesquisar usuários">
+                </div>
+                <div class="add-user-btn">
+                    <img src="" alt=" ">
+                    <button class="add-button" id="btn-add-user">Novo Usuário</button>
+                </div>
+                <!--ADD USER MODAL-->
+                <div class="add-modal" id="add-user-modal">
+                    <div class="desc-form">
+                        <h3>Novo usuário</h3>
+                        <p>Cadastre um novo utilizador no sistema</p>
+                        <img src="<?= URL ?>public/assets/images/x.png" alt="" class="close-modal-icon">
+                    </div>
+                    <form action="<?= URL ?>admin/add_user" method="post">
+                        <div class="input-box">
+                            <label for="userName">Nome Completo</label>
+                            <input type="text" name="name" placeholder="Nome completo do usuário">
+                        </div>
+                        <div class="contacts-box">
+                            <div class="input-box">
+                                <label for="primaryContact">Contacto principal</label>
+                                <input type="text" name="contact_1" placeholder="+244 XXX XXX XXX">
+                            </div>
+                            <div class="input-box">
+                                <label for="secundaryContact">Contacto secundário</label>
+                                <input type="text" name="contact_2" placeholder="+244 XXX XXX XXX">
+                            </div>
+                        </div>
+                        <div class="contacts-box">
+                            <div class="input-box">
+                                <label for="nifUser">NIF</label>
+                                <input type="text" name="nif" placeholder="H244875734543">
+                            </div>
+                            <div class="input-box">
+                                <label for="emailUser">Email</label>
+                                <input type="text" name="email" placeholder="usuario@email.com">
+                            </div>
+                        </div>
+                        <div class="input-box">
+                            <label for="userPassword">Senha</label>
+                            <input type="text" name="password" placeholder="Digite uma senha segura">
+                        </div>
+                        <div class="input-box">
+                            <label for="">Foto do usuário</label>
+                            <label for="fotoFile" class="labelFile">
+                                <input type="file" name="photo" class="fotoFile" hidden>
+                                Escolher ficheiro.
+                                <span class="fileName">Nenhum ficheiro escolhido</span>
+                            </label>
+                        </div>
+                        <div class="input-box">
+                            <label for="userSchool">Escola</label>
+                            <select name="school" id="userSchool">
+                                <?php if(empty($schools)):?>
+                                    <option>Dados não encontrados</option>
+                                <?php else:?>
+                                    <?php 
+                                        $schools = array_filter($schools, function ($n) {return empty($n['deleted_at']);})
+                                    ?>
+                                    <?php foreach ($schools as $school):?>
+                                        <option value="<?= $school['id'] ?>"><?= $school['nome'] ?></option>
+                                    <?php endforeach;?>
+                                <?php endif;?>
+                            </select>
+                        </div>
+                        <div class="input-box">
+                            <label for="role">Nível de acesso</label>
+                            <select name="role" id="role">
+                                <option value="director">Director</option>
+                                <option value="aluno">Aluno</option>
+                                <option value="professor">Professor</option>
+                            </select>
+                        </div>
+                        <div class="final-btn-actions">
+                            <button class="btn" id="btn-cancel">Cancelar</button>
+                            <button class="btn" id="btn-create">Criar usuário</button>
+                        </div>
+                    </form>
+                </div>
+                <!--EDIT USER MODAL-->
+                <div class="edit-modal" id="edit-user-modal">
+                    <div class="desc-form">
+                        <h3>Editar usuário</h3>
+                        <p>Edite as informações de usuário</p>
+                        <img src="<?= URL ?>public/assets/images/x.png" alt="" class="close-modal-icon">
+                    </div>
+                    <form action="" method="">
+                        <div class="input-box">
+                            <label for="userName">Nome Completo</label>
+                            <input type="text" name="userName" id="userName" value="Exemplo">
+                        </div>
+                        <div class="contacts-box">
+                            <div class="input-box">
+                                <label for="primaryContact">Contacto principal</label>
+                                <input type="text" name="primaryContact" id="primaryContact" value="Exemplo">
+                            </div>
+                            <div class="input-box">
+                                <label for="secundaryContact">Contacto secundário</label>
+                                <input type="text" name="secundaryContact" id="secundaryContact" value="Exemplo">
+                            </div>
+                        </div>
+                        <div class="contacts-box">
+                            <div class="input-box">
+                                <label for="nifUser">NIF</label>
+                                <input type="text" name="nifUser" id="nifUser" value="Exemplo">
+                            </div>
+                            <div class="input-box">
+                                <label for="emailUser">Email</label>
+                                <input type="text" name="emailUser" id="emailUser" value="Exemplo">
+                            </div>
+                        </div>
+                        <div class="input-box">
+                            <label for="userPassword">Senha</label>
+                            <input type="text" name="userPassword" id="userPassword" value="Exemplo">
+                        </div>
+                        <div class="input-box">
+                            <label for="">Foto do usuário</label>
+                            <label for="fotoFile" class="labelFile">
+                                <input type="file" name="fotoFile" id="fotoFile" class="fotoFile" hidden>
+                                Escolher ficheiro.
+                                <span class="fileName">Nenhum ficheiro escolhido</span>
+                            </label>
+                        </div>
+                        <div class="input-box">
+                            <label for="userSchool">Escola</label>
+                            <select name="userSchool" id="userSchool">
+                                <option value="">Selecione uma escola</option>
+                            </select>
+                        </div>
+                        <div class="input-box">
+                            <label for="role">Nível de acesso</label>
+                            <select name="role" id="role">
+                                <option value="">Aluno</option>
+                            </select>
+                        </div>
+                        <div class="final-btn-actions">
+                            <button class="btn" id="btn-cancel">Cancelar</button>
+                            <button class="btn" id="btn-create">Editar usuário</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <!--USERS LIST-->
+            <div class="users-list">
+
+                <div class="text-users-header">
+                    <p><span>Todos os usuários do sistema.</span> <br> Usuários de todas as escolas cadastradas.</p>
+                </div>
+                <?php if(empty($users)):?>
+                    <h1>Dados não encontrados</h1>
+                <?php else:?>
+                    <table class="tbl-users">
+                        <thead>
+                            <tr>
+                                <th>Usuário</th>
+                                <th>Escola</th>
+                                <th>Role</th>
+                                <th>Estado</th>
+                                <th>Ações</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                                <?php foreach ($users as $user):?>
+                                    <tr>
+                                        <td><?= $user['nome'] ?></td>
+                                        <td><?= $user['escola'] ?></td>
+                                        <td><?= $user['role'] ?></td>
+                                        <td>
+                                            <?= empty($user['deleted_at']) && empty($user['estado_escola']) ? 'Activo' : 'Inactivo'?>
+                                        </td>
+                                        <td class="btn-down-actions ">
+                                            <button class="action-btn">Ações</button>
+                                            <div class="drop-actions">
+                                                <button class="edit-action"><img src="" alt=" ">Editar</button>
+                                                <button class="delete-action" onclick="window.location.href='<?= URL ?>admin/delete_user/<?= $user['id'] ?>'"><img src="" alt=" ">Eliminar</button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                <?php endforeach;?>
+                                
+                            </tbody>
+                    </table>
+                <?php endif;?>
+            </div>
+
+    </section>
+</section>
+</section>
+
+<?php require_once './app/views/layouts/closure.phtml'?>
