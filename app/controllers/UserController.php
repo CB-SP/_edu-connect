@@ -15,6 +15,11 @@
             $this->show_page("login");
         }
 
+        public function register() {
+            $this->isLoged();
+            $this->show_page("register");
+        }
+
         //users login
         public function login_user($nif, $password) {
             if (empty($nif) || empty($password)) {

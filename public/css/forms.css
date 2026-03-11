@@ -143,27 +143,6 @@ body {
         font-size: var(--text-md);
     }
 
-    .back-login {
-        margin-top: 15px;
-        text-align: center;
-        font-size: 14px;
-        padding: 8px;
-        border-radius: 8px;
-        transform: all .2s ease;
-    }
-
-    .back-login a {
-        text-decoration: none;
-        color: #141414;
-        font-weight: 500;
-    }
-
-    .back-login:hover {
-        background-color: #f0f1f1;
-
-    }
-
-
     .register-modal hr {
         margin-top: 20px;
         width: 100%;
@@ -306,26 +285,4 @@ body {
         border: none;
         border-top: 1px solid #f1efef;
     }
-
-    .back-login {
-        margin-top: 15px;
-        text-align: center;
-        font-size: 14px;
-        padding: 8px;
-        border-radius: 8px;
-        transform: all .2s ease;
-    }
-
-    .back-login a {
-        text-decoration: none;
-        color: #141414;
-        font-weight: 500;
-    }
-
-    .back-login:hover {
-        background-color: #f0f1f1;
-
-    }
-
-
 }
