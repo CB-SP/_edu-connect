@@ -7,8 +7,6 @@
     <title>EduConnect</title>
     <link rel="stylesheet" href="<?= URL ?>public/css/forms.css">
     <link rel="stylesheet" href="<?= URL ?>public/css/tokens.css">
-    <link rel="stylesheet" href="../../../public/css/forms.css">
-    <link rel="stylesheet" href="../../../public/css/tokens.css">
 
 </head>
 
@@ -22,12 +20,12 @@
 
         <h3>EduConnect</h3>
         <p class="subtitle">Plataforma Educacional Multi-Escola</p>
-        <a href="<?= URL ?>app/views/admin/loginAdmin.phtml" class="admin-link">Entrar como Administrador</a>
+        <a href="<?= URL ?>admin/login" class="admin-link">Entrar como Administrador</a>
 
         <form action="" method="post" class="form">
             <div class="input-box">
-                <label for="nif">Nif</label>
-                <input type="text" placeholder="Seu nif" id="nif" name="nif">
+                <label for="nif">NIF</label>
+                <input type="text" placeholder="Seu NIF" id="nif" name="nif">
             </div>
 
             <div class="input-box">
@@ -36,14 +34,6 @@
             </div>
             <input type="submit" value="Entrar" class="btn">
         </form>
-
-        <div class="register">
-            <p>
-                Não tem uma conta?
-                <a href="<?= URL ?>app/views/user/register.phtml">Cadastre-se aqui</a>
-            </p>
-        </div>
-
 
     </div>
 
