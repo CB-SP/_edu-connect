@@ -5,8 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>EduConnect</title>
-    <link rel="stylesheet" href="../../../public/css/forms.css">
-    <link rel="stylesheet" href="../../../public/css/tokens.css">
+    <link rel="stylesheet" href="<?= URL ?>public/css/forms.css">
+    <link rel="stylesheet" href="<?= URL ?>public/css/tokens.css">
 
 
 </head>
@@ -22,7 +22,7 @@
         <h3>EduConnect</h3>
         <p class="subtitle">Plataforma Educacional Multi-Escola</p>
 
-        <a href="../user/login.phtml" class="admin-link">Entrar como Usuário normal</a>
+        <a href="<?= URL ?>user/login" class="admin-link">Entrar como Usuário</a>
         <form action="" method="post" class="form">
 
             <div class="input-box">
@@ -36,14 +36,6 @@
             </div>
             <input type="submit" value="Entrar" class="btn">
         </form>
-
-        <div class="register">
-            <p>
-                Não tem uma conta?
-                <a href="registerAdmin.phtml">Cadastre-se aqui</a>
-            </p>
-        </div>
-
 
     </div>
 
