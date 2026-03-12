@@ -60,6 +60,29 @@ navItens.forEach(navItem => {
 
 /*INPUT FILE SHOW NAME*/
 
+/*login & register forms*/
+const fileNomes = document.querySelectorAll('.fileNome')
+const fotoAdmins = document.querySelectorAll('.fotoAdmin')
+const fotoUsers = document.querySelectorAll('.fotoUser')
+
+fotoAdmins.forEach(fotoAdmin => {
+    fotoAdmin.addEventListener('change', () => {
+        fileNomes.forEach(fileNome => {
+            fileNome.textContent = fotoAdmin.files[0]?.name || 'Nenhu ficheiro selecionado'
+        })
+    })
+})
+
+fotoUsers.forEach(fotoUser => {
+    fotoUser.addEventListener('change', () => {
+        fileNomes.forEach(fileNome => {
+            fileNome.textContent = fotoUser.files[0]?.name || 'Nenhum ficheiro selecionado'
+        })
+    })
+})
+
+
+/*logoFile & register forms through adminPage*/
 const fileNames = document.querySelectorAll('.fileName')
 const logoFiles = document.querySelectorAll('.logoFile')
 const fotoFiles = document.querySelectorAll('.fotoFile')
@@ -72,9 +95,9 @@ logoFiles.forEach(logoFile => {
     })
 })
 
-fotoFiles.forEach(fotoFile=>{
-    fotoFile.addEventListener('change', ()=>{
-        fileNames.forEach(fileName=>{
+fotoFiles.forEach(fotoFile => {
+    fotoFile.addEventListener('change', () => {
+        fileNames.forEach(fileName => {
             fileName.textContent = fotoFile.files[0]?.name || 'Nenhum ficheiro escolhido'
         })
     })
