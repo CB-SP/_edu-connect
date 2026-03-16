@@ -65,5 +65,16 @@
                 throw $e;
             }
         }
+
+        //restore schools
+        public function restore_school($id) {
+            try {
+                $this->stmt = $this->pdo->prepare("UPDATE escolas SET deleted_at = null WHERE id = ?");
+
+                return $this->stmt->execute([$id]) ?: false;
+            } catch (PDOException $e) {
+                throw $e;
+            }
+        }
     }
 ?>
