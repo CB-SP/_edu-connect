@@ -59,10 +59,14 @@
             }
 
             try {
-                return json_encode($this->school->fetch_school($id));
+                header('Content-Type: application/json');
+                echo json_encode($this->school->fetch_school($id));
+                exit;
             } catch (PDOException $e) {
                 error_log("ERRO_BUSCAR_ESCOLA: ". $e->getMessage(). "\n". $e->getTraceAsString());
-                return null;
+                
+                echo json_encode(['error' => 'Erro ao buscar escola']);
+                exit;
             }
         }
 

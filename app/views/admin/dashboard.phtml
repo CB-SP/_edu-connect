@@ -77,12 +77,12 @@
                     </div>
                     <form action="<?= URL ?>admin/add_school" method="post">
                         <div class="input-box" id="input-school">
-                            <label for="scholName">Nome da escola</label>
+                            <label for="schoolName">Nome da escola</label>
                             <input type="text" name="name" placeholder="Nome completo da instituição">
                         </div>
                         <div class="input-box">
                             <label for="schoolAddress">Endereço</label>
-                            <input type="text" name="address" placeholder="Rua, número, bairro, município, província ">
+                            <input type="text" name="address" placeholder="Rua, número, bairro, município, província">
                         </div>
                         <div class="contacts-box">
                             <div class="input-box">
@@ -118,20 +118,20 @@
                     <form action="<?= URL ?>admin/edit_school" method="post">
                         <div class="input-box" id="input-school">
                             <label for="scholName">Nome da escola</label>
-                            <input type="text" name="name" id="schoolName">
+                            <input type="text" name="name" id="schoolName" placeholder="Nome completo da instituição">
                         </div>
                         <div class="input-box">
                             <label for="schoolAddress">Endereço</label>
-                            <input type="text" name="address" id="schoolAddress" value="Exemplo">
+                            <input type="text" name="address" id="schoolAddress" placeholder="Rua, número, bairro, município, província">
                         </div>
                         <div class="contacts-box">
                             <div class="input-box">
                                 <label for="primaryContact">Contacto principal</label>
-                                <input type="text" name="contact_1" id="primaryContact" value="Exemplo">
+                                <input type="text" name="contact_1" id="primaryContact" placeholder="+244 XXX XXX XXX">
                             </div>
                             <div class="input-box">
                                 <label for="secundaryContact">Contacto secundário</label>
-                                <input type="text" name="contact_2" id="secundaryContact" value="Exemplo">
+                                <input type="text" name="contact_2" id="secundaryContact" placeholder="+244 XXX XXX XXX">
                             </div>
                         </div>
                         <div class="input-box">
@@ -143,7 +143,7 @@
                             </label>
                         </div>
 
-                        <input type="hidden" name="id" id="id">
+                        <input type="hidden" name="id" id="schoolId">
                         <div class="final-btn-actions">
                             <button class="btn" id="btn-cancel">Cancelar</button>
                             <button class="btn" id="btn-create">Editar escola</button>
@@ -173,13 +173,17 @@
                                     <td><?= $school['nome']?></td>
                                     <td><?= $school['contacto_1']?></td>
                                     <td>
-                                        <?= empty($school['deleted_at']) ? 'Activa' : 'Inactiva'?>
+                                        <?= $status = empty($school['deleted_at']) ? 'Activa' : 'Inactiva'?>
                                     </td>
                                     <td class="btn-down-actions ">
                                         <button class="action-btn">Acções</button>
                                         <div class="drop-actions">
-                                            <button class="edit-action" data-id=<?= $school['id'] ?>><img src="" alt=" ">Editar</button>
-                                            <button class="delete-action" onclick="window.location.href='<?= URL ?>admin/delete_school/<?= $school['id'] ?>'"><img src="" alt=" ">Eliminar</button>
+                                            <?php if ($status == 'Inactiva'):?>
+                                                <button class="restore-action"><img src="" alt=" ">Restaurar</button>
+                                            <?php else:?>
+                                                <button class="edit-action" data-id=<?= $school['id'] ?>><img src="" alt=" ">Editar</button>
+                                                <button class="delete-action" onclick="window.location.href='<?= URL ?>admin/delete_school/<?= $school['id'] ?>'"><img src="" alt=" ">Eliminar</button>
+                                            <?php endif;?>
                                         </div>
                                     </td>
                                 </tr>
@@ -282,55 +286,42 @@
                         <p>Edite as informações de usuário</p>
                         <img src="<?= URL ?>public/assets/images/x.png" alt="" class="close-modal-icon">
                     </div>
-                    <form action="" method="">
+                    <form action="<?= URL ?>admin/edit_user" method="post">
                         <div class="input-box">
                             <label for="userName">Nome Completo</label>
-                            <input type="text" name="userName" id="userName" value="Exemplo">
+                            <input type="text" name="name" id="userName" placeholder="Nome completo do usuário">
                         </div>
                         <div class="contacts-box">
                             <div class="input-box">
                                 <label for="primaryContact">Contacto principal</label>
-                                <input type="text" name="primaryContact" id="primaryContact" value="Exemplo">
+                                <input type="text" name="contact_1" id="userPrimaryContact" placeholder="+244 XXX XXX XXX">
                             </div>
                             <div class="input-box">
                                 <label for="secundaryContact">Contacto secundário</label>
-                                <input type="text" name="secundaryContact" id="secundaryContact" value="Exemplo">
+                                <input type="text" name="contact_2" id="userSecundaryContact" placeholder="+244 XXX XXX XXX">
                             </div>
                         </div>
                         <div class="contacts-box">
                             <div class="input-box">
                                 <label for="nifUser">NIF</label>
-                                <input type="text" name="nifUser" id="nifUser" value="Exemplo">
+                                <input type="text" name="nif" id="nifUser" placeholder="936501275HA043">
                             </div>
                             <div class="input-box">
                                 <label for="emailUser">Email</label>
-                                <input type="text" name="emailUser" id="emailUser" value="Exemplo">
+                                <input type="text" name="email" id="emailUser" placeholder="usuario@gmail.com">
                             </div>
-                        </div>
-                        <div class="input-box">
-                            <label for="userPassword">Senha</label>
-                            <input type="text" name="userPassword" id="userPassword" value="Exemplo">
                         </div>
                         <div class="input-box">
                             <label for="">Foto do usuário</label>
                             <label for="fotoFile" class="labelFile">
-                                <input type="file" name="fotoFile" id="fotoFile" class="fotoFile" hidden>
+                                <input type="file" name="photo" id="fotoFile" class="fotoFile" hidden>
                                 Escolher ficheiro.
                                 <span class="fileName">Nenhum ficheiro escolhido</span>
                             </label>
                         </div>
-                        <div class="input-box">
-                            <label for="userSchool">Escola</label>
-                            <select name="userSchool" id="userSchool">
-                                <option value="">Selecione uma escola</option>
-                            </select>
-                        </div>
-                        <div class="input-box">
-                            <label for="role">Nível de acesso</label>
-                            <select name="role" id="role">
-                                <option value="">Aluno</option>
-                            </select>
-                        </div>
+
+                        <input type="hidden" name="id" id="userId">
+
                         <div class="final-btn-actions">
                             <button class="btn" id="btn-cancel">Cancelar</button>
                             <button class="btn" id="btn-create">Editar usuário</button>
@@ -354,30 +345,34 @@
                                 <th>Escola</th>
                                 <th>Role</th>
                                 <th>Estado</th>
-                                <th>Ações</th>
+                                <th>Acções</th>
                             </tr>
                         </thead>
                         <tbody>
 
-                                <?php foreach ($users as $user):?>
-                                    <tr>
-                                        <td><?= $user['nome'] ?></td>
-                                        <td><?= $user['escola'] ?></td>
-                                        <td><?= $user['role'] ?></td>
-                                        <td>
-                                            <?= empty($user['deleted_at']) && empty($user['estado_escola']) ? 'Activo' : 'Inactivo'?>
-                                        </td>
-                                        <td class="btn-down-actions ">
-                                            <button class="action-btn">Ações</button>
-                                            <div class="drop-actions">
-                                                <button class="edit-action"><img src="" alt=" ">Editar</button>
-                                                <button class="delete-action" onclick="window.location.href='<?= URL ?>admin/delete_user/<?= $user['id'] ?>'"><img src="" alt=" ">Eliminar</button>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                <?php endforeach;?>
+                            <?php foreach ($users as $user):?>
+                                <tr>
+                                    <td><?= $user['nome'] ?></td>
+                                    <td><?= $user['escola'] ?></td>
+                                    <td><?= $user['role'] ?></td>
+                                    <td>
+                                        <?= $status = empty($user['deleted_at']) && empty($user['estado_escola']) ? 'Activo' : 'Inactivo'?>
+                                    </td>
+                                    <td class="btn-down-actions ">
+                                        <button class="action-btn">Acções</button>
+                                        <div class="drop-actions">
+                                            <?php if ($status == 'Inactivo'):?>
+                                                <button class="restore-action"><img src="" alt=" ">Restaurar</button>
+                                            <?php else:?>
+                                                    <button class="edit-action" data-id="<?= $user['id'] ?>" data-type="user"><img src="" alt=" ">Editar</button>
+                                                    <button class="delete-action" onclick="window.location.href='<?= URL ?>admin/delete_user/<?= $user['id'] ?>'"><img src="" alt=" ">Eliminar</button>
+                                            <?php endif;?>
+                                        </div>
+                                    </td>
+                                </tr>
+                            <?php endforeach;?>
                                 
-                            </tbody>
+                        </tbody>
                     </table>
                 <?php endif;?>
             </div>
