@@ -12,11 +12,11 @@
         }
 
         //edit users
-        public function edit_user($name, $contact_1, $contact_2, $nif, $email, $foto, $id) {
+        public function edit_user($name, $contact_1, $contact_2, $nif, $email, $photo, $id) {
             try {
                 $this->stmt = $this->pdo->prepare("UPDATE usuarios SET nome = ?, contacto_1 = ?, contacto_2 = ?, nif = ?, email = ?, foto = ? WHERE id = ?");
 
-                return $this->stmt->execute([$name, $contact_1, $contact_2, $nif, $email, $foto, $id]) ?: false;
+                return $this->stmt->execute([$name, $contact_1, $contact_2, $nif, $email, $photo, $id]) ?: false;
             } catch (PDOException $e) {
                 throw $e;
             }
@@ -43,7 +43,7 @@
         //search for a unic user
         public function fetch_user($id) {
             try {
-                $this->stmt = $this->pdo->prepare("SELECT u.nome, u.contacto_1, u.contacto_2, u.nif, u.email, u.foto, u.role, e.nome AS escola FROM usuarios AS u JOIN escolas AS e ON u.escola = e.id WHERE u.id = ? AND u.deleted_at IS NULL AND e.deleted_at IS NULL");
+                $this->stmt = $this->pdo->prepare("SELECT u.nome, u.contacto_1, u.contacto_2, u.nif, u.email, u.foto, u.role, e.id AS escola FROM usuarios AS u JOIN escolas AS e ON u.escola = e.id WHERE u.id = ? AND u.deleted_at IS NULL AND e.deleted_at IS NULL");
                 $this->stmt->execute([$id]);
 
                 $user = $this->stmt->fetch(PDO::FETCH_ASSOC);
