@@ -179,7 +179,7 @@
                                         <button class="action-btn">Acções</button>
                                         <div class="drop-actions">
                                             <?php if ($status == 'Inactiva'):?>
-                                                <button class="restore-action"><img src="" alt=" ">Restaurar</button>
+                                                <button class="restore-action" onclick="window.location.href='<?= URL ?>admin/restore_school/<?= $school['id'] ?>'"><img src="" alt=" ">Restaurar</button>
                                             <?php else:?>
                                                 <button class="edit-action" data-id=<?= $school['id'] ?>><img src="" alt=" ">Editar</button>
                                                 <button class="delete-action" onclick="window.location.href='<?= URL ?>admin/delete_school/<?= $school['id'] ?>'"><img src="" alt=" ">Eliminar</button>
@@ -362,7 +362,7 @@
                                         <button class="action-btn">Acções</button>
                                         <div class="drop-actions">
                                             <?php if ($status == 'Inactivo'):?>
-                                                <button class="restore-action"><img src="" alt=" ">Restaurar</button>
+                                                <button class="restore-action" onclick="window.location.href='<?= URL ?>admin/restore_user/<?= $user['id'] ?>'"><img src="" alt=" ">Restaurar</button>
                                             <?php else:?>
                                                     <button class="edit-action" data-id="<?= $user['id'] ?>" data-type="user"><img src="" alt=" ">Editar</button>
                                                     <button class="delete-action" onclick="window.location.href='<?= URL ?>admin/delete_user/<?= $user['id'] ?>'"><img src="" alt=" ">Eliminar</button>

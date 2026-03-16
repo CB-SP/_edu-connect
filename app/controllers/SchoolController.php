@@ -87,5 +87,23 @@
 
             return true;
         }
+
+        //restore schools
+        public function restore_school($id) {
+            if (empty($id)) {
+                return false;
+            }
+
+            try {
+                if (!($this->school->restore_school($id))) {
+                    return false;
+                }
+            } catch (PDOException $e) {
+                error_log("ERRO_RESTAURAR_ESCOLA: ". $e->getMessage(). "\n". $e->getTraceAsString());
+                return false;
+            }
+
+            return true;
+        }
     }
 ?>

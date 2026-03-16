@@ -130,6 +130,24 @@
             return true;
         }
 
+        //restore users
+        public function restore_user($id) {
+            if (empty($id)) {
+                return false;
+            }
+
+            try {
+                if (!($this->user->restore_user($id))) {
+                    return false;
+                }
+            } catch (PDOException $e) {
+                error_log("ERRO_RESTAURAR_USUARIO: ". $e->getMessage(). "\n". $e->getTraceAsString());
+                return false;
+            }
+
+            return true;
+        }
+
         //users logout
         public function logout() {
             $this->isLoged();

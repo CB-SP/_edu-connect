@@ -116,6 +116,11 @@
             $this->redirect($this->school->delete_school($id) ? 'admin/dashboard' : 'admin/dashboard');
         }
 
+        //restore
+        public function restore_school($id) {
+            $this->redirect($this->school->restore_school($id) ? 'admin/dashboard' : 'admin/dashboard');
+        }
+
         //==========users managemant==========
         //create
         public function add_user($name, $contact_1, $contact_2, $nif, $email, $password, $photo, $school, $role) {
@@ -143,6 +148,11 @@
         //delete
         public function delete_user($id) {
             $this->redirect($this->user->delete_user($id) ? 'admin/dashboard' : 'admin/dashboard');
+        }
+
+        //restore
+        public function restore_user($id) {
+            $this->redirect($this->user->restore_user($id) ? 'admin/dashboard' : 'admin/dashboard');
         }
 
         //admins logout

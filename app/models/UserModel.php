@@ -65,6 +65,17 @@
             }
         }
 
+        //restore users
+        public function restore_user($id) {
+            try {
+                $this->stmt = $this->pdo->prepare("UPDATE usuarios SET deleted_at = null WHERE id = ?");
+
+                return $this->stmt->execute([$id]) ?: false;
+            } catch (PDOException $e) {
+                throw $e;
+            }
+        }
+
         //search users password hash
         public function fetch_password_hash($nif) {
             try {
