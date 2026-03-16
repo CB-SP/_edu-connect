@@ -105,7 +105,10 @@
 
         //read one
         public function fetch_school($id) {
-            return $this->school->fetch_school($id);
+            header('Content-Type: application/json');
+
+            echo json_encode($this->school->fetch_school($id));
+            exit;
         }
 
         //delete
@@ -120,8 +123,8 @@
         }
 
         //update
-        public function edit_user($name, $contact_1, $contact_2, $nif, $email, $foto, $id) {
-            return $this->user->edit_user($name, $contact_1, $contact_2, $nif, $email, $foto, $id);
+        public function edit_user($name, $contact_1, $contact_2, $nif, $email, $photo, $id) {
+            $this->redirect($this->user->edit_user($name, $contact_1, $contact_2, $nif, $email, $photo, $id) ? 'admin/dashboard' : 'admin/dashboard');
         }
 
         //read all
@@ -131,7 +134,10 @@
 
         //read one
         public function fetch_user($id) {
-            return $this->user->fetch_user($id);
+            header('Content-Type: application/json');
+
+            echo json_encode($this->user->fetch_user($id));
+            exit;
         }
 
         //delete

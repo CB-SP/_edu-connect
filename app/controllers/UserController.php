@@ -71,13 +71,13 @@
         }
 
         //edit users
-        public function edit_user($name, $contact_1, $contact_2, $nif, $email, $foto, $id) {
+        public function edit_user($name, $contact_1, $contact_2, $nif, $email, $photo, $id) {
             if (empty($name) || empty($contact_1) || empty($nif) || empty($id)) {
                 return false;
             }
 
             try {
-                if (!($this->user->edit_user($name, $contact_1, $contact_2, $nif, $email, $foto, $id))) {
+                if (!($this->user->edit_user($name, $contact_1, $contact_2, $nif, $email, $photo, $id))) {
                     return false;
                 }
             } catch (PDOException $e) {
@@ -101,10 +101,14 @@
         //search for a unic user
         public function fetch_user($id) {
             try {
-                return $this->user->fetch_user($id);
+                header('Content-Type: application/json');
+                echo json_encode($this->user->fetch_user($id));
+                exit;
             } catch (PDOException $e) {
                 error_log("ERRO_BUSCAR_USUARIO: ". $e->getMessage(). "\n". $e->getTraceAsString());
-                return null;
+                
+                echo json_encode(['error' => 'Erro ao buscar usuário']);
+                exit;
             }
         }
 

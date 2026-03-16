@@ -166,16 +166,28 @@ editBtns.forEach(editBtn => {
         e.stopPropagation()
 
         const id = e.currentTarget.dataset.id
+        const type = e.currentTarget.dataset.type
 
-        //document.getElementById('id').value = id
-        //document.getElementById('schoolName').value = id
+       if (type == "user") {
+            const response = await fetch(`http://localhost/_edu-connect/admin/fetch_user/${id}`)
+            const user = await response.json()
 
-        const result = await fetch(`http://localhost/_edu-connect/admin/fetch_school/${id}`)
-        //const data = await result.json()
+            document.querySelector('#userId').value = id
+            document.querySelector('#userName').value = user.nome
+            document.querySelector('#userPrimaryContact').value = user.contacto_1
+            document.querySelector('#userSecundaryContact').value = user.contacto_2
+            document.querySelector('#nifUser').value = user.nif
+            document.querySelector('#emailUser').value = user.email
+       } else {
+            const response = await fetch(`http://localhost/_edu-connect/admin/fetch_school/${id}`)
+            const school = await response.json()
 
-        //console.log(data)
-        const text = await result.text()
-        console.log(text)
+            document.querySelector('#schoolName').value = school.nome
+            document.querySelector('#schoolAddress').value = school.endereco
+            document.querySelector('#primaryContact').value = school.contacto_1
+            document.querySelector('#secundaryContact').value = school.contacto_2
+            document.querySelector('#schoolId').value = id
+       }
 
         editModais.forEach(editModal => {
             editModal.classList.add('show')
