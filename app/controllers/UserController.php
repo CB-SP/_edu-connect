@@ -23,31 +23,31 @@
         //users login
         public function login_user($nif, $password) {
             if (empty($nif) || empty($password)) {
-                return false;
+                $this->redirect("user/login");
             }
 
             if (!(Utils::verify_password($password, $this->fetch_password_hash($nif)))) {
-                return false;
+                $this->redirect("user/login");
             }
 
             try {
                 $user_login = $this->user->fetch_user_data_login($nif);
 
                 if (empty($user_login)) {
-                    return false;
+                    $this->redirect("user/login");
                 }
 
                 $_SESSION['id'] = $user_login['id'];
-                $_SESSION['nome'] = $user_login['nome'];
-                $_SESSION['escola'] = $user_login['escola'];
+                $_SESSION['name'] = $user_login['nome'];
+                $_SESSION['school'] = $user_login['escola'];
                 $_SESSION['role'] = $user_login['role'];
-                $_SESSION['foto'] = $user_login['foto'];
+                $_SESSION['photo'] = $user_login['foto'];
             } catch (PDOException $e) {
                 error_log("ERRO_LOGIN_USUARIO: ". $e->getMessage(). "\n". $e->getTraceAsString());
-                return false;
+                $this->redirect("user/login");
             }
 
-            return true;
+            $this->redirect("user/index");
         }
 
         //add users
