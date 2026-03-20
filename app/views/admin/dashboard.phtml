@@ -3,6 +3,7 @@
     $admin = new AdminController;
     $schools = $admin->fetch_schools();
     $users = $admin->fetch_users();
+    $total_entities = $admin->total_entities();
 ?>
 
 <section class="painel-dash">
@@ -20,16 +21,16 @@
         </div>
         <div class="statistics-info">
             <div class="cards-info">
-                <p>Total algo</p>
-                <h2>3</h2>
+                <p>Administradores</p>
+                <h2><?= $total_entities[0]['admins'] ?></h2>
             </div>
             <div class="cards-info">
-                <p>Total algo</p>
-                <h2>3</h2>
+                <p>Escolas</p>
+                <h2><?= $total_entities[0]['escolas'] ?></h2>
             </div>
             <div class="cards-info">
-                <p>Total algo</p>
-                <h2>3</h2>
+                <p>Usuários</p>
+                <h2><?= $total_entities[0]['usuarios'] ?></h2>
             </div>
             <div class="cards-info">
                 <p>Total algo</p>
