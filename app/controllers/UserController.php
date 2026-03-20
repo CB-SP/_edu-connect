@@ -185,19 +185,5 @@
                 return null;
             }
         }
-
-        //search users password hash
-        private function fetch_password_hash($nif) {
-            if (empty($nif)) {
-                return null;
-            }
-
-            try {
-                return $this->user->fetch_password_hash($nif);
-            } catch (PDOException $e) {
-                error_log("ERRO_BUSCAR_HASH_USUARIO: ". $e->getMessage(). "\n". $e->getTraceAsString());
-                return null;
-            }
-        }
     }
 ?>
