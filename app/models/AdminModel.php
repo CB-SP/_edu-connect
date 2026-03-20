@@ -51,5 +51,23 @@
                 throw $e;
             }
         }
+
+        //fetch total entities
+        public function total_entities() {
+            try {
+                $this->stmt = $this->pdo->prepare("SELECT
+                    (SELECT COUNT(id) FROM admins WHERE deleted_at IS NULL) AS admins,
+                    (SELECT COUNT(id) FROM escolas WHERE deleted_at IS NULL) AS escolas,
+                    (SELECT COUNT(id) FROM usuarios WHERE deleted_at IS NULL) AS usuarios
+                ");
+                $this->stmt->execute();
+
+                $total_entities = $this->stmt->fetchAll(PDO::FETCH_ASSOC);
+
+                return !empty($total_entities) ? $total_entities : null;
+            } catch (PDOException $e) {
+                throw $e;
+            }
+        }
     }
 ?>

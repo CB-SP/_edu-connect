@@ -28,6 +28,10 @@
                 return false;
             }
 
+            if(!Utils::password_length($password)) {
+                return false;
+            }
+
             $password = password_hash($password, PASSWORD_DEFAULT);
 
             try {
@@ -85,6 +89,16 @@
             }
 
             $this->redirect("admin/dashboard");
+        }
+
+        //fetch total entities
+        public function total_entities() {
+            try {
+                return $this->admin->total_entities();
+            } catch (PDOException $e) {
+                error_log("ERRO_CONSULTAR_ENTIDADES: ". $e->getMessage(). "\n". $e->getTraceAsString());
+                return null;
+            }
         }
 
         //==========schools managemant==========

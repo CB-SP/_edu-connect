@@ -12,8 +12,12 @@
                 return false;
             }
 
+            if (!Utils::phone_number_length($contact_1) || (!empty($contact_2) && !Utils::phone_number_length($contact_2))) {
+                return false;
+            }
+
             try {
-                if (!($this->school->add_school($name, $address, $contact_1, $contact_2, $logo))) {
+                if (!($this->school->add_school($name, $address, $contact_1, empty($contact_2) ? null : $contact_2, $logo))) {
                     return false;
                 }
             } catch (PDOException $e) {
@@ -30,8 +34,12 @@
                 return false;
             }
 
+            if (!Utils::phone_number_length($contact_1) || (!empty($contact_2) && !Utils::phone_number_length($contact_2))) {
+                return false;
+            }
+
             try {
-                if (!($this->school->edit_school($name, $address, $contact_1, $contact_2, $logo, $id))) {
+                if (!($this->school->edit_school($name, $address, $contact_1, empty($contact_2) ? null : $contact_2, $logo, $id))) {
                     return false;
                 }
             } catch (PDOException $e) {

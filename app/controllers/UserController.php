@@ -56,10 +56,18 @@
                 return false;
             }
 
+            if (!Utils::password_length($password) || !Utils::nif_length($nif)) {
+                return false;
+            }
+
+            if (!Utils::phone_number_length($contact_1) || (!empty($contact_2) && !Utils::phone_number_length($contact_2))) {
+                return false;
+            }
+
             $password = password_hash($password, PASSWORD_DEFAULT);
 
             try {
-                if (!($this->user->add_user($name, $email, $contact_1, $contact_2, $nif, $school, $role, $photo, $password))) {
+                if (!($this->user->add_user($name, $email, $contact_1, empty($contact_2) ? null : $contact_2, $nif, $school, $role, $photo, $password))) {
                     return false;
                 }
             } catch (PDOException $e) {
@@ -76,8 +84,16 @@
                 return false;
             }
 
+            if (!Utils::nif_length($nif)) {
+                return false;
+            }
+
+            if (!Utils::phone_number_length($contact_1) || (!empty($contact_2) && !Utils::phone_number_length($contact_2))) {
+                return false;
+            }
+
             try {
-                if (!($this->user->edit_user($name, $contact_1, $contact_2, $nif, $email, $photo, $id))) {
+                if (!($this->user->edit_user($name, $contact_1, empty($contact_2) ? null : $contact_2, $nif, $email, $photo, $id))) {
                     return false;
                 }
             } catch (PDOException $e) {
