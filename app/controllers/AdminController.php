@@ -1,6 +1,6 @@
 <?php
     class AdminController extends Controller {
-        private $admin, $school, $user;
+        private $admin, $school, $user, $email, $password;
 
         public function __construct() {
             $this->admin = new AdminModel;
@@ -8,7 +8,7 @@
             $this->user = new UserController;
         }
 
-        public function dashboard() {
+        public function index() {
             $this->isLoged();
             $this->show_page("dashboard");
         }
@@ -65,17 +65,20 @@
         }
 
         //admins login
-        public function login_admin($email, $password) {
-            if (empty($email) || empty($password)) {
+        public function login_admin() {
+            $this->email = $_POST['email'] ?? null;
+            $this->password = $_POST['password'] ?? null;
+
+            if (empty($this->email) || empty($this->password)) {
                 $this->redirect("admin/login");
             }
 
-            if (!(Utils::verify_password($password, $this->fetch_password_hash($email)))) {
+            if (!(Utils::verify_password($this->password, $this->fetch_password_hash($this->email)))) {
                 $this->redirect("admin/login");
             }
 
             try {
-                $admin = $this->admin->fetch_admin($email);
+                $admin = $this->admin->fetch_admin($this->email);
 
                 if (empty($admin)) {
                     $this->redirect("admin/login");
@@ -88,7 +91,7 @@
                 $this->redirect("admin/login");
             }
 
-            $this->redirect("admin/dashboard");
+            $this->redirect("admin/index");
         }
 
         //fetch total entities
@@ -103,13 +106,13 @@
 
         //==========schools managemant==========
         //create
-        public function add_school($name, $address, $contact_1, $contact_2, $logo) {
-            $this->redirect($this->school->add_school($name, $address, $contact_1, $contact_2, $logo) ? 'admin/dashboard' : 'admin/dashboard');
+        public function add_school() {
+            $this->redirect($this->school->add_school() ? 'admin/index' : 'admin/index');
         }
 
         //update
-        public function edit_school($name, $address, $contact_1, $contact_2, $logo, $id) {
-            $this->redirect($this->school->edit_school($name, $address, $contact_1, $contact_2, $logo, $id) ? 'admin/dashboard' : 'admin/dashboard');
+        public function edit_school() {
+            $this->redirect($this->school->edit_school() ? 'admin/index' : 'admin/index');
         }
 
         //read all
@@ -127,23 +130,23 @@
 
         //delete
         public function delete_school($id) {
-            $this->redirect($this->school->delete_school($id) ? 'admin/dashboard' : 'admin/dashboard');
+            $this->redirect($this->school->delete_school($id) ? 'admin/index' : 'admin/index');
         }
 
         //restore
         public function restore_school($id) {
-            $this->redirect($this->school->restore_school($id) ? 'admin/dashboard' : 'admin/dashboard');
+            $this->redirect($this->school->restore_school($id) ? 'admin/index' : 'admin/index');
         }
 
         //==========users managemant==========
         //create
-        public function add_user($name, $contact_1, $contact_2, $nif, $email, $password, $photo, $school, $role) {
-            $this->redirect($this->user->add_user($name, $email, $contact_1, $contact_2, $nif, $school, $role, $photo, $password) ? 'admin/dashboard' : 'admin/dashboard');
+        public function add_user() {
+            $this->redirect($this->user->add_user() ? 'admin/index' : 'admin/index');
         }
 
         //update
-        public function edit_user($name, $contact_1, $contact_2, $nif, $email, $photo, $id) {
-            $this->redirect($this->user->edit_user($name, $contact_1, $contact_2, $nif, $email, $photo, $id) ? 'admin/dashboard' : 'admin/dashboard');
+        public function edit_user() {
+            $this->redirect($this->user->edit_user() ? 'admin/index' : 'admin/index');
         }
 
         //read all
@@ -161,12 +164,12 @@
 
         //delete
         public function delete_user($id) {
-            $this->redirect($this->user->delete_user($id) ? 'admin/dashboard' : 'admin/dashboard');
+            $this->redirect($this->user->delete_user($id) ? 'admin/index' : 'admin/index');
         }
 
         //restore
         public function restore_user($id) {
-            $this->redirect($this->user->restore_user($id) ? 'admin/dashboard' : 'admin/dashboard');
+            $this->redirect($this->user->restore_user($id) ? 'admin/index' : 'admin/index');
         }
 
         //admins logout

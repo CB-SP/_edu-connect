@@ -1,6 +1,6 @@
 <?php
     class UserController extends Controller {
-        private $user;
+        private $user, $id, $name, $email, $contact_1, $contact_2, $nif, $school, $role, $photo, $password;
 
         public function __construct() {
             $this->user = new UserModel;
@@ -21,17 +21,20 @@
         }
 
         //users login
-        public function login_user($nif, $password) {
-            if (empty($nif) || empty($password)) {
+        public function login_user() {
+            $this->nif = $_POST['nif'] ?? null;
+            $this->password = $_POST['password'] ?? null;
+
+            if (empty($this->nif) || empty($this->password)) {
                 $this->redirect("user/login");
             }
 
-            if (!(Utils::verify_password($password, $this->fetch_password_hash($nif)))) {
+            if (!(Utils::verify_password($this->password, $this->fetch_password_hash($this->nif)))) {
                 $this->redirect("user/login");
             }
 
             try {
-                $user_login = $this->user->fetch_user_data_login($nif);
+                $user_login = $this->user->fetch_user_data_login($this->nif);
 
                 if (empty($user_login)) {
                     $this->redirect("user/login");
@@ -51,23 +54,33 @@
         }
 
         //add users
-        public function add_user($name, $email, $contact_1, $contact_2, $nif, $school, $role, $photo, $password) {
-            if (empty($name) || empty($contact_1) || empty($nif) || empty($password) || empty($role) || empty($school)) {
+        public function add_user() {
+            $this->name = $_POST['name'] ?? null;
+            $this->email = $_POST['email'] ?? null;
+            $this->contact_1 = $_POST['contact_1'] ?? null;
+            $this->contact_2 = $_POST['contact_2'] ?? null;
+            $this->nif = $_POST['nif'] ?? null;
+            $this->school = $_POST['school'] ?? null;
+            $this->role = $_POST['role'] ?? null;
+            $this->password = $_POST['password'] ?? null;
+
+            if (empty($this->name) || empty($this->contact_1) || empty($this->nif) || empty($this->password) || empty($this->role) || empty($this->school)) {
                 return false;
             }
 
-            if (!Utils::password_length($password) || !Utils::nif_length($nif)) {
+            if (!Utils::password_length($this->password) || !Utils::nif_length($this->nif)) {
                 return false;
             }
 
-            if (!Utils::phone_number_length($contact_1) || (!empty($contact_2) && !Utils::phone_number_length($contact_2))) {
+            if (!Utils::phone_number_length($this->contact_1) || (!empty($this->contact_2) && !Utils::phone_number_length($this->contact_2))) {
                 return false;
             }
 
-            $password = password_hash($password, PASSWORD_DEFAULT);
+            $this->password = password_hash($this->password, PASSWORD_DEFAULT);
+            $this->photo = Utils::uploadAvatar() ?? null;
 
             try {
-                if (!($this->user->add_user($name, $email, $contact_1, empty($contact_2) ? null : $contact_2, $nif, $school, $role, $photo, $password))) {
+                if (!($this->user->add_user($this->name, $this->email, $this->contact_1, empty($this->contact_2) ? null : $this->contact_2, $this->nif, $this->school, $this->role, $this->photo, $this->password))) {
                     return false;
                 }
             } catch (PDOException $e) {
@@ -79,23 +92,50 @@
         }
 
         //edit users
-        public function edit_user($name, $contact_1, $contact_2, $nif, $email, $photo, $id) {
-            if (empty($name) || empty($contact_1) || empty($nif) || empty($id)) {
+        public function edit_user() {
+            $this->id = $_POST['id'] ?? null;
+            $this->name = $_POST['name'] ?? null;
+            $this->contact_1 = $_POST['contact_1'] ?? null;
+            $this->contact_2 = $_POST['contact_2'] ?? null;
+            $this->nif = $_POST['nif'] ?? null;
+            $this->email = $_POST['email'] ?? null;
+
+            $currentPhoto = $_POST['current_photo'] ?? null;
+            $newPhoto = Utils::uploadAvatar();
+
+            if (empty($this->name) || empty($this->contact_1) || empty($this->nif) || empty($this->id)) {
                 return false;
             }
 
-            if (!Utils::nif_length($nif)) {
+            if (!Utils::nif_length($this->nif)) {
                 return false;
             }
 
-            if (!Utils::phone_number_length($contact_1) || (!empty($contact_2) && !Utils::phone_number_length($contact_2))) {
+            if (!Utils::phone_number_length($this->contact_1) || 
+                (!empty($this->contact_2) && !Utils::phone_number_length($this->contact_2))) {
                 return false;
+            }
+
+            if ($newPhoto !== null) {
+                $this->photo = $newPhoto;
+
+                if (!empty($currentPhoto)) {
+                    $oldPath = __DIR__ . "/../../public/" . $currentPhoto;
+
+                    if (file_exists($oldPath)) {
+                        unlink($oldPath);
+                    }
+                }
+
+            } else {
+                $this->photo = $currentPhoto;
             }
 
             try {
-                if (!($this->user->edit_user($name, $contact_1, empty($contact_2) ? null : $contact_2, $nif, $email, $photo, $id))) {
+                if (!($this->user->edit_user($this->name, $this->contact_1, empty($this->contact_2) ? null : $this->contact_2, $this->nif, $this->email, $this->photo, $this->id))) {
                     return false;
                 }
+
             } catch (PDOException $e) {
                 error_log("ERRO_EDITAR_USUARIO: ". $e->getMessage(). "\n". $e->getTraceAsString());
                 return false;

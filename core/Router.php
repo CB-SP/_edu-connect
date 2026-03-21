@@ -12,14 +12,6 @@
                 $url = explode("/", $_GET['url']);
                 $parameters = array_slice($url, 2);
 
-                if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-                    $parameters = array_merge($parameters, $_POST);
-                } else {
-                    $array_get = $_GET;
-                    unset($array_get['url']);
-                    $parameters = array_merge($parameters, $array_get);
-                }
-
                 $controller = !isset($url[0]) || empty($url[0]) ? 'UserController' : ucfirst($url[0]). "Controller";
                 $action = !isset($url[1]) || empty($url[1]) ? 'index' : $url[1];
 
