@@ -14,7 +14,7 @@ body {
 
 
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 990px) {
 
     /*ADMIN LAYOUT*/
     .layout-admin {
@@ -270,7 +270,7 @@ body {
 
 }
 
-@media screen and (min-width: 990px) {
+@media screen and (min-width: 1024px) {
 
     /*ADMIN LAYOUT*/
     .layout-admin {
