@@ -178,6 +178,7 @@ editBtns.forEach(editBtn => {
             document.querySelector('#userSecundaryContact').value = user.contacto_2
             document.querySelector('#nifUser').value = user.nif
             document.querySelector('#emailUser').value = user.email
+            document.querySelector('#current_photo').value = user.foto || ''
        } else {
             const response = await fetch(`http://localhost/_edu-connect/admin/fetch_school/${id}`)
             const school = await response.json()

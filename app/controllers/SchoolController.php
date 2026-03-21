@@ -1,23 +1,30 @@
 <?php
     class SchoolController extends Controller {
-        private $school;
+        private $school, $id, $name, $address, $contact_1, $contact_2, $logo;
 
         public function __construct() {
             $this->school = new SchoolModel;
         }
 
         //add schools
-        public function add_school($name, $address, $contact_1, $contact_2, $logo) {
-            if (empty($name) || empty($address) || empty($contact_1)) {
+        public function add_school() {
+            $this->name  = $_POST['name'] ?? null;
+            $this->address = $_POST['address'] ?? null;
+            $this->contact_1 = $_POST['contact_1'] ?? null; 
+            $this->contact_2 = $_POST['contact_2'] ?? null;
+
+            if (empty($this->name) || empty($this->address) || empty($this->contact_1)) {
                 return false;
             }
 
-            if (!Utils::phone_number_length($contact_1) || (!empty($contact_2) && !Utils::phone_number_length($contact_2))) {
+            if (!Utils::phone_number_length($this->contact_1) || (!empty($this->contact_2) && !Utils::phone_number_length($this->contact_2))) {
                 return false;
             }
+
+            $this->logo = Utils::uploadAvatar() ?? null;
 
             try {
-                if (!($this->school->add_school($name, $address, $contact_1, empty($contact_2) ? null : $contact_2, $logo))) {
+                if (!($this->school->add_school($this->name, $this->address, $this->contact_1, empty($this->contact_2) ? null : $this->contact_2, $this->logo))) {
                     return false;
                 }
             } catch (PDOException $e) {
@@ -29,17 +36,24 @@
         }
 
         //edit shools
-        public function edit_school($name, $address, $contact_1, $contact_2, $logo, $id) {
-            if (empty($name) || empty($address) || empty($contact_1) || empty($id)) {
+        public function edit_school() {
+            $this->id  = $_POST['id'] ?? null;
+            $this->name  = $_POST['name'] ?? null;
+            $this->address = $_POST['address'] ?? null;
+            $this->contact_1 = $_POST['contact_1'] ?? null; 
+            $this->contact_2 = $_POST['contact_2'] ?? null;
+            $this->logo = Utils::uploadAvatar() ?? null;
+
+            if (empty($this->name) || empty($this->address) || empty($this->contact_1) || empty($this->id)) {
                 return false;
             }
 
-            if (!Utils::phone_number_length($contact_1) || (!empty($contact_2) && !Utils::phone_number_length($contact_2))) {
+            if (!Utils::phone_number_length($this->contact_1) || (!empty($this->contact_2) && !Utils::phone_number_length($this->contact_2))) {
                 return false;
             }
 
             try {
-                if (!($this->school->edit_school($name, $address, $contact_1, empty($contact_2) ? null : $contact_2, $logo, $id))) {
+                if (!($this->school->edit_school($this->name, $this->address, $this->contact_1, empty($this->contact_2) ? null : $this->contact_2, $this->logo, $this->id))) {
                     return false;
                 }
             } catch (PDOException $e) {
