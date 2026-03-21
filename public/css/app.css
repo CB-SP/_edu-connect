@@ -275,7 +275,7 @@ body {
     /*ADMIN LAYOUT*/
     .layout-admin {
         display: grid;
-        grid-template: 1fr / 250px 1fr;
+        grid-template: 1fr / 280px 1fr;
         grid-template-areas: "sidebar main";
         height: 100%;
     }
@@ -283,7 +283,8 @@ body {
     .sideBar {
         grid-area: sidebar;
         position: fixed;
-        width: 250px;
+        width: 280px;
+        height: 100%;
         border-right: 1px solid var(--SwitchBackground);
     }
 
@@ -363,14 +364,13 @@ body {
         display: flex;
         flex-direction: column;
         justify-content: space-between;
-        height: calc(100vh - 140px);
+        width: 100%;
+        position: relative;
     }
 
     .layout-admin .nav-bar .main-nav {
         display: flex;
-        height: 75%;
-        width: 98%;
-        padding: 2px;
+        padding: 5px;
     }
 
     .layout-admin .main-nav .nav-list,
@@ -409,9 +409,11 @@ body {
 
 
     .layout-admin .set-nav {
-        width: 98%;
-        padding: 10px 2px;
+        padding: 10px;
         border-top: 1px solid var(--SwitchBackground);
+        position: fixed;
+        bottom: 0;
+        width: 280px;
     }
 
     .layout-admin .set-nav .nav-item {

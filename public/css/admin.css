@@ -163,18 +163,13 @@
 
     }
 
-    /* .add-school-btn button:hover ~ .add-school-btn,
-    .add-user-btn:hover{
-        background-color: var(--AccentBlueHover);
-
-    }*/
 
     .search-add-area .add-school-btn img,
     .search-add-area .add-user-btn img {
         padding-left: 5px;
     }
 
-    /*ADD USER MODAL*/
+    /*ADD MODAL*/
     .search-add-area .add-modal,
     .edit-modal {
         position: fixed;
@@ -561,16 +556,15 @@
         overflow: hidden;
     }
 
-    .list-info .sco .list-info .search-add-area {
+    .list-info .search-add-area {
         display: flex;
         justify-content: space-between;
         align-items: center;
         gap: 10px;
         margin-top: 25px;
         margin-bottom: 15px;
-        width: 100%;
+     
     }
-
 
     .search-school-box,
     .add-school-btn,
@@ -584,13 +578,13 @@
 
     .search-school-box,
     .search-user-box {
-        width: 50%;
+        width: 85%;
         background-color: var(--Muted);
     }
 
     .add-school-btn,
     .add-user-btn {
-        width: 20%;
+        width: 15%;
         background-color: var(--AccentBlue);
         padding: 10px;
 
@@ -623,23 +617,17 @@
 
     }
 
-    .search-add-area .add-school-btn img,
-    .search-add-area .add-user-btn img {
-        padding-left: 5px;
-    }
-
     /*ADD USER MODAL*/
     .search-add-area .add-modal,
     .edit-modal {
         position: fixed;
         inset: 0;
         max-height: 500px;
-        overflow-y: scroll;
-        width: 50vw;
+        width: 700px;
         background-color: var(--Background);
         z-index: 900;
         border-radius: var(--radius-lg);
-        box-shadow: 0 4px 8px rgba(0, 0, 0, .8);
+        box-shadow: 0 4px 23px rgba(0, 0, 0, .2);
         padding: 18px;
         display: none;
         margin: auto;
@@ -757,7 +745,6 @@
 
     .list-info .school-list,
     .list-info .users-list {
-        oveflow: scroll;
         border: 1px solid var(--SwitchBackground);
         border-radius: var(--radius-lg);
         max-height: 400px;
@@ -782,7 +769,7 @@
     .users-list .tbl-users {
         font-size: var(--text-md);
         border-collapse: collapse;
-       width: 100%;
+        width: 100%;
     }
 
     .tbl-schools thead th,
@@ -894,7 +881,7 @@
     .overlay-modal {
         position: fixed;
         inset: 0;
-        background-color: rgba(0, 0, 0, .4);
+        background-color: rgba(0, 0, 0, .2);
         backdrop-filter: blur(4px);
         opacity: 0;
         visibility: hidden;
