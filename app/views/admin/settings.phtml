@@ -1,13 +1,69 @@
-<?php 
-    require_once './app/views/layouts/adminMain.phtml';
-    $admin = new AdminController;
-    $schools = $admin->fetch_schools();
-    $users = $admin->fetch_users();
-    $total_entities = $admin->total_entities();
+<?php
+require_once './app/views/layouts/adminMain.phtml';
+$admin = new AdminController;
+$schools = $admin->fetch_schools();
+$users = $admin->fetch_users();
+$total_entities = $admin->total_entities();
 ?>
 
 <section class="settings-page">
-    <h1>Settings</h1>
+    <div class="title">
+        <h2>Configurações</h2>
+        <p>Gerir a sua conta e preferências</p>
+    </div>
+    <div class="setting-cards">
+        <div class="setting-card">
+            <h4>Conta</h4>
+            <a href="<?= URL ?>admin/infoAccount" class="redirect-area">
+                <div class="settings-info-card">
+                    <div class="icon-area">
+                        <img src="" alt=" ">
+                    </div>
+                    <div class="desc-setting-card">
+                        <h4>Minha Conta</h4>
+                        <p>Visualizar e editar informações da conta</p>
+                    </div>
+                </div>
+                 <div class="redirect-icon">
+                    <img src="" alt=" ">
+                </div>
+            </a>
+        </div>
+        <div class="setting-card">
+            <h4>Segurança</h4>
+            <a href="<?= URL ?>admin/security" class="redirect-area">
+                <div class="settings-info-card">
+                    <div class="icon-area">
+                        <img src="" alt=" ">
+                    </div>
+                    <div class="desc-setting-card">
+                        <h4>Segurança</h4>
+                        <p>Gerir a segurança da sua conta</p>
+                    </div>
+                </div>
+                 <div class="redirect-icon">
+                    <img src="" alt=" ">
+                </div>
+            </a>
+        </div>
+        <div class="setting-card">
+            <h4>Sessão</h4>
+            <a href="<?= URL ?>admin/logout" class="redirect-area">
+                <div class="settings-info-card">
+                    <div class="icon-area">
+                        <img src="" alt=" ">
+                    </div>
+                    <div class="desc-setting-card">
+                        <h4>Terminar Sessão</h4>
+                        <p>Sair da sua conta</p>
+                    </div>
+                </div>
+                <div class="redirect-icon">
+                    <img src="" alt=" ">
+                </div>
+            </a>
+        </div>
+    </div>
 </section>
 
-<?php require_once './app/views/layouts/closure.phtml'?>
+<?php require_once './app/views/layouts/closure.phtml' ?>

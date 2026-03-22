@@ -25,6 +25,14 @@
             $this->isLoged();
             $this->show_page("settings");
         }
+        public function infoAccount() {
+            $this->isLoged();
+            $this->show_page("infoAccount");
+        }
+        public function security() {
+            $this->isLoged();
+            $this->show_page("security");
+        }
 
         //add admins
         public function add_admin($name, $photo, $email, $password) {
