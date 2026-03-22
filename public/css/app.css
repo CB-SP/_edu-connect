@@ -234,12 +234,13 @@ body {
         color: var(--Primary);
     }
 
-    body {
-        overflow: scroll;
-    }
+  body{
+    overflow: scroll;
+  }
 
     body.no-scroll {
         overflow: hidden;
+        
     }
 
     /*OTHER USERS LAYOUT*/
