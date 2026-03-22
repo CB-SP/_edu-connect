@@ -21,6 +21,10 @@
             $this->isLoged();
             $this->show_page("register");
         }
+        public function settings() {
+            $this->isLoged();
+            $this->show_page("settings");
+        }
 
         //add admins
         public function add_admin($name, $photo, $email, $password) {
