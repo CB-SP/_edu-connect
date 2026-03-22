@@ -7,7 +7,85 @@ $total_entities = $admin->total_entities();
 ?>
 
 <section class="info-account">
-    <h2>Minha conta</h2>
+    <section class="up-section">
+        <div class="icon-back">
+            <a href="<?= URL ?>admin/settings">
+                <img src="" alt=" ">
+                <p>Voltar</p>
+            </a>
+        </div>
+        <h4>Minha Conta</h4>
+        <p>Visualizar e editar informações da conta</p>
+    </section> 
+    <!-- PERSONAL INFORMATION -->
+    <section class="personal-info-card">
+        <div class="title-area">
+            <div class="title-desc">
+                <h4>Informações Pessoais</h4>
+                <p>Gerir os seus dados pessoais</p>
+            </div>
+            <div class="btn-edit-info">
+                <button id="btn-edit-info-admin">Editar Informações</button>
+            </div>
+        </div>
+        <div class="profile-photo-area">
+            <div class="profile-img">
+                <img src="" alt=" ">
+            </div>
+            <div class="nome-role">
+                <h4>Nome Admin</h4>
+                <p>admin</p>
+            </div>
+        </div>
+        <div class="personal-info-area">
+            <div class="data">
+                <h5>Nome Completo</h5>
+                <p>Admin Sistema</p>
+            </div>
+            <div class="data">
+                <h5>Email</h5>
+                <p>admin@gmail.com</p>
+            </div>
+            <div class="data">
+                <h5>Telefone</h5>
+                <p>932 453 915</p>
+            </div>
+            <div class="data">
+                <h5>Telefone Alternativo</h5>
+                <p>932 874 923</p>
+            </div>
+            <div class="data">
+                <h5>NIF</h5>
+                <p>8755H675</p>
+            </div>
+            
+            
+        </div>
+    </section>
+     <!-- ACCOUNT INFORMATION -->
+    <section class="account-info-card">
+        <div class="title-desc">
+            <h4>Informações da Conta</h4>
+        </div>
+        <div class="account-info-area">
+            <div class="account-info">
+                <h5>ID da Conta</h5>
+                <p>1</p>
+            </div>
+            <div class="account-info">
+                <h5>Função</h5>
+                <p>admin</p>
+            </div>
+            <div class="account-info">
+                <h5>Status</h5>
+                <p>Ativo</p>
+            </div>
+            <div class="account-info">
+                <h5>Data de Criação</h5>
+                <p>20 de março de 2026</p>
+            </div>
+        </div>
+    </section>
 </section>
 
 <?php require_once './app/views/layouts/closure.phtml' ?>

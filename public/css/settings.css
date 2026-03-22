@@ -1,6 +1,7 @@
 @media screen and (max-width: 990px) {
     .settings-page {
         padding: 12px;
+        margin-bottom: 20px;
         display: flex;
         flex-direction: column;
         gap: 22px;

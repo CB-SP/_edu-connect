@@ -1,0 +1,403 @@
+@media screen and (max-width: 768px) {
+    .info-account {
+        padding: 1rem;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .info-account .up-section {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+    }
+
+    .icon-back{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 30px;
+        width: 90px;
+    }
+    .up-section .icon-back a{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 12px;
+        margin-bottom: 15px;
+        width: 90px;
+        height: 100%;
+        padding: 3px 5px;
+        border-radius: var(--radius-md);
+        transition: background-color .2s ease;
+        color: var(--Primary);
+        text-decoration: none;
+    }
+    .icon-back a:hover{
+        background-color: var(--InputBackground);
+    }
+
+    .up-section h4 {
+        font-weight: var(--weigth-nl);
+    }
+
+    .up-section p {
+        font-weight: 300;
+    }
+
+    /*PERSONAL INFORMATIONS*/
+    .personal-info-card {
+        border: 1PX solid var(--SwitchBackground);
+        border-radius: var(--radius-md);
+    }
+
+    .personal-info-card .title-area {
+        padding: 1.3rem;
+        border-bottom: 1px solid var(--SwitchBackground);
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .title-area .title-desc {
+        line-height: 1.5rem;
+    }
+
+    .title-area .title-desc h4 {
+        font-weight: var(--weigth-nl);
+    }
+
+    .title-area .title-desc p {
+        font-weight: 300;
+    }
+
+    .title-area .btn-edit-info {
+        width: 100%;
+    }
+
+    .btn-edit-info button {
+        width: 100%;
+        height: 36px;
+        border: none;
+        background-color: var(--AccentBlue);
+        border-radius: var(--radius-sm);
+        color: var(--Secondary);
+        font-size: var(--text-sm);
+        transition: background-color .1s ease;
+    }
+
+    .btn-edit-info button:hover {
+        background-color: var(--AccentBlueHover);
+    }
+
+    .personal-info-card .profile-photo-area {
+        padding: 1.3rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 250px;
+        border-bottom: 1px solid var(--SwitchBackground);
+        width: 90%;
+        margin: auto;
+        gap: 20px;
+    }
+
+    .profile-photo-area .profile-img {
+        height: 90px;
+        width: 90px;
+        background-color: var(--bgImgColor);
+        border-radius: var(--radius-full);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        aspect-ratio: 3/4;
+    }
+
+    .personal-info-card .nome-role {
+        text-align: center;
+    }
+
+    .nome-role h4 {
+        font-weight: var(--weigth-nl);
+    }
+
+    .nome-role p {
+        font-weight: 300;
+    }
+
+    .personal-info-card .personal-info-area {
+        padding: 1.3rem;
+        display: grid;
+        gap: 20px;
+        grid-template: 1fr / 1fr;
+    }
+
+    .personal-info-area .data {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+    }
+
+    .data h5 {
+        font-weight: var(--weight-bd);
+    }
+
+    .data p {
+        font-weight: 300;
+    }
+
+    /*ACCOUNT INFORMATIONS*/
+
+    .info-account .account-info-card {
+        padding: 1.3rem;
+        border: 1px solid var(--SwitchBackground);
+        border-radius: var(--radius-md);
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+
+    .account-info-card .title-desc {
+        line-height: 1.5rem;
+    }
+
+    .account-info-card .title-desc h4 {
+        font-weight: var(--weigth-nl);
+    }
+
+    .account-info-card .account-info-area {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .account-info-area .account-info {
+        border-bottom: 1px solid var(--SwitchBackground);
+        display: flex;
+        gap: 8px;
+        flex-direction: column;
+        padding: 10px;
+    }
+
+    .account-info:nth-child(4) {
+        border: none;
+    }
+
+    .account-info h5 {
+        font-weight: var(--weigth-nl);
+        color: var(--MutedForegroundC);
+    }
+
+    .account-info p {
+        font-weight: 300;
+    }
+}
+
+
+@media screen and (min-width: 769px) {
+    .info-account {
+        width: 100%;
+        grid-column: 2;
+        padding: 1rem;
+        display: flex;
+        flex-direction: column;
+        gap: 25px;
+    }
+
+    .info-account .up-section {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        margin-top: 30px;
+    }
+
+    
+    .icon-back{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 30px;
+        width: 90px;
+    }
+    .up-section .icon-back a{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 12px;
+        margin-bottom: 15px;
+        width: 90px;
+        height: 100%;
+        padding: 3px 5px;
+        border-radius: var(--radius-md);
+        transition: background-color .2s ease;
+        color: var(--Primary);
+        text-decoration: none;
+    }
+    .icon-back a:hover{
+        background-color: var(--InputBackground);
+    }
+
+
+    .icon-back p {
+        font-weight: var(--weight-bd);
+        color: black;
+    }
+
+    .up-section h4 {
+        font-weight: var(--weigth-bd);
+    }
+
+    .up-section p {
+        color: var(--MutedForegroundC);
+    }
+
+    /*PERSONAL INFORMATIONS*/
+    .personal-info-card {
+        border: 1PX solid var(--SwitchBackground);
+        border-radius: var(--radius-md);
+    }
+
+    .personal-info-card .title-area {
+        padding: 1.3rem;
+        border-bottom: 1px solid var(--SwitchBackground);
+        display: flex;
+        justify-content: space-between;
+        gap: 15px;
+    }
+
+    .title-area .title-desc {
+        line-height: 1.5rem;
+    }
+
+    .title-area .title-desc h4 {
+        font-weight: var(--weigth-nl);
+    }
+
+    .title-area .title-desc p {
+        font-weight: 300;
+    }
+
+    .title-area .btn-edit-info {
+        width: 160px;
+    }
+
+    .btn-edit-info button {
+        width: 100%;
+        height: 36px;
+        border: none;
+        background-color: var(--AccentBlue);
+        border-radius: var(--radius-sm);
+        color: var(--Secondary);
+        font-weight: var(--weight-br);
+        font-size: var(--text-sm);
+        transition: background-color .1s ease;
+    }
+
+    .btn-edit-info button:hover {
+        background-color: var(--AccentBlueHover);
+    }
+
+    .personal-info-card .profile-photo-area {
+        display: flex;
+        align-items: center;
+        height: 200px;
+        border-bottom: 1px solid var(--SwitchBackground);
+        width: 95%;
+        margin: auto;
+        gap: 50px;
+    }
+
+    .profile-photo-area .profile-img {
+        height: 75px;
+        width: 75px;
+        background-color: var(--bgImgColor);
+        border-radius: var(--radius-full);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        aspect-ratio: 3/4;
+    }
+
+    .nome-role {
+        line-height: 1.5rem;
+    }
+
+    .nome-role h4 {
+        font-weight: var(--weigth-nl);
+    }
+
+    .nome-role p {
+        color: var(--MutedForegroundC);
+    }
+
+    .personal-info-card .personal-info-area {
+        padding: 1.5rem;
+        display: grid;
+        gap: 20px;
+        grid-template: 1fr / 1fr 1fr;
+    }
+
+    .personal-info-area .data {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+    }
+
+    .data h5 {
+        font-weight: var(--weight-bd);
+    }
+
+    .data p {
+        font-weight: 300;
+    }
+
+    /*ACCOUNT INFORMATIONS*/
+
+    .info-account .account-info-card {
+        padding: 1.3rem;
+        border: 1px solid var(--SwitchBackground);
+        border-radius: var(--radius-md);
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+
+    .account-info-card .title-desc {
+        line-height: 1.5rem;
+    }
+
+    .account-info-card .title-desc h4 {
+        font-weight: var(--weigth-nl);
+    }
+
+    .account-info-card .account-info-area {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .account-info-area .account-info {
+        border-bottom: 1px solid var(--SwitchBackground);
+        display: flex;
+        justify-content: space-between;
+        gap: 8px;
+        padding: 10px;
+    }
+
+    .account-info:nth-child(4) {
+        border: none;
+    }
+
+    .account-info h5 {
+        font-weight: var(--weigth-nl);
+        color: var(--MutedForegroundC);
+        font-size: var(--text-md);
+    }
+
+    .account-info p {
+        font-weight: 300;
+    }
+}
