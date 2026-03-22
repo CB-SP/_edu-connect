@@ -7,16 +7,21 @@
     --AccentBlue: #2563EB;
     --AccentBlueHover: #296dff;
     --Destructive: #D4183D;
+    --bgIconDestructive: #cf728549;
+    --bgDestructive: #cf728515;
 
     /*CORES DE INTERFACE*/
     --Background: #FFFFFF;
     --Foreground: #252525;
     --Muted: #ECECF0;
     --MutedForeground: #717182;
+    --MutedForegroundC: #565661;
     --Border: rgba(0, 0, 0, 0.151);
 
     /*CORES DE INPUT*/
     --InputBackground: #F3F3F5;
+    --bgCard: #e1e4ee3b;
+    --bgImgColor: #d5ddf89f;
     --SwitchBackground: #CBCED4;
 
 

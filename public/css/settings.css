@@ -1,0 +1,210 @@
+@media screen and (max-width: 990px) {
+    .settings-page {
+        padding: 12px;
+        display: flex;
+        flex-direction: column;
+        gap: 22px;
+    }
+
+    .settings-page .title h2 {
+        font-weight: var(--weight-bd);
+        width: 60%;
+        font-size: var(--text-xl);
+        line-height: 1.5;
+    }
+
+    .settings-page .title p {
+        font-weight: 300;
+        width: 90%;
+        line-height: 1.4;
+    }
+
+    .settings-page .setting-cards {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .setting-cards .setting-card {
+        border: 1px solid var(--SwitchBackground);
+        border-radius: var(--radius-md);
+        padding: 1.3rem;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .setting-card h4 {
+        font-weight: var(--weigth-nl);
+    }
+
+    .setting-card a .settings-info-card {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+    }
+
+    .setting-card a {
+        color: var(--primary);
+        text-decoration: none;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 12px;
+        padding: 1rem;
+        border-radius: var(--radius-md);
+        transition: background-color .2s ease;
+    }
+
+    .setting-card a:hover {
+        background-color: var(--bgCard);
+    }
+
+    .setting-card a .icon-area {
+        background-color: var(--bgImgColor);
+        height: 45px;
+        width: 45px;
+        border-radius: var(--radius-full);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-shrink: 0;
+    }
+
+    .setting-card a .desc-setting-card {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+    }
+
+    .desc-setting-card p {
+        font-weight: 300;
+    }
+
+    .setting-card:nth-child(3) .icon-area {
+        background-color: var(--bgDestructive);
+    }
+
+    .setting-card:nth-child(3) .desc-setting-card h4 {
+        color: var(--Destructive);
+    }
+}
+
+@media screen and (min-width: 769px) and (max-width: 990px) {
+    .main {
+        display: grid;
+        grid-template-columns: 20px 1fr 20px;
+    }
+    .settings-page {
+        padding: 15px;
+        margin-top: 1.5rem;
+        grid-column: 2;
+        padding: 12px;
+        display: flex;
+        flex-direction: column;
+        gap: 22px;
+    }
+}
+
+@media screen and (min-width: 991px) {
+    .main {
+        display: grid;
+        grid-template-columns: 80px 1fr 80px;
+    }
+
+    .settings-page {
+        padding: 15px;
+        margin-top: 1.5rem;
+        grid-column: 2;
+        padding: 12px;
+        display: flex;
+        flex-direction: column;
+        gap: 22px;
+    }
+    
+    .settings-page .title h2 {
+        font-weight: var(--weight-bd);
+        width: 60%;
+        line-height: 1.5;
+    }
+
+    .settings-page .title p {
+        width: 90%;
+        line-height: 1.4;
+        color: var(--MutedForegroundC);
+    }
+
+     .settings-page .setting-cards {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .setting-cards .setting-card {
+        border: 1px solid var(--SwitchBackground);
+        border-radius: var(--radius-md);
+        padding: 1.3rem;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        height: 170px;
+    }
+
+    .setting-card h4 {
+        font-weight: var(--weigth-nl);
+    }
+
+    .setting-card a .settings-info-card {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+    }
+
+    .setting-card a {
+        color: var(--primary);
+        text-decoration: none;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 12px;
+        padding: 1rem;
+        border-radius: var(--radius-md);
+        transition: background-color .2s ease;
+    }
+
+    .setting-card a:hover {
+        background-color: var(--bgCard);
+    }
+
+    .setting-card a .icon-area {
+        background-color: var(--bgImgColor);
+        height: 48px;
+        width: 48px;
+        border-radius: var(--radius-full);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-shrink: 0;
+    }
+
+    .setting-card a .desc-setting-card {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+    }
+
+    .desc-setting-card p {
+        font-weight: 300;
+    }
+
+    .setting-card:nth-child(3) a:hover{
+        background-color: var(--bgDestructive);
+    }
+    .setting-card:nth-child(3) .icon-area {
+        background-color: var(--bgIconDestructive);
+    }
+
+    .setting-card:nth-child(3) .desc-setting-card h4 {
+        color: var(--Destructive);
+    }
+}

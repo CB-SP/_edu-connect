@@ -1,0 +1,13 @@
+<?php
+require_once './app/views/layouts/adminMain.phtml';
+$admin = new AdminController;
+$schools = $admin->fetch_schools();
+$users = $admin->fetch_users();
+$total_entities = $admin->total_entities();
+?>
+
+<section class="info-account">
+    <h2>Segurança</h2>
+</section>
+
+<?php require_once './app/views/layouts/closure.phtml' ?>
