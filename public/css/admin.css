@@ -377,7 +377,7 @@
     .tbl-users .drop-actions {
         position: absolute;
         top: 30px;
-        right: 30px;
+        margin-top: 8px;
         display: flex;
         align-items: center;
         flex-direction: column;
@@ -823,7 +823,7 @@
     .tbl-users .drop-actions {
         position: absolute;
         top: 30px;
-        right: 30px;
+        margin-top: 8px;
         display: flex;
         align-items: center;
         flex-direction: column;
@@ -1267,7 +1267,6 @@
     .tbl-users .drop-actions {
         position: absolute;
         top: 30px;
-        right: 30px;
         display: flex;
         align-items: center;
         flex-direction: column;
@@ -1280,6 +1279,7 @@
         z-index: 999;
         overflow: hidden;
         display: none;
+        margin-top: 8px;
     }
 
     .tbl-schools .drop-actions.drop,
