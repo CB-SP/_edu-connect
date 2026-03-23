@@ -161,6 +161,7 @@ addModais.forEach(m => {
 const editBtns = document.querySelectorAll('.edit-action')
 editModais = document.querySelectorAll('.edit-modal')
 
+
 editBtns.forEach(editBtn => {
     editBtn.addEventListener('click', async (e) => {
         e.stopPropagation()
@@ -168,7 +169,7 @@ editBtns.forEach(editBtn => {
         const id = e.currentTarget.dataset.id
         const type = e.currentTarget.dataset.type
 
-       if (type == "user") {
+        if (type == "user") {
             const response = await fetch(`http://localhost/_edu-connect/admin/fetch_user/${id}`)
             const user = await response.json()
 
@@ -179,7 +180,7 @@ editBtns.forEach(editBtn => {
             document.querySelector('#nifUser').value = user.nif
             document.querySelector('#emailUser').value = user.email
             document.querySelector('#current_photo').value = user.foto || ''
-       } else {
+        } else {
             const response = await fetch(`http://localhost/_edu-connect/admin/fetch_school/${id}`)
             const school = await response.json()
 
@@ -188,7 +189,7 @@ editBtns.forEach(editBtn => {
             document.querySelector('#primaryContact').value = school.contacto_1
             document.querySelector('#secundaryContact').value = school.contacto_2
             document.querySelector('#schoolId').value = id
-       }
+        }
 
         editModais.forEach(editModal => {
             editModal.classList.add('show')
@@ -217,11 +218,30 @@ closeModalIcons.forEach(closeModalIcon => {
 document.body.addEventListener('click', () => {
     editModais.forEach(editModal => {
         editModal.classList.remove('show')
+        overlayModal.classList.remove('active')
+        document.body.classList.remove('no-scroll')
     })
 })
 
 editModais.forEach(editModal => {
     editModal.addEventListener('click', (e) => {
         e.stopPropagation()
+    })
+})
+
+
+
+/*EDIT ADMIN MODAL*/
+const editAdminBtn = document.querySelector('#btn-edit-info-admin')
+const editAdminModal = document.querySelector('#edit-admin-modal')
+
+editAdminBtn.addEventListener('click', (e) => {
+    e.stopPropagation()
+    editAdminModal.classList.add('show')
+    document.body.classList.add('no-scroll')
+    overlayModal.classList.add('active')
+
+    dropActions.forEach(dropAction => {
+        dropAction.classList.remove('drop')
     })
 })
