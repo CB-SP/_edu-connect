@@ -440,11 +440,11 @@
     .overlay-modal {
         position: fixed;
         inset: 0;
-        background-color: rgba(0, 0, 0, .4);
+        background-color: rgba(0, 0, 0, .2);
         backdrop-filter: blur(4px);
         opacity: 0;
         visibility: hidden;
-        transition: .8s ease;
+        transition: .4s ease;
         z-index: 900;
     }
 
@@ -888,7 +888,7 @@
         backdrop-filter: blur(4px);
         opacity: 0;
         visibility: hidden;
-        transition: .8s ease;
+        transition: .4s ease;
         z-index: 900;
     }
 
@@ -1332,7 +1332,7 @@
         backdrop-filter: blur(4px);
         opacity: 0;
         visibility: hidden;
-        transition: .8s ease;
+        transition: .4s ease;
         z-index: 900;
     }
 

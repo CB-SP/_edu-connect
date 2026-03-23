@@ -193,6 +193,15 @@
     .account-info p {
         font-weight: 300;
     }
+
+    /*ADD USER MODAL*/
+      #edit-admin-modal{
+        display: none;
+        height: fit-content;
+      }
+      #edit-admin-modal.show{
+        display: block;
+      }
 }
 
 
@@ -400,4 +409,16 @@
     .account-info p {
         font-weight: 300;
     }
+
+
+      /*ADD USER MODAL*/
+      #edit-admin-modal{
+        display: none;
+        height: fit-content;
+        width: 500px;
+      }
+      #edit-admin-modal.show{
+        display: block;
+      }
+    
 }

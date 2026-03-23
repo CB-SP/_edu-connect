@@ -7,6 +7,7 @@ $total_entities = $admin->total_entities();
 ?>
 
 <section class="info-account">
+    <div class="overlay-modal"></div>
     <section class="up-section">
         <div class="icon-back">
             <a href="<?= URL ?>admin/settings">
@@ -16,7 +17,7 @@ $total_entities = $admin->total_entities();
         </div>
         <h4>Minha Conta</h4>
         <p>Visualizar e editar informações da conta</p>
-    </section> 
+    </section>
     <!-- PERSONAL INFORMATION -->
     <section class="personal-info-card">
         <div class="title-area">
@@ -27,6 +28,41 @@ $total_entities = $admin->total_entities();
             <div class="btn-edit-info">
                 <button id="btn-edit-info-admin">Editar Informações</button>
             </div>
+        </div>
+        <!--EDIT ADMIN MODAL-->
+        <div class="edit-modal" id="edit-admin-modal">
+            <div class="desc-form">
+                <h3>Editar Informações</h3>
+                <p>Edite as suas informações</p>
+                <img src="<?= URL ?>public/assets/images/x.png" alt="" class="close-modal-icon">
+            </div>
+            <form action="<?= URL ?>admin/edit_user" method="post" enctype="multipart/form-data">
+                <div class="input-box">
+                    <label for="adminName">Nome Completo</label>
+                    <input type="text" name="name" id="adminName" placeholder="Nome completo do usuário">
+                </div>
+
+                <div class="input-box">
+                    <label for="adminEmail">Email</label>
+                    <input type="text" name="email" id="adminEmail" placeholder="usuario@gmail.com">
+                </div>
+                <div class="input-box">
+                    <label for="">Foto do usuário</label>
+                    <label for="fotoFile" class="labelFile">
+                        <input type="file" name="photo" id="fotoFile" class="fotoFile" hidden>
+                        Escolher ficheiro.
+                        <span class="fileName">Nenhum ficheiro escolhido</span>
+                    </label>
+                </div>
+
+                <input type="hidden" name="id" id="userId">
+                <input type="hidden" name="current_photo" id="current_photo">
+
+                <div class="final-btn-actions">
+                    <button type="button" class="btn" id="btn-cancel">Cancelar</button>
+                    <button type="submit" class="btn" id="btn-create">Gravar alterações</button>
+                </div>
+            </form>
         </div>
         <div class="profile-photo-area">
             <div class="profile-img">
@@ -58,11 +94,11 @@ $total_entities = $admin->total_entities();
                 <h5>NIF</h5>
                 <p>8755H675</p>
             </div>
-            
-            
+
+
         </div>
     </section>
-     <!-- ACCOUNT INFORMATION -->
+    <!-- ACCOUNT INFORMATION -->
     <section class="account-info-card">
         <div class="title-desc">
             <h4>Informações da Conta</h4>
