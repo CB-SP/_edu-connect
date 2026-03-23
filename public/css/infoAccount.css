@@ -1,25 +1,28 @@
 @media screen and (max-width: 768px) {
-    .info-account {
+
+    .info-account,
+    .security {
         padding: 1rem;
         display: flex;
         flex-direction: column;
         gap: 20px;
     }
 
-    .info-account .up-section {
+    .info-account .up-section, .security .up-section {
         display: flex;
         flex-direction: column;
         gap: 5px;
     }
 
-    .icon-back{
+    .icon-back {
         display: flex;
         justify-content: center;
         align-items: center;
         height: 30px;
         width: 90px;
     }
-    .up-section .icon-back a{
+
+    .up-section .icon-back a {
         display: flex;
         justify-content: center;
         align-items: center;
@@ -33,7 +36,8 @@
         color: var(--Primary);
         text-decoration: none;
     }
-    .icon-back a:hover{
+
+    .icon-back a:hover {
         background-color: var(--InputBackground);
     }
 
@@ -195,18 +199,158 @@
     }
 
     /*ADD USER MODAL*/
-      #edit-admin-modal{
+    #edit-admin-modal {
         display: none;
         height: fit-content;
-      }
-      #edit-admin-modal.show{
+    }
+
+    #edit-admin-modal.show {
         display: block;
-      }
+    }
+
+    /*SECURITY PAGE*/
+
+    .security .alter-pass-area {
+        border: 1PX solid var(--SwitchBackground);
+        border-radius: var(--radius-md);
+    }
+
+    .alter-pass-area .title-area {
+        padding: 1.3rem;
+        border-bottom: 1px solid var(--SwitchBackground);
+        display: flex;
+        gap: 20px;
+        align-items: center;
+    }
+
+    .title-area .icon-security-area {
+        height: 50px;
+        width: 50px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: var(--bgImgColor);
+        border-radius: var(--radius-full);
+    }
+
+    .alter-pass-area .alter-pass-form .alter-form {
+        padding: 1.3rem;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .alter-form .input-box {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        padding: 1rem 0;
+    }
+
+    .alter-form .input-box:nth-child(odd) {
+        border-bottom: 1px solid var(--SwitchBackground);
+        padding-bottom: 20px;
+    }
+
+    .alter-form .input-box input {
+        height: 35px;
+        padding: 0 12px;
+        border: 1px solid transparent;
+        outline: 3px solid transparent;
+        background-color: var(--InputBackground);
+        border-radius: var(--radius-sm);
+        font-size: var(--text-nl);
+    }
+
+    .alter-form .input-box input:focus {
+        outline-color: var(--SwitchBackground);
+        border-color: gray;
+    }
+
+    .alter-form .btn-box {
+        display: flex;
+        flex-direction: column-reverse;
+        gap: 10px;
+        padding: 1rem 0;
+    }
+
+    .btn-box button {
+        height: 37px;
+        border: none;
+        border-radius: var(--radius-sm);
+        font-size: var(--text-sm);
+        transition: background-color .2s ease;
+    }
+
+    .btn-box button[type="submit"] {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 20px;
+        background-color: var(--AccentBlue);
+        color: var(--Background);
+    }
+
+    .btn-box button[type="submit"]:hover {
+        background-color: var(--AccentBlueHover);
+    }
+
+    .btn-box button[type="button"] {
+        border: 1px solid var(--SwitchBackground);
+        background-color: var(--Background);
+    }
+
+    .btn-box button[type="button"]:hover {
+        background-color: var(--Muted);
+    }
+
+    /*SECURITY TIPS AREA*/
+    .security .security-tips-area{
+        padding: 1.3rem;
+        border: 1PX solid var(--SwitchBackground);
+        border-radius: var(--radius-md);
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+    }
+   
+    .security-tips-area .title-area {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+    }
+
+     .title-area .icon-lock-area {
+        height: 30px;
+        width: 30px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .security-tips-area .tips-list{
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        margin-left: 25px;
+    }
+    .tips-list .tip-item{
+        display: flex;
+        gap: 10px;
+        align-items: center;
+    }
+    .tip-item img{
+        flex-shrink: 0;
+    }
+    .tip-item p{
+        font-size: var(--text-sm);
+        color: var(--MutedForegroundC);
+    }
 }
 
 
 @media screen and (min-width: 769px) {
-    .info-account {
+
+    .info-account,
+    .security {
         width: 100%;
         grid-column: 2;
         padding: 1rem;
@@ -215,22 +359,23 @@
         gap: 25px;
     }
 
-    .info-account .up-section {
+    .info-account .up-section, .security .up-section {
         display: flex;
         flex-direction: column;
         gap: 5px;
         margin-top: 30px;
     }
 
-    
-    .icon-back{
+
+    .icon-back {
         display: flex;
         justify-content: center;
         align-items: center;
         height: 30px;
         width: 90px;
     }
-    .up-section .icon-back a{
+
+    .up-section .icon-back a {
         display: flex;
         justify-content: center;
         align-items: center;
@@ -244,7 +389,8 @@
         color: var(--Primary);
         text-decoration: none;
     }
-    .icon-back a:hover{
+
+    .icon-back a:hover {
         background-color: var(--InputBackground);
     }
 
@@ -411,14 +557,158 @@
     }
 
 
-      /*ADD USER MODAL*/
-      #edit-admin-modal{
+    /*ADD USER MODAL*/
+    #edit-admin-modal {
         display: none;
         height: fit-content;
         width: 500px;
-      }
-      #edit-admin-modal.show{
+    }
+
+    #edit-admin-modal.show {
         display: block;
-      }
-    
+    }
+
+
+     /*SECURITY PAGE*/
+    .security .alter-pass-area {
+        border: 1PX solid var(--SwitchBackground);
+        border-radius: var(--radius-md);
+    }
+
+     .up-section h4{
+        font-size: 1.05rem;
+    }
+    .alter-pass-area .title-area {
+        padding: 1.3rem;
+        border-bottom: 1px solid var(--SwitchBackground);
+        display: flex;
+        gap: 20px;
+        align-items: center;
+    }
+
+    .title-area .icon-security-area {
+        height: 50px;
+        width: 50px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: var(--bgImgColor);
+        border-radius: var(--radius-full);
+    }
+
+    .alter-pass-area .alter-pass-form .alter-form {
+        padding: 1.3rem;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .alter-form .input-box {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        padding: 1rem 0;
+    }
+
+    .alter-form .input-box:nth-child(odd) {
+        border-bottom: 1px solid var(--SwitchBackground);
+        padding-bottom: 20px;
+    }
+
+    .alter-form .input-box input {
+        height: 40px;
+        padding: 0 12px;
+        border: 1px solid transparent;
+        outline: 3px solid transparent;
+        background-color: var(--InputBackground);
+        border-radius: var(--radius-sm);
+        font-size: var(--text-nl);
+        transition: all .3s ease;
+    }
+
+    .alter-form .input-box input:focus {
+        outline-color: var(--SwitchBackground);
+        border-color: gray;
+    }
+
+    .alter-form .btn-box {
+        display: flex;
+        gap: 10px;
+        padding: 1rem 0;
+    }
+
+    .btn-box button {
+        height: 39px;
+        border: none;
+        border-radius: var(--radius-sm);
+        font-size: var(--text-sm);
+        transition: background-color .2s ease;
+    }
+
+    .btn-box button[type="submit"] {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 20px;
+        background-color: var(--AccentBlue);
+        color: var(--Background);
+        width: 150px;
+    }
+
+    .btn-box button[type="submit"]:hover {
+        background-color: var(--AccentBlueHover);
+    }
+
+    .btn-box button[type="button"] {
+        border: 1px solid var(--SwitchBackground);
+        background-color: var(--Background);
+        width: 90px;
+    }
+
+    .btn-box button[type="button"]:hover {
+        background-color: var(--Muted);
+    }
+
+    /*SECURITY TIPS AREA*/
+    .security .security-tips-area{
+        padding: 1.3rem;
+        border: 1PX solid var(--SwitchBackground);
+        border-radius: var(--radius-md);
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+    }
+   
+    .security-tips-area .title-area {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+    }
+    .security-tips-area .title-area .title-desc h4{
+        font-size: 1.05rem;
+    }
+
+     .title-area .icon-lock-area {
+        height: 30px;
+        width: 30px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .security-tips-area .tips-list{
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        margin-left: 30px;
+    }
+    .tips-list .tip-item{
+        display: flex;
+        gap: 10px;
+        align-items: center;
+    }
+    .tip-item img{
+        flex-shrink: 0;
+    }
+    .tip-item p{
+        color: var(--MutedForegroundC);
+    }
 }

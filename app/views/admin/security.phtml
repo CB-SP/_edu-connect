@@ -6,8 +6,73 @@ $users = $admin->fetch_users();
 $total_entities = $admin->total_entities();
 ?>
 
-<section class="info-account">
-    <h2>Segurança</h2>
+<section class="security">
+    <section class="up-section">
+        <div class="icon-back">
+            <a href="<?= URL ?>admin/settings">
+                <img src="" alt=" ">
+                <p>Voltar</p>
+            </a>
+        </div>
+        <h4>Segurança</h4>
+        <p>Gerir a segurança da sua conta</p>
+    </section>
+    <section class="alter-pass-area">
+        <div class="title-area">
+            <div class="icon-security-area">
+                <img src="" alt=" ">
+            </div>
+            <div class="title-desc">
+                <h4>Alterar Senha</h4>
+                <p>Atualize a senha da sua conta</p>
+            </div>
+        </div>
+        <div class="alter-pass-form">
+            <form action="" class="alter-form">
+                <div class="input-box">
+                    <label for="currentPass">Senha Actual</label>
+                    <input type="password" name="" id="currentPass" placeholder="Digite a senha actual">
+                </div>
+                <div class="input-box">
+                    <label for="newPass">Nova Senha</label>
+                    <input type="password" name="" id="newPass" placeholder="Digite a nova senha">
+                </div>
+                <div class="input-box">
+                    <label for="confirmNewPass">Confirmar Nova Senha</label>
+                    <input type="password" name="" id="confirmNewPass" placeholder="Digite novamente a nova senha">
+                </div>
+                <div class="btn-box">
+                    <button type="button">Cancelar</button>
+                    <button type="submit">
+                        <img src="" alt=" ">
+                        <p>Alterar Senha</p>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </section>
+    <section class="security-tips-area">
+        <div class="title-area">
+            <div class="icon-lock-area">
+                <img src="" alt=" ">
+            </div>
+            <div class="title-desc">
+                <h4>Dicas de Segurança</h4>
+            </div>
+        </div>
+        <div class="tips-list">
+            <div class="tip-item">
+                <img src="" alt=" ">
+                <p>Use uma senha única que não utiliza em outros serviços</p>
+            </div>
+            <div class="tip-item">
+                <img src="" alt=" ">
+                <p>Altere a sua senha regularmente para manter a conta segura</p>
+            </div>
+            <div class="tip-item">
+                <img src="" alt=" ">
+                <p>Nunca partilhe a sua senha com terceiros</p>
+            </div>
+        </div>
+    </section>
 </section>
-
-<?php require_once './app/views/layouts/closure.phtml' ?>
