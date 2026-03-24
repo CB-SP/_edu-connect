@@ -38,6 +38,20 @@
             }
         }
 
+        //search admins password hash
+        public function find_password_hash($id) {
+            try {
+                $this->stmt = $this->pdo->prepare("SELECT password FROM admins WHERE id = ? AND deleted_at IS NULL");
+                $this->stmt->execute([$id]);
+
+                $hash = $this->stmt->fetch(PDO::FETCH_ASSOC)['password'];
+
+                return !empty($hash) ? $hash: null;
+            } catch (PDOException $e) {
+                throw $e;
+            }
+        }
+
         //fetch admin
         public function fetch_admin($email) {
             try {
@@ -52,13 +66,51 @@
             }
         }
 
+        //find admin
+        public function find_admin($id) {
+            try {
+                $this->stmt = $this->pdo->prepare("SELECT foto, email, created_at FROM admins WHERE id = ? AND deleted_at IS NULL");
+                $this->stmt->execute([$id]);
+
+                $admin = $this->stmt->fetch(PDO::FETCH_ASSOC);
+
+                return !empty($admin) ? $admin : null;
+            } catch (PDOException $e) {
+                throw $e;
+            }
+        }
+
+        //edit admin
+        public function edit_admin($name, $email, $id) {
+            try {
+                $this->stmt = $this->pdo->prepare("UPDATE admins SET nome = ?, email = ? WHERE id = ? AND deleted_at IS NULL");
+
+                return $this->stmt->execute([$name, $email, $id]) ?: false;
+            } catch (PDOException $e) {
+                throw $e;
+            }
+        }
+
+        //change admin password
+        public function change_password($password, $id) {
+            try {
+                $this->stmt = $this->pdo->prepare("UPDATE admins SET password = ? WHERE id = ? AND deleted_at IS NULL");
+
+                return $this->stmt->execute([$password, $id]) ?: false;
+            } catch (PDOException $e) {
+                throw $e;
+            }
+        }
+
         //fetch total entities
         public function total_entities() {
             try {
                 $this->stmt = $this->pdo->prepare("SELECT
                     (SELECT COUNT(id) FROM admins WHERE deleted_at IS NULL) AS admins,
                     (SELECT COUNT(id) FROM escolas WHERE deleted_at IS NULL) AS escolas,
-                    (SELECT COUNT(id) FROM usuarios WHERE deleted_at IS NULL) AS usuarios
+                    (SELECT COUNT(id) FROM usuarios WHERE role = 'director' AND deleted_at IS NULL) AS directores,
+                    (SELECT COUNT(id) FROM usuarios WHERE role = 'professor' AND deleted_at IS NULL) AS professores,
+                    (SELECT COUNT(id) FROM usuarios WHERE role = 'aluno' AND deleted_at IS NULL) AS alunos
                 ");
                 $this->stmt->execute();
 
