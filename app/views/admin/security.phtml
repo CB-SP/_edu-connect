@@ -1,9 +1,5 @@
 <?php
-require_once './app/views/layouts/adminMain.phtml';
-$admin = new AdminController;
-$schools = $admin->fetch_schools();
-$users = $admin->fetch_users();
-$total_entities = $admin->total_entities();
+    require_once './app/views/layouts/adminMain.phtml';
 ?>
 
 <section class="security">
@@ -28,19 +24,21 @@ $total_entities = $admin->total_entities();
             </div>
         </div>
         <div class="alter-pass-form">
-            <form action="" class="alter-form">
+            <form action="<?= URL ?>admin/change_password" method="post" class="alter-form">
                 <div class="input-box">
                     <label for="currentPass">Senha Actual</label>
-                    <input type="password" name="" id="currentPass" placeholder="Digite a senha actual">
+                    <input type="password" name="currentPassword" id="currentPass" placeholder="Digite a senha actual">
                 </div>
                 <div class="input-box">
                     <label for="newPass">Nova Senha</label>
-                    <input type="password" name="" id="newPass" placeholder="Digite a nova senha">
+                    <input type="password" name="newPassword" id="newPass" placeholder="Digite a nova senha">
                 </div>
                 <div class="input-box">
                     <label for="confirmNewPass">Confirmar Nova Senha</label>
-                    <input type="password" name="" id="confirmNewPass" placeholder="Digite novamente a nova senha">
+                    <input type="password" name="confirmNewPassword" id="confirmNewPass" placeholder="Digite novamente a nova senha">
                 </div>
+
+                <input type="hidden" name="id" value="<?= $_SESSION['id'] ?>">
                 <div class="btn-box">
                     <button type="button">Cancelar</button>
                     <button type="submit">

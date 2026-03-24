@@ -1,9 +1,7 @@
 <?php
-require_once './app/views/layouts/adminMain.phtml';
-$admin = new AdminController;
-$schools = $admin->fetch_schools();
-$users = $admin->fetch_users();
-$total_entities = $admin->total_entities();
+    require_once './app/views/layouts/adminMain.phtml';
+    $admin = new AdminController;
+    $admin_data = $admin->find_admin($_SESSION['id']);
 ?>
 
 <section class="info-account">
@@ -36,15 +34,15 @@ $total_entities = $admin->total_entities();
                 <p>Edite as suas informações</p>
                 <img src="<?= URL ?>public/assets/images/x.png" alt="" class="close-modal-icon">
             </div>
-            <form action="<?= URL ?>admin/edit_user" method="post" enctype="multipart/form-data">
+            <form action="<?= URL ?>admin/edit_admin" method="post" enctype="multipart/form-data">
                 <div class="input-box">
                     <label for="adminName">Nome Completo</label>
-                    <input type="text" name="name" id="adminName" placeholder="Nome completo do usuário">
+                    <input type="text" name="name" id="adminName" placeholder="Nome completo do admin" value="<?= $_SESSION['name'] ?>">
                 </div>
 
                 <div class="input-box">
                     <label for="adminEmail">Email</label>
-                    <input type="text" name="email" id="adminEmail" placeholder="usuario@gmail.com">
+                    <input type="text" name="email" id="adminEmail" placeholder="admin@gmail.com" value="<?= $admin_data['email'] ?>">
                 </div>
                 <div class="input-box">
                     <label for="">Foto do usuário</label>
@@ -55,7 +53,7 @@ $total_entities = $admin->total_entities();
                     </label>
                 </div>
 
-                <input type="hidden" name="id" id="userId">
+                <input type="hidden" name="id" id="userId" value="<?= $_SESSION['id'] ?>">
                 <input type="hidden" name="current_photo" id="current_photo">
 
                 <div class="final-btn-actions">
@@ -69,33 +67,23 @@ $total_entities = $admin->total_entities();
                 <img src="" alt=" ">
             </div>
             <div class="nome-role">
-                <h4>Nome Admin</h4>
+                <h4><?= $_SESSION['name'] ?></h4>
                 <p>admin</p>
             </div>
         </div>
         <div class="personal-info-area">
             <div class="data">
+                <h5>ID</h5>
+                <p><?= $_SESSION['id'] ?></p>
+            </div>
+            <div class="data">
                 <h5>Nome Completo</h5>
-                <p>Admin Sistema</p>
+                <p><?= $_SESSION['name'] ?></p>
             </div>
             <div class="data">
                 <h5>Email</h5>
-                <p>admin@gmail.com</p>
+                <p><?= $admin_data['email'] ?></p>
             </div>
-            <div class="data">
-                <h5>Telefone</h5>
-                <p>932 453 915</p>
-            </div>
-            <div class="data">
-                <h5>Telefone Alternativo</h5>
-                <p>932 874 923</p>
-            </div>
-            <div class="data">
-                <h5>NIF</h5>
-                <p>8755H675</p>
-            </div>
-
-
         </div>
     </section>
     <!-- ACCOUNT INFORMATION -->
@@ -118,7 +106,7 @@ $total_entities = $admin->total_entities();
             </div>
             <div class="account-info">
                 <h5>Data de Criação</h5>
-                <p>20 de março de 2026</p>
+                <p><?= $admin_data['created_at'] ?></p>
             </div>
         </div>
     </section>

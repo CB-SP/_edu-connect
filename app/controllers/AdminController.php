@@ -1,6 +1,6 @@
 <?php
     class AdminController extends Controller {
-        private $admin, $school, $user, $email, $password;
+        private $admin, $school, $user, $id, $name, $photo, $email, $password;
 
         public function __construct() {
             $this->admin = new AdminModel;
@@ -101,6 +101,82 @@
             } catch (PDOException $e) {
                 error_log("ERRO_LOGIN_ADMIN: ". $e->getMessage(). "\n". $e->getTraceAsString());
                 $this->redirect("admin/login");
+            }
+
+            $this->redirect("admin/index");
+        }
+
+        //find admin
+        public function find_admin($id) {
+            if (empty($id)) {
+                return false;
+            }
+
+            $this->id = $id;
+
+            try {
+                return $this->admin->find_admin($id);
+            } catch (PDOException $e) {
+                error_log("ERRO_BUSCAR_ADMIN: ". $e->getMessage(). "\n". $e->getTraceAsString());
+                $this->redirect("admin/index");
+            }
+        }
+
+        //edit admin
+        public function edit_admin() {
+            $this->name = $_POST['name'] ?? null;
+            $this->email = $_POST['email'] ?? null;
+            $this->id = $_POST['id'] ?? null;
+
+            if (empty($this->name) || empty($this->email) || empty($this->id)) {
+                return false;
+            }
+
+            try {
+                if (!$this->admin->edit_admin($this->name, $this->email, $this->id)) {
+                    $this->redirect("admin/index");
+                }
+            } catch (PDOException $e) {
+                error_log("ERRO_BUSCAR_ADMIN: ". $e->getMessage(). "\n". $e->getTraceAsString());
+                $this->redirect("admin/index");
+            }
+
+            $_SESSION['name'] = $this->name;
+            $this->redirect("admin/index");
+        }
+
+        //change admin password
+        public function change_password() {
+            $this->password = $_POST['newPassword'];
+            $this->id = $_POST['id'];
+            $currentPassword = $_POST['currentPassword'];
+            $confirmNewPassword = $_POST['confirmNewPassword'];
+
+            if (empty($this->password) || empty($currentPassword) || empty($confirmNewPassword)) {
+                return false;
+            }
+
+            if (!$this->confirmPassword($this->password, $confirmNewPassword)) {
+                return false;
+            }
+
+            if (!Utils::password_length($this->password)) {
+                return false;
+            }
+
+            if (!Utils::verify_password($currentPassword, $this->find_password_hash($this->id))) {
+                return false;
+            }
+
+            $this->password = password_hash($this->password, PASSWORD_DEFAULT);
+
+            try {
+                if (!$this->admin->change_password($this->password, $this->id)) {
+                    $this->redirect("admin/index");
+                }
+            } catch (PDOException $e) {
+                error_log("ERRO_ALTERAR_PASSWORD: ". $e->getMessage(). "\n". $e->getTraceAsString());
+                $this->redirect("admin/index");
             }
 
             $this->redirect("admin/index");
@@ -214,6 +290,28 @@
                 error_log("ERRO_BUSCAR_HASH_ADMIN: ". $e->getMessage(). "\n". $e->getTraceAsString());
                 return null;
             }
+        }
+
+        //search admins password hash
+        private function find_password_hash($id) {
+            if (empty($id)) {
+                return null;
+            }
+
+            try {
+                return $this->admin->find_password_hash($id);
+            } catch (PDOException $e) {
+                error_log("ERRO_BUSCAR_HASH_ADMIN: ". $e->getMessage(). "\n". $e->getTraceAsString());
+                return null;
+            }
+        }
+
+        private function confirmPassword($password, $confirmPassword) {
+            if ($password !== $confirmPassword) {
+                return false;
+            }
+
+            return true;
         }
     }
 ?>
