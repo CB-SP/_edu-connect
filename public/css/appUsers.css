@@ -276,8 +276,8 @@ body {
         gap: 20px;
         padding: 1.3rem;
         position: fixed;
-        top: 70px;
         width: 100%;
+        background-color: var(--Background);
     }
 
     .head-section .icon-school-area {
@@ -475,6 +475,7 @@ body {
         padding: 1.5rem;
         position: fixed;
         width: 100%;
+        background-color: var(--Background);
     }
 
     .head-section .icon-school-area {

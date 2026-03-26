@@ -8,7 +8,7 @@
 
         public function index() {
             $this->isLoged();
-            $this->show_page("home");
+            $this->show_page("painelDirector");
         }
 
         public function login() {
@@ -18,6 +18,18 @@
         public function register() {
             $this->isLoged();
             $this->show_page("register");
+        }
+        public function feedDirector() {
+            $this->isLoged();
+            $this->show_page("feedDirector");
+        }
+        public function mensagens() {
+            $this->isLoged();
+            $this->show_page("messages");
+        }
+        public function turmas() {
+            $this->isLoged();
+            $this->show_page("turmas");
         }
 
         //users login

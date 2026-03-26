@@ -1,0 +1,388 @@
+<?php
+require_once './app/views/layouts/usersMain.phtml'
+?>
+
+<section id="director-section">
+    <section class="painel-info">
+        <div class="header-painel">
+            <div class="title">
+                <h2>Gestão da escola</h2>
+                <p>Nome da Escola</p>
+            </div>
+            <div class="role-info">
+                <img src="" alt=" ">
+                <p>Nivel de acesso</p>
+            </div>
+        </div>
+        <!--INFO SCHOOL-->
+        <div class="school-info-area">
+            <div class="title">
+                <h4>Informações da Escola</h4>
+            </div>
+            <div class="data-area">
+                <div class="data">
+                    <p>Endereço</p>
+                    <h4>Rua Principal, Lubango</h4>
+                </div>
+                <div class="data">
+                    <p>Contacto</p>
+                    <h4>+244 923 456 789</h4>
+                </div>
+                <div class="data">
+                    <p>Níveis de Ensino</p>
+                    <div class="grade-category">
+                        <h5>Ensino Médio</h5>
+                    </div>
+                </div>
+                <div class="data">
+                    <p>Cursos</p>
+                    <div class="courses-category">
+                        <h5>Inforgest</h5>
+                        <h5>Congest</h5>
+                        <h5>Adm Pública</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--STATISTICS INFO-->
+        <div class="statistics-info">
+            <div class="cards-info">
+                <p>Total Usuários</p>
+                <h2>8</h2>
+            </div>
+            <div class="cards-info">
+                <p>Professores</p>
+                <h2>3</h2>
+            </div>
+            <div class="cards-info">
+                <p>Coordenadores</p>
+                <h2>4</h2>
+            </div>
+            <div class="cards-info">
+                <p>Alunos</p>
+                <h2>5</h2>
+            </div>
+        </div>
+    </section>
+
+    <!--SEARCH & ADD USER SECTION-->
+    <div class="search-add-area">
+        <div class="inputs">
+            <div class="search-user-box">
+                <img src="" alt=" ">
+                <input type="search" name="searchSchool" id="searchSchool" placeholder="Pesquisar escolas">
+            </div>
+            <div class="add-user-btn">
+                <img src="" alt=" ">
+                <button class="add-button" id="btn-add-school">Nova Escola</button>
+            </div>
+        </div>
+        <!--ADD-USERS-MODAL-->
+        <div class="add-modal" id="add-user-modal">
+            <div class="desc-form">
+                <h3>Novo usuário</h3>
+                <p>Cadastre um novo usuário no sistema</p>
+                <img src="<?= URL ?>public/assets/images/x.png" alt="" class="close-modal-icon">
+            </div>
+            <form action="<?= URL ?>admin/add_user" method="post" enctype="multipart/form-data">
+                <div class="input-box">
+                    <label for="userName">Nome Completo</label>
+                    <input type="text" name="name" placeholder="Nome completo do usuário">
+                </div>
+                <div class="contacts-box">
+                    <div class="input-box">
+                        <label for="primaryContact">Contacto principal</label>
+                        <input type="text" name="contact_1" placeholder="+244 XXX XXX XXX">
+                    </div>
+                    <div class="input-box">
+                        <label for="secundaryContact">Contacto secundário</label>
+                        <input type="text" name="contact_2" placeholder="+244 XXX XXX XXX">
+                    </div>
+                </div>
+                <div class="contacts-box">
+                    <div class="input-box">
+                        <label for="nifUser">NIF</label>
+                        <input type="text" name="nif" placeholder="H244875734543">
+                    </div>
+                    <div class="input-box">
+                        <label for="emailUser">Email</label>
+                        <input type="text" name="email" placeholder="usuario@email.com">
+                    </div>
+                </div>
+                <div class="input-box">
+                    <label for="userPassword">Senha</label>
+                    <input type="text" name="password" placeholder="Digite uma senha segura">
+                </div>
+                <div class="input-box">
+                    <label for="">Foto do usuário</label>
+                    <label for="fotoFile" class="labelFile">
+                        <input type="file" name="photo" id="fotoFile" class="fotoFile" hidden>
+                        Escolher ficheiro.
+                        <span class="fileName">Nenhum ficheiro escolhido</span>
+                    </label>
+                </div>
+                <div class="input-box">
+                    <label for="userSchool">Escola</label>
+                    <select name="school" id="userSchool">
+                        <?php if (empty($schools)): ?>
+                            <option>Dados não encontrados</option>
+                        <?php else: ?>
+                            <?php
+                            $schools = array_filter($schools, function ($n) {
+                                return empty($n['deleted_at']);
+                            })
+                            ?>
+                            <?php foreach ($schools as $school): ?>
+                                <option value="<?= $school['id'] ?>"><?= $school['nome'] ?></option>
+                            <?php endforeach; ?>
+                        <?php endif; ?>
+                    </select>
+                </div>
+                <div class="input-box">
+                    <label for="role">Nível de acesso</label>
+                    <select name="role" id="role">
+                        <option value="director">Director</option>
+                        <option value="aluno">Aluno</option>
+                        <option value="professor">Professor</option>
+                    </select>
+                </div>
+                <div class="final-btn-actions">
+                    <button type="button" class="btn" id="btn-cancel">Cancelar</button>
+                    <button type="submit" class="btn" id="btn-create">Criar usuário</button>
+                </div>
+            </form>
+        </div>
+        <!--EDIT-USERS-MODAL-->
+        <div class="edit-modal" id="edit-user-modal">
+            <div class="desc-form">
+                <h3>Editar usuário</h3>
+                <p>Edite as informações de usuário</p>
+                <img src="<?= URL ?>public/assets/images/x.png" alt="" class="close-modal-icon">
+            </div>
+            <form action="<?= URL ?>admin/edit_user" method="post" enctype="multipart/form-data">
+                <div class="input-box">
+                    <label for="userName">Nome Completo</label>
+                    <input type="text" name="name" id="userName" placeholder="Nome completo do usuário">
+                </div>
+                <div class="contacts-box">
+                    <div class="input-box">
+                        <label for="primaryContact">Contacto principal</label>
+                        <input type="text" name="contact_1" id="userPrimaryContact" placeholder="+244 XXX XXX XXX">
+                    </div>
+                    <div class="input-box">
+                        <label for="secundaryContact">Contacto secundário</label>
+                        <input type="text" name="contact_2" id="userSecundaryContact" placeholder="+244 XXX XXX XXX">
+                    </div>
+                </div>
+                <div class="contacts-box">
+                    <div class="input-box">
+                        <label for="nifUser">NIF</label>
+                        <input type="text" name="nif" id="nifUser" placeholder="936501275HA043">
+                    </div>
+                    <div class="input-box">
+                        <label for="emailUser">Email</label>
+                        <input type="text" name="email" id="emailUser" placeholder="usuario@gmail.com">
+                    </div>
+                </div>
+                <div class="input-box">
+                    <label for="">Foto do usuário</label>
+                    <label for="fotoFile" class="labelFile">
+                        <input type="file" name="photo" id="fotoFile" class="fotoFile" hidden>
+                        Escolher ficheiro.
+                        <span class="fileName">Nenhum ficheiro escolhido</span>
+                    </label>
+                </div>
+
+                <input type="hidden" name="id" id="userId">
+                <input type="hidden" name="current_photo" id="current_photo">
+
+                <div class="final-btn-actions">
+                    <button type="button" class="btn" id="btn-cancel">Cancelar</button>
+                    <button type="submit" class="btn" id="btn-create">Editar usuário</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!--TAB USERS SECTION-->
+    <div class="tabs">
+        <button class="tab active" data-target="schools-section">
+            <span>Professores (10)</span>
+        </button>
+        <button class="tab" data-target="users-section">
+            <span>Coordenadores (3)</span>
+        </button>
+        <button class="tab" data-target="users-section">
+            <span>Alunos (50)</span>
+        </button>
+        <button class="tab" data-target="users-section">
+            <span>Director (1)</span>
+        </button>
+    </div>
+
+    <!--USERS LIST SECTION-->
+    <section class="list-info">
+        
+        <section class="tab-content active" id="users-section">
+            <!--TEACHERS LIST-->
+            <div class="school-list">
+
+                <table class="tbl-schools">
+                    <thead>
+                        <tr>
+                            <th>Usuário</th>
+                            <th>Contacto</th>
+                            <th>Estado</th>
+                            <th>Acções</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Sapas</td>
+                            <td>98678565</td>
+                            <td>Activo</td>
+                            <td class="btn-down-actions ">
+                                <button class="action-btn">Acções</button>
+                                <div class="drop-actions">
+                                    <button class="restore-action"><img src="" alt=" ">Restaurar</button>
+                                    <button class="edit-action"><img src="" alt=" ">Editar</button>
+                                    <button class="delete-action"><img src="" alt=" ">Eliminar</button>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Bernas</td>
+                            <td>98678565</td>
+                            <td>Activo</td>
+                            <td class="btn-down-actions ">
+                                <button class="action-btn">Acções</button>
+                                <div class="drop-actions">
+                                    <button class="restore-action"><img src="" alt=" ">Restaurar</button>
+                                    <button class="edit-action"><img src="" alt=" ">Editar</button>
+                                    <button class="delete-action"><img src="" alt=" ">Eliminar</button>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <!--COODINATORS LIST-->
+            <div class="school-list">
+
+                <table class="tbl-schools">
+                    <thead>
+                        <tr>
+                            <th>Usuário</th>
+                            <th>Contacto</th>
+                            <th>Estado</th>
+                            <th>Acções</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Sapas</td>
+                            <td>98678565</td>
+                            <td>Activo</td>
+                            <td class="btn-down-actions ">
+                                <button class="action-btn">Acções</button>
+                                <div class="drop-actions">
+                                    <button class="restore-action"><img src="" alt=" ">Restaurar</button>
+                                    <button class="edit-action"><img src="" alt=" ">Editar</button>
+                                    <button class="delete-action"><img src="" alt=" ">Eliminar</button>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Bernas</td>
+                            <td>98678565</td>
+                            <td>Activo</td>
+                            <td class="btn-down-actions ">
+                                <button class="action-btn">Acções</button>
+                                <div class="drop-actions">
+                                    <button class="restore-action"><img src="" alt=" ">Restaurar</button>
+                                    <button class="edit-action"><img src="" alt=" ">Editar</button>
+                                    <button class="delete-action"><img src="" alt=" ">Eliminar</button>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <!--STUDENTS LIST-->
+            <div class="school-list">
+
+                <table class="tbl-schools">
+                    <thead>
+                        <tr>
+                            <th>Usuário</th>
+                            <th>Contacto</th>
+                            <th>Estado</th>
+                            <th>Acções</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Sapas</td>
+                            <td>98678565</td>
+                            <td>Activo</td>
+                            <td class="btn-down-actions ">
+                                <button class="action-btn">Acções</button>
+                                <div class="drop-actions">
+                                    <button class="restore-action"><img src="" alt=" ">Restaurar</button>
+                                    <button class="edit-action"><img src="" alt=" ">Editar</button>
+                                    <button class="delete-action"><img src="" alt=" ">Eliminar</button>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Bernas</td>
+                            <td>98678565</td>
+                            <td>Activo</td>
+                            <td class="btn-down-actions ">
+                                <button class="action-btn">Acções</button>
+                                <div class="drop-actions">
+                                    <button class="restore-action"><img src="" alt=" ">Restaurar</button>
+                                    <button class="edit-action"><img src="" alt=" ">Editar</button>
+                                    <button class="delete-action"><img src="" alt=" ">Eliminar</button>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <!--PRINCIPAL LIST-->
+            <div class="school-list">
+
+                <table class="tbl-schools">
+                    <thead>
+                        <tr>
+                            <th>Usuário</th>
+                            <th>Contacto</th>
+                            <th>Estado</th>
+                            <th>Acções</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Sapas</td>
+                            <td>98678565</td>
+                            <td>Activo</td>
+                            <td class="btn-down-actions ">
+                                <button class="action-btn">Acções</button>
+                                <div class="drop-actions">
+                                    <button class="restore-action"><img src="" alt=" ">Restaurar</button>
+                                    <button class="edit-action"><img src="" alt=" ">Editar</button>
+                                    <button class="delete-action"><img src="" alt=" ">Eliminar</button>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+    </section>
+
+    <?php
+    require_once './app/views/layouts/closure.phtml'
+    ?>
