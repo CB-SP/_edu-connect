@@ -82,24 +82,28 @@
         font-weight: 300;
     }
 
-    .setting-card:nth-child(3) .icon-area {
+    #exit-card:hover {
         background-color: var(--bgDestructive);
     }
 
-    .setting-card:nth-child(3) .desc-setting-card h4 {
+    #exit-card a:hover {
+        background-color: var(--bgDestructive);
+    }
+
+    #exit-card .icon-area {
+        background-color: var(--bgIconDestructive);
+    }
+
+    #exit-card .desc-setting-card h4 {
         color: var(--Destructive);
     }
 }
 
 @media screen and (min-width: 769px) and (max-width: 990px) {
-    .main {
-        display: grid;
-        grid-template-columns: 20px 1fr 20px;
-    }
+
     .settings-page {
-        padding: 15px;
+        padding: 0 2.5rem;
         margin-top: 1.5rem;
-        grid-column: 2;
         padding: 12px;
         display: flex;
         flex-direction: column;
@@ -108,21 +112,17 @@
 }
 
 @media screen and (min-width: 991px) {
-    .main {
-        display: grid;
-        grid-template-columns: 80px 1fr 80px;
-    }
 
     .settings-page {
-        padding: 15px;
+        padding: 0 2.5rem;
+        margin-bottom: 2rem;
         margin-top: 1.5rem;
         grid-column: 2;
-        padding: 12px;
         display: flex;
         flex-direction: column;
         gap: 22px;
     }
-    
+
     .settings-page .title h2 {
         font-weight: var(--weight-bd);
         width: 60%;
@@ -135,7 +135,7 @@
         color: var(--MutedForegroundC);
     }
 
-     .settings-page .setting-cards {
+    .settings-page .setting-cards {
         display: flex;
         flex-direction: column;
         gap: 20px;
@@ -198,14 +198,19 @@
         font-weight: 300;
     }
 
-    .setting-card:nth-child(3) a:hover{
+    #exit-card:hover {
         background-color: var(--bgDestructive);
     }
-    .setting-card:nth-child(3) .icon-area {
+
+    #exit-card a:hover {
+        background-color: var(--bgDestructive);
+    }
+
+    #exit-card .icon-area {
         background-color: var(--bgIconDestructive);
     }
 
-    .setting-card:nth-child(3) .desc-setting-card h4 {
+    #exit-card .desc-setting-card h4 {
         color: var(--Destructive);
     }
 }

@@ -1,0 +1,84 @@
+
+.settings-page, .info-account, .security{
+    margin-top: 90px;
+}
+
+@media screen and (max-width: 768px) {
+    .title-area .logo-name-school-area{
+        display: flex;
+        gap: 10px;
+        align-items: center;
+    }
+    .logo-name-school-area .logo-img{
+        background-color: var(--bgImgColor);
+        height: 50px;
+        width: 50px;
+        border-radius: var(--radius-full);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    /*INFO SCHOOL ACCOUNT*/
+    .school-info-area{
+        padding: 1.3rem;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+    .school-info-area .title h4{
+        font-size: var(--text-lg);
+    }
+    .school-info-area .data-area{
+        display: grid;
+
+    }
+    .data-area .data p{
+        font-weight: var(--weight-sb);
+        color: var(--Primary);
+    }
+    .data h4{
+        font-weight: var(--weight-nl);
+        color: var(--MutedForegroundC);
+    }
+}
+
+@media screen and (min-width: 769px) {
+     .title-area .logo-name-school-area{
+        display: flex;
+        gap: 10px;
+        align-items: center;
+    }
+    .logo-name-school-area .logo-img{
+        background-color: var(--bgImgColor);
+        height: 50px;
+        width: 50px;
+        border-radius: var(--radius-full);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    /*INFO SCHOOL ACCOUNT*/
+    .school-info-area{
+        padding: 1.3rem;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+    .school-info-area .title h4{
+        font-size: var(--tet-lg);
+    }
+    .school-info-area .data-area{
+        display: grid;
+
+    }
+    .data-area .data p{
+        font-weight: var(--weight-sb);
+        color: var(--Primary);
+    }
+    .data h4{
+        font-weight: var(--weight-nl);
+        color: var(--MutedForegroundC);
+    }
+}
