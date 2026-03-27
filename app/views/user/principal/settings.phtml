@@ -1,5 +1,5 @@
 <?php
-    require_once './app/views/layouts/adminMain.phtml';
+    require_once './app/views/layouts/usersMain.phtml';
 ?>
 
 <section class="settings-page">
@@ -10,7 +10,7 @@
     <div class="setting-cards">
         <div class="setting-card">
             <h4>Conta</h4>
-            <a href="<?= URL ?>admin/infoAccount" class="redirect-area">
+            <a href="<?= URL ?>user/infoAccount" class="redirect-area">
                 <div class="settings-info-card">
                     <div class="icon-area">
                         <img src="" alt=" ">
@@ -27,7 +27,7 @@
         </div>
         <div class="setting-card">
             <h4>Segurança</h4>
-            <a href="<?= URL ?>admin/security" class="redirect-area">
+            <a href="<?= URL ?>user/security" class="redirect-area">
                 <div class="settings-info-card">
                     <div class="icon-area">
                         <img src="" alt=" ">
@@ -43,8 +43,25 @@
             </a>
         </div>
         <div class="setting-card">
+            <h4>Escola</h4>
+            <a href="<?= URL ?>user/infoSchoolAccount" class="redirect-area">
+                <div class="settings-info-card">
+                    <div class="icon-area">
+                        <img src="" alt=" ">
+                    </div>
+                    <div class="desc-setting-card">
+                        <h4>Dados da Escola</h4>
+                        <p>Editar informações da instituição</p>
+                    </div>
+                </div>
+                 <div class="redirect-icon">
+                    <img src="" alt=" ">
+                </div>
+            </a>
+        </div>
+        <div class="setting-card">
             <h4>Sessão</h4>
-            <a href="<?= URL ?>admin/logout" class="redirect-area" id="exit-card">
+            <a href="<?= URL ?>user/logout" class="redirect-area" id="exit-card">
                 <div class="settings-info-card">
                     <div class="icon-area">
                         <img src="" alt=" ">

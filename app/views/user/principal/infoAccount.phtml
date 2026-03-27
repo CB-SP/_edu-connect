@@ -1,0 +1,115 @@
+<?php
+    require_once './app/views/layouts/usersMain.phtml';
+    $admin = new AdminController;
+    $admin_data = $admin->find_admin($_SESSION['id']);
+?>
+
+<section class="info-account">
+    <div class="overlay-modal"></div>
+    <section class="up-section">
+        <div class="icon-back">
+            <a href="<?= URL ?>user/settings">
+                <img src="" alt=" ">
+                <p>Voltar</p>
+            </a>
+        </div>
+        <h4>Minha Conta</h4>
+        <p>Visualizar e editar informações da conta</p>
+    </section>
+    <!-- PERSONAL INFORMATION -->
+    <section class="personal-info-card">
+        <div class="title-area">
+            <div class="title-desc">
+                <h4>Informações Pessoais</h4>
+                <p>Gerir os seus dados pessoais</p>
+            </div>
+            <div class="btn-edit-info">
+                <button id="btn-edit-info-admin">Editar Informações</button>
+            </div>
+        </div>
+        <!--EDIT ADMIN MODAL-->
+        <div class="edit-modal" id="edit-admin-modal">
+            <div class="desc-form">
+                <h3>Editar Informações</h3>
+                <p>Edite as suas informações</p>
+                <img src="<?= URL ?>public/assets/images/x.png" alt="" class="close-modal-icon">
+            </div>
+            <form action="<?= URL ?>admin/edit_admin" method="post" enctype="multipart/form-data">
+                <div class="input-box">
+                    <label for="adminName">Nome Completo</label>
+                    <input type="text" name="name" id="adminName" placeholder="Nome completo do admin" value="<?= $_SESSION['name'] ?>">
+                </div>
+
+                <div class="input-box">
+                    <label for="adminEmail">Email</label>
+                    <input type="text" name="email" id="adminEmail" placeholder="admin@gmail.com" value="<?= $admin_data['email'] ?>">
+                </div>
+                <div class="input-box">
+                    <label for="">Foto do usuário</label>
+                    <label for="fotoFile" class="labelFile">
+                        <input type="file" name="photo" id="fotoFile" class="fotoFile" hidden>
+                        Escolher ficheiro.
+                        <span class="fileName">Nenhum ficheiro escolhido</span>
+                    </label>
+                </div>
+
+                <input type="hidden" name="id" id="userId" value="<?= $_SESSION['id'] ?>">
+                <input type="hidden" name="current_photo" id="current_photo">
+
+                <div class="final-btn-actions">
+                    <button type="button" class="btn" id="btn-cancel">Cancelar</button>
+                    <button type="submit" class="btn" id="btn-create">Gravar alterações</button>
+                </div>
+            </form>
+        </div>
+        <div class="profile-photo-area">
+            <div class="profile-img">
+                <img src="" alt=" ">
+            </div>
+            <div class="nome-role">
+                <h4><?= $_SESSION['name'] ?></h4>
+                <p>nivel acesso</p>
+            </div>
+        </div>
+        <div class="personal-info-area">
+            <div class="data">
+                <h5>ID</h5>
+                <p><?= $_SESSION['id'] ?></p>
+            </div>
+            <div class="data">
+                <h5>Nome Completo</h5>
+                <p><?= $_SESSION['name'] ?></p>
+            </div>
+            <div class="data">
+                <h5>Email</h5>
+                <p><?= $admin_data['email'] ?></p>
+            </div>
+        </div>
+    </section>
+    <!-- ACCOUNT INFORMATION -->
+    <section class="account-info-card">
+        <div class="title-desc">
+            <h4>Informações da Conta</h4>
+        </div>
+        <div class="account-info-area">
+            <div class="account-info">
+                <h5>ID da Conta</h5>
+                <p>1</p>
+            </div>
+            <div class="account-info">
+                <h5>Função</h5>
+                <p>nivel acesso</p>
+            </div>
+            <div class="account-info">
+                <h5>Status</h5>
+                <p>Ativo</p>
+            </div>
+            <div class="account-info">
+                <h5>Data de Criação</h5>
+                <p><?= $admin_data['created_at'] ?></p>
+            </div>
+        </div>
+    </section>
+</section>
+
+<?php require_once './app/views/layouts/closure.phtml' ?>

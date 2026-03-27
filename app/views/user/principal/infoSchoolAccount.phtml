@@ -1,0 +1,126 @@
+<?php
+require_once './app/views/layouts/usersMain.phtml';
+$admin = new AdminController;
+$admin_data = $admin->find_admin($_SESSION['id']);
+?>
+
+<section class="school-info-section">
+    <div class="overlay-modal"></div>
+    <section class="up-section">
+        <div class="icon-back">
+            <a href="<?= URL ?>user/settings">
+                <img src="" alt=" ">
+                <p>Voltar</p>
+            </a>
+        </div>
+        <h4>Dados da Escola</h4>
+        <p>Editar informações da instituição</p>
+    </section>
+    <!-- PERSONAL INFORMATION -->
+    <section class="personal-info-card">
+        <div class="title-area">
+            <div class="logo-name-school-area">
+                <div class="logo-img">
+                    <img src="" alt=" ">
+                </div>
+                <div class="title-desc">
+                    <h4>Informações da Escola</h4>
+                    <p>Gerir os dados da instituição</p>
+                </div>
+            </div>
+            <div class="btn-edit-info">
+                <button id="btn-edit-info-admin">Editar Informações</button>
+            </div>
+        </div>
+        <!--EDIT ADMIN MODAL-->
+        <div class="edit-modal" id="edit-admin-modal">
+            <div class="desc-form">
+                <h3>Editar Informações</h3>
+                <p>Edite as informações da Instituição</p>
+                <img src="<?= URL ?>public/assets/images/x.png" alt="" class="close-modal-icon">
+            </div>
+            <form action="<?= URL ?>admin/edit_admin" method="post" enctype="multipart/form-data">
+                <div class="input-box">
+                    <label for="schoolName">Nome da Escola</label>
+                    <input type="text" name="" id="schoolName" placeholder="Digite o nome da Escola" value="<?= $_SESSION['name'] ?>">
+                </div>
+
+                <div class="input-box">
+                    <label for="schoolEmail">Endereço</label>
+                    <input type="text" name="" id="schoolEmail" placeholder="Digite o endereço da Escola" value="<?= $admin_data['email'] ?>">
+                </div>
+                <div class="input-box">
+                    <label for="schoolTelefone_1">Telefone</label>
+                    <input type="tel" name="" id="schoolTelefone_1" placeholder="+244 XXX XXX XXX" value="<?= $admin_data['email'] ?>">
+                </div>
+                <div class="input-box">
+                    <label for="schoolTelefone_2">Telefone Secundário</label>
+                    <input type="tel" name="" id="schoolTelefone_2" placeholder="+244 XXX XXX XXX" value="<?= $admin_data['email'] ?>">
+                </div>
+
+                <div class="input-box">
+                    <label for="">Logotipo da Escola</label>
+                    <label for="fotoFile" class="labelFile">
+                        <input type="file" name="photo" id="fotoFile" class="fotoFile" hidden>
+                        Escolher ficheiro.
+                        <span class="fileName">Nenhum ficheiro escolhido</span>
+                    </label>
+                </div>
+
+                <input type="hidden" name="id" id="userId" value="<?= $_SESSION['id'] ?>">
+                <input type="hidden" name="current_photo" id="current_photo">
+
+                <div class="final-btn-actions">
+                    <button type="button" class="btn" id="btn-cancel">Cancelar</button>
+                    <button type="submit" class="btn" id="btn-create">Gravar alterações</button>
+                </div>
+            </form>
+        </div>
+        <!--INFO SCHOOL ACCOUNT-->
+        <div class="school-info-area">
+            <div class="title">
+                <h4>Dados Básicos</h4>
+            </div>
+            <div class="data-area">
+                <div class="data">
+                    <p>Nome da Escola</p>
+                    <h4>Nome da Escola</h4>
+                </div>
+                <div class="data">
+                    <p>Endereço</p>
+                    <h4>Rua Principal, Lubango</h4>
+                </div>
+                <div class="data">
+                    <p>Telefone</p>
+                    <h4>+244 923 456 789</h4>
+                </div>
+                <div class="data">
+                    <p>Telefone Secundário</p>
+                    <h4>+244 923 456 789</h4>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- ACCOUNT INFORMATION -->
+    <section class="account-info-card">
+        <div class="title-desc">
+            <h4>Status da Escola</h4>
+        </div>
+        <div class="account-info-area">
+            <div class="account-info">
+                <h5>ID da Escola</h5>
+                <p>1</p>
+            </div>
+            <div class="account-info">
+                <h5>Status</h5>
+                <p>Ativo</p>
+            </div>
+            <div class="account-info">
+                <h5>Data de Criação</h5>
+                <p><?= $admin_data['created_at'] ?></p>
+            </div>
+        </div>
+    </section>
+</section>
+
+<?php require_once './app/views/layouts/closure.phtml' ?>

@@ -8,7 +8,7 @@
 
         public function index() {
             $this->isLoged();
-            $this->show_page("painelDirector");
+            $this->show_page("principal/painel");
         }
 
         public function login() {
@@ -19,17 +19,33 @@
             $this->isLoged();
             $this->show_page("register");
         }
-        public function feedDirector() {
+        public function feed() {
             $this->isLoged();
-            $this->show_page("feedDirector");
+            $this->show_page("principal/feed");
         }
         public function mensagens() {
             $this->isLoged();
-            $this->show_page("messages");
+            $this->show_page("principal/messages");
         }
         public function turmas() {
             $this->isLoged();
-            $this->show_page("turmas");
+            $this->show_page("principal/turmas");
+        }
+        public function settings() {
+            $this->isLoged();
+            $this->show_page("principal/settings");
+        }
+        public function infoAccount() {
+            $this->isLoged();
+            $this->show_page("principal/infoAccount");
+        }
+        public function infoSchoolAccount() {
+            $this->isLoged();
+            $this->show_page("principal/infoSchoolAccount");
+        }
+        public function security() {
+            $this->isLoged();
+            $this->show_page("principal/security");
         }
 
         //users login
