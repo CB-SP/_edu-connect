@@ -3,6 +3,7 @@ require_once './app/views/layouts/usersMain.phtml'
 ?>
 
 <section id="director-section">
+    <div class="overlay-modal"></div>
     <section class="painel-info">
         <div class="header-painel">
             <div class="title">
@@ -70,11 +71,11 @@ require_once './app/views/layouts/usersMain.phtml'
         <div class="inputs">
             <div class="search-user-box">
                 <img src="" alt=" ">
-                <input type="search" name="searchSchool" id="searchSchool" placeholder="Pesquisar escolas">
+                <input type="search" name="searchUsers" id="searchUsers" placeholder="Pesquisar usuário">
             </div>
             <div class="add-user-btn">
                 <img src="" alt=" ">
-                <button class="add-button" id="btn-add-school">Nova Escola</button>
+                <button class="add-button" id="btn-add-school">Novo Usuário</button>
             </div>
         </div>
         <!--ADD-USERS-MODAL-->
@@ -206,16 +207,16 @@ require_once './app/views/layouts/usersMain.phtml'
 
     <!--TAB USERS SECTION-->
     <div class="tabs">
-        <button class="tab active" data-target="schools-section">
+        <button class="tab active" data-target="teachers-section">
             <span>Professores (10)</span>
         </button>
-        <button class="tab" data-target="users-section">
+        <button class="tab" data-target="coordinators-section">
             <span>Coordenadores (3)</span>
         </button>
-        <button class="tab" data-target="users-section">
+        <button class="tab" data-target="students-section">
             <span>Alunos (50)</span>
         </button>
-        <button class="tab" data-target="users-section">
+        <button class="tab" data-target="principal-section">
             <span>Director (1)</span>
         </button>
     </div>
@@ -223,11 +224,11 @@ require_once './app/views/layouts/usersMain.phtml'
     <!--USERS LIST SECTION-->
     <section class="list-info">
         
-        <section class="tab-content active" id="users-section">
+        <section class="users-list" >
             <!--TEACHERS LIST-->
-            <div class="school-list">
+            <div class="tab-content active" id="teachers-section">
 
-                <table class="tbl-schools">
+                <table class="tbl-users">
                     <thead>
                         <tr>
                             <th>Usuário</th>
@@ -238,7 +239,7 @@ require_once './app/views/layouts/usersMain.phtml'
                     </thead>
                     <tbody>
                         <tr>
-                            <td>Sapas</td>
+                            <td>Iris</td>
                             <td>98678565</td>
                             <td>Activo</td>
                             <td class="btn-down-actions ">
@@ -251,7 +252,7 @@ require_once './app/views/layouts/usersMain.phtml'
                             </td>
                         </tr>
                         <tr>
-                            <td>Bernas</td>
+                            <td>Gabi</td>
                             <td>98678565</td>
                             <td>Activo</td>
                             <td class="btn-down-actions ">
@@ -266,10 +267,10 @@ require_once './app/views/layouts/usersMain.phtml'
                     </tbody>
                 </table>
             </div>
-            <!--COODINATORS LIST-->
-            <div class="school-list">
+            <!--COORDINATORS LIST-->
+            <div class="tab-content" id="coordinators-section">
 
-                <table class="tbl-schools">
+                <table class="tbl-users">
                     <thead>
                         <tr>
                             <th>Usuário</th>
@@ -280,7 +281,7 @@ require_once './app/views/layouts/usersMain.phtml'
                     </thead>
                     <tbody>
                         <tr>
-                            <td>Sapas</td>
+                            <td>Keyson</td>
                             <td>98678565</td>
                             <td>Activo</td>
                             <td class="btn-down-actions ">
@@ -293,7 +294,7 @@ require_once './app/views/layouts/usersMain.phtml'
                             </td>
                         </tr>
                         <tr>
-                            <td>Bernas</td>
+                            <td>Usoli</td>
                             <td>98678565</td>
                             <td>Activo</td>
                             <td class="btn-down-actions ">
@@ -309,9 +310,9 @@ require_once './app/views/layouts/usersMain.phtml'
                 </table>
             </div>
             <!--STUDENTS LIST-->
-            <div class="school-list">
+            <div class="tab-content" id="students-section">
 
-                <table class="tbl-schools">
+                <table class="tbl-users">
                     <thead>
                         <tr>
                             <th>Usuário</th>
@@ -322,7 +323,7 @@ require_once './app/views/layouts/usersMain.phtml'
                     </thead>
                     <tbody>
                         <tr>
-                            <td>Sapas</td>
+                            <td>Bernas</td>
                             <td>98678565</td>
                             <td>Activo</td>
                             <td class="btn-down-actions ">
@@ -335,7 +336,7 @@ require_once './app/views/layouts/usersMain.phtml'
                             </td>
                         </tr>
                         <tr>
-                            <td>Bernas</td>
+                            <td>Kelson</td>
                             <td>98678565</td>
                             <td>Activo</td>
                             <td class="btn-down-actions ">
@@ -351,9 +352,9 @@ require_once './app/views/layouts/usersMain.phtml'
                 </table>
             </div>
             <!--PRINCIPAL LIST-->
-            <div class="school-list">
+            <div class="tab-content" id="principal-section">
 
-                <table class="tbl-schools">
+                <table class="tbl-users" id="principal-tbl">
                     <thead>
                         <tr>
                             <th>Usuário</th>

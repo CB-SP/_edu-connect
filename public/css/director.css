@@ -1,12 +1,11 @@
 @media screen and (max-width: 768px) {
     #director-section {
         margin-top: 70px;
-
+        padding: 15px;
     }
 
     #director-section .painel-info {
         height: 100%;
-        padding: 15px;
         display: flex;
         flex-direction: column;
         gap: 25px;
@@ -125,6 +124,7 @@
     .painel-info .statistics-info .cards-info {
         border: 1px solid var(--SwitchBackground);
         padding: 19px 15px;
+        height: 125px;
         border-radius: var(--radius-md);
     }
 
@@ -149,6 +149,7 @@
     }
 
     .search-add-area .inputs {
+        width: 100%;
         display: flex;
         justify-content: space-between;
         align-items: center;
@@ -352,21 +353,26 @@
     }
 
     /*USERS LIST*/
-    .list-info .school-list,
-    .list-info .users-list {
-        overflow: scroll;
+
+     .list-info .users-list {
+        overflow: auto;
         border: 1px solid var(--SwitchBackground);
         border-radius: var(--radius-lg);
         max-height: 400px;
         width: 100%;
         margin: auto;
+    }
+
+    .users-list .tab-content {
         height: 300px;
 
+    }
+    .users-list .tab-content:nth-child(4){
+        height: 175px;
     }
 
     .users-list .text-users-header {
         padding: 12px;
-
     }
 
     .text-users-header span {
@@ -377,24 +383,22 @@
         font-weight: var(--weight-lg);
     }
 
-    .school-list .tbl-schools,
     .users-list .tbl-users {
         font-size: var(--text-md);
         border-collapse: collapse;
         width: 100%;
     }
 
-    .tbl-schools thead th,
+
     .tbl-users thead th {
         position: sticky;
         top: -1px;
         background-color: var(--Background);
         border-bottom: 1px solid var(--SwitchBackground);
         text-align: left;
-        font-weight: var(--weight-sb);
+        font-weight: var(--weight-bd);
     }
 
-    .tbl-schools th,
     .tbl-users th {
         height: 50px;
         width: 500px;
@@ -402,19 +406,15 @@
         border-bottom: 1px solid var(--SwitchBackground);
     }
 
-    .tbl-schools td,
     .tbl-users td {
-        /*TBL*/
         border-bottom: 1px solid var(--SwitchBackground);
         padding: 10px;
     }
 
-    .tbl-schools .btn-down-actions,
     .tbl-users .btn-down-actions {
         position: relative;
     }
 
-    .tbl-schools .action-btn,
     .tbl-users .action-btn {
         border: none;
         background-color: var(--Background);
@@ -423,15 +423,14 @@
         border-radius: var(--radius-md);
     }
 
-    .tbl-schools .action-btn:hover,
     .tbl-users .action-btn:hover {
         background-color: var(--Muted);
     }
 
-    .tbl-schools .drop-actions,
     .tbl-users .drop-actions {
         position: absolute;
         top: 30px;
+        right: 8px;
         margin-top: 8px;
         display: flex;
         align-items: center;
@@ -447,7 +446,6 @@
         display: none;
     }
 
-    .tbl-schools .drop-actions.drop,
     .tbl-users .drop-actions.drop {
         display: block;
     }
@@ -475,7 +473,7 @@
         color: var(--Primary);
     }
 
-     /*ALTERNATE BETWEEN USERS AND SCHOOLS SECTIONS EFFECT*/
+    /*ALTERNATE BETWEEN USERS AND SCHOOLS SECTIONS EFFECT*/
     .tab.active {
         background-color: var(--AccentBlue);
         color: var(--Background);
@@ -509,6 +507,7 @@
 
 
 }
+
 
 @media screen and (min-width: 769px) {
     #director-section {
@@ -620,19 +619,18 @@
         align-items: center;
     }
 
-    
+
     /*CARDS INFO*/
     .painel-info .statistics-info {
-        display: flex;
+        display: flex; flex-wrap: wrap;
         gap: 16px;
-        justify-content: center;
     }
 
     .painel-info .statistics-info .cards-info {
         border: 1px solid var(--SwitchBackground);
         padding: 19px 15px;
         border-radius: var(--radius-md);
-        width: 306px;
+        width: 250px;
         height: 120px;
     }
 
@@ -729,6 +727,7 @@
         display: none;
         margin: auto;
         overflow-y: auto;
+        transition: all .5s ease-in-out;
     }
 
     .add-modal.show,
@@ -862,21 +861,25 @@
     }
 
     /*USERS LIST*/
-    .list-info .school-list,
     .list-info .users-list {
-        overflow: scroll;
+        overflow: auto;
         border: 1px solid var(--SwitchBackground);
         border-radius: var(--radius-lg);
         max-height: 400px;
         width: 100%;
         margin: auto;
+    }
+
+    .users-list .tab-content {
         height: 300px;
 
+    }
+    .users-list .tab-content:nth-child(4){
+        height: 175px;
     }
 
     .users-list .text-users-header {
         padding: 12px;
-
     }
 
     .text-users-header span {
@@ -887,44 +890,35 @@
         font-weight: var(--weight-lg);
     }
 
-    .school-list .tbl-schools,
     .users-list .tbl-users {
         font-size: var(--text-md);
         border-collapse: collapse;
         width: 100%;
     }
 
-    .tbl-schools thead th,
-    .tbl-users thead th {
+
+    .tbl-users th {
         position: sticky;
         top: -1px;
         background-color: var(--Background);
         border-bottom: 1px solid var(--SwitchBackground);
         text-align: left;
-        font-weight: var(--weight-sb);
-    }
-
-    .tbl-schools th,
-    .tbl-users th {
+        font-weight: var(--weight-bd);
         height: 50px;
         width: 500px;
         padding: 0 10px;
         border-bottom: 1px solid var(--SwitchBackground);
     }
 
-    .tbl-schools td,
     .tbl-users td {
-        /*TBL*/
         border-bottom: 1px solid var(--SwitchBackground);
         padding: 10px;
     }
 
-    .tbl-schools .btn-down-actions,
     .tbl-users .btn-down-actions {
         position: relative;
     }
 
-    .tbl-schools .action-btn,
     .tbl-users .action-btn {
         border: none;
         background-color: var(--Background);
@@ -933,12 +927,10 @@
         border-radius: var(--radius-md);
     }
 
-    .tbl-schools .action-btn:hover,
     .tbl-users .action-btn:hover {
         background-color: var(--Muted);
     }
 
-    .tbl-schools .drop-actions,
     .tbl-users .drop-actions {
         position: absolute;
         top: 30px;
@@ -957,7 +949,6 @@
         display: none;
     }
 
-    .tbl-schools .drop-actions.drop,
     .tbl-users .drop-actions.drop {
         display: block;
     }
@@ -985,7 +976,7 @@
         color: var(--Primary);
     }
 
-         /*ALTERNATE BETWEEN USERS AND SCHOOLS SECTIONS EFFECT*/
+    /*ALTERNATE BETWEEN USERS AND SCHOOLS SECTIONS EFFECT*/
     .tab.active {
         background-color: var(--AccentBlue);
         color: var(--Background);
