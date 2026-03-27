@@ -86,18 +86,22 @@ body {
     select {
         width: 100%;
         padding: 10px;
-        border: 2px solid transparent;
+        border: 1px solid transparent;
+        outline: 3px solid transparent;
         border-radius: 8px;
         background-color: #f0f1f1;
         font-size: 14px;
         transition: 0.2s;
         color: black;
+
+
+
     }
 
     input:focus,
     select:focus {
-        outline: none;
-        border-color: #a1a1a1;
+        outline-color: var(--SwitchBackground);
+        border-color: gray;
         background: white;
     }
 
@@ -227,7 +231,9 @@ body {
     .labelFile {
         width: 100%;
         padding: 10px;
-        border: 2px solid transparent;
+        border: 1px solid transparent;
+        outline: 3px solid transparent;
+
         border-radius: 8px;
         background-color: #f0f1f1;
         font-size: 14px;
@@ -245,8 +251,8 @@ body {
 
     input:focus-within,
     select:focus-within {
-        outline: none;
-        border-color: #a1a1a1;
+        outline-color: var(--SwitchBackground);
+        border-color: gray;
         background: white;
     }
 

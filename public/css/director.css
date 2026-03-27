@@ -145,7 +145,6 @@
         align-items: center;
         gap: 20px;
         width: 100%;
-        padding: 0 1.3rem;
     }
 
     .search-add-area .inputs {
@@ -167,12 +166,11 @@
     }
 
     .search-user-box {
-        width: 55%;
         background-color: var(--Muted);
     }
 
     .add-user-btn {
-        width: 45%;
+        width: 70%;
         background-color: var(--AccentBlue);
         padding: 10px;
 
@@ -187,6 +185,17 @@
         outline: none;
         border-radius: var(--radius-sm);
         color: var(--Primary);
+    }
+
+    .inputs .search-user-box {
+        border: 1px solid transparent;
+        outline: 3px solid transparent;
+        width: 100%;
+    }
+
+    .inputs .search-user-box:focus-within {
+        outline-color: var(--SwitchBackground);
+        border-color: gray;
     }
 
     .inputs .search-user-box img {
@@ -217,7 +226,7 @@
         background-color: var(--Background);
         z-index: 900;
         border-radius: var(--radius-lg);
-        box-shadow: 0 4px 8px rgba(0, 0, 0, .8);
+        box-shadow: 0 4px 23px rgba(0, 0, 0, .2);
         padding: 18px;
         display: none;
         margin: auto;
@@ -285,11 +294,21 @@
     .edit-modal .input-box select {
         height: 40px;
         border: none;
-        border-radius: var(--radius-sm);
-        outline-color: var(--MutedForeground);
+        border: 1px solid transparent;
+        border-radius: var(--radius-md);
+        outline: 3px solid transparent;
         padding: 5px 10px;
         background-color: var(--InputBackground);
         font-size: var(--text-md);
+        transition: all .2s ease-in-out;
+    }
+
+    .add-modal .input-box input:focus,
+    .add-modal .input-box select:focus,
+    .edit-modal .input-box input:focus,
+    .edit-modal .input-box select:focus {
+        outline-color: var(--SwitchBackground);
+        border-color: gray;
     }
 
     .input-box input[type="file"] {
@@ -354,7 +373,7 @@
 
     /*USERS LIST*/
 
-     .list-info .users-list {
+    .list-info .users-list {
         overflow: auto;
         border: 1px solid var(--SwitchBackground);
         border-radius: var(--radius-lg);
@@ -367,7 +386,8 @@
         height: 300px;
 
     }
-    .users-list .tab-content:nth-child(4){
+
+    .users-list .tab-content:nth-child(4) {
         height: 175px;
     }
 
@@ -622,7 +642,8 @@
 
     /*CARDS INFO*/
     .painel-info .statistics-info {
-        display: flex; flex-wrap: wrap;
+        display: flex;
+        flex-wrap: wrap;
         gap: 16px;
     }
 
@@ -651,7 +672,6 @@
         align-items: center;
         gap: 20px;
         width: 100%;
-        padding: 0 1.3rem;
     }
 
     .search-add-area .inputs {
@@ -683,6 +703,7 @@
 
     }
 
+
     .inputs .search-user-box input {
         border: none;
         font-size: var(--text-md);
@@ -692,6 +713,18 @@
         outline: none;
         border-radius: var(--radius-sm);
         color: var(--Primary);
+
+
+    }
+
+    .inputs .search-user-box {
+        border: 1px solid transparent;
+        outline: 3px solid transparent;
+    }
+
+    .inputs .search-user-box:focus-within {
+        outline-color: var(--SwitchBackground);
+        border-color: gray;
     }
 
     .inputs .search-user-box img {
@@ -704,8 +737,8 @@
         color: var(--Background);
         background-color: var(--AccentBlue);
         width: 100%;
-
     }
+
 
     .inputs .add-user-btn img {
         padding-left: 5px;
@@ -722,7 +755,7 @@
         background-color: var(--Background);
         z-index: 900;
         border-radius: var(--radius-lg);
-        box-shadow: 0 4px 8px rgba(0, 0, 0, .8);
+        box-shadow: 0 4px 23px rgba(0, 0, 0, .2);
         padding: 18px;
         display: none;
         margin: auto;
@@ -791,11 +824,21 @@
     .edit-modal .input-box select {
         height: 40px;
         border: none;
-        border-radius: var(--radius-sm);
-        outline-color: var(--MutedForeground);
+        border: 1px solid transparent;
+        border-radius: var(--radius-md);
+        outline: 3px solid transparent;
         padding: 5px 10px;
         background-color: var(--InputBackground);
         font-size: var(--text-md);
+        transition: all .2s ease-in-out;
+    }
+
+    .add-modal .input-box input:focus,
+    .add-modal .input-box select:focus,
+    .edit-modal .input-box input:focus,
+    .edit-modal .input-box select:focus {
+        outline-color: var(--SwitchBackground);
+        border-color: gray;
     }
 
     .input-box input[type="file"] {
@@ -874,7 +917,8 @@
         height: 300px;
 
     }
-    .users-list .tab-content:nth-child(4){
+
+    .users-list .tab-content:nth-child(4) {
         height: 175px;
     }
 

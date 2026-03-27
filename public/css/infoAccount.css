@@ -259,6 +259,7 @@
         background-color: var(--InputBackground);
         border-radius: var(--radius-sm);
         font-size: var(--text-nl);
+        transition: all .2s ease-in-out;
     }
 
     .alter-form .input-box input:focus {
@@ -622,7 +623,7 @@
         background-color: var(--InputBackground);
         border-radius: var(--radius-sm);
         font-size: var(--text-nl);
-        transition: all .3s ease;
+        transition: all .2s ease-in-out;
     }
 
     .alter-form .input-box input:focus {
