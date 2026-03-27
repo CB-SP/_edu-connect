@@ -127,6 +127,15 @@
     .search-user-box {
         width: 55%;
         background-color: var(--Muted);
+        border: 1px solid transparent;
+        outline: 3px solid transparent;
+        transition: all .2s ease-in-out;
+    }
+
+    .search-school-box:focus-within,
+    .search-user-box:focus-within {
+        outline-color: var(--SwitchBackground);
+        border-color: gray;
     }
 
     .add-school-btn,
@@ -249,11 +258,21 @@
     .edit-modal .input-box select {
         height: 40px;
         border: none;
-        border-radius: var(--radius-sm);
-        outline-color: var(--MutedForeground);
+        border: 1px solid transparent;
+        border-radius: var(--radius-md);
+        outline: 3px solid transparent;
         padding: 5px 10px;
         background-color: var(--InputBackground);
         font-size: var(--text-md);
+        transition: all .2s ease-in-out;
+    }
+
+    .add-modal .input-box input:focus,
+    .add-modal .input-box select:focus,
+    .edit-modal .input-box input:focus,
+    .edit-modal .input-box select:focus {
+        outline-color: var(--SwitchBackground);
+        border-color: gray;
     }
 
     .input-box input[type="file"] {
@@ -459,7 +478,7 @@
     .painel-dash {
         height: 100%;
         padding: 18px;
-
+        width: 100vw;
     }
 
     .painel-dash .header-painel {
@@ -581,7 +600,15 @@
     .search-user-box {
         width: 80%;
         background-color: var(--Muted);
+        border: 1px solid transparent;
+        outline: 3px solid transparent;
+        transition: all .2s ease-in-out;
+    }
 
+    .search-school-box:focus-within,
+    .search-user-box:focus-within {
+        outline-color: var(--SwitchBackground);
+        border-color: gray;
     }
 
     .add-school-btn,
@@ -697,11 +724,21 @@
     .edit-modal .input-box select {
         height: 40px;
         border: none;
-        border-radius: var(--radius-sm);
-        outline-color: var(--MutedForeground);
+        border: 1px solid transparent;
+        border-radius: var(--radius-md);
+        outline: 3px solid transparent;
         padding: 5px 10px;
         background-color: var(--InputBackground);
         font-size: var(--text-md);
+        transition: all .2s ease-in-out;
+    }
+
+    .add-modal .input-box input:focus,
+    .add-modal .input-box select:focus,
+    .edit-modal .input-box input:focus,
+    .edit-modal .input-box select:focus {
+        outline-color: var(--SwitchBackground);
+        border-color: gray;
     }
 
     .input-box input[type="file"] {
@@ -1025,6 +1062,15 @@
     .search-user-box {
         width: 85%;
         background-color: var(--Muted);
+        border: 1px solid transparent;
+        outline: 3px solid transparent;
+        transition: all .2s ease-in-out;
+    }
+
+    .search-school-box:focus-within,
+    .search-user-box:focus-within {
+        outline-color: var(--SwitchBackground);
+        border-color: gray;
     }
 
     .add-school-btn,
@@ -1140,12 +1186,22 @@
     .edit-modal .input-box select {
         height: 40px;
         border: none;
-        border-radius: var(--radius-sm);
-        outline-color: var(--MutedForeground);
+        border: 1px solid transparent;
+        border-radius: var(--radius-md);
+        outline: 3px solid transparent;
         padding: 5px 10px;
         background-color: var(--InputBackground);
         font-size: var(--text-md);
     }
+
+    .add-modal .input-box input:focus,
+    .add-modal .input-box select:focus,
+    .edit-modal .input-box input:focus,
+    .edit-modal .input-box select:focus {
+        outline-color: var(--SwitchBackground);
+        border-color: gray;
+    }
+
 
     .input-box input[type="file"] {
         border: none;
