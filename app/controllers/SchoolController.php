@@ -92,6 +92,19 @@
             }
         }
 
+        //search for a unic school
+        public function find_school($id) {
+            if (empty($id)) {
+                return null;
+            }
+
+            try {
+                return $this->school->fetch_school($id);
+            } catch (PDOException $e) {
+                error_log("ERRO_BUSCAR_ESCOLA: ". $e->getMessage(). "\n". $e->getTraceAsString());
+            }
+        }
+
         //delete schools
         public function delete_school($id) {
             if (empty($id)) {

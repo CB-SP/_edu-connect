@@ -31,7 +31,7 @@
                     </div>
                     <div class="user-details">
                         <h3><?= $_SESSION['name'] ?></h3>
-                        <span>nivel acesso</span>
+                        <span><?= $_SESSION['role'] ?></span>
                     </div>
                 </div>
             </div>
@@ -64,5 +64,5 @@
             <div class="icon-school-area">
                 <img src="" alt=" ">
             </div>
-            <h3>Nome da Escola</h3>
+            <h3><?= $_SESSION['school'] ?></h3>
         </section>
