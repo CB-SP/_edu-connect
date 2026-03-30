@@ -25,7 +25,7 @@
         //search for every users of a school
         public function fetch_users() {
             try {
-                $this->stmt = $this->pdo->prepare("SELECT u.id, u.nome, u.contacto_1, u.contacto_2, u.nif, u.email, u.foto, u.role, u.deleted_at, e.nome AS escola, e.deleted_at AS estado_escola FROM usuarios AS u JOIN escolas AS e ON u.escola = e.id ORDER BY u.nome");
+                $this->stmt = $this->pdo->prepare("SELECT u.id, u.nome, u.contacto_1, u.contacto_2, u.nif, u.email, u.foto, u.role, u.deleted_at, e.nome AS escola, e.id as escola_id, e.deleted_at AS estado_escola FROM usuarios AS u JOIN escolas AS e ON u.escola = e.id ORDER BY u.nome");
                 $this->stmt->execute();
 
                 $users = [];
@@ -93,7 +93,7 @@
         //fetch user id
         public function fetch_user_data_login($nif) {
             try {
-                $this->stmt = $this->pdo->prepare("SELECT u.id, u.nome, u.role, u.foto, e.nome AS escola FROM usuarios AS u JOIN escolas AS e ON e.id = u.escola WHERE u.nif = ? AND u.deleted_at IS NULL AND e.deleted_at IS NULL");
+                $this->stmt = $this->pdo->prepare("SELECT u.id, u.nome, u.role, u.foto, e.nome AS escola, e.id AS escola_id FROM usuarios AS u JOIN escolas AS e ON e.id = u.escola WHERE u.nif = ? AND u.deleted_at IS NULL AND e.deleted_at IS NULL");
                 $this->stmt->execute([$nif]);
 
                 $user = $this->stmt->fetch(PDO::FETCH_ASSOC);

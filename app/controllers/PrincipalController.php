@@ -1,10 +1,11 @@
 <?php
     class PrincipalController extends UserController {
-        private $director, $user;
+        private $principal, $user, $school;
 
         public function __construct() {
-            $this->director = new PrincipalModel;
+            $this->principal = new PrincipalModel;
             $this->user = new UserController;
+            $this->school = new SchoolController;
         }
 
         public function index() {
@@ -24,6 +25,27 @@
         public function infoSchoolAccount() {
             $this->isLoged();
             $this->show_page("infoSchoolAccount");
+        }
+
+        //fetch total entities
+        public function total_entities($school) {
+            try {
+                return $this->principal->total_entities($school);
+            } catch (PDOException $e) {
+                error_log("ERRO_CONSULTAR_ENTIDADES: ". $e->getMessage(). "\n". $e->getTraceAsString());
+                return null;
+            }
+        }
+
+        //==========schools managemant==========
+        //update
+        public function edit_school() {
+            $this->redirect($this->school->edit_school() ? 'principal/index' : 'admin/index');
+        }
+
+        //read one
+        public function find_school($id) {
+            return $this->school->find_school($id);
         }
 
         //==========users managemant==========

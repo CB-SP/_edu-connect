@@ -53,6 +53,7 @@
                 $_SESSION['id'] = $user_login['id'];
                 $_SESSION['name'] = $user_login['nome'];
                 $_SESSION['school'] = $user_login['escola'];
+                $_SESSION['school_id'] = $user_login['escola_id'];
                 $_SESSION['role'] = $user_login['role'];
                 $_SESSION['photo'] = $user_login['foto'];
             } catch (PDOException $e) {
