@@ -1,7 +1,77 @@
-<?php require_once './app/views/layouts/usersMain.phtml'?>
+<?php require_once './app/views/layouts/usersMain.phtml' ?>
 
-<section id="director-section">
-    <h1>Feed Users</h1>
-</section>
+<div class="feed-wrapper">
+    <section id="feed-section">
+        <div class="header-feed">
+            <div class="title-feed">
+                <h2>Feed</h2>
+                <p>Publicações e comunicados da sua escola</p>
+            </div>
+            <button class="btn-new-publish">
+                <img src="" alt=" ">
+                Nova Publicação
+            </button>
+        </div>
+        <div class="tabs-publication">
+            <button class="tab-publication">Todas (3)</button>
+            <button class="tab-publication">
+                <img src="" alt=" ">
+                Comunicados (2)
+            </button>
+        </div>
+        <div class="publication-cards">
+            <div class="publication-card">
+                <div class="header-publication-card">
+                    <div class="info-user-publication-card">
+                        <div class="img-user">
+                            <img src="" alt=" ">
+                        </div>
+                        <div class="name-user">
+                            <h4>Prof. Daniel Silongwa</h4>
+                            <p>Published time</p>
+                        </div>
+                        <div class="publication-type-info">
+                            Comunicado
+                        </div>
+                    </div>
+                    <div class="options-publication-card">
+                        . 
+                        . 
+                        . 
+                    </div>
+                </div>
+                <div class="publication-card-content">
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus unde fugit ea, dolorem vitae atque laboriosam sit reiciendis..</p>
+                </div>
+                <div class="reactions-info">
+                    Exemplo
+                </div>
+                <div class="reaction-actions">
+                    <button class="reaction-option">
+                        <img src="" alt=" ">
+                        <p>Gosto</p>
+                    </button>
+                    <button class="reaction-option">
+                        <img src="" alt=" ">
+                        <p>Adoro</p>
+                    </button>
+                    <button class="reaction-option">
+                        <img src="" alt=" ">
+                        <p>Comentar</p>
+                    </button>
+                </div>
+                <div class="coment-area">
+                    <div class="img-user">
+                        <img src="" alt=" ">
+                    </div>
+                    <div class="coment-box">
+                        <input type="text" class="text" placeholder="Escreva um comentário">
+                        <button type="submit" class="btn-coment">Publicar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
 
-<?php  require_once './app/views/layouts/closure.phtml'?>
+<?php require_once './app/views/layouts/closure.phtml' ?>
