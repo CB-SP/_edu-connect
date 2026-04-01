@@ -338,46 +338,47 @@
                 <div class="text-users-header">
                     <p><span>Todos os usuários do sistema.</span> <br> Usuários de todas as escolas cadastradas.</p>
                 </div>
-                <?php if(empty($users)):?>
-                    <h2>Dados não encontrados</h2>
-                <?php else:?>
-                    <table class="tbl-users">
-                        <thead>
-                            <tr>
-                                <th>Usuário</th>
-                                <th>Escola</th>
-                                <th>Role</th>
-                                <th>Estado</th>
-                                <th>Acções</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-
-                            <?php foreach ($users as $user):?>
+                <div class="tbl">
+                    <?php if(empty($users)):?>
+                        <h2>Dados não encontrados</h2>
+                    <?php else:?>
+                        <table class="tbl-users">
+                            <thead>
                                 <tr>
-                                    <td><?= $user['nome'] ?></td>
-                                    <td><?= $user['escola'] ?></td>
-                                    <td><?= $user['role'] ?></td>
-                                    <td>
-                                        <?= $status = empty($user['deleted_at']) && empty($user['estado_escola']) ? 'Activo' : 'Inactivo'?>
-                                    </td>
-                                    <td class="btn-down-actions ">
-                                        <button class="action-btn">Acções</button>
-                                        <div class="drop-actions">
-                                            <?php if ($status == 'Inactivo'):?>
-                                                <button class="restore-action" onclick="window.location.href='<?= URL ?>admin/restore_user/<?= $user['id'] ?>'"><img src="" alt=" ">Restaurar</button>
-                                            <?php else:?>
-                                                    <button class="edit-action" data-id="<?= $user['id'] ?>" data-type="user"><img src="" alt=" ">Editar</button>
-                                                    <button class="delete-action" onclick="window.location.href='<?= URL ?>admin/delete_user/<?= $user['id'] ?>'"><img src="" alt=" ">Eliminar</button>
-                                            <?php endif;?>
-                                        </div>
-                                    </td>
+                                    <th>Usuário</th>
+                                    <th>Escola</th>
+                                    <th>Role</th>
+                                    <th>Estado</th>
+                                    <th>Acções</th>
                                 </tr>
-                            <?php endforeach;?>
-                                
-                        </tbody>
-                    </table>
-                <?php endif;?>
+                            </thead>
+                            <tbody>
+                                <?php foreach ($users as $user):?>
+                                    <tr>
+                                        <td><?= $user['nome'] ?></td>
+                                        <td><?= $user['escola'] ?></td>
+                                        <td><?= $user['role'] ?></td>
+                                        <td>
+                                            <?= $status = empty($user['deleted_at']) && empty($user['estado_escola']) ? 'Activo' : 'Inactivo'?>
+                                        </td>
+                                        <td class="btn-down-actions ">
+                                            <button class="action-btn">Acções</button>
+                                            <div class="drop-actions">
+                                                <?php if ($status == 'Inactivo'):?>
+                                                    <button class="restore-action" onclick="window.location.href='<?= URL ?>admin/restore_user/<?= $user['id'] ?>'"><img src="" alt=" ">Restaurar</button>
+                                                <?php else:?>
+                                                        <button class="edit-action" data-id="<?= $user['id'] ?>" data-type="user"><img src="" alt=" ">Editar</button>
+                                                        <button class="delete-action" onclick="window.location.href='<?= URL ?>admin/delete_user/<?= $user['id'] ?>'"><img src="" alt=" ">Eliminar</button>
+                                                <?php endif;?>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                <?php endforeach;?>
+                    
+                            </tbody>
+                        </table>
+                    <?php endif;?>
+                </div>
             </div>
 
     </section>
