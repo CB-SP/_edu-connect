@@ -1,6 +1,7 @@
 <?php require_once './app/views/layouts/usersMain.phtml' ?>
 
 <div class="feed-wrapper">
+    <div class="overlay"></div>
     <section id="feed-section">
         <div class="header-feed">
             <div class="title-feed">
@@ -11,6 +12,41 @@
                 <img src="" alt=" ">
                 Nova Publicação
             </button>
+        </div>
+        <div class="feed-modal">
+            <div class="feed-modal-header">
+                <h3>Nova Publicação</h3>
+                <p>Compartilhe conteúdo com a comunidade escolar.</p>
+
+                <button class="close-icon-btn">
+                    <img src="<?= URL ?>public/assets/images/x.png" alt="close-icon">
+                </button>
+            </div>
+            <form action="" class="publication-form">
+                <div class="input-box">
+                    <label for="type-publication">Tipo de Publicação *</label>
+                    <select name="" id="type-publication">
+                        <option value="">Publicação Normal</option>
+                        <option value="">Aviso/Comunicado</option>
+                    </select>
+                </div>
+                <div class="input-box">
+                    <label for="publication-content">Conteúdo *</label>
+                    <textarea name="" id="publication-content" placeholder="O que deseja compartilhar?"></textarea>
+                </div>
+                <div class="input-box">
+                    <label for="">Anexos</label>
+                    <label for="publication-file" class="labelFile">
+                        <input type="file" name="photo" id="publication-file" class="fotoFile" hidden>
+                        Anexar Ficheiros.
+                        <span class="fileName">Nenhum ficheiro escolhido</span>
+                    </label>
+                </div>
+                <div class="btn-publish-box">
+                    <button>Cancelar</button>
+                    <button>Publicar</button>
+                </div>
+            </form>
         </div>
         <div class="tabs-publication">
             <button class="tab-publication">Todas (3)</button>

@@ -13,6 +13,9 @@ body {
     min-height: 100vh;
 }
 
+  .input-box .fileName {
+        color: var(--MutedForegroundC);
+    }
 
 @media screen and (max-width: 768px) {
 
@@ -93,9 +96,6 @@ body {
         font-size: 14px;
         transition: 0.2s;
         color: black;
-
-
-
     }
 
     input:focus,
