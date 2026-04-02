@@ -25,7 +25,11 @@
         //search for every users of a school
         public function fetch_users() {
             try {
-                $this->stmt = $this->pdo->prepare("SELECT u.id, u.nome, u.contacto_1, u.contacto_2, u.nif, u.email, u.foto, u.role, u.deleted_at, e.nome AS escola, e.id as escola_id, e.deleted_at AS estado_escola FROM usuarios AS u JOIN escolas AS e ON u.escola = e.id ORDER BY u.nome");
+                $this->stmt = $this->pdo->prepare("SELECT u.id, u.nome, u.contacto_1, u.contacto_2, u.nif, u.email, u.foto, u.role, u.deleted_at, e.nome AS escola,
+                    e.id AS escola_id, e.deleted_at AS estado_escola, c.role AS coordinator_role
+                    FROM usuarios AS u
+                    LEFT JOIN coordenadores AS c ON c.id = u.id
+                    JOIN escolas AS e ON u.escola = e.id ORDER BY u.nome");
                 $this->stmt->execute();
 
                 $users = [];
@@ -102,6 +106,20 @@
             } catch (PDOException $e) {
                 throw $e;
             }          
+        }
+
+        //get user id
+        public function get_user_id($nif) {
+            try {
+                $this->stmt = $this->pdo->prepare("SELECT id FROM usuarios WHERE nif = ? LIMIT 1");
+                $this->stmt->execute([$nif]);
+
+                $id = $this->stmt->fetch(PDO::FETCH_ASSOC)['id'];
+
+                return !empty($id) ? $id : null;
+            } catch (PDOException $e) {
+                throw $e;
+            }
         }
     }
 ?>
