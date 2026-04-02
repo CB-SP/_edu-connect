@@ -19,7 +19,6 @@
                 <p><?= ucfirst($_SESSION['role']) ?></p>
             </div>
         </div>
-        <?php var_dump($entities)?>
         <!--INFO SCHOOL-->
         <div class="school-info-area">
             <div class="title">
@@ -210,9 +209,6 @@
         <button class="tab" data-target="students-section">
             <span>Alunos (50)</span>
         </button>
-        <button class="tab" data-target="principal-section">
-            <span>Director (1)</span>
-        </button>
     </div>
 
     <!--USERS LIST SECTION-->
@@ -348,35 +344,6 @@
                                 </tr>
                             <?php endforeach;?>
                         <?php endif;?>
-                    </tbody>
-                </table>
-            </div>
-            <!--PRINCIPAL LIST-->
-            <div class="tab-content" id="principal-section">
-
-                <table class="tbl-users" id="principal-tbl">
-                    <thead>
-                        <tr>
-                            <th>Usuário</th>
-                            <th>Contacto</th>
-                            <th>Estado</th>
-                            <th>Acções</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>Sapas</td>
-                            <td>98678565</td>
-                            <td>Activo</td>
-                            <td class="btn-down-actions ">
-                                <button class="action-btn">Acções</button>
-                                <div class="drop-actions">
-                                    <button class="restore-action"><img src="" alt=" ">Restaurar</button>
-                                    <button class="edit-action"><img src="" alt=" ">Editar</button>
-                                    <button class="delete-action"><img src="" alt=" ">Eliminar</button>
-                                </div>
-                            </td>
-                        </tr>
                     </tbody>
                 </table>
             </div>

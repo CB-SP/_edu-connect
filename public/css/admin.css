@@ -318,19 +318,26 @@
 
     .list-info .school-list,
     .list-info .users-list {
-        overflow: scroll;
         border: 1px solid var(--SwitchBackground);
         border-radius: var(--radius-lg);
         max-height: 400px;
         width: 100%;
         margin: auto;
         height: 300px;
+        width: 100%;
+    }
+    .school-list{
+        overflow: auto;
+    }
 
+    .users-list .tbl {
+        overflow: auto;
+        height: 100%;
+        width: 100%;
     }
 
     .users-list .text-users-header {
         padding: 12px;
-
     }
 
     .text-users-header span {
@@ -344,14 +351,12 @@
     .school-list .tbl-schools,
     .users-list .tbl-users {
         font-size: var(--text-md);
-        border-collapse: collapse;
         width: 100%;
     }
 
+
     .tbl-schools thead th,
     .tbl-users thead th {
-        position: sticky;
-        top: -1px;
         background-color: var(--Background);
         border-bottom: 1px solid var(--SwitchBackground);
         text-align: left;
@@ -361,7 +366,6 @@
     .tbl-schools th,
     .tbl-users th {
         height: 50px;
-        width: 500px;
         padding: 0 10px;
         border-bottom: 1px solid var(--SwitchBackground);
     }
@@ -385,6 +389,7 @@
         cursor: pointer;
         padding: 5px 12px;
         border-radius: var(--radius-md);
+
     }
 
     .tbl-schools .action-btn:hover,
@@ -406,7 +411,7 @@
         gap: 5px;
         justify-content: center;
         background-color: var(--Background);
-        z-index: 999;
+        z-index: 1000;
         overflow: hidden;
         display: none;
     }
