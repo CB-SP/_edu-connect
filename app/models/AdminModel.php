@@ -107,10 +107,11 @@
             try {
                 $this->stmt = $this->pdo->prepare("SELECT
                     (SELECT COUNT(id) FROM admins WHERE deleted_at IS NULL) AS admins,
-                    (SELECT COUNT(id) FROM escolas WHERE deleted_at IS NULL) AS escolas,
-                    (SELECT COUNT(id) FROM usuarios WHERE role = 'director' AND deleted_at IS NULL) AS directores,
-                    (SELECT COUNT(id) FROM usuarios WHERE role = 'professor' AND deleted_at IS NULL) AS professores,
-                    (SELECT COUNT(id) FROM usuarios WHERE role = 'aluno' AND deleted_at IS NULL) AS alunos
+                    (SELECT COUNT(id) FROM escolas WHERE deleted_at IS NULL) AS schools,
+                    (SELECT COUNT(id) FROM usuarios WHERE role = 'director' AND deleted_at IS NULL) AS directors,
+                    (SELECT COUNT(id) FROM usuarios WHERE role = 'professor' AND deleted_at IS NULL) AS teachers,
+                    (SELECT COUNT(id) FROM usuarios WHERE role = 'aluno' AND deleted_at IS NULL) AS students,
+                    (SELECT COUNT(u.id) FROM usuarios AS u JOIN coordenadores AS c ON c.id = u.id WHERE u.role = 'professor' AND u.deleted_at IS NULL) AS coordinators
                 ");
                 $this->stmt->execute();
 

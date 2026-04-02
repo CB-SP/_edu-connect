@@ -1,9 +1,10 @@
 <?php
     class UserController extends Controller {
-        private $user, $id, $name, $email, $contact_1, $contact_2, $nif, $school, $role, $photo, $password;
+        private $user, $coordinator, $id, $name, $email, $contact_1, $contact_2, $nif, $school, $role, $photo, $password;
 
         public function __construct() {
             $this->user = new UserModel;
+            $this->coordinator = new CoordinatorController;
         }
 
         public function index() {
@@ -72,7 +73,8 @@
             $this->contact_2 = $_POST['contact_2'] ?? null;
             $this->nif = $_POST['nif'] ?? null;
             $this->school = $_POST['school'] ?? null;
-            $this->role = $_POST['role'] ?? null;
+            $isCoordinator = $_POST['role'];
+            $this->role = $isCoordinator === 'coordenador' ? 'professor' : $isCoordinator ?? null;
             $this->password = $_POST['password'] ?? null;
 
             if (empty($this->name) || empty($this->contact_1) || empty($this->nif) || empty($this->password) || empty($this->role) || empty($this->school)) {
@@ -93,6 +95,14 @@
             try {
                 if (!($this->user->add_user($this->name, $this->email, $this->contact_1, empty($this->contact_2) ? null : $this->contact_2, $this->nif, $this->school, $this->role, $this->photo, $this->password))) {
                     return false;
+                }
+
+                if ($isCoordinator === 'coordenador') {
+                    if (!$this->coordinator->add_coordinator($this->get_user_id($this->nif))) {
+                        return false;
+                    }
+
+                    return true;
                 }
             } catch (PDOException $e) {
                 error_log("ERRO_ADD_USUARIO: ". $e->getMessage(). "\n". $e->getTraceAsString());
@@ -122,8 +132,7 @@
                 return false;
             }
 
-            if (!Utils::phone_number_length($this->contact_1) || 
-                (!empty($this->contact_2) && !Utils::phone_number_length($this->contact_2))) {
+            if (!Utils::phone_number_length($this->contact_1) || (!empty($this->contact_2) && !Utils::phone_number_length($this->contact_2))) {
                 return false;
             }
 
@@ -236,5 +245,21 @@
                 return null;
             }
         }
+
+        //get user id
+        private function get_user_id($nif) {
+            if (empty($nif)) {
+                return false;
+            }
+
+            try {
+                $id = $this->user->get_user_id($nif);
+
+                return !empty($id) ? $id : null;
+            } catch (PDOException $e) {
+                error_log("ERRO_BUSCAR_USUARIO: ". $e->getMessage(). "\n". $e->getTraceAsString());
+            }
+        }
     }
+
 ?>

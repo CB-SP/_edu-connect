@@ -61,7 +61,7 @@
             </div>
             <div class="cards-info">
                 <p>Coordenadores</p>
-                <h2>4</h2>
+                <h2><?= $entities[0]['coordinators'] ?></h2>
             </div>
             <div class="cards-info">
                 <p>Alunos</p>
@@ -137,7 +137,7 @@
                     <select name="role" id="role">
                         <option value="aluno">Aluno</option>
                         <option value="professor">Professor</option>
-                        <option value="professor">Coordenador</option>
+                        <option value="coordenador">Coordenador</option>
                     </select>
                 </div>
                 <div class="final-btn-actions">
@@ -201,13 +201,13 @@
     <!--TAB USERS SECTION-->
     <div class="tabs">
         <button class="tab active" data-target="teachers-section">
-            <span>Professores (10)</span>
+            <span>Professores (<?= $entities[0]['teachers'] ?>)</span>
         </button>
         <button class="tab" data-target="coordinators-section">
-            <span>Coordenadores (3)</span>
+            <span>Coordenadores (<?= $entities[0]['coordinators'] ?>)</span>
         </button>
         <button class="tab" data-target="students-section">
-            <span>Alunos (50)</span>
+            <span>Alunos (<?= $entities[0]['students'] ?>)</span>
         </button>
     </div>
 
@@ -273,32 +273,35 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>Keyson</td>
-                            <td>98678565</td>
-                            <td>Activo</td>
-                            <td class="btn-down-actions ">
-                                <button class="action-btn">Acções</button>
-                                <div class="drop-actions">
-                                    <button class="restore-action"><img src="" alt=" ">Restaurar</button>
-                                    <button class="edit-action"><img src="" alt=" ">Editar</button>
-                                    <button class="delete-action"><img src="" alt=" ">Eliminar</button>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Usoli</td>
-                            <td>98678565</td>
-                            <td>Activo</td>
-                            <td class="btn-down-actions ">
-                                <button class="action-btn">Acções</button>
-                                <div class="drop-actions">
-                                    <button class="restore-action"><img src="" alt=" ">Restaurar</button>
-                                    <button class="edit-action"><img src="" alt=" ">Editar</button>
-                                    <button class="delete-action"><img src="" alt=" ">Eliminar</button>
-                                </div>
-                            </td>
-                        </tr>
+                        <?php if (empty($users)):?>
+                            <h3>Dados não encontrados</h3>
+                        <?php else:?>
+                            <?php
+                                $coordinators = array_filter($users, function ($n) {
+                                    return ($n['role'] !== 'director') && ($n['escola_id'] === $_SESSION['id']) && ($n['coordinator_role'] === 'coordenador');
+                                });
+                            ?>
+                            <?php foreach ($coordinators as $coordinator):?>
+                                <tr>
+                                    <td><?= $coordinator['nome']?></td>
+                                    <td><?= $coordinator['contacto_1']?></td>
+                                    <td>
+                                        <?= $status = empty($coordinator['deleted_at']) ? 'Activo' : 'Inactivo'?>
+                                    </td>
+                                    <td class="btn-down-actions ">
+                                        <button class="action-btn">Acções</button>
+                                        <div class="drop-actions">
+                                            <?php if ($status == 'Inactivo'):?>
+                                                <button class="restore-action" onclick="window.location.href='<?= URL ?>principal/restore_user/<?= $coordinator['id'] ?>'"><img src="" alt=" ">Restaurar</button>
+                                            <?php else:?>
+                                                <button class="edit-action" data-id=<?= $school['id'] ?>><img src="" alt=" ">Editar</button>
+                                                <button class="delete-action" onclick="window.location.href='<?= URL ?>principal/delete_user/<?= $coordinator['id'] ?>'"><img src="" alt=" ">Eliminar</button>
+                                            <?php endif;?>
+                                        </div>
+                                    </td>
+                                </tr>
+                            <?php endforeach;?>
+                        <?php endif;?>
                     </tbody>
                 </table>
             </div>
