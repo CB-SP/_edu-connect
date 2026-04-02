@@ -6,9 +6,10 @@
                 $this->stmt = $this->pdo->prepare("SELECT
 	                (SELECT COUNT(id) FROM usuarios WHERE escola = ? AND deleted_at IS NULL) AS school_users,
                     (SELECT COUNT(id) FROM usuarios WHERE escola = ? AND role = 'professor' AND deleted_at IS NULL) AS teachers,
-                    (SELECT COUNT(id) FROM usuarios WHERE escola = ? AND role = 'aluno' AND deleted_at IS NULL) AS students
+                    (SELECT COUNT(id) FROM usuarios WHERE escola = ? AND role = 'aluno' AND deleted_at IS NULL) AS students,
+                    (SELECT COUNT(u.id) FROM usuarios AS u JOIN coordenadores AS c ON c.id = u.id WHERE u.escola = ? AND u.role = 'professor' AND u.deleted_at IS NULL) AS coordinators
                 ");
-                $this->stmt->execute([$school, $school, $school]);
+                $this->stmt->execute([$school, $school, $school, $school]);
 
                 $total_entities = $this->stmt->fetchAll(PDO::FETCH_ASSOC);
 

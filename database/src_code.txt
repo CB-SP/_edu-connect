@@ -56,6 +56,7 @@ create table usuarios (
 -- =========================
 create table coordenadores (
     id int primary key,
+    role enum('coordenador') not null default 'coordenador',
     foreign key (id) references usuarios(id) on delete cascade
 );
 
