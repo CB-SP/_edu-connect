@@ -1,3 +1,15 @@
+.overlay-feed {
+    position: fixed;
+    inset: 0;
+    background-color: rgba(0, 0, 0, .4);
+    z-index: 1;
+    display: none;
+}
+
+.overlay-feed.active {
+    display: block;
+}
+
 @media screen and (max-width: 990px) {
 
     .feed-wrapper {
@@ -63,6 +75,12 @@
         display: flex;
         flex-direction: column;
         gap: 20px;
+        display: none;
+        z-index: 2;
+    }
+
+    .feed-modal.show {
+        display: block;
     }
 
     .feed-modal .feed-modal-header {
@@ -176,6 +194,7 @@
         background-color: var(--Background);
         border: 1px solid var(--SwitchBackground);
     }
+
     .btn-publish-box button:nth-child(1):hover {
         background-color: var(--Muted);
     }
@@ -185,6 +204,7 @@
         color: var(--Background);
         font-weight: var(--weight-br);
     }
+
     .btn-publish-box button:nth-child(2):hover {
         background-color: var(--AccentBlueHover);
     }
@@ -212,6 +232,245 @@
         background-color: var(--AccentBlue);
         color: var(--Background);
     }
+
+    /*PUBLICATION CARD*/
+    .publication-cards {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .publication-card {
+        border: 1px solid var(--SwitchBackground);
+        border-radius: var(--radius-md);
+        padding: 1rem;
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .publication-card .header-publication-card {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .header-publication-card .info-user-publication-card {
+        display: flex;
+        gap: 5px;
+        flex-wrap: wrap;
+    }
+
+    .info-user-publication-card .img-user {
+        border-radius: var(--radius-full);
+        height: 40px;
+        width: 40px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: var(--Muted);
+    }
+
+    .img-user img {
+        aspect-ratio: 3/4;
+    }
+
+    .info-user-publication-card .name-user {
+        display: flex;
+        flex-direction: column;
+        gap: 3px;
+    }
+
+    .name-user h4 {
+        font-weight: var(--weight-bd);
+    }
+
+    .name-user p {
+        color: var(--MutedForegroundC);
+        font-size: var(--text-sm);
+    }
+
+    .info-user-publication-card .publication-type-info {
+        font-size: var(--text-sm);
+        background-color: var(--Muted);
+        height: fit-content;
+        padding: 2px 5px;
+        border-radius: var(--radius-md);
+    }
+
+    .header-publication-card .options-publication-card {
+        height: 25px;
+        border: none;
+        border-radius: var(--radius-sm);
+        background: none;
+    }
+
+    .options-publication-card:hover {
+        background-color: var(--Muted);
+    }
+
+    .options-publication-card svg {
+        height: 25px;
+        padding: 3px;
+    }
+
+    /*CONTENT PUBLICATION*/
+    .publication-card .publication-card-content {
+        color: var(--Primary);
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .publication-card-content .attachment {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: var(--Muted);
+        border-radius: var(--radius-md);
+        padding: 7px 10px;
+    }
+
+    .attachment .file-info {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        color: inherit;
+        text-decoration: none;
+        font-size: var(--text-sm);
+        cursor: pointer;
+    }
+
+    .file-info svg {
+        height: 15px;
+    }
+
+    .file-info p {
+        font-weight: var(--weight-sb);
+        width: 150px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .file-info span {
+        color: var(--MutedForegroundC);
+    }
+
+    .attachment .btn-download {
+        text-decoration: none;
+        color: inherit;
+        font-size: var(--text-sm);
+        border-radius: var(--radius-md);
+        padding: 3px;
+        transition: background-color .2s ease-in-out;
+        cursor: pointer;
+    }
+
+    .attachment .btn-download:hover {
+        background-color: var(--SwitchBackground);
+    }
+
+    .publication-card .reactions-info {
+        border-top: 1px solid var(--SwitchBackground);
+        border-bottom: 1px solid var(--SwitchBackground);
+        padding: 1rem 0;
+    }
+
+    .publication-card .reaction-actions {
+        display: flex;
+        gap: 15px;
+    }
+
+    .reaction-actions .reaction-option {
+        border: none;
+        display: flex;
+        gap: 10px;
+        align-items: center;
+        background: none;
+        padding: 8px;
+        border-radius: var(--radius-md);
+        cursor: pointer;
+        transition: background-color .2s ease;
+    }
+
+    .reaction-option:hover {
+        background-color: var(--Muted);
+    }
+
+    .reaction-option svg {
+        height: 15px;
+    }
+
+    /*COMENT AREA*/
+    .publication-card .comment-area {
+        display: flex;
+        gap: 15px;
+        width: 100%;
+        border-top: 1px solid var(--SwitchBackground);
+        padding-top: 15px;
+        display: none;
+    }
+
+    .comment-area.showComment {
+        display: block;
+    }
+
+    .comment-area .img-user {
+        height: 40px;
+        width: 40px;
+        border-radius: var(--radius-full);
+        background-color: var(--Muted);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .comment-area .comment-box {
+        width: 85%;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .comment-box textarea {
+        width: 100%;
+        height: 80px;
+        resize: none;
+        font-family: inherit;
+        font-size: var(--text-nl);
+        border: 1px solid transparent;
+        border-radius: var(--radius-md);
+        outline: 3px solid transparent;
+        background-color: var(--Muted);
+        padding: 10px;
+        transition: all .2s ease-in-out;
+    }
+
+    .comment-box textarea:focus {
+        outline-color: var(--SwitchBackground);
+        border-color: gray;
+    }
+
+    .comment-box .btn-comment {
+        width: fit-content;
+        padding: 8px 10px;
+        border: none;
+        border-radius: var(--radius-sm);
+        background-color: var(--AccentBlue);
+        color: var(--Background);
+        transition: background-color .1s ease-in-out;
+    }
+
+    .comment-box .btn-comment:hover {
+        background-color: var(--AccentBlueHover);
+    }
+      .thumbs-up.click {
+        color: var(--AccentBlue);
+    }
+
+    .favorite.click {
+        color: var(--Destructive);
+    }
 }
 
 
@@ -219,7 +478,7 @@
 
     .feed-wrapper {
         display: grid;
-        grid-template: 1fr / 70px 1fr 70px;
+        grid-template: 1fr / 12% 1fr 12%;
         margin-top: 100px;
     }
 
@@ -271,7 +530,7 @@
         background-color: var(--AccentBlueHover);
     }
 
-/*PUBLICATION MODAL*/
+    /*PUBLICATION MODAL*/
     .feed-modal {
         width: 650px;
         background-color: var(--Background);
@@ -286,6 +545,12 @@
         display: flex;
         flex-direction: column;
         gap: 20px;
+        display: none;
+        z-index: 2;
+    }
+
+    .feed-modal.show {
+        display: block;
     }
 
     .feed-modal .feed-modal-header {
@@ -399,6 +664,7 @@
         background-color: var(--Background);
         border: 1px solid var(--SwitchBackground);
     }
+
     .btn-publish-box button:nth-child(1):hover {
         background-color: var(--Muted);
     }
@@ -408,6 +674,7 @@
         color: var(--Background);
         font-weight: var(--weight-br);
     }
+
     .btn-publish-box button:nth-child(2):hover {
         background-color: var(--AccentBlueHover);
     }
@@ -435,5 +702,247 @@
     .tabs-publication button:nth-child(1) {
         background-color: var(--AccentBlue);
         color: var(--Background);
+    }
+
+    /*PUBLICATION CARD*/
+    .publication-cards {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .publication-card {
+        border: 1px solid var(--SwitchBackground);
+        border-radius: var(--radius-md);
+        padding: 1rem;
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .publication-card .header-publication-card {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .header-publication-card .info-user-publication-card {
+        display: flex;
+        gap: 5px;
+        flex-wrap: wrap;
+    }
+
+    .info-user-publication-card .img-user {
+        border-radius: var(--radius-full);
+        height: 40px;
+        width: 40px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: var(--Muted);
+    }
+
+    .img-user img {
+        aspect-ratio: 3/4;
+    }
+
+    .info-user-publication-card .name-user {
+        display: flex;
+        flex-direction: column;
+        gap: 3px;
+    }
+
+    .name-user h4 {
+        font-weight: var(--weight-bd);
+    }
+
+    .name-user p {
+        color: var(--MutedForegroundC);
+        font-size: var(--text-sm);
+    }
+
+    .info-user-publication-card .publication-type-info {
+        font-size: var(--text-sm);
+        background-color: var(--Muted);
+        height: fit-content;
+        padding: 2px 5px;
+        border-radius: var(--radius-md);
+    }
+
+    .header-publication-card .options-publication-card {
+        height: 25px;
+        border: none;
+        border-radius: var(--radius-sm);
+        background: none;
+    }
+
+    .options-publication-card:hover {
+        background-color: var(--Muted);
+    }
+
+    .options-publication-card svg {
+        height: 25px;
+        padding: 3px;
+    }
+
+    /*CONTENT PUBLICATION*/
+    .publication-card .publication-card-content {
+        color: var(--Primary);
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        line-height: 1.4rem;
+    }
+
+    .publication-card-content .attachment {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: var(--Muted);
+        border-radius: var(--radius-md);
+        padding: 7px 10px;
+    }
+
+    .attachment .file-info {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        color: inherit;
+        text-decoration: none;
+        font-size: var(--text-sm);
+        cursor: pointer;
+        width: 100%;
+    }
+
+    .file-info svg {
+        height: 15px;
+    }
+
+    .file-info p {
+        font-weight: var(--weight-sb);
+        width: 400px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .file-info span {
+        color: var(--MutedForegroundC);
+    }
+
+    .attachment .btn-download {
+        text-decoration: none;
+        color: inherit;
+        font-size: var(--text-sm);
+        border-radius: var(--radius-md);
+        padding: 3px;
+        transition: background-color .2s ease-in-out;
+        cursor: pointer;
+    }
+
+    .attachment .btn-download:hover {
+        background-color: var(--SwitchBackground);
+    }
+
+    .publication-card .reactions-info {
+        border-top: 1px solid var(--SwitchBackground);
+        border-bottom: 1px solid var(--SwitchBackground);
+        padding: 1rem 0;
+    }
+
+    .publication-card .reaction-actions {
+        display: flex;
+        gap: 15px;
+    }
+
+    .reaction-actions .reaction-option {
+        border: none;
+        display: flex;
+        gap: 10px;
+        align-items: center;
+        background: none;
+        padding: 8px;
+        border-radius: var(--radius-md);
+        cursor: pointer;
+        transition: background-color .2s ease;
+    }
+
+    .reaction-option:hover {
+        background-color: var(--Muted);
+    }
+
+    .reaction-option svg {
+        height: 15px;
+    }
+
+    /*COMMENT AREA*/
+    .publication-card .comment-area {
+        display: flex;
+        gap: 15px;
+        width: 100%;
+        border-top: 1px solid var(--SwitchBackground);
+        padding-top: 15px;
+        display: none;
+    }
+
+    .comment-area.showComment {
+        display: block;
+    }
+
+    .comment-area .img-user {
+        height: 40px;
+        width: 40px;
+        border-radius: var(--radius-full);
+        background-color: var(--Muted);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .comment-area .comment-box {
+        width: 85%;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .comment-box textarea {
+        width: 100%;
+        height: 80px;
+        resize: none;
+        font-family: inherit;
+        font-size: var(--text-nl);
+        border: 1px solid transparent;
+        border-radius: var(--radius-md);
+        outline: 3px solid transparent;
+        background-color: var(--Muted);
+        padding: 10px;
+        transition: all .2s ease-in-out;
+    }
+
+    .comment-box textarea:focus {
+        outline-color: var(--SwitchBackground);
+        border-color: gray;
+    }
+
+    .comment-box .btn-comment {
+        width: fit-content;
+        padding: 8px 10px;
+        border: none;
+        border-radius: var(--radius-sm);
+        background-color: var(--AccentBlue);
+        color: var(--Background);
+        transition: background-color .1s ease-in-out;
+    }
+
+    .comment-box .btn-comment:hover {
+        background-color: var(--AccentBlueHover);
+    }
+
+    .thumbs-up.click {
+        color: var(--AccentBlue);
+    }
+
+    .favorite.click {
+        color: var(--Destructive);
     }
 }

@@ -162,23 +162,10 @@ body {
         padding-left: 15px;
     }
 
-    .layout-admin .main-nav .nav-item:not(.visited):hover,
-    .layout-admin .set-nav .nav-item:hover {
-        background-color: var(--Muted);
-    }
-
-    .nav-item.visited {
-        background-color: var(--AccentBlue);
-    }
-
-    .nav-item.visited:hover {
-        background-color: var(--AccentBlueHover);
-    }
-
     .layout-admin .main-nav .nav-list .nav-link {
         text-decoration: none;
-        color: var(--Primary);
         display: flex;
+        color: var(--Primary);
         align-items: center;
         gap: 12px;
         font-size: var(--text-xm);
@@ -316,6 +303,7 @@ body {
         width: 280px;
         height: 100%;
         border-right: 1px solid var(--SwitchBackground);
+        background-color: var(--Background);
     }
 
     .layout-admin .sideBar #close-menu {
@@ -416,28 +404,11 @@ body {
         padding-left: 15px;
     }
 
-    .layout-admin .main-nav .nav-item:not(.visited):hover,
-    .layout-admin .set-nav .nav-item:hover {
-        background-color: var(--Muted);
-    }
-
-    .nav-item.visited {
-        background-color: var(--AccentBlue);
-    }
-
-    .nav-item.visited .nav-link {
-        color: var(--Background);
-
-    }
-
-    .nav-item.visited:hover {
-        background-color: var(--AccentBlueHover);
-    }
-
+   
     .layout-admin .main-nav .nav-list .nav-link {
         text-decoration: none;
-        color: var(--Primary);
         display: flex;
+        color: var(--Primary);
         align-items: center;
         gap: 12px;
     }
