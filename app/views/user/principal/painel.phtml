@@ -1,12 +1,29 @@
 <?php
-    require_once './app/views/layouts/usersMain.phtml';
-    $principal = new PrincipalController;
-    $school = $principal->find_school($_SESSION['school_id']);
-    $users = $principal->fetch_users();
-    $entities = $principal->total_entities($_SESSION['school_id']);
+require_once './app/views/layouts/usersMain.phtml';
+$principal = new PrincipalController;
+$school = $principal->find_school($_SESSION['school_id']);
+$users = $principal->fetch_users();
+$entities = $principal->total_entities($_SESSION['school_id']);
 ?>
 
 <section id="director-section">
+    <style>
+        .nav-item.selectedPainel {
+            background-color: var(--AccentBlue);
+        }
+
+        .nav-item.selectedPainel:hover {
+            background-color: var(--AccentBlueHover);
+        }
+
+        .selectedPainel a {
+            color: var(--Background) !important;
+        }
+    
+        .nav-item:not(.selectedPainel):hover{
+            background-color: var(--Muted);
+        }
+    </style>
     <div class="overlay-modal"></div>
     <section class="painel-info">
         <div class="header-painel">
@@ -213,8 +230,8 @@
 
     <!--USERS LIST SECTION-->
     <section class="list-info">
-        
-        <section class="users-list" >
+
+        <section class="users-list">
             <!--TEACHERS LIST-->
             <div class="tab-content active" id="teachers-section">
 
@@ -228,35 +245,35 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <?php if (empty($users)):?>
+                        <?php if (empty($users)): ?>
                             <h3>Dados não encontrados</h3>
-                        <?php else:?>
+                        <?php else: ?>
                             <?php
-                                $teachers = array_filter($users, function ($n) {
-                                    return ($n['role'] !== 'director') && ($n['escola_id'] === $_SESSION['id']) && ($n['role'] === 'professor');
-                                });
+                            $teachers = array_filter($users, function ($n) {
+                                return ($n['role'] !== 'director') && ($n['escola_id'] === $_SESSION['id']) && ($n['role'] === 'professor');
+                            });
                             ?>
-                            <?php foreach ($teachers as $teacher):?>
+                            <?php foreach ($teachers as $teacher): ?>
                                 <tr>
-                                    <td><?= $teacher['nome']?></td>
-                                    <td><?= $teacher['contacto_1']?></td>
+                                    <td><?= $teacher['nome'] ?></td>
+                                    <td><?= $teacher['contacto_1'] ?></td>
                                     <td>
-                                        <?= $status = empty($teacher['deleted_at']) ? 'Activo' : 'Inactivo'?>
+                                        <?= $status = empty($teacher['deleted_at']) ? 'Activo' : 'Inactivo' ?>
                                     </td>
                                     <td class="btn-down-actions ">
                                         <button class="action-btn">Acções</button>
                                         <div class="drop-actions">
-                                            <?php if ($status == 'Inactivo'):?>
+                                            <?php if ($status == 'Inactivo'): ?>
                                                 <button class="restore-action" onclick="window.location.href='<?= URL ?>principal/restore_user/<?= $teacher['id'] ?>'"><img src="" alt=" ">Restaurar</button>
-                                            <?php else:?>
+                                            <?php else: ?>
                                                 <button class="edit-action" data-id=<?= $school['id'] ?>><img src="" alt=" ">Editar</button>
                                                 <button class="delete-action" onclick="window.location.href='<?= URL ?>principal/delete_user/<?= $teacher['id'] ?>'"><img src="" alt=" ">Eliminar</button>
-                                            <?php endif;?>
+                                            <?php endif; ?>
                                         </div>
                                     </td>
                                 </tr>
-                            <?php endforeach;?>
-                        <?php endif;?>
+                            <?php endforeach; ?>
+                        <?php endif; ?>
                     </tbody>
                 </table>
             </div>
@@ -273,35 +290,35 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <?php if (empty($users)):?>
+                        <?php if (empty($users)): ?>
                             <h3>Dados não encontrados</h3>
-                        <?php else:?>
+                        <?php else: ?>
                             <?php
-                                $coordinators = array_filter($users, function ($n) {
-                                    return ($n['role'] !== 'director') && ($n['escola_id'] === $_SESSION['id']) && ($n['coordinator_role'] === 'coordenador');
-                                });
+                            $coordinators = array_filter($users, function ($n) {
+                                return ($n['role'] !== 'director') && ($n['escola_id'] === $_SESSION['id']) && ($n['coordinator_role'] === 'coordenador');
+                            });
                             ?>
-                            <?php foreach ($coordinators as $coordinator):?>
+                            <?php foreach ($coordinators as $coordinator): ?>
                                 <tr>
-                                    <td><?= $coordinator['nome']?></td>
-                                    <td><?= $coordinator['contacto_1']?></td>
+                                    <td><?= $coordinator['nome'] ?></td>
+                                    <td><?= $coordinator['contacto_1'] ?></td>
                                     <td>
-                                        <?= $status = empty($coordinator['deleted_at']) ? 'Activo' : 'Inactivo'?>
+                                        <?= $status = empty($coordinator['deleted_at']) ? 'Activo' : 'Inactivo' ?>
                                     </td>
                                     <td class="btn-down-actions ">
                                         <button class="action-btn">Acções</button>
                                         <div class="drop-actions">
-                                            <?php if ($status == 'Inactivo'):?>
+                                            <?php if ($status == 'Inactivo'): ?>
                                                 <button class="restore-action" onclick="window.location.href='<?= URL ?>principal/restore_user/<?= $coordinator['id'] ?>'"><img src="" alt=" ">Restaurar</button>
-                                            <?php else:?>
+                                            <?php else: ?>
                                                 <button class="edit-action" data-id=<?= $school['id'] ?>><img src="" alt=" ">Editar</button>
                                                 <button class="delete-action" onclick="window.location.href='<?= URL ?>principal/delete_user/<?= $coordinator['id'] ?>'"><img src="" alt=" ">Eliminar</button>
-                                            <?php endif;?>
+                                            <?php endif; ?>
                                         </div>
                                     </td>
                                 </tr>
-                            <?php endforeach;?>
-                        <?php endif;?>
+                            <?php endforeach; ?>
+                        <?php endif; ?>
                     </tbody>
                 </table>
             </div>
@@ -318,35 +335,35 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <?php if (empty($users)):?>
+                        <?php if (empty($users)): ?>
                             <h3>Dados não encontrados</h3>
-                        <?php else:?>
+                        <?php else: ?>
                             <?php
-                                $students = array_filter($users, function ($n) {
-                                    return ($n['role'] !== 'director') && ($n['escola_id'] === $_SESSION['id']) && ($n['role'] === 'aluno');
-                                });
+                            $students = array_filter($users, function ($n) {
+                                return ($n['role'] !== 'director') && ($n['escola_id'] === $_SESSION['id']) && ($n['role'] === 'aluno');
+                            });
                             ?>
-                            <?php foreach ($students as $student):?>
+                            <?php foreach ($students as $student): ?>
                                 <tr>
-                                    <td><?= $student['nome']?></td>
-                                    <td><?= $student['contacto_1']?></td>
+                                    <td><?= $student['nome'] ?></td>
+                                    <td><?= $student['contacto_1'] ?></td>
                                     <td>
-                                        <?= $status = empty($student['deleted_at']) ? 'Activo' : 'Inactivo'?>
+                                        <?= $status = empty($student['deleted_at']) ? 'Activo' : 'Inactivo' ?>
                                     </td>
                                     <td class="btn-down-actions ">
                                         <button class="action-btn">Acções</button>
                                         <div class="drop-actions">
-                                            <?php if ($status == 'Inactivo'):?>
+                                            <?php if ($status == 'Inactivo'): ?>
                                                 <button class="restore-action" onclick="window.location.href='<?= URL ?>principal/restore_user/<?= $student['id'] ?>'"><img src="" alt=" ">Restaurar</button>
-                                            <?php else:?>
+                                            <?php else: ?>
                                                 <button class="edit-action" data-id=<?= $student['id'] ?>><img src="" alt=" ">Editar</button>
                                                 <button class="delete-action" onclick="window.location.href='<?= URL ?>principal/delete_user/<?= $student['id'] ?>'"><img src="" alt=" ">Eliminar</button>
-                                            <?php endif;?>
+                                            <?php endif; ?>
                                         </div>
                                     </td>
                                 </tr>
-                            <?php endforeach;?>
-                        <?php endif;?>
+                            <?php endforeach; ?>
+                        <?php endif; ?>
                     </tbody>
                 </table>
             </div>
@@ -354,4 +371,4 @@
 
     </section>
 
-<?php require_once './app/views/layouts/closure.phtml'?>
+    <?php require_once './app/views/layouts/closure.phtml' ?>
