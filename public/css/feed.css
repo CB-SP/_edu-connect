@@ -413,6 +413,11 @@
 
     .comment-area.showComment {
         display: block;
+        display: flex;
+        gap: 15px;
+        width: 100%;
+        border-top: 1px solid var(--SwitchBackground);
+        padding-top: 15px;
     }
 
     .comment-area .img-user {
@@ -426,7 +431,7 @@
     }
 
     .comment-area .comment-box {
-        width: 85%;
+        width: 100%;
         display: flex;
         flex-direction: column;
         gap: 10px;
@@ -464,7 +469,8 @@
     .comment-box .btn-comment:hover {
         background-color: var(--AccentBlueHover);
     }
-      .thumbs-up.click {
+
+    .thumbs-up.click {
         color: var(--AccentBlue);
     }
 
@@ -886,6 +892,11 @@
 
     .comment-area.showComment {
         display: block;
+        display: flex;
+        gap: 15px;
+        width: 100%;
+        border-top: 1px solid var(--SwitchBackground);
+        padding-top: 15px;
     }
 
     .comment-area .img-user {
@@ -899,7 +910,7 @@
     }
 
     .comment-area .comment-box {
-        width: 85%;
+        width: 100%;
         display: flex;
         flex-direction: column;
         gap: 10px;
