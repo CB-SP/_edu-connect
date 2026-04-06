@@ -117,8 +117,6 @@
                 return false;
             }
 
-            $this->id = $id;
-
             try {
                 return $this->admin->find_admin($id);
             } catch (PDOException $e) {
@@ -153,15 +151,15 @@
         //change admin password
         public function change_password() {
             $this->password = $_POST['newPassword'];
-            $this->id = $_POST['id'];
             $currentPassword = $_POST['currentPassword'];
             $confirmNewPassword = $_POST['confirmNewPassword'];
+            $this->id = $_POST['id'];
 
             if (empty($this->password) || empty($currentPassword) || empty($confirmNewPassword)) {
                 return false;
             }
 
-            if (!$this->confirmPassword($this->password, $confirmNewPassword)) {
+            if (!Utils::confirmPassword($this->password, $confirmNewPassword)) {
                 return false;
             }
 
@@ -309,15 +307,6 @@
                 error_log("ERRO_BUSCAR_HASH_ADMIN: ". $e->getMessage(). "\n". $e->getTraceAsString());
                 return null;
             }
-        }
-
-        //confirm admin password
-        private function confirmPassword($password, $confirmPassword) {
-            if ($password !== $confirmPassword) {
-                return false;
-            }
-
-            return true;
         }
 
         //verify if the entity is an admin

@@ -188,6 +188,20 @@
             }
         }
 
+        //find user
+        public function find_user($id) {
+            if (empty($id)) {
+                return false;
+            }
+
+            try {
+                return $this->user->find_user($id);
+            } catch (PDOException $e) {
+                error_log("ERRO_BUSCAR_USUARIO: ". $e->getMessage(). "\n". $e->getTraceAsString());
+                $this->redirect("user/index");
+            }
+        }
+
         //delete users
         public function delete_user($id) {
             if (empty($id)) {
@@ -232,6 +246,43 @@
             $this->redirect("");
         }
 
+        //change user password
+        public function change_password() {
+            $this->password = $_POST['newPassword'];
+            $currentPassword = $_POST['currentPassword'];
+            $confirmNewPassword = $_POST['confirmNewPassword'];
+            $this->id = $_POST['id'];
+
+            if (empty($this->password) || empty($currentPassword) || empty($confirmNewPassword)) {
+                return false;
+            }
+
+            if (!Utils::confirmPassword($this->password, $confirmNewPassword)) {
+                return false;
+            }
+
+            if (!Utils::password_length($this->password)) {
+                return false;
+            }
+
+            if (!Utils::verify_password($currentPassword, $this->find_password_hash($this->id))) {
+                return false;
+            }
+
+            $this->password = password_hash($this->password, PASSWORD_DEFAULT);
+
+            try {
+                if (!$this->user->change_password($this->password, $this->id)) {
+                    $this->redirect("user/index");
+                }
+            } catch (PDOException $e) {
+                error_log("ERRO_ALTERAR_PASSWORD: ". $e->getMessage(). "\n". $e->getTraceAsString());
+                $this->redirect("user/index");
+            }
+
+            $this->redirect("user/index");
+        }
+
         //search users password hash
         private function fetch_password_hash($nif) {
             if (empty($nif)) {
@@ -258,6 +309,20 @@
                 return !empty($id) ? $id : null;
             } catch (PDOException $e) {
                 error_log("ERRO_BUSCAR_USUARIO: ". $e->getMessage(). "\n". $e->getTraceAsString());
+            }
+        }
+
+        //search users password hash
+        private function find_password_hash($id) {
+            if (empty($id)) {
+                return null;
+            }
+
+            try {
+                return $this->user->find_password_hash($id);
+            } catch (PDOException $e) {
+                error_log("ERRO_BUSCAR_HASH_USUARIO: ". $e->getMessage(). "\n". $e->getTraceAsString());
+                return null;
             }
         }
     }

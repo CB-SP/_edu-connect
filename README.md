@@ -50,6 +50,8 @@ Projecto para TCC desenvolvido com HTML, CSS, JS e PHP.
     ├── core/                       # rotas, controllers e models
     ├── database/                   # código do banco de dados
     ├── public/                     # arquivos estáticos como imagens, fontes, css e js
+    │       └──uploads
+    │           └──avatars          # fotos das escolas, usuários e admins
     ├── .htaccess                   # configuração do servidor Apache
     ├── index.php                   # autoload
     └── .gitignore                  # arquivos ignorados pelo Git

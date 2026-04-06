@@ -58,6 +58,20 @@
             }
         }
 
+        //find user
+        public function find_user($id) {
+            try {
+                $this->stmt = $this->pdo->prepare("SELECT email, created_at FROM usuarios WHERE id = ? AND deleted_at IS NULL");
+                $this->stmt->execute([$id]);
+
+                $user = $this->stmt->fetch(PDO::FETCH_ASSOC);
+
+                return !empty($user) ? $user : null;
+            } catch (PDOException $e) {
+                throw $e;
+            }
+        }
+
         //delete users
         public function delete_user($id) {
             try {
@@ -81,6 +95,20 @@
         }
 
         //search users password hash
+        public function find_password_hash($id) {
+            try {
+                $this->stmt = $this->pdo->prepare("SELECT password FROM usuarios WHERE id = ? AND deleted_at IS NULL");
+                $this->stmt->execute([$id]);
+
+                $hash = $this->stmt->fetch(PDO::FETCH_ASSOC)['password'];
+
+                return !empty($hash) ? $hash: null;
+            } catch (PDOException $e) {
+                throw $e;
+            }
+        }
+
+        //search users password hash
         public function fetch_password_hash($nif) {
             try {
                 $this->stmt = $this->pdo->prepare("SELECT u.password FROM usuarios AS u JOIN escolas AS e ON e.id = u.escola WHERE nif = ? AND u.deleted_at IS NULL AND e.deleted_at IS NULL");
@@ -89,6 +117,17 @@
                 $user = $this->stmt->fetch(PDO::FETCH_ASSOC)['password'];
 
                 return !empty($user) ? $user : null;
+            } catch (PDOException $e) {
+                throw $e;
+            }
+        }
+
+        //change user password
+        public function change_password($password, $id) {
+            try {
+                $this->stmt = $this->pdo->prepare("UPDATE usuarios SET password = ? WHERE id = ? AND deleted_at IS NULL");
+
+                return $this->stmt->execute([$password, $id]) ?: false;
             } catch (PDOException $e) {
                 throw $e;
             }

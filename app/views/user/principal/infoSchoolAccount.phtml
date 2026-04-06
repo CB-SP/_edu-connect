@@ -1,7 +1,7 @@
 <?php
-require_once './app/views/layouts/usersMain.phtml';
-$admin = new AdminController;
-$admin_data = $admin->find_admin($_SESSION['id']);
+    require_once './app/views/layouts/usersMain.phtml';
+    $principal = new PrincipalController;
+    $school = $principal->find_school($_SESSION['school_id']);
 ?>
 
 <section class="school-info-section">
@@ -39,23 +39,23 @@ $admin_data = $admin->find_admin($_SESSION['id']);
                 <p>Edite as informações da Instituição</p>
                 <img src="<?= URL ?>public/assets/images/x.png" alt="" class="close-modal-icon">
             </div>
-            <form action="<?= URL ?>admin/edit_admin" method="post" enctype="multipart/form-data">
+            <form action="<?= URL ?>principal/edit_school" method="post" enctype="multipart/form-data">
                 <div class="input-box">
                     <label for="schoolName">Nome da Escola</label>
-                    <input type="text" name="" id="schoolName" placeholder="Digite o nome da Escola" value="<?= $_SESSION['name'] ?>">
+                    <input type="text" name="name" id="schoolName" placeholder="Digite o nome da Escola" value="<?= $school['nome'] ?>">
                 </div>
 
                 <div class="input-box">
                     <label for="schoolEmail">Endereço</label>
-                    <input type="text" name="" id="schoolEmail" placeholder="Digite o endereço da Escola" value="<?= $admin_data['email'] ?>">
+                    <input type="text" name="address" id="schoolEmail" placeholder="Digite o endereço da Escola" value="<?= $school['endereco'] ?>">
                 </div>
                 <div class="input-box">
                     <label for="schoolTelefone_1">Telefone</label>
-                    <input type="tel" name="" id="schoolTelefone_1" placeholder="+244 XXX XXX XXX" value="<?= $admin_data['email'] ?>">
+                    <input type="tel" name="contact_1" id="schoolTelefone_1" placeholder="+244 XXX XXX XXX" value="<?= $school['contacto_1'] ?>">
                 </div>
                 <div class="input-box">
                     <label for="schoolTelefone_2">Telefone Secundário</label>
-                    <input type="tel" name="" id="schoolTelefone_2" placeholder="+244 XXX XXX XXX" value="<?= $admin_data['email'] ?>">
+                    <input type="tel" name="contact_2" id="schoolTelefone_2" placeholder="+244 XXX XXX XXX" value="<?= $school['contacto_2'] ?>">
                 </div>
 
                 <div class="input-box">
@@ -67,7 +67,7 @@ $admin_data = $admin->find_admin($_SESSION['id']);
                     </label>
                 </div>
 
-                <input type="hidden" name="id" id="userId" value="<?= $_SESSION['id'] ?>">
+                <input type="hidden" name="id" value="<?= $school['id'] ?>">
                 <input type="hidden" name="current_photo" id="current_photo">
 
                 <div class="final-btn-actions">
@@ -84,19 +84,19 @@ $admin_data = $admin->find_admin($_SESSION['id']);
             <div class="data-area">
                 <div class="data">
                     <p>Nome da Escola</p>
-                    <h4>Nome da Escola</h4>
+                    <h4><?= $school['nome'] ?></h4>
                 </div>
                 <div class="data">
                     <p>Endereço</p>
-                    <h4>Rua Principal, Lubango</h4>
+                    <h4><?= $school['endereco'] ?></h4>
                 </div>
                 <div class="data">
                     <p>Telefone</p>
-                    <h4>+244 923 456 789</h4>
+                    <h4><?= $school['contacto_1'] ?></h4>
                 </div>
                 <div class="data">
                     <p>Telefone Secundário</p>
-                    <h4>+244 923 456 789</h4>
+                    <h4><?= empty($school['contacto_2']) ? '---' : $school['contacto_2'] ?></h4>
                 </div>
             </div>
         </div>
@@ -109,15 +109,15 @@ $admin_data = $admin->find_admin($_SESSION['id']);
         <div class="account-info-area">
             <div class="account-info">
                 <h5>ID da Escola</h5>
-                <p>1</p>
+                <p><?= $school['id'] ?></p>
             </div>
             <div class="account-info">
                 <h5>Status</h5>
-                <p>Ativo</p>
+                <p><?= empty($school['deleted_at']) ? 'Activa' : 'Inactiva'?></p>
             </div>
             <div class="account-info">
                 <h5>Data de Criação</h5>
-                <p><?= $admin_data['created_at'] ?></p>
+                <p><?= $school['created_at'] ?></p>
             </div>
         </div>
     </section>
