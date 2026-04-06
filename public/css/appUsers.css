@@ -265,6 +265,7 @@ body {
         position: fixed;
         width: 100%;
         background-color: var(--Background);
+        z-index: 1;
     }
 
     .head-section .icon-school-area {
@@ -447,6 +448,7 @@ body {
         position: fixed;
         width: 100%;
         background-color: var(--Background);
+        z-index: 1;
     }
 
     .head-section .icon-school-area {
