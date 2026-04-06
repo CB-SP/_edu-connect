@@ -228,7 +228,7 @@
         gap: 10px;
     }
 
-    .tabs-publication button:nth-child(1) {
+    .tabs-publication .active {
         background-color: var(--AccentBlue);
         color: var(--Background);
     }
@@ -247,6 +247,10 @@
         display: flex;
         flex-direction: column;
         gap: 15px;
+    }
+
+    .publication-card.hidden {
+        display: none;
     }
 
     .publication-card .header-publication-card {
@@ -329,7 +333,8 @@
         padding: 5px;
         display: none;
     }
-    .drop-post-card-actions.dropActionsPostCard{
+
+    .drop-post-card-actions.dropActionsPostCard {
         display: block;
     }
 
@@ -744,7 +749,7 @@
         gap: 10px;
     }
 
-    .tabs-publication button:nth-child(1) {
+    .tabs-publication .active {
         background-color: var(--AccentBlue);
         color: var(--Background);
     }
@@ -763,6 +768,10 @@
         display: flex;
         flex-direction: column;
         gap: 15px;
+    }
+
+    .publication-card.hidden {
+        display: none;
     }
 
     .publication-card .header-publication-card {
@@ -825,11 +834,12 @@
         border-radius: var(--radius-sm);
 
     }
+
     .options-publication-card svg:hover {
         background-color: var(--Muted);
     }
 
-     /*DROP ACTIONS POST CARD*/
+    /*DROP ACTIONS POST CARD*/
     .options-publication-card .drop-post-card-actions {
         position: absolute;
         right: 200px;
@@ -843,7 +853,8 @@
         padding: 5px;
         display: none;
     }
-    .drop-post-card-actions.dropActionsPostCard{
+
+    .drop-post-card-actions.dropActionsPostCard {
         display: block;
     }
 

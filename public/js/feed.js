@@ -76,3 +76,28 @@ document.addEventListener('click', (e) => {
 
     })
 })
+
+
+//ALTERNATION BETWEEN ALL & COMUNICATE POSTS
+const tabsPost = document.querySelectorAll('.tab-publication')
+const posts = document.querySelectorAll('.publication-card')
+
+tabsPost.forEach(tab => {
+    tab.addEventListener('click', () => {
+
+        const filter = tab.dataset.filter
+
+        tabsPost.forEach(t => t.classList.remove('active'))
+        tab.classList.add('active')
+
+        posts.forEach(post => {
+            const type = post.dataset.type
+            if (filter === 'all' || type === filter) {
+                post.classList.remove('hidden')
+            } else {
+                post.classList.add('hidden')
+            }
+        });
+    })
+
+})
