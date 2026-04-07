@@ -29,3 +29,13 @@ btnComments.forEach(btnComment => {
     })
 
 })
+
+//ALTERNATION BETWEEN ALL & COMUNICATE POSTS
+const postTabs = document.querySelectorAll('.tab-publication')
+
+postTabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+        postTabs.forEach(t => t.classList.remove('active'))
+        tab.classList.add('active')
+    })
+})
