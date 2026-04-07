@@ -40,3 +40,32 @@ postTabs.forEach(tab => {
     })
 })
 
+//DROP ACTIONS FROM POST CARDS
+
+const iconEllipse = document.querySelectorAll('.options-publication-card svg')
+const dropactions = document.querySelectorAll('.drop-post-card-actions')
+
+iconEllipse.forEach(icon => {
+    icon.addEventListener('click', (e) => {
+        e.stopPropagation()
+        const dropaction = icon.nextElementSibling
+        dropactions.forEach(d => {
+            if (d !== dropaction) {
+                d.classList.remove('dropActionsPostCard')
+            }
+        })
+        dropaction.classList.add('dropActionsPostCard')
+    })
+
+})
+
+document.addEventListener('click', (e) => {
+    dropactions.forEach(drop => {
+        if (!drop.contains(e.target)) {
+            drop.classList.remove('dropActionsPostCard')
+        } else {
+            drop.classList.add('dropActionsPostCard')
+        }
+
+    })
+})
