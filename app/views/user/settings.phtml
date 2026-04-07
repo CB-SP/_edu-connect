@@ -42,23 +42,25 @@
                 </div>
             </a>
         </div>
-        <div class="setting-card">
-            <h4>Escola</h4>
-            <a href="<?= URL ?>principal/infoSchoolAccount" class="redirect-area">
-                <div class="settings-info-card">
-                    <div class="icon-area">
+        <?php if($_SESSION['role'] === 'director'):?>
+            <div class="setting-card">
+                <h4>Escola</h4>
+                <a href="<?= URL ?>principal/infoSchoolAccount" class="redirect-area">
+                    <div class="settings-info-card">
+                        <div class="icon-area">
+                            <img src="" alt=" ">
+                        </div>
+                        <div class="desc-setting-card">
+                            <h4>Dados da Escola</h4>
+                            <p>Editar informações da instituição</p>
+                        </div>
+                    </div>
+                    <div class="redirect-icon">
                         <img src="" alt=" ">
                     </div>
-                    <div class="desc-setting-card">
-                        <h4>Dados da Escola</h4>
-                        <p>Editar informações da instituição</p>
-                    </div>
-                </div>
-                 <div class="redirect-icon">
-                    <img src="" alt=" ">
-                </div>
-            </a>
-        </div>
+                </a>
+            </div>
+        <?php endif;?>
         <div class="setting-card">
             <h4>Sessão</h4>
             <a href="<?= URL ?>user/logout" class="redirect-area" id="exit-card">
