@@ -464,12 +464,14 @@
     }
 
     /*COMENT AREA*/
-    .comment-section{
+    .comment-section {
         display: none;
     }
-    .comment-section.showCommentSection{
+
+    .comment-section.showCommentSection {
         display: block;
     }
+
     .publication-card .comment-area {
         display: flex;
         gap: 15px;
@@ -617,10 +619,12 @@
 
     .title-feed h2 {
         font-weight: var(--weight-bd);
+        font-size: 1.7rem;
     }
 
     .title-feed p {
         color: var(--MutedForegroundC);
+        font-size: 1.1rem;
     }
 
     .header-feed .btn-new-publish {
@@ -802,7 +806,7 @@
     }
 
     .tabs-publication button {
-        height: 30px;
+        height: 33px;
         width: 50%;
         border: none;
         border-radius: var(--radius-lg);
@@ -810,6 +814,7 @@
         justify-content: center;
         align-items: center;
         gap: 10px;
+        font-size: var(--text-md);
     }
 
     .tabs-publication .active {
@@ -866,6 +871,7 @@
 
     .name-user h4 {
         font-weight: var(--weight-bd);
+        font-size: 1.05rem;
     }
 
     .name-user p {
@@ -942,6 +948,10 @@
         flex-direction: column;
         gap: 15px;
         line-height: 1.4rem;
+    }
+
+    .publication-card-content > p {
+        font-size: 1.05rem;
     }
 
     .publication-card-content .attachment {
