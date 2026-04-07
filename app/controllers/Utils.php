@@ -22,6 +22,15 @@
             return true;
         }
 
+        //confirm password
+        public static function confirmPassword($password, $confirmPassword) {
+            if ($password !== $confirmPassword) {
+                return false;
+            }
+
+            return true;
+        }
+
         //verify nif length
         public static function nif_length($nif) {
             if (empty($nif)) {

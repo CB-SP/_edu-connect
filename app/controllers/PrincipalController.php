@@ -40,7 +40,7 @@
         //==========schools managemant==========
         //update
         public function edit_school() {
-            $this->redirect($this->school->edit_school() ? 'principal/index' : 'admin/index');
+            $this->redirect($this->school->edit_school() ? 'principal/index' : 'principal/index');
         }
 
         //read one

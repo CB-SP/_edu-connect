@@ -1,7 +1,7 @@
 <?php
     require_once './app/views/layouts/usersMain.phtml';
-    $admin = new AdminController;
-    $admin_data = $admin->find_admin($_SESSION['id']);
+    $user = new UserController;
+    $user_data = $user->find_user($_SESSION['id']);
 ?>
 
 <section class="info-account">
@@ -34,7 +34,7 @@
                 <p>Edite as suas informações</p>
                 <img src="<?= URL ?>public/assets/images/x.png" alt="" class="close-modal-icon">
             </div>
-            <form action="<?= URL ?>admin/edit_admin" method="post" enctype="multipart/form-data">
+            <form action="<?= URL ?>user/edit_user" method="post" enctype="multipart/form-data">
                 <div class="input-box">
                     <label for="adminName">Nome Completo</label>
                     <input type="text" name="name" id="adminName" placeholder="Nome completo do admin" value="<?= $_SESSION['name'] ?>">
@@ -42,7 +42,7 @@
 
                 <div class="input-box">
                     <label for="adminEmail">Email</label>
-                    <input type="text" name="email" id="adminEmail" placeholder="admin@gmail.com" value="<?= $admin_data['email'] ?>">
+                    <input type="text" name="email" id="adminEmail" placeholder="admin@gmail.com" value="<?= $user_data['email'] ?>">
                 </div>
                 <div class="input-box">
                     <label for="">Foto do usuário</label>
@@ -53,7 +53,7 @@
                     </label>
                 </div>
 
-                <input type="hidden" name="id" id="userId" value="<?= $_SESSION['id'] ?>">
+                <input type="hidden" name="id" value="<?= $_SESSION['id'] ?>">
                 <input type="hidden" name="current_photo" id="current_photo">
 
                 <div class="final-btn-actions">
@@ -68,7 +68,7 @@
             </div>
             <div class="nome-role">
                 <h4><?= $_SESSION['name'] ?></h4>
-                <p>nivel acesso</p>
+                <p><?= $_SESSION['role'] ?></p>
             </div>
         </div>
         <div class="personal-info-area">
@@ -82,7 +82,7 @@
             </div>
             <div class="data">
                 <h5>Email</h5>
-                <p><?= $admin_data['email'] ?></p>
+                <p><?= $user_data['email'] ?></p>
             </div>
         </div>
     </section>
@@ -94,11 +94,11 @@
         <div class="account-info-area">
             <div class="account-info">
                 <h5>ID da Conta</h5>
-                <p>1</p>
+                <p><?= $_SESSION['id'] ?></p>
             </div>
             <div class="account-info">
                 <h5>Função</h5>
-                <p>nivel acesso</p>
+                <p><?=ucfirst( $_SESSION['role']) ?></p>
             </div>
             <div class="account-info">
                 <h5>Status</h5>
@@ -106,7 +106,7 @@
             </div>
             <div class="account-info">
                 <h5>Data de Criação</h5>
-                <p><?= $admin_data['created_at'] ?></p>
+                <p><?= $user_data['created_at'] ?></p>
             </div>
         </div>
     </section>
