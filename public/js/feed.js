@@ -54,7 +54,7 @@ iconEllipse.forEach(icon => {
                 d.classList.remove('dropActionsPostCard')
             }
         })
-        dropaction.classList.add('dropActionsPostCard')
+        dropaction.classList.toggle('dropActionsPostCard')
     })
 
 })
