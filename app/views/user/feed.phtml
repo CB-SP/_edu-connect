@@ -149,7 +149,26 @@ $pubsCount = $user->count_publications($_SESSION['school_id']);
                             </div>
                         </div>
                         <div class="reactions-info">
-                            Reacções
+                            <!--Likes info-->
+                            <div class="reactions-statistics">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-thumbs-up-icon lucide-thumbs-up">
+                                    <path d="M15 5.88 14 10h5.83a2 2 0 0 1 1.92 2.56l-2.33 8A2 2 0 0 1 17.5 22H4a2 2 0 0 1-2-2v-8a2 2 0 0 1 2-2h2.76a2 2 0 0 0 1.79-1.11L12 2a3.13 3.13 0 0 1 3 3.88Z" />
+                                    <path d="M7 10v12" />
+                                </svg> 12
+                            </div>
+                            <!--Favorites info-->
+                            <div class="reactions-statistics">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-heart-icon lucide-heart">
+                                    <path d="M2 9.5a5.5 5.5 0 0 1 9.591-3.676.56.56 0 0 0 .818 0A5.49 5.49 0 0 1 22 9.5c0 2.29-1.5 4-3 5.5l-5.492 5.313a2 2 0 0 1-3 .019L5 15c-1.5-1.5-3-3.2-3-5.5" />
+                                </svg>
+                                10
+                            </div>
+                            <!--Comments info-->
+                            <div class="reactions-statistics">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-message-circle-icon lucide-message-circle">
+                                    <path d="M2.992 16.342a2 2 0 0 1 .094 1.167l-1.065 3.29a1 1 0 0 0 1.236 1.168l3.413-.998a2 2 0 0 1 1.099.092 10 10 0 1 0-4.777-4.719" />
+                                </svg> 5
+                            </div>
                         </div>
                         <div class="reaction-actions">
                             <form action="<?= URL ?>user/react" method="post">
@@ -180,22 +199,48 @@ $pubsCount = $user->count_publications($_SESSION['school_id']);
                                 <p>Comentar</p>
                             </button>
                         </div>
-                        <div class="comment-area">
-                            <div class="img-user">
-                                <img src="" alt=" ">
-                            </div>
-                            <form action="<?= URL ?>user/comment" method="post">
-                                <div class="comment-box">
-                                    <textarea name="content" placeholder="Escreva um comentário"></textarea>
-
-                                    <input type="hidden" name="user" value="<?= $publication['user_id'] ?>">
-                                    <input type="hidden" name="post" value="<?= $publication['id'] ?>">
-                                    <input type="hidden" name="school" value="<?= $publication['school'] ?>">
-
-                                    <button type="submit" class="btn-comment">Publicar</button>
+                        <section class="comment-section">
+                            <div class="comment-area">
+                                <div class="img-user">
+                                    <img src="" alt=" ">
                                 </div>
-                            </form>
-                        </div>
+                                <form action="<?= URL ?>user/comment" method="post">
+                                    <div class="comment-box">
+                                        <textarea name="content" placeholder="Escreva um comentário"></textarea>
+                                        <input type="hidden" name="user" value="<?= $publication['user_id'] ?>">
+                                        <input type="hidden" name="post" value="<?= $publication['id'] ?>">
+                                        <input type="hidden" name="school" value="<?= $publication['school'] ?>">
+                                        <button type="submit" class="btn-comment">Publicar</button>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="show-comment-area">
+                                <div class="img-user">
+                                    <img src="" alt=" ">
+                                </div>
+                                <div class="show-comment-box">
+                                    <div class="show-comment">
+                                        <h4>Nome usuário</h4>
+                                        <p>Conteúdo-comentário Lorem ipsum dolor, sit amet consectetur adipisicing elit. Deleniti possimus repellat tempora explicabo corrupti dolor </p>
+                                    </div>
+                                    <span class="comment-time">há 5 minutos</span>
+                                </div>
+                            </div>
+                            <div class="show-comment-area">
+                                <div class="img-user">
+                                    <img src="" alt=" ">
+                                </div>
+                                <div class="show-comment-box">
+                                    <div class="show-comment">
+                                        <h4>Nome usuário</h4>
+                                        <p>
+                                            Prof. João Costa
+                                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem dolore quasi, veritatis distinctio eveniet quidem qui! Explicabo rerum alias ea, qui rem magni tenetur ad nisi itaque quos molestias necessitatibu </p>
+                                    </div>
+                                    <span class="comment-time">há 5 minutos</span>
+                                </div>
+                            </div>
+                        </section>
                     </div>
                 <?php endforeach; ?>
             <?php endif; ?>

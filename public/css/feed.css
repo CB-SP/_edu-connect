@@ -413,10 +413,24 @@
         background-color: var(--SwitchBackground);
     }
 
+    /*REACTION ACTIONS*/
     .publication-card .reactions-info {
         border-top: 1px solid var(--SwitchBackground);
         border-bottom: 1px solid var(--SwitchBackground);
         padding: 1rem 0;
+        display: flex;
+        gap: 20px;
+    }
+
+    .reactions-info .reactions-statistics {
+        display: flex;
+        gap: 1px;
+        align-items: center;
+        color: var(--MutedForegroundC);
+    }
+
+    .reactions-statistics svg {
+        height: 15px;
     }
 
     .publication-card .reaction-actions {
@@ -424,7 +438,7 @@
         gap: 15px;
     }
 
-    .publication-card .reaction-actions form{
+    .publication-card .reaction-actions form {
         display: flex;
         gap: 15px;
     }
@@ -450,17 +464,13 @@
     }
 
     /*COMENT AREA*/
-    .publication-card .comment-area {
-        display: flex;
-        gap: 15px;
-        width: 100%;
-        border-top: 1px solid var(--SwitchBackground);
-        padding-top: 15px;
+    .comment-section{
         display: none;
     }
-
-    .comment-area.showComment {
+    .comment-section.showCommentSection{
         display: block;
+    }
+    .publication-card .comment-area {
         display: flex;
         gap: 15px;
         width: 100%;
@@ -520,6 +530,52 @@
     .comment-box .btn-comment:hover {
         background-color: var(--AccentBlueHover);
     }
+
+    /*COMMENTS SHOWING*/
+    .publication-card .show-comment-area {
+        display: flex;
+        gap: 15px;
+        width: 100%;
+        margin-top: 15px;
+    }
+
+    .show-comment-area .img-user {
+        height: 40px;
+        width: 40px;
+        border-radius: var(--radius-full);
+        background-color: var(--Muted);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .show-comment-area .show-comment-box {
+        display: flex;
+        width: 100%;
+        flex-direction: column;
+        gap: 3px;
+    }
+
+    .show-comment-box .show-comment {
+        width: 100%;
+        font-size: var(--text-nl);
+        border-radius: var(--radius-md);
+        background-color: var(--Muted);
+        padding: 10px;
+        display: flex;
+        flex-direction: column;
+        gap: 3px;
+    }
+
+    .show-comment h4 {
+        font-weight: var(--weight-bd);
+    }
+
+    .show-comment-box span {
+        font-weight: var(--weight-lg);
+        color: var(--MutedForegroundC);
+    }
+
 
     .thumbs-up.click {
         color: var(--AccentBlue);
@@ -938,10 +994,24 @@
         background-color: var(--SwitchBackground);
     }
 
+    /*REACTION ACTIONS*/
     .publication-card .reactions-info {
         border-top: 1px solid var(--SwitchBackground);
         border-bottom: 1px solid var(--SwitchBackground);
         padding: 1rem 0;
+        display: flex;
+        gap: 20px;
+    }
+
+    .reactions-info .reactions-statistics {
+        display: flex;
+        gap: 1px;
+        align-items: center;
+        color: var(--MutedForegroundC);
+    }
+
+    .reactions-statistics svg {
+        height: 18px;
     }
 
     .publication-card .reaction-actions {
@@ -971,21 +1041,23 @@
     }
 
     .reaction-option svg {
-        height: 15px;
+        height: 18px;
+    }
+
+    .reaction-option p {
+        font-size: var(--text-md);
     }
 
     /*COMMENT AREA*/
-    .publication-card .comment-area {
-        display: flex;
-        gap: 15px;
-        width: 100%;
-        border-top: 1px solid var(--SwitchBackground);
-        padding-top: 15px;
+    .comment-section {
         display: none;
     }
 
-    .comment-area.showComment {
+    .comment-section.showCommentSection {
         display: block;
+    }
+
+    .publication-card .comment-area {
         display: flex;
         gap: 15px;
         width: 100%;
@@ -1034,17 +1106,64 @@
 
     .comment-box .btn-comment {
         width: fit-content;
-        padding: 8px 10px;
+        padding: 10px 15px;
         border: none;
         border-radius: var(--radius-sm);
         background-color: var(--AccentBlue);
         color: var(--Background);
         transition: background-color .1s ease-in-out;
+        font-size: var(--text-md);
     }
 
     .comment-box .btn-comment:hover {
         background-color: var(--AccentBlueHover);
     }
+
+    /*COMMENTS SHOWING*/
+    .publication-card .show-comment-area {
+        display: flex;
+        gap: 15px;
+        width: 100%;
+        margin-top: 20px;
+    }
+
+    .show-comment-area .img-user {
+        height: 40px;
+        width: 40px;
+        border-radius: var(--radius-full);
+        background-color: var(--Muted);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .show-comment-area .show-comment-box {
+        display: flex;
+        width: 100%;
+        flex-direction: column;
+        gap: 3px;
+    }
+
+    .show-comment-box .show-comment {
+        width: 100%;
+        font-size: var(--text-nl);
+        border-radius: var(--radius-md);
+        background-color: var(--Muted);
+        padding: 10px;
+        display: flex;
+        flex-direction: column;
+        gap: 3px;
+    }
+
+    .show-comment h4 {
+        font-weight: var(--weight-bd);
+    }
+
+    .show-comment-box span {
+        font-weight: var(--weight-lg);
+        color: var(--MutedForegroundC);
+    }
+
 
     .thumbs-up.click {
         color: var(--AccentBlue);
