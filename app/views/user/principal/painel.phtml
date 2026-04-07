@@ -170,7 +170,7 @@ $entities = $principal->total_entities($_SESSION['school_id']);
                 <p>Edite as informações de usuário</p>
                 <img src="<?= URL ?>public/assets/images/x.png" alt="" class="close-modal-icon">
             </div>
-            <form action="<?= URL ?>admin/edit_user" method="post" enctype="multipart/form-data">
+            <form action="<?= URL ?>principal/edit_user" method="post" enctype="multipart/form-data">
                 <div class="input-box">
                     <label for="userName">Nome Completo</label>
                     <input type="text" name="name" id="userName" placeholder="Nome completo do usuário">
@@ -266,7 +266,7 @@ $entities = $principal->total_entities($_SESSION['school_id']);
                                             <?php if ($status == 'Inactivo'): ?>
                                                 <button class="restore-action" onclick="window.location.href='<?= URL ?>principal/restore_user/<?= $teacher['id'] ?>'"><img src="" alt=" ">Restaurar</button>
                                             <?php else: ?>
-                                                <button class="edit-action" data-id=<?= $school['id'] ?>><img src="" alt=" ">Editar</button>
+                                                <button class="edit-action" data-id=<?= $teacher['id'] ?> data-type="user"><img src="" alt=" ">Editar</button>
                                                 <button class="delete-action" onclick="window.location.href='<?= URL ?>principal/delete_user/<?= $teacher['id'] ?>'"><img src="" alt=" ">Eliminar</button>
                                             <?php endif; ?>
                                         </div>
@@ -311,7 +311,7 @@ $entities = $principal->total_entities($_SESSION['school_id']);
                                             <?php if ($status == 'Inactivo'): ?>
                                                 <button class="restore-action" onclick="window.location.href='<?= URL ?>principal/restore_user/<?= $coordinator['id'] ?>'"><img src="" alt=" ">Restaurar</button>
                                             <?php else: ?>
-                                                <button class="edit-action" data-id=<?= $school['id'] ?>><img src="" alt=" ">Editar</button>
+                                                <button class="edit-action" data-id=<?= $coordinator['id'] ?> data-type="user"><img src="" alt=" ">Editar</button>
                                                 <button class="delete-action" onclick="window.location.href='<?= URL ?>principal/delete_user/<?= $coordinator['id'] ?>'"><img src="" alt=" ">Eliminar</button>
                                             <?php endif; ?>
                                         </div>
@@ -356,7 +356,7 @@ $entities = $principal->total_entities($_SESSION['school_id']);
                                             <?php if ($status == 'Inactivo'): ?>
                                                 <button class="restore-action" onclick="window.location.href='<?= URL ?>principal/restore_user/<?= $student['id'] ?>'"><img src="" alt=" ">Restaurar</button>
                                             <?php else: ?>
-                                                <button class="edit-action" data-id=<?= $student['id'] ?>><img src="" alt=" ">Editar</button>
+                                                <button class="edit-action" data-id=<?= $student['id'] ?> data-type="user"><img src="" alt=" ">Editar</button>
                                                 <button class="delete-action" onclick="window.location.href='<?= URL ?>principal/delete_user/<?= $student['id'] ?>'"><img src="" alt=" ">Eliminar</button>
                                             <?php endif; ?>
                                         </div>
