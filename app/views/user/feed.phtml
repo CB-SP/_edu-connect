@@ -1,23 +1,25 @@
 <?php
-    require_once './app/views/layouts/usersMain.phtml';
-    $user = new UserController;
-    $posts = $user->get($_SESSION['school_id']);
-    $pubsCount = $user->count_publications($_SESSION['school_id']);
+require_once './app/views/layouts/usersMain.phtml';
+$user = new UserController;
+$posts = $user->get($_SESSION['school_id']);
+$pubsCount = $user->count_publications($_SESSION['school_id']);
 ?>
 
 <div class="feed-wrapper">
     <style>
-        .selectedFeed{
+        .selectedFeed {
             background-color: var(--AccentBlue);
         }
-        .selectedFeed:hover{
+
+        .selectedFeed:hover {
             background-color: var(--AccentBlueHover);
         }
+
         .selectedFeed a {
             color: var(--Background) !important;
         }
-       
-        .nav-item:not(.selectedFeed):hover{
+
+        .nav-item:not(.selectedFeed):hover {
             background-color: var(--Muted);
             color: var(--Primary);
         }
@@ -48,9 +50,9 @@
                     <label for="type-publication">Tipo de Publicação *</label>
                     <select name="type" id="type-publication">
                         <option value="post">Publicação Normal</option>
-                        <?php if(($_SESSION['role'] === 'director') || ($_SESSION['role'] === 'professor')):?>
+                        <?php if (($_SESSION['role'] === 'director') || ($_SESSION['role'] === 'professor')): ?>
                             <option value="aviso">Aviso/Comunicado</option>
-                        <?php endif;?>
+                        <?php endif; ?>
                     </select>
                 </div>
                 <div class="input-box">
@@ -82,15 +84,15 @@
             </button>
         </div>
         <div class="publication-cards">
-            <?php if (empty($posts)):?>
+            <?php if (empty($posts)): ?>
                 <h3>Nada para ver</h3>
-            <?php else:?>
+            <?php else: ?>
                 <?php
-                    $publications = array_filter($posts, function ($n) {
-                        return $n['tipo'] === 'post';
-                    });
+                $publications = array_filter($posts, function ($n) {
+                    return $n['tipo'] === 'post';
+                });
                 ?>
-                <?php foreach ($publications as $publication):?>
+                <?php foreach ($publications as $publication): ?>
                     <div class="publication-card">
                         <div class="header-publication-card">
                             <div class="info-user-publication-card">
@@ -102,7 +104,7 @@
                                     <p><?= $publication['created_at'] ?></p>
                                 </div>
                                 <div class="publication-type-info">
-                                    <?= $publication['tipo'] === 'post' ? 'Publicação' : 'Comunicado'?>
+                                    <?= $publication['tipo'] === 'post' ? 'Publicação' : 'Comunicado' ?>
                                 </div>
                             </div>
                             <button class="options-publication-card">
@@ -111,7 +113,20 @@
                                     <circle cx="12" cy="5" r="1" />
                                     <circle cx="12" cy="19" r="1" />
                                 </svg>
-
+                                <div class="drop-post-card-actions">
+                                    <div class="drop-post-card-action">
+                                        <div class="icon-area">
+                                            <img src="" alt=" ">
+                                        </div>
+                                        <p>Bloquear comentários</p>
+                                    </div>
+                                    <div class="drop-post-card-action">
+                                        <div class="icon-area">
+                                            <img src="" alt=" ">
+                                        </div>
+                                        <p>Remover publicação</p>
+                                    </div>
+                                </div>
                             </button>
                         </div>
                         <div class="publication-card-content">
@@ -143,18 +158,25 @@
                                 <input type="hidden" name="post" value=<?= $publication['id'] ?>>
 
                                 <button class="reaction-option thumbs-up <?= $publication['reaction'] === 'like' ? 'click' : '' ?>" name="type" value="like">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-thumbs-up-icon lucide-thumbs-up"><path d="M15 5.88 14 10h5.83a2 2 0 0 1 1.92 2.56l-2.33 8A2 2 0 0 1 17.5 22H4a2 2 0 0 1-2-2v-8a2 2 0 0 1 2-2h2.76a2 2 0 0 0 1.79-1.11L12 2a3.13 3.13 0 0 1 3 3.88Z"/><path d="M7 10v12"/></svg>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-thumbs-up-icon lucide-thumbs-up">
+                                        <path d="M15 5.88 14 10h5.83a2 2 0 0 1 1.92 2.56l-2.33 8A2 2 0 0 1 17.5 22H4a2 2 0 0 1-2-2v-8a2 2 0 0 1 2-2h2.76a2 2 0 0 0 1.79-1.11L12 2a3.13 3.13 0 0 1 3 3.88Z" />
+                                        <path d="M7 10v12" />
+                                    </svg>
 
                                     <p>Gosto</p>
                                 </button>
                                 <button class="reaction-option favorite <?= $publication['reaction'] === 'adoro' ? 'click' : '' ?>" name="type" value="adoro">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-heart-icon lucide-heart"><path d="M2 9.5a5.5 5.5 0 0 1 9.591-3.676.56.56 0 0 0 .818 0A5.49 5.49 0 0 1 22 9.5c0 2.29-1.5 4-3 5.5l-5.492 5.313a2 2 0 0 1-3 .019L5 15c-1.5-1.5-3-3.2-3-5.5"/></svg>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-heart-icon lucide-heart">
+                                        <path d="M2 9.5a5.5 5.5 0 0 1 9.591-3.676.56.56 0 0 0 .818 0A5.49 5.49 0 0 1 22 9.5c0 2.29-1.5 4-3 5.5l-5.492 5.313a2 2 0 0 1-3 .019L5 15c-1.5-1.5-3-3.2-3-5.5" />
+                                    </svg>
 
                                     <p>Adoro</p>
                                 </button>
                             </form>
                             <button class="reaction-option comment" id="">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-message-circle-icon lucide-message-circle"><path d="M2.992 16.342a2 2 0 0 1 .094 1.167l-1.065 3.29a1 1 0 0 0 1.236 1.168l3.413-.998a2 2 0 0 1 1.099.092 10 10 0 1 0-4.777-4.719"/></svg>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-message-circle-icon lucide-message-circle">
+                                    <path d="M2.992 16.342a2 2 0 0 1 .094 1.167l-1.065 3.29a1 1 0 0 0 1.236 1.168l3.413-.998a2 2 0 0 1 1.099.092 10 10 0 1 0-4.777-4.719" />
+                                </svg>
 
                                 <p>Comentar</p>
                             </button>
@@ -176,8 +198,8 @@
                             </form>
                         </div>
                     </div>
-                <?php endforeach;?>
-            <?php endif;?>
+                <?php endforeach; ?>
+            <?php endif; ?>
         </div>
     </section>
 </div>
