@@ -25,7 +25,7 @@ const btnComments = document.querySelectorAll('.comment')
 btnComments.forEach(btnComment => {
     btnComment.addEventListener('click', () => {
         const commentBox = btnComment.parentElement.nextElementSibling
-        commentBox.classList.toggle('showComment')
+        commentBox.classList.toggle('showCommentSection')
     })
 
 })
