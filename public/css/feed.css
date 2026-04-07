@@ -228,7 +228,7 @@
         gap: 10px;
     }
 
-    .tabs-publication button:nth-child(1) {
+    .tabs-publication .active {
         background-color: var(--AccentBlue);
         color: var(--Background);
     }
@@ -699,7 +699,7 @@
         gap: 10px;
     }
 
-    .tabs-publication button:nth-child(1) {
+    .tabs-publication .active {
         background-color: var(--AccentBlue);
         color: var(--Background);
     }
