@@ -300,23 +300,24 @@
     .header-publication-card .options-publication-card {
         height: 25px;
         border: none;
-        border-radius: var(--radius-sm);
         background: none;
-    }
-
-    .options-publication-card:hover {
-        background-color: var(--Muted);
     }
 
     .options-publication-card svg {
         height: 25px;
         padding: 3px;
+        border-radius: var(--radius-sm);
     }
 
-     /*DROP ACTIONS POST CARD*/
+    .options-publication-card svg:hover {
+        background-color: var(--Muted);
+    }
+
+
+    /*DROP ACTIONS POST CARD*/
     .options-publication-card .drop-post-card-actions {
         position: absolute;
-        right: 0;
+        right: 40px;
         width: 190px;
         background-color: var(--Background);
         border: 1px solid var(--Muted);
@@ -335,10 +336,16 @@
     .drop-post-card-actions .drop-post-card-action {
         display: flex;
         gap: 10px;
-        padding: 6px 5px;
         border-radius: var(--radius-sm);
         align-items: center;
         transition: background-color .1s ease;
+        padding: 5px;
+        padding: 6px 5px;
+
+    }
+
+    .drop-post-card-action:hover {
+        background-color: var(--Muted);
     }
 
     .drop-post-card-action:nth-child(2) {
@@ -500,7 +507,8 @@
     .comment-box .btn-comment:hover {
         background-color: var(--AccentBlueHover);
     }
-      .thumbs-up.click {
+
+    .thumbs-up.click {
         color: var(--AccentBlue);
     }
 
@@ -807,20 +815,21 @@
     .header-publication-card .options-publication-card {
         height: 25px;
         border: none;
-        border-radius: var(--radius-sm);
         background: none;
-    }
-
-    .options-publication-card:hover {
-        background-color: var(--Muted);
     }
 
     .options-publication-card svg {
         height: 25px;
         padding: 3px;
+        border-radius: var(--radius-sm);
     }
 
-        /*DROP ACTIONS POST CARD*/
+    .options-publication-card svg:hover {
+        background-color: var(--Muted);
+    }
+
+
+    /*DROP ACTIONS POST CARD*/
     .options-publication-card .drop-post-card-actions {
         position: absolute;
         right: 200px;
