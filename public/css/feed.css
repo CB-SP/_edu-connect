@@ -784,6 +784,43 @@
         padding: 3px;
     }
 
+        /*DROP ACTIONS POST CARD*/
+    .options-publication-card .drop-post-card-actions {
+        position: absolute;
+        right: 200px;
+        width: 190px;
+        background-color: var(--Background);
+        border: 1px solid var(--Muted);
+        border-radius: var(--radius-sm);
+        box-shadow: 0 2px 6px rgba(0, 0, 0, .2);
+        display: flex;
+        flex-direction: column;
+        padding: 5px;
+        display: none;
+    }
+
+    .drop-post-card-actions.dropActionsPostCard {
+        display: block;
+    }
+
+    .drop-post-card-actions .drop-post-card-action {
+        display: flex;
+        gap: 10px;
+        padding: 6px 5px;
+        border-radius: var(--radius-sm);
+        align-items: center;
+        transition: background-color .1s ease;
+    }
+
+    .drop-post-card-action:nth-child(2) {
+        color: var(--Destructive);
+    }
+
+    .drop-post-card-action:hover {
+        background-color: var(--Muted);
+    }
+
+
     /*CONTENT PUBLICATION*/
     .publication-card .publication-card-content {
         color: var(--Primary);
