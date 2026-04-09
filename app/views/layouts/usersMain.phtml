@@ -41,9 +41,15 @@
                 <div class="main-nav">
                     <ul class="nav-list">
                         <li class="nav-item selectedFeed" data-link="painel" ><a href="<?= URL ?>user/index" class="nav-link selectedFeedLink"><span class="nav-icon"><img src="" alt=" "></span>Feed</a></li>
-                        <li class="nav-item selectedPainel" id="selected data-link="painel"><a href="<?= URL ?>principal/index" class="nav-link"><span class="nav-icon"><img src="" alt=" "></span>Gestão Escola</a></li>
-                        <li class="nav-item" data-link="painel"><a href="<?= URL ?>teacher/classes" class="nav-link"><span class="nav-icon"><img src="" alt=" "></span>Turmas</a></li>
-                        <li class="nav-item" data-link="painel"><a href="<?= URL ?>principal/messages" class="nav-link"><span class="nav-icon"><img src="" alt=" "></span>Mensagens</a></li>
+                        <?php if($_SESSION['role'] === 'director'):?>
+                            <li class="nav-item selectedPainel" id="selected data-link="painel"><a href="<?= URL ?>principal/index" class="nav-link"><span class="nav-icon"><img src="" alt=" "></span>Gestão Escola</a></li>
+                        <?php endif;?>
+                        <?php if($_SESSION['role'] === 'professor'):?>
+                            <li class="nav-item" data-link="painel"><a href="<?= URL ?>teacher/classes" class="nav-link"><span class="nav-icon"><img src="" alt=" "></span>Turmas</a></li>
+                        <?php endif;?>
+                        <?php if($_SESSION['role'] === 'director'):?>
+                            <li class="nav-item" data-link="painel"><a href="<?= URL ?>principal/messages" class="nav-link"><span class="nav-icon"><img src="" alt=" "></span>Mensagens</a></li>
+                        <?php endif;?>
                     </ul>
                 </div>
                 <div class="set-nav">

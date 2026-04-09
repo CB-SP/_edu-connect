@@ -9,6 +9,7 @@
 
         public function index() {
             $this->isLoged();
+            $this->is_user();
             $this->show_page("feed");
         }
 
@@ -18,16 +19,19 @@
 
         public function settings() {
             $this->isLoged();
+            $this->is_user();
             $this->show_page("settings");
         }
 
         public function infoAccount() {
             $this->isLoged();
+            $this->is_user();
             $this->show_page("infoAccount");
         }
 
         public function security() {
             $this->isLoged();
+            $this->is_user();
             $this->show_page("security");
         }
 
@@ -323,6 +327,13 @@
             } catch (PDOException $e) {
                 error_log("ERRO_BUSCAR_HASH_USUARIO: ". $e->getMessage(). "\n". $e->getTraceAsString());
                 return null;
+            }
+        }
+
+        //verify if its a normal user
+        private function is_user() {
+            if (!isset($_SESSION['role'])) {
+                $this->redirect('user/login');
             }
         }
     }
