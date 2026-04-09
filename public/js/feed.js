@@ -29,20 +29,3 @@ btnComments.forEach(btnComment => {
     })
 
 })
-
-
-const btnLikes = document.querySelectorAll('.thumbs-up')
-const btnFavorites = document.querySelectorAll('.favorite')
-
-btnLikes.forEach(btn => {
-    btn.addEventListener('click', () => {
-        btn.classList.toggle('click')
-    })
-})
-
-btnFavorites.forEach(btn=>{
-    btn.addEventListener('click', ()=>{
-       btn.classList.toggle('click') 
-    })
-
-})
