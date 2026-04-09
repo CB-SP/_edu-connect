@@ -1,11 +1,13 @@
 <?php
     class UserController extends Controller {
-        private $user, $coordinator, $post, $id, $name, $email, $contact_1, $contact_2, $nif, $school, $role, $photo, $password;
+        private $user, $coordinator, $post, $reaction, $comment, $id, $name, $email, $contact_1, $contact_2, $nif, $school, $role, $photo, $password;
 
         public function __construct() {
             $this->user = new UserModel;
             $this->coordinator = new CoordinatorController;
             $this->post = new PostController;
+            $this->reaction = new ReactionController;
+            $this->comment = new CommentController;
         }
 
         public function index() {
@@ -302,6 +304,16 @@
         //get publications count
         public function count_publications($school) {
             return $this->post->count_publications($school);
+        }
+
+        //react in posts
+        public function react() {
+            $this->redirect($this->reaction->react() ? 'user/index' : 'user/index');
+        }
+
+        //comment in posts
+        public function comment() {
+            $this->redirect($this->comment->comment() ? 'user/index' : 'user/index');
         }
 
         //search users password hash

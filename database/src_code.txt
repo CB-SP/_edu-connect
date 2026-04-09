@@ -197,7 +197,7 @@ create table reacoes (
     id int auto_increment primary key,
     usuario int not null,
     post int not null,
-    tipo enum('like','apoio','love') default 'like',
+    tipo enum('like','adoro') default 'like',
     unique(usuario, post),
     foreign key (usuario) references usuarios(id) on delete cascade,
     foreign key (post) references posts(id) on delete cascade

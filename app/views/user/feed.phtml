@@ -83,7 +83,7 @@
         </div>
         <div class="publication-cards">
             <?php if (empty($posts)):?>
-                <h3>Ñada para ver</h3>
+                <h3>Nada para ver</h3>
             <?php else:?>
                 <?php
                     $publications = array_filter($posts, function ($n) {
@@ -138,16 +138,21 @@
                             Reacções
                         </div>
                         <div class="reaction-actions">
-                            <button class="reaction-option thumbs-up" id="">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-thumbs-up-icon lucide-thumbs-up"><path d="M15 5.88 14 10h5.83a2 2 0 0 1 1.92 2.56l-2.33 8A2 2 0 0 1 17.5 22H4a2 2 0 0 1-2-2v-8a2 2 0 0 1 2-2h2.76a2 2 0 0 0 1.79-1.11L12 2a3.13 3.13 0 0 1 3 3.88Z"/><path d="M7 10v12"/></svg>
+                            <form action="<?= URL ?>user/react" method="post">
+                                <input type="hidden" name="user" value=<?= $publication['user_id'] ?>>
+                                <input type="hidden" name="post" value=<?= $publication['id'] ?>>
 
-                                <p>Gosto</p>
-                            </button>
-                            <button class="reaction-option favorite">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-heart-icon lucide-heart"><path d="M2 9.5a5.5 5.5 0 0 1 9.591-3.676.56.56 0 0 0 .818 0A5.49 5.49 0 0 1 22 9.5c0 2.29-1.5 4-3 5.5l-5.492 5.313a2 2 0 0 1-3 .019L5 15c-1.5-1.5-3-3.2-3-5.5"/></svg>
+                                <button class="reaction-option thumbs-up <?= $publication['reaction'] === 'like' ? 'click' : '' ?>" name="type" value="like">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-thumbs-up-icon lucide-thumbs-up"><path d="M15 5.88 14 10h5.83a2 2 0 0 1 1.92 2.56l-2.33 8A2 2 0 0 1 17.5 22H4a2 2 0 0 1-2-2v-8a2 2 0 0 1 2-2h2.76a2 2 0 0 0 1.79-1.11L12 2a3.13 3.13 0 0 1 3 3.88Z"/><path d="M7 10v12"/></svg>
 
-                                <p>Adoro</p>
-                            </button>
+                                    <p>Gosto</p>
+                                </button>
+                                <button class="reaction-option favorite <?= $publication['reaction'] === 'adoro' ? 'click' : '' ?>" name="type" value="adoro">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-heart-icon lucide-heart"><path d="M2 9.5a5.5 5.5 0 0 1 9.591-3.676.56.56 0 0 0 .818 0A5.49 5.49 0 0 1 22 9.5c0 2.29-1.5 4-3 5.5l-5.492 5.313a2 2 0 0 1-3 .019L5 15c-1.5-1.5-3-3.2-3-5.5"/></svg>
+
+                                    <p>Adoro</p>
+                                </button>
+                            </form>
                             <button class="reaction-option comment" id="">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-message-circle-icon lucide-message-circle"><path d="M2.992 16.342a2 2 0 0 1 .094 1.167l-1.065 3.29a1 1 0 0 0 1.236 1.168l3.413-.998a2 2 0 0 1 1.099.092 10 10 0 1 0-4.777-4.719"/></svg>
 
@@ -158,10 +163,17 @@
                             <div class="img-user">
                                 <img src="" alt=" ">
                             </div>
-                            <div class="comment-box">
-                                <textarea name="" id="" placeholder="Escreva um comentário"></textarea>
-                                <button type="submit" class="btn-comment">Publicar</button>
-                            </div>
+                            <form action="<?= URL ?>user/comment" method="post">
+                                <div class="comment-box">
+                                    <textarea name="content" placeholder="Escreva um comentário"></textarea>
+
+                                    <input type="hidden" name="user" value="<?= $publication['user_id'] ?>">
+                                    <input type="hidden" name="post" value="<?= $publication['id'] ?>">
+                                    <input type="hidden" name="school" value="<?= $publication['school'] ?>">
+
+                                    <button type="submit" class="btn-comment">Publicar</button>
+                                </div>
+                            </form>
                         </div>
                     </div>
                 <?php endforeach;?>
