@@ -1,14 +1,16 @@
 <?php
     class UserController extends Controller {
-        private $user, $coordinator, $id, $name, $email, $contact_1, $contact_2, $nif, $school, $role, $photo, $password;
+        private $user, $coordinator, $post, $id, $name, $email, $contact_1, $contact_2, $nif, $school, $role, $photo, $password;
 
         public function __construct() {
             $this->user = new UserModel;
             $this->coordinator = new CoordinatorController;
+            $this->post = new PostController;
         }
 
         public function index() {
             $this->isLoged();
+            $this->is_user();
             $this->show_page("feed");
         }
 
@@ -18,16 +20,19 @@
 
         public function settings() {
             $this->isLoged();
+            $this->is_user();
             $this->show_page("settings");
         }
 
         public function infoAccount() {
             $this->isLoged();
+            $this->is_user();
             $this->show_page("infoAccount");
         }
 
         public function security() {
             $this->isLoged();
+            $this->is_user();
             $this->show_page("security");
         }
 
@@ -283,6 +288,22 @@
             $this->redirect("user/index");
         }
 
+        //==========posts managemant==========
+        //make a post
+        public function publish() {
+            $this->redirect($this->post->publish() ? 'user/index' : 'user/index');
+        }
+
+        //get all posts of a school
+        public function get($school) {
+            return $this->post->get_posts($school);
+        }
+
+        //get publications count
+        public function count_publications($school) {
+            return $this->post->count_publications($school);
+        }
+
         //search users password hash
         private function fetch_password_hash($nif) {
             if (empty($nif)) {
@@ -323,6 +344,13 @@
             } catch (PDOException $e) {
                 error_log("ERRO_BUSCAR_HASH_USUARIO: ". $e->getMessage(). "\n". $e->getTraceAsString());
                 return null;
+            }
+        }
+
+        //verify if its a normal user
+        private function is_user() {
+            if (!isset($_SESSION['role'])) {
+                $this->redirect('user/login');
             }
         }
     }
