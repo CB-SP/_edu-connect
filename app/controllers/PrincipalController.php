@@ -9,21 +9,20 @@
         }
 
         public function index() {
-            $this->show_page("painel");
-        }
-
-        public function register() {
             $this->isLoged();
-            $this->show_page("register");
+            Utils::private_route('director');
+            $this->show_page("painel");
         }
 
         public function messages() {
             $this->isLoged();
+            Utils::private_route('director');
             $this->show_page("messages");
         }
 
         public function infoSchoolAccount() {
             $this->isLoged();
+            Utils::private_route('director');
             $this->show_page("infoSchoolAccount");
         }
 

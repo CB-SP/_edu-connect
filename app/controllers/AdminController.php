@@ -10,7 +10,7 @@
 
         public function index() {
             $this->isLoged();
-            $this->isAdminLoged();
+            $this->isAdmin();
             $this->show_page("dashboard");
         }
 
@@ -20,22 +20,22 @@
 
         public function register() {
             $this->isLoged();
-            $this->isAdminLoged();
+            $this->isAdmin();
             $this->show_page("register");
         }
         public function settings() {
             $this->isLoged();
-            $this->isAdminLoged();
+            $this->isAdmin();
             $this->show_page("settings");
         }
         public function infoAccount() {
             $this->isLoged();
-            $this->isAdminLoged();
+            $this->isAdmin();
             $this->show_page("infoAccount");
         }
         public function security() {
             $this->isLoged();
-            $this->isAdminLoged();
+            $this->isAdmin();
             $this->show_page("security");
         }
 
@@ -310,7 +310,7 @@
         }
 
         //verify if the entity is an admin
-        private function isAdminLoged() {
+        private function isAdmin() {
             if (isset($_SESSION['role'])) {
                 $this->redirect('user/index');
             }
