@@ -1,10 +1,11 @@
 <?php
     class UserController extends Controller {
-        private $user, $coordinator, $id, $name, $email, $contact_1, $contact_2, $nif, $school, $role, $photo, $password;
+        private $user, $coordinator, $post, $id, $name, $email, $contact_1, $contact_2, $nif, $school, $role, $photo, $password;
 
         public function __construct() {
             $this->user = new UserModel;
             $this->coordinator = new CoordinatorController;
+            $this->post = new PostController;
         }
 
         public function index() {
@@ -285,6 +286,22 @@
             }
 
             $this->redirect("user/index");
+        }
+
+        //==========posts managemant==========
+        //make a post
+        public function publish() {
+            $this->redirect($this->post->publish() ? 'user/index' : 'user/index');
+        }
+
+        //get all posts of a school
+        public function get($school) {
+            return $this->post->get_posts($school);
+        }
+
+        //get publications count
+        public function count_publications($school) {
+            return $this->post->count_publications($school);
         }
 
         //search users password hash

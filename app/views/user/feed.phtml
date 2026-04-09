@@ -1,4 +1,9 @@
-<?php require_once './app/views/layouts/usersMain.phtml' ?>
+<?php
+    require_once './app/views/layouts/usersMain.phtml';
+    $user = new UserController;
+    $posts = $user->get($_SESSION['school_id']);
+    $pubsCount = $user->count_publications($_SESSION['school_id']);
+?>
 
 <div class="feed-wrapper">
     <style>
@@ -38,22 +43,24 @@
                     <img src="<?= URL ?>public/assets/images/x.png" alt="close-icon">
                 </button>
             </div>
-            <form action="" class="publication-form">
+            <form action="<?= URL ?>user/publish" class="publication-form" method="post">
                 <div class="input-box">
                     <label for="type-publication">Tipo de Publicação *</label>
-                    <select name="" id="type-publication">
-                        <option value="">Publicação Normal</option>
-                        <option value="">Aviso/Comunicado</option>
+                    <select name="type" id="type-publication">
+                        <option value="post">Publicação Normal</option>
+                        <?php if(($_SESSION['role'] === 'director') || ($_SESSION['role'] === 'professor')):?>
+                            <option value="aviso">Aviso/Comunicado</option>
+                        <?php endif;?>
                     </select>
                 </div>
                 <div class="input-box">
                     <label for="publication-content">Conteúdo *</label>
-                    <textarea name="" id="publication-content" placeholder="O que deseja compartilhar?"></textarea>
+                    <textarea name="content" id="publication-content" placeholder="O que deseja compartilhar?"></textarea>
                 </div>
                 <div class="input-box">
                     <label for="">Anexos</label>
                     <label for="publication-file" class="labelFile">
-                        <input type="file" name="photo" id="publication-file" class="fotoFile" hidden>
+                        <input type="file" name="file" id="publication-file" class="fotoFile" hidden>
                         Anexar Ficheiros.
                         <span class="fileName">Nenhum ficheiro escolhido</span>
                     </label>
@@ -62,158 +69,103 @@
                     <button>Cancelar</button>
                     <button>Publicar</button>
                 </div>
+
+                <input type="hidden" name="user" value="<?= $_SESSION['id'] ?>">
+                <input type="hidden" name="school" value="<?= $_SESSION['school_id'] ?>">
             </form>
         </div>
         <div class="tabs-publication">
-            <button class="tab-publication">Todas (3)</button>
+            <button class="tab-publication">Todas (<?= $pubsCount['posts'] ?>)</button>
             <button class="tab-publication">
                 <img src="" alt=" ">
-                Comunicados (2)
+                Comunicados (<?= $pubsCount['notices'] ?>)
             </button>
         </div>
         <div class="publication-cards">
-            <div class="publication-card">
-                <div class="header-publication-card">
-                    <div class="info-user-publication-card">
-                        <div class="img-user">
-                            <img src="" alt=" ">
-                        </div>
-                        <div class="name-user">
-                            <h4>Prof. Daniel Silongwa</h4>
-                            <p>Published time</p>
-                        </div>
-                        <div class="publication-type-info">
-                            Comunicado
-                        </div>
-                    </div>
-                    <button class="options-publication-card">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-ellipsis-vertical-icon lucide-ellipsis-vertical">
-                            <circle cx="12" cy="12" r="1" />
-                            <circle cx="12" cy="5" r="1" />
-                            <circle cx="12" cy="19" r="1" />
-                        </svg>
-
-                    </button>
-                </div>
-                <div class="publication-card-content">
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus unde fugit ea, dolorem vitae atque laboriosam sit reiciendis..</p>
-                    <div class="attachment">
-                        <a href="" class="file-info">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-link-icon lucide-link">
-                                <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" />
-                                <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" />
-                            </svg>
-
-
-                            <div class="file-name">
-                                <p>Nome do ficheiro</p>
-                                <span>Link</span>
+            <?php if (empty($posts)):?>
+                <h3>Ñada para ver</h3>
+            <?php else:?>
+                <?php
+                    $publications = array_filter($posts, function ($n) {
+                        return $n['tipo'] === 'post';
+                    });
+                ?>
+                <?php foreach ($publications as $publication):?>
+                    <div class="publication-card">
+                        <div class="header-publication-card">
+                            <div class="info-user-publication-card">
+                                <div class="img-user">
+                                    <img src="<?= $publication['foto'] ?>" alt="">
+                                </div>
+                                <div class="name-user">
+                                    <h4><?= $publication['user'] ?></h4>
+                                    <p><?= $publication['created_at'] ?></p>
+                                </div>
+                                <div class="publication-type-info">
+                                    <?= $publication['tipo'] === 'post' ? 'Publicação' : 'Comunicado'?>
+                                </div>
                             </div>
-                        </a>
-                        <a href="" download="" class="btn-download">
-                            Baixar
-                        </a>
-                    </div>
-                </div>
-                <div class="reactions-info">
-                    Reacções
-                </div>
-                <div class="reaction-actions">
-                    <button class="reaction-option thumbs-up" id="">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-thumbs-up-icon lucide-thumbs-up"><path d="M15 5.88 14 10h5.83a2 2 0 0 1 1.92 2.56l-2.33 8A2 2 0 0 1 17.5 22H4a2 2 0 0 1-2-2v-8a2 2 0 0 1 2-2h2.76a2 2 0 0 0 1.79-1.11L12 2a3.13 3.13 0 0 1 3 3.88Z"/><path d="M7 10v12"/></svg>
+                            <button class="options-publication-card">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-ellipsis-vertical-icon lucide-ellipsis-vertical">
+                                    <circle cx="12" cy="12" r="1" />
+                                    <circle cx="12" cy="5" r="1" />
+                                    <circle cx="12" cy="19" r="1" />
+                                </svg>
 
-                        <p>Gosto</p>
-                    </button>
-                    <button class="reaction-option favorite">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-heart-icon lucide-heart"><path d="M2 9.5a5.5 5.5 0 0 1 9.591-3.676.56.56 0 0 0 .818 0A5.49 5.49 0 0 1 22 9.5c0 2.29-1.5 4-3 5.5l-5.492 5.313a2 2 0 0 1-3 .019L5 15c-1.5-1.5-3-3.2-3-5.5"/></svg>
-
-                        <p>Adoro</p>
-                    </button>
-                    <button class="reaction-option comment" id="">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-message-circle-icon lucide-message-circle"><path d="M2.992 16.342a2 2 0 0 1 .094 1.167l-1.065 3.29a1 1 0 0 0 1.236 1.168l3.413-.998a2 2 0 0 1 1.099.092 10 10 0 1 0-4.777-4.719"/></svg>
-
-                        <p>Comentar</p>
-                    </button>
-                </div>
-                <div class="comment-area">
-                    <div class="img-user">
-                        <img src="" alt=" ">
-                    </div>
-                    <div class="comment-box">
-                        <textarea name="" id="" placeholder="Escreva um comentário"></textarea>
-                        <button type="submit" class="btn-comment">Publicar</button>
-                    </div>
-                </div>
-            </div>
-            <div class="publication-card">
-                <div class="header-publication-card">
-                    <div class="info-user-publication-card">
-                        <div class="img-user">
-                            <img src="" alt=" ">
+                            </button>
                         </div>
-                        <div class="name-user">
-                            <h4>Prof. Daniel Silongwa</h4>
-                            <p>Published time</p>
-                        </div>
-                        <div class="publication-type-info">
-                            Comunicado
-                        </div>
-                    </div>
-                    <button class="options-publication-card">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-ellipsis-vertical-icon lucide-ellipsis-vertical">
-                            <circle cx="12" cy="12" r="1" />
-                            <circle cx="12" cy="5" r="1" />
-                            <circle cx="12" cy="19" r="1" />
-                        </svg>
-                    </button>
-                </div>
-                <div class="publication-card-content">
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi magni at alias, quaerat quod tempore atque illum culpa ad veritatis architecto tenetur autem. Iste neque quibusdam consequatur quidem minus quos.</p>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi magni at alias, quaerat quod tempore atque illum culpa ad veritatis architecto tenetur autem. Iste neque quibusdam consequatur quidem minus quos.</p>
-                    <div class="attachment">
-                        <a href="" class="file-info">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-link-icon lucide-link">
-                                <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" />
-                                <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" />
-                            </svg>
+                        <div class="publication-card-content">
+                            <p><?= $publication['conteudo'] ?></p>
+                            <div class="attachment">
+                                <a href="" class="file-info">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-link-icon lucide-link">
+                                        <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" />
+                                        <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" />
+                                    </svg>
 
-                            <div class="file-name">
-                                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Harum rem ab perferendis necessitatibus maxime consectetur aspernatur eius vero, saepe minima suscipit adipisci illo debitis amet est repudiandae, temporibus et voluptas?</p>
-                                <span>Link</span>
+
+                                    <div class="file-name">
+                                        <p>Nome do ficheiro</p>
+                                        <span>Link</span>
+                                    </div>
+                                </a>
+                                <a href="" download="" class="btn-download">
+                                    Baixar
+                                </a>
                             </div>
-                        </a>
-                        <a href="" download="" class="btn-download">
-                            Baixar
-                        </a>
+                        </div>
+                        <div class="reactions-info">
+                            Reacções
+                        </div>
+                        <div class="reaction-actions">
+                            <button class="reaction-option thumbs-up" id="">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-thumbs-up-icon lucide-thumbs-up"><path d="M15 5.88 14 10h5.83a2 2 0 0 1 1.92 2.56l-2.33 8A2 2 0 0 1 17.5 22H4a2 2 0 0 1-2-2v-8a2 2 0 0 1 2-2h2.76a2 2 0 0 0 1.79-1.11L12 2a3.13 3.13 0 0 1 3 3.88Z"/><path d="M7 10v12"/></svg>
+
+                                <p>Gosto</p>
+                            </button>
+                            <button class="reaction-option favorite">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-heart-icon lucide-heart"><path d="M2 9.5a5.5 5.5 0 0 1 9.591-3.676.56.56 0 0 0 .818 0A5.49 5.49 0 0 1 22 9.5c0 2.29-1.5 4-3 5.5l-5.492 5.313a2 2 0 0 1-3 .019L5 15c-1.5-1.5-3-3.2-3-5.5"/></svg>
+
+                                <p>Adoro</p>
+                            </button>
+                            <button class="reaction-option comment" id="">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-message-circle-icon lucide-message-circle"><path d="M2.992 16.342a2 2 0 0 1 .094 1.167l-1.065 3.29a1 1 0 0 0 1.236 1.168l3.413-.998a2 2 0 0 1 1.099.092 10 10 0 1 0-4.777-4.719"/></svg>
+
+                                <p>Comentar</p>
+                            </button>
+                        </div>
+                        <div class="comment-area">
+                            <div class="img-user">
+                                <img src="" alt=" ">
+                            </div>
+                            <div class="comment-box">
+                                <textarea name="" id="" placeholder="Escreva um comentário"></textarea>
+                                <button type="submit" class="btn-comment">Publicar</button>
+                            </div>
+                        </div>
                     </div>
-                </div>
-                <div class="reactions-info">
-                    Exemplo
-                </div>
-                <div class="reaction-actions">
-                    <button class="reaction-option thumbs-up" id="">
-                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-thumbs-up-icon lucide-thumbs-up"><path d="M15 5.88 14 10h5.83a2 2 0 0 1 1.92 2.56l-2.33 8A2 2 0 0 1 17.5 22H4a2 2 0 0 1-2-2v-8a2 2 0 0 1 2-2h2.76a2 2 0 0 0 1.79-1.11L12 2a3.13 3.13 0 0 1 3 3.88Z"/><path d="M7 10v12"/></svg>
-                        <p>Gosto</p>
-                    </button>
-                    <button class="reaction-option favorite">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-heart-icon lucide-heart"><path d="M2 9.5a5.5 5.5 0 0 1 9.591-3.676.56.56 0 0 0 .818 0A5.49 5.49 0 0 1 22 9.5c0 2.29-1.5 4-3 5.5l-5.492 5.313a2 2 0 0 1-3 .019L5 15c-1.5-1.5-3-3.2-3-5.5"/></svg>
-                        <p>Adoro</p>
-                    </button>
-                    <button class="reaction-option comment" id="">
-                           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-message-circle-icon lucide-message-circle"><path d="M2.992 16.342a2 2 0 0 1 .094 1.167l-1.065 3.29a1 1 0 0 0 1.236 1.168l3.413-.998a2 2 0 0 1 1.099.092 10 10 0 1 0-4.777-4.719"/></svg>
-                        <p>Comentar</p>
-                    </button>
-                </div>
-                <div class="comment-area">
-                    <div class="img-user">
-                        <img src="" alt=" ">
-                    </div>
-                    <div class="comment-box">
-                        <textarea name="" id="" placeholder="Escreva um comentário"></textarea>
-                        <button type="submit" class="btn-comment">Publicar</button>
-                    </div>
-                </div>
-            </div>
+                <?php endforeach;?>
+            <?php endif;?>
         </div>
     </section>
 </div>
