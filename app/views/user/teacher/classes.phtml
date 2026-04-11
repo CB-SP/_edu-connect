@@ -2,9 +2,19 @@
     require_once './app/views/layouts/usersMain.phtml'
 ?>
 
-<section id="director-section">
-    <h1>Turmas</h1>
-</section>
+<div class="class wrapper">
+    <style>
+        .selectedClass{
+            background-color: var(--AccentBlue);
+        }
+        .selectedClass a{
+            color: var(--Background) !important;
+        }
+    </style>
+    <section id="director-section">
+        <h1>Turmas</h1>
+    </section>
+</div>
 
 <?php 
     require_once './app/views/layouts/closure.phtml'
