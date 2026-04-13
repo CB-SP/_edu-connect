@@ -1,21 +1,64 @@
-<?php 
-    require_once './app/views/layouts/usersMain.phtml'
+<?php
+require_once './app/views/layouts/usersMain.phtml'
 ?>
 
-<div class="class wrapper">
+<div class="class-wrapper">
+    <div class="overlay-class"></div>
     <style>
-        .selectedClass{
+        .selectedClass {
             background-color: var(--AccentBlue);
         }
-        .selectedClass a{
+
+        .selectedClass a {
             color: var(--Background) !important;
         }
     </style>
-    <section id="director-section">
-        <h1>Turmas</h1>
+    <section id="class-section">
+        <div class="header-class">
+            <div class="title-class">
+                <h2>Turmas</h2>
+                <p>Turmas que leciona</p>
+            </div>
+            <button class="btn-new-class">
+                <img src="" alt=" ">
+                Nova Turma
+            </button>
+        </div>
+
+        <div class="class-modal">
+            <div class="class-modal-header">
+                <h3>Nova Turma</h3>
+                <p>Crie uma nova turma para organizar alunos e professores.</p>
+
+                <button class="close-icon-btn">
+                    <img src="<?= URL ?>public/assets/images/x.png" alt="close-icon">
+                </button>
+            </div>
+            <form action="" class="class-form" method="post">
+                <div class="input-box">
+                    <label for="">Nome da Turma *</label>
+                    <input type="text" name="" id="class-name" placeholder="Ex: Matemática 12ª A">
+                </div>
+                <div class="input-box">
+                    <label for="">Professor Responsável *</label>
+                    <select name="type" id="type-publication">
+                        <option value="post">Selecione o professor</option>
+                    </select>
+                </div>
+
+
+                <div class="btn-create-box">
+                    <button>Cancelar</button>
+                    <button>Criar</button>
+                </div>
+
+                <input type="hidden" name="user" value="<?= $_SESSION['id'] ?>">
+                <input type="hidden" name="school" value="<?= $_SESSION['school_id'] ?>">
+            </form>
+        </div>
     </section>
 </div>
 
-<?php 
-    require_once './app/views/layouts/closure.phtml'
+<?php
+require_once './app/views/layouts/closure.phtml'
 ?>

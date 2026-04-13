@@ -1,11 +1,21 @@
-<?php 
-    require_once './app/views/layouts/usersMain.phtml'
+<?php
+require_once './app/views/layouts/usersMain.phtml'
 ?>
 
-<section id="director-section">
-    <h1>Mensagens</h1>
-</section>
+<div class="message-wrapper">
+    <style>
+        .selectedMessages {
+            background-color: var(--AccentBlue);
+        }
+        .selectedMessages a{
+            color: var(--Background) !important;
+        }
+    </style>
+    <section id="message-section">
+        <h1>Mensagens</h1>
+    </section>
+</div>
 
-<?php 
-    require_once './app/views/layouts/closure.phtml'
+<?php
+require_once './app/views/layouts/closure.phtml'
 ?>
