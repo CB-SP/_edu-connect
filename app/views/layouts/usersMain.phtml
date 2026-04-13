@@ -13,9 +13,11 @@
     <link rel="stylesheet" href="<?= URL ?>public/css/settings.css">
     <link rel="stylesheet" href="<?= URL ?>public/css/settingsUsers.css">
     <link rel="stylesheet" href="<?= URL ?>public/css/feed.css">
+    <link rel="stylesheet" href="<?= URL ?>public/css/classes.css">
     <script src="<?= URL ?>public/js/app.js" defer></script>
     <script src="<?= URL ?>public/js/admin.js" defer></script>
     <script src="<?= URL ?>public/js/feed.js" defer></script>
+    <script src="<?= URL ?>public/js/class.js" defer></script>
     
 </head>
 
@@ -48,7 +50,7 @@
                             <li class="nav-item selectedClass" data-link="painel"><a href="<?= URL ?>teacher/classes" class="nav-link"><span class="nav-icon"><img src="" alt=" "></span>Turmas</a></li>
                         <?php endif;?>
                         <?php if($_SESSION['role'] === 'director'):?>
-                            <li class="nav-item" data-link="painel"><a href="<?= URL ?>principal/messages" class="nav-link"><span class="nav-icon"><img src="" alt=" "></span>Mensagens</a></li>
+                            <li class="nav-item selectedMessages" data-link="painel"><a href="<?= URL ?>principal/messages" class="nav-link"><span class="nav-icon"><img src="" alt=" "></span>Mensagens</a></li>
                         <?php endif;?>
                     </ul>
                 </div>

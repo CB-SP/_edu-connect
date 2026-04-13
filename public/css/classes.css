@@ -1,0 +1,408 @@
+.overlay-class{
+    position: fixed;
+    inset: 0;
+    background-color: rgba(0, 0, 0, .4);
+    display: none;
+}
+.overlay-class.activeOverlayClass{
+    display: block;
+}
+
+@media screen and (max-width: 990px) {
+    .class-wrapper {
+        display: grid;
+        margin-top: 75px;
+    }
+
+    #class-section {
+        padding: 1.3rem;
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+
+    #class-section .header-class {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .header-class .title-class {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        width: 200px;
+    }
+
+    .title-class h2 {
+        font-weight: var(--weight-bd);
+    }
+
+    .title-class p {
+        color: var(--MutedForegroundC);
+        font-size: var(--text-nl);
+    }
+
+    .header-class .btn-new-class {
+        height: 35px;
+        border: none;
+        border-radius: var(--radius-sm);
+        background-color: var(--AccentBlue);
+        color: var(--Background);
+        padding: 0 1rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 15px;
+        font-size: var(--text-sm);
+        font-weight: vr(--weight-br);
+    }
+
+    /*CREATE CLASS MODAL*/
+    .class-modal {
+        width: 90%;
+        background-color: var(--Background);
+        padding: 1.5rem;
+        border: 1px solid var(--Muted);
+        border-radius: var(--radius-md);
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        box-shadow: 2px 6px 23px rgba(0, 0, 0, .3);
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        display: none;
+        z-index: 2;
+    }
+
+    .class-modal.showC {
+        display: block;
+    }
+
+    .class-modal .class-modal-header {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 3px;
+    }
+
+    .class-modal-header h3 {
+        font-weight: var(--weight-bd);
+    }
+
+    .class-modal-header p {
+        text-align: center;
+        color: var(--MutedForegroundC);
+    }
+
+    .class-modal-header .close-icon-btn {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        background: none;
+        border: none;
+        padding: 2px;
+        border-radius: var(--radius-sm);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transition: background-color .1s ease-in-out;
+    }
+
+    .close-icon-btn img {
+        height: 18px;
+        width: 18px;
+    }
+
+    .close-icon-btn:hover {
+        background-color: var(--Muted);
+    }
+
+    /*FORM PUBLICATION*/
+    .class-form {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .class-form .input-box {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+    }
+
+    .input-box label {
+        font-weight: var(--weight-sb);
+    }
+
+    .input-box select {
+        height: 40px;
+        background-color: var(--InputBackground);
+        border: 1px solid transparent;
+        outline: 3px solid transparent;
+        border-radius: var(--radius-sm);
+        padding: 5px;
+        font-weight: var(--weight-nl);
+        transition: all .1s ease-in-out;
+    }
+
+    .input-box input {
+        height: 40px;
+        background-color: var(--InputBackground);
+        border: 1px solid transparent;
+        border-radius: var(--radius-md);
+        outline: 3px solid transparent;
+        padding: 6px 12px;
+        transition: all .1s ease-in-out;
+        font-size: var(--text-nl);
+    }
+
+
+    .input-box select:focus,
+    .input-box input:focus {
+        outline-color: var(--SwitchBackground);
+        border-color: gray;
+    }
+
+    .btn-create-box {
+        align-self: flex-end;
+        margin-top: 10px;
+        display: flex;
+        gap: 10px;
+
+    }
+
+    .btn-create-box button {
+        width: 85px;
+        height: 35px;
+        border: none;
+        border-radius: var(--radius-sm);
+        font-size: var(--text-sm);
+        transition: all .1s ease-in-out;
+    }
+
+    .btn-create-box button:nth-child(1) {
+        background-color: var(--Background);
+        border: 1px solid var(--SwitchBackground);
+    }
+
+    .btn-create-box button:nth-child(1):hover {
+        background-color: var(--Muted);
+    }
+
+    .btn-create-box button:nth-child(2) {
+        background-color: var(--AccentBlue);
+        color: var(--Background);
+        font-weight: var(--weight-br);
+    }
+
+    .btn-create-box button:nth-child(2):hover {
+        background-color: var(--AccentBlueHover);
+    }
+
+}
+
+@media screen and (min-width: 991px) {
+    .class-wrapper {
+        display: grid;
+        grid-template: 1fr / 10px 1fr 10px;
+        margin-top: 100px;
+    }
+
+    .class-wrapper #class-section {
+        grid-column: 2;
+        padding: 1rem;
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+
+    #class-section .header-class {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .header-class .title-class {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+    }
+
+    .title-class h2 {
+        font-weight: var(--weight-bd);
+        font-size: 1.7rem;
+    }
+
+    .title-class p {
+        color: var(--MutedForegroundC);
+        font-size: 1.1rem;
+    }
+
+    .header-class .btn-new-class {
+        height: 37px;
+        border: none;
+        border-radius: var(--radius-sm);
+        background-color: var(--AccentBlue);
+        color: var(--Background);
+        padding: 0 1rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 15px;
+        font-size: var(--text-sm);
+        font-weight: var(--weight-br);
+        transition: background-color .1s ease-in-out;
+    }
+
+    .btn-new-class:hover {
+        background-color: var(--AccentBlueHover);
+    }
+
+    /*CREATE CLASS MODAL*/
+    .class-modal {
+        width: 650px;
+        background-color: var(--Background);
+        padding: 1.5rem;
+        border: 1px solid var(--Muted);
+        border-radius: var(--radius-md);
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        box-shadow: 2px 6px 23px rgba(0, 0, 0, .3);
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        display: none;
+        z-index: 2;
+    }
+
+    .class-modal.showC {
+        display: block;
+    }
+
+    .class-modal .class-modal-header {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 3px;
+    }
+
+    .class-modal-header h3 {
+        font-weight: var(--weight-bd);
+    }
+
+    .class-modal-header p {
+        text-align: center;
+        color: var(--MutedForegroundC);
+    }
+
+    .class-modal-header .close-icon-btn {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        background: none;
+        border: none;
+        padding: 2px;
+        border-radius: var(--radius-sm);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transition: background-color .1s ease-in-out;
+    }
+
+    .close-icon-btn img {
+        height: 18px;
+        width: 18px;
+    }
+
+    .close-icon-btn:hover {
+        background-color: var(--Muted);
+    }
+
+    /*FORM PUBLICATION*/
+    .class-form {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .class-form .input-box {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+    }
+
+    .input-box label {
+        font-weight: var(--weight-sb);
+    }
+
+    .input-box select {
+        height: 40px;
+        background-color: var(--InputBackground);
+        border: 1px solid transparent;
+        outline: 3px solid transparent;
+        border-radius: var(--radius-sm);
+        padding: 5px;
+        font-weight: var(--weight-nl);
+        transition: all .1s ease-in-out;
+    }
+
+    .input-box input {
+        height: 40px;
+        background-color: var(--InputBackground);
+        border: 1px solid transparent;
+        border-radius: var(--radius-md);
+        outline: 3px solid transparent;
+        padding: 6px 12px;
+        transition: all .1s ease-in-out;
+        font-size: var(--text-nl);
+    }
+
+
+    .input-box select:focus,
+    .input-box input:focus {
+        outline-color: var(--SwitchBackground);
+        border-color: gray;
+    }
+
+    .btn-create-box {
+        align-self: flex-end;
+        margin-top: 10px;
+        display: flex;
+        gap: 10px;
+
+    }
+
+    .btn-create-box button {
+        width: 85px;
+        height: 35px;
+        border: none;
+        border-radius: var(--radius-sm);
+        font-size: var(--text-sm);
+        transition: all .1s ease-in-out;
+    }
+
+    .btn-create-box button:nth-child(1) {
+        background-color: var(--Background);
+        border: 1px solid var(--SwitchBackground);
+    }
+
+    .btn-create-box button:nth-child(1):hover {
+        background-color: var(--Muted);
+    }
+
+    .btn-create-box button:nth-child(2) {
+        background-color: var(--AccentBlue);
+        color: var(--Background);
+        font-weight: var(--weight-br);
+    }
+
+    .btn-create-box button:nth-child(2):hover {
+        background-color: var(--AccentBlueHover);
+    }
+
+}
