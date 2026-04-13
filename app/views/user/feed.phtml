@@ -81,7 +81,7 @@
         <div class="tabs-publication">
             <button class="tab-publication active">
                 <img src="" alt=" ">
-                Todas (<?= $pubsCount['posts'] ?>)
+                Publicações (<?= $pubsCount['posts'] ?>)
             </button>
             <button class="tab-publication">
                 <img src="" alt=" ">
@@ -104,7 +104,7 @@
                     $comments = $user->get_post_comments($publication['id']);
                     $reaction = $user->get_reactions($_SESSION['id'], $publication['id']);
                 ?>
-                    <div class="publication-card">
+                    <div class="publication-card" data-type="<?= $publication['tipo'] ?>">
                         <div class="header-publication-card">
                             <div class="info-user-publication-card">
                                 <div class="img-user">
