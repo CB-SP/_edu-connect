@@ -466,6 +466,8 @@
     /*COMENT AREA*/
     .comment-section {
         display: none;
+        max-height: 270px;
+        overflow-y: auto;
     }
 
     .comment-section.showCommentSection {
@@ -575,6 +577,7 @@
 
     .show-comment-box span {
         font-weight: var(--weight-lg);
+        font-size: var(--text-sm);
         color: var(--MutedForegroundC);
     }
 
@@ -950,7 +953,7 @@
         line-height: 1.4rem;
     }
 
-    .publication-card-content > p {
+    .publication-card-content>p {
         font-size: 1.05rem;
     }
 
@@ -1061,6 +1064,8 @@
     /*COMMENT AREA*/
     .comment-section {
         display: none;
+        max-height: 370px;
+        overflow-y: auto;
     }
 
     .comment-section.showCommentSection {
@@ -1151,7 +1156,7 @@
         display: flex;
         width: 100%;
         flex-direction: column;
-        gap: 3px;
+        gap: 5px;
     }
 
     .show-comment-box .show-comment {
@@ -1172,8 +1177,8 @@
     .show-comment-box span {
         font-weight: var(--weight-lg);
         color: var(--MutedForegroundC);
+        font-size: 13px;
     }
-
 
     .thumbs-up.click {
         color: var(--AccentBlue);
