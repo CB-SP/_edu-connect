@@ -30,18 +30,7 @@ btnComments.forEach(btnComment => {
 
 })
 
-//ALTERNATION BETWEEN ALL & COMUNICATE POSTS
-const postTabs = document.querySelectorAll('.tab-publication')
-
-postTabs.forEach(tab => {
-    tab.addEventListener('click', () => {
-        postTabs.forEach(t => t.classList.remove('active'))
-        tab.classList.add('active')
-    })
-})
-
 //DROP ACTIONS FROM POST CARDS
-
 const iconEllipse = document.querySelectorAll('.options-publication-card svg')
 const dropactions = document.querySelectorAll('.drop-post-card-actions')
 
@@ -68,4 +57,40 @@ document.addEventListener('click', (e) => {
         }
 
     })
+})
+
+/*
+//ALTERNATION BETWEEN ALL & COMUNICATE POSTS
+const postTabs = document.querySelectorAll('.tab-publication')
+
+postTabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+        postTabs.forEach(t => t.classList.remove('active'))
+        tab.classList.add('active')
+    })
+})*/
+
+
+//ALTERNATION BETWEEN ALL & COMUNICATE POSTS
+const tabsPost = document.querySelectorAll('.tab-publication')
+const posts = document.querySelectorAll('.publication-card')
+
+tabsPost.forEach(tab => {
+    tab.addEventListener('click', () => {
+
+        const filter = tab.dataset.filter
+
+        tabsPost.forEach(t => t.classList.remove('active'))
+        tab.classList.add('active')
+
+        posts.forEach(post => {
+            const type = post.dataset.type
+            if (filter === 'post' || type === filter) {
+                post.classList.remove('hidden')
+            } else {
+                post.classList.add('hidden')
+            }
+        });
+    })
+
 })
