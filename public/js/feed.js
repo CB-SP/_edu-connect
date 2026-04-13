@@ -78,16 +78,16 @@ const posts = document.querySelectorAll('.publication-card')
 tabsPost.forEach(tab => {
     tab.addEventListener('click', () => {
 
-        const filter = tab.dataset.filter
+        const filter = tab.dataset.filter.toLowerCase()
 
         tabsPost.forEach(t => t.classList.remove('active'))
         tab.classList.add('active')
 
         posts.forEach(post => {
-            const type = post.dataset.type
-            if (filter === 'post' || type === filter) {
+            const type = post.dataset.type.toLowerCase()
+            if (filter=== 'post' || filter === type) {
                 post.classList.remove('hidden')
-            } else {
+            } else{
                 post.classList.add('hidden')
             }
         });
