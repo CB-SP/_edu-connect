@@ -17,3 +17,5 @@ overlayClass.addEventListener('click', ()=>{
     classModal.classList.remove('showC')
     overlayClass.classList.remove('activeOverlayClass')
 })
+
+
