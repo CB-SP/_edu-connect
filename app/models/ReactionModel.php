@@ -11,6 +11,20 @@
             }
         }
 
+        //get user reactions
+        public function get_reactions($user, $post) {
+            try {
+                $this->stmt = $this->pdo->prepare("SELECT * FROM reacoes WHERE usuario = ? AND post = ?");
+                $this->stmt->execute([$user, $post]);
+
+                $reaction = $this->stmt->fetch(PDO::FETCH_ASSOC);
+
+                return !empty($reaction) ? $reaction : false;
+            } catch (PDOException $e) {
+                throw $e;
+            }
+        }
+
         //update reaction in posts
         public function update_reaction($user, $post, $type) {
             try {

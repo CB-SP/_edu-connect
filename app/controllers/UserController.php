@@ -311,9 +311,24 @@
             $this->redirect($this->reaction->react() ? 'user/index' : 'user/index');
         }
 
+        //get user reactions
+        public function get_reactions($user, $post) {
+            return $this->reaction->get_reactions($user, $post);
+        }
+
         //comment in posts
         public function comment() {
             $this->redirect($this->comment->comment() ? 'user/index' : 'user/index');
+        }
+
+        //get post comments
+        public function get_post_comments($post) {
+            return $this->comment->get_post_comments($post);
+        }
+
+        //get interactions quantity
+        public function get_interactions($post) {
+            return $this->post->get_interactions($post);
         }
 
         //search users password hash

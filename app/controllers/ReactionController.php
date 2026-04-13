@@ -46,6 +46,20 @@
             return true;
         }
 
+        //get user reactions
+        public function get_reactions($user, $post) {
+            if (empty($user) || empty($post)) {
+                return null;
+            }
+
+            try {
+                return $this->reaction->get_reactions($user, $post);
+            } catch (PDOException $e) {
+                error_log("ERRO_BUSCAR_REACOES_USUARIO: ". $e->getMessage(). "\n". $e->getTraceAsString());
+                return null;
+            }
+        }
+
         //update reaction
         private function update_reaction($user, $post, $type) {
             try {
