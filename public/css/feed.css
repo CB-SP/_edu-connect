@@ -249,6 +249,10 @@
         gap: 15px;
     }
 
+    .publication-card.hidden {
+        display: none;
+    }
+
     .publication-card .header-publication-card {
         display: flex;
         justify-content: space-between;
@@ -839,6 +843,9 @@
         display: flex;
         flex-direction: column;
         gap: 15px;
+    }
+    .publication-card.hidden {
+        display: none;
     }
 
     .publication-card .header-publication-card {
