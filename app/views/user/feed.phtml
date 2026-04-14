@@ -79,17 +79,17 @@
         </div>
 
         <div class="tabs-publication">
-            <button class="tab-publication active" data-filter="post">
+            <button class="tab-publication active" data-type="posts">
                 <img src="" alt=" ">
                 Publicações (<?= $pubsCount['posts'] ?>)
             </button>
-            <button class="tab-publication" data-filter="aviso">
+            <button class="tab-publication" data-type="announcements">
                 <img src="" alt=" ">
                 Comunicados (<?= $pubsCount['notices'] ?>)
             </button>
         </div>
 
-        <div class="publication-cards">
+        <div class="publication-cards active-pub" id="posts">
             <?php if (empty($posts)): ?>
                 <h3>Nada para ver</h3>
             <?php else: ?>
@@ -104,7 +104,7 @@
                     $comments = $user->get_post_comments($publication['id']);
                     $reaction = $user->get_reactions($_SESSION['id'], $publication['id']);
                 ?>
-                    <div class="publication-card" data-type="<?= $publication['tipo'] ?>">
+                    <div class="publication-card">
                         <div class="header-publication-card">
                             <div class="info-user-publication-card">
                                 <div class="img-user">
@@ -258,7 +258,7 @@
             <?php endif; ?>
         </div>
 
-        <div class="notices-cards">
+        <div class="publication-cards" id="announcements">
             <?php if (empty($posts)): ?>
                 <h3>Nada para ver</h3>
             <?php else: ?>
