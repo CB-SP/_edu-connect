@@ -81,11 +81,9 @@ tabsPost.forEach(tab => {
         tabsPost.forEach(t => t.classList.remove('active'))
         tab.classList.add('active')
 
-        postContents.forEach(post => {
-            postContents.forEach(p => { p.classList.remove('active-pub') })
-            const targetPost = document.getElementById(tab.dataset.type)
-            targetPost.classList.add('active-pub')
-        })
+        postContents.forEach(p => { p.classList.remove('active-pub') })
+        const targetPost = document.getElementById(tab.dataset.type)
+        targetPost.classList.add('active-pub')
 
     })
 
