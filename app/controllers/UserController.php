@@ -37,7 +37,13 @@
             $this->is_user();
             $this->show_page("security");
         }
+        public function class() {
+            $this->isLoged();
+            $this->is_user();
+            $this->show_page("class");
+        }
 
+        
         //users login
         public function login_user() {
             $this->nif = $_POST['nif'] ?? null;

@@ -1,10 +1,11 @@
-.overlay-class{
+.overlay-class {
     position: fixed;
     inset: 0;
     background-color: rgba(0, 0, 0, .4);
     display: none;
 }
-.overlay-class.activeOverlayClass{
+
+.overlay-class.activeOverlayClass {
     display: block;
 }
 
@@ -40,7 +41,7 @@
 
     .title-class p {
         color: var(--MutedForegroundC);
-        font-size: var(--text-nl);
+        font-size: 1.1rem;
     }
 
     .header-class .btn-new-class {
@@ -202,12 +203,107 @@
         background-color: var(--AccentBlueHover);
     }
 
+    /*SEARCH CLASS BOX*/
+    .search-class {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        background-color: var(--InputBackground);
+        height: 38px;
+        border-radius: var(--radius-sm);
+        border: 1px solid transparent;
+        outline: 3px solid transparent;
+        transition: all .1s ease-in-out;
+    }
+
+    .search-class:focus-within {
+        outline-color: var(--SwitchBackground);
+        border-color: gray;
+    }
+
+    .search-class .icon-search-class {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 10px;
+    }
+
+    .icon-search-class svg {}
+
+    .search-class input {
+        width: 100%;
+        border: none;
+        outline: none;
+        background-color: transparent;
+        font-size: var(--text-nl);
+    }
+
+    /*CLASS CARDS*/
+    .class-cards {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .class-card {
+        text-decoration: none;
+        color: inherit;
+        border: 1px solid var(--SwitchBackground);
+        border-radius: var(--radius-md);
+        padding: 1.3rem;
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        color: var(--MutedForegroundC);
+        cursor: pointer;
+        transition: all .2s ease-in-out;
+    }
+    .class-card:hover{
+        box-shadow: 0px 7px 23px rgba(0, 0, 0, .15);
+    }
+
+    .class-card h3 {
+        font-weight: var(--weight-bd);
+        color: var(--Primary);
+        margin-bottom: 7px;
+    }
+
+    .class-card .prof-info,
+    .class-card .students-info {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-weight: var(--weight-nl);
+    }
+
+    .class-card .prof-info h4,
+    .class-card .students-info h4 {
+        font-weight: var(--weight-nl);
+    }
+
+    .prof-info .prof-profile-img {
+        height: 30px;
+        width: 30px;
+        border-radius: var(--radius-full);
+        background-color: var(--Muted);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .students-info .icon-students {
+        height: 20px;
+        width: 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
 }
 
 @media screen and (min-width: 991px) {
     .class-wrapper {
         display: grid;
-        grid-template: 1fr / 10px 1fr 10px;
+        grid-template: 1fr / 50px 1fr 50px;
         margin-top: 100px;
     }
 
@@ -403,6 +499,108 @@
 
     .btn-create-box button:nth-child(2):hover {
         background-color: var(--AccentBlueHover);
+    }
+
+    /*SEARCH CLASS BOX*/
+    .search-class {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        background-color: var(--InputBackground);
+        height: 40px;
+        border-radius: var(--radius-sm);
+        border: 1px solid transparent;
+        outline: 4px solid transparent;
+        transition: all .1s ease-in-out;
+    }
+
+    .search-class:focus-within {
+        outline-color: var(--SwitchBackground);
+        border-color: gray;
+    }
+
+    .search-class .icon-search-class {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 10px;
+    }
+
+    .icon-search-class svg {}
+
+    .search-class input {
+        width: 100%;
+        border: none;
+        outline: none;
+        background-color: transparent;
+        font-size: var(--text-nl);
+    }
+
+     /*CLASS CARDS*/
+    .class-cards {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+    }
+
+    .class-card {
+        width: 380px;
+        text-decoration: none;
+        color: inherit;
+        border: 1px solid var(--SwitchBackground);
+        border-radius: var(--radius-md);
+        padding: 1.3rem;
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        color: var(--MutedForegroundC);
+        cursor: pointer;
+        transition: all .2s ease-in-out;
+    }
+    .class-card:hover{
+        box-shadow: 0px 7px 23px rgba(0, 0, 0, .15);
+    }
+
+    .class-card h3 {
+        font-weight: var(--weight-bd);
+        color: var(--Primary);
+        margin-bottom: 7px;
+        font-size: 1.3rem;
+    }
+
+    .class-card p{
+        font-size: 1.01rem;
+    }
+    .class-card .prof-info,
+    .class-card .students-info {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-weight: var(--weight-nl);
+    }
+
+    .class-card .prof-info h4,
+    .class-card .students-info h4 {
+        font-weight: var(--weight-nl);
+        font-size: 1.01rem;
+    }
+
+    .prof-info .prof-profile-img {
+        height: 30px;
+        width: 30px;
+        border-radius: var(--radius-full);
+        background-color: var(--Muted);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .students-info .icon-students {
+        height: 20px;
+        width: 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
 
 }
