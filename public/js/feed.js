@@ -73,26 +73,20 @@ postTabs.forEach(tab => {
 
 //ALTERNATION BETWEEN ALL & COMUNICATE POSTS
 const tabsPost = document.querySelectorAll('.tab-publication')
-const posts = document.querySelectorAll('.publication-card')
+const postContents = document.querySelectorAll('.publication-cards')
 
 tabsPost.forEach(tab => {
     tab.addEventListener('click', () => {
 
-        const filter = tab.dataset.filter
-
         tabsPost.forEach(t => t.classList.remove('active'))
         tab.classList.add('active')
 
-        posts.forEach(post => {
-            const type = post.dataset.type.toLowerCase()
-            console.log('FILTER', filter)
-            console.log('TYPE', type)
-            if (filter === type) {
-                post.classList.remove('hidden')
-            } else {
-                post.classList.add('hidden')
-            }
-        });
+        postContents.forEach(post => {
+            postContents.forEach(p => { p.classList.remove('active-pub') })
+            const targetPost = document.getElementById(tab.dataset.type)
+            targetPost.classList.add('active-pub')
+        })
+
     })
 
 })

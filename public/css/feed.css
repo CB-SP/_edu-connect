@@ -238,6 +238,14 @@
         display: flex;
         flex-direction: column;
         gap: 20px;
+        display: none;
+    }
+
+    div .active-pub {
+        display: block;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
     }
 
     .publication-card {
@@ -829,12 +837,22 @@
         color: var(--Background);
     }
 
+
     /*PUBLICATION CARD*/
     .publication-cards {
         display: flex;
         flex-direction: column;
         gap: 20px;
+        display: none;
     }
+
+    div .active-pub {
+        display: block;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+
 
     .publication-card {
         border: 1px solid var(--SwitchBackground);
@@ -844,9 +862,7 @@
         flex-direction: column;
         gap: 15px;
     }
-    .publication-card.hidden {
-        display: none;
-    }
+
 
     .publication-card .header-publication-card {
         display: flex;
