@@ -162,7 +162,6 @@ body {
         padding-left: 15px;
     }
 
-    .layout-admin .main-nav .nav-itemhover,
     .layout-admin .set-nav .nav-item:hover {
         background-color: var(--Muted);
     }
@@ -177,6 +176,15 @@ body {
         font-size: var(--text-xm);
     }
 
+    .nav-link .nav-icon {
+        display: flex;
+        align-items: center;
+    }
+
+    .nav-icon svg {
+        height: 18px;
+        width: 18px;
+    }
 
     .layout-admin .set-nav {
         width: 98%;
@@ -197,9 +205,7 @@ body {
         gap: 12px;
         color: var(--Primary);
         font-size: var(--text-xm);
-
     }
-
 
     .layout-admin .header {
         display: flex;
@@ -227,13 +233,12 @@ body {
         color: var(--Primary);
     }
 
-  body{
-    overflow: scroll;
-  }
+    body {
+        overflow: scroll;
+    }
 
     body.no-scroll {
         overflow: hidden;
-        
     }
 
     /*OTHER USERS LAYOUT*/
@@ -348,11 +353,11 @@ body {
     .header {
         display: none;
     }
-    
+
     .main {
         grid-area: main;
     }
-    
+
 
     /*NAVBAR STYLE*/
     .layout-admin .nav-bar {
@@ -390,6 +395,15 @@ body {
         gap: 12px;
     }
 
+    .nav-link .nav-icon {
+        display: flex;
+        align-items: center;
+    }
+
+    .nav-icon svg {
+        height: 18px;
+        width: 18px;
+    }
 
     .layout-admin .set-nav {
         padding: 10px;
@@ -403,6 +417,10 @@ body {
         padding: 7px;
         padding-left: 15px;
         border-radius: var(--radius-md);
+    }
+
+    .layout-admin .set-nav .nav-item:hover {
+        background-color: var(--Muted);
     }
 
     .layout-admin .set-nav .nav-link {

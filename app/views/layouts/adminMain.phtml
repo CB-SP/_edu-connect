@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="<?= URL ?>public/css/infoAccount.css">
     <script src="<?= URL ?>public/js/app.js" defer></script>
     <script src="<?= URL ?>public/js/admin.js" defer></script>
-    
+
 </head>
 
 <body>
@@ -21,7 +21,7 @@
             <div class="show-info">
                 <div class="logo-system">
                     <h2>EduConnect</h2>
-                    <img src="<?= URL ?>public/assets/images/x.png" alt=" " id="close-menu">
+                    <img src="<?= URL ?>public/assets/icons/x.png" alt=" " id="close-menu">
                 </div>
                 <div class="info-profile">
                     <div class="profile-poto">
@@ -36,13 +36,39 @@
             <nav class="nav-bar">
                 <div class="main-nav">
                     <ul class="nav-list">
-                        <li class="nav-item visitedPainelAdmin" data-link="painel"><a href="<?= URL ?>admin/index" class="nav-link"><span class="nav-icon"><img src="" alt=" "></span>Painel Admin</a></li>
+                        <li class="nav-item visitedPainelAdmin" data-link="painel"><a href="<?= URL ?>admin/index" class="nav-link">
+                                <span class="nav-icon">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-shield-icon lucide-shield">
+                                        <path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z" />
+                                    </svg>
+                                </span>Painel Admin</a></li>
                     </ul>
                 </div>
                 <div class="set-nav">
                     <ul class="nav-list">
-                        <li class="nav-item"><a href="<?= URL ?>admin/settings" class="nav-link"><span class="nav-icon"><img src="" alt=" "></span>Configurações</a></li>
-                        <li class="nav-item"><a href="<?= URL ?>admin/logout" class="nav-link"><span class="nav-icon"><img src="" alt=" "></span>Sair</a></li>
+                        <li class="nav-item">
+                            <a href="<?= URL ?>admin/settings" class="nav-link">
+                                <span class="nav-icon">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-settings-icon lucide-settings">
+                                        <path d="M9.671 4.136a2.34 2.34 0 0 1 4.659 0 2.34 2.34 0 0 0 3.319 1.915 2.34 2.34 0 0 1 2.33 4.033 2.34 2.34 0 0 0 0 3.831 2.34 2.34 0 0 1-2.33 4.033 2.34 2.34 0 0 0-3.319 1.915 2.34 2.34 0 0 1-4.659 0 2.34 2.34 0 0 0-3.32-1.915 2.34 2.34 0 0 1-2.33-4.033 2.34 2.34 0 0 0 0-3.831A2.34 2.34 0 0 1 6.35 6.051a2.34 2.34 0 0 0 3.319-1.915" />
+                                        <circle cx="12" cy="12" r="3" />
+                                    </svg>
+
+                                </span>Configurações
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="<?= URL ?>admin/logout" class="nav-link">
+                                <span class="nav-icon">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-log-out-icon lucide-log-out">
+                                        <path d="m16 17 5-5-5-5" />
+                                        <path d="M21 12H9" />
+                                        <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" />
+                                    </svg>
+
+                                </span>Sair
+                            </a>
+                        </li>
                     </ul>
                 </div>
             </nav>
@@ -50,7 +76,7 @@
         <div class="overlay"></div>
         <header class="header">
             <div class="open-menu">
-                <img src="<?= URL ?>public/assets/images/menu.png" alt="icon-menu">
+                <img src="<?= URL ?>public/assets/icons/menu.png" alt="icon-menu">
             </div>
             <h2>EduConnect</h2>
         </header>
