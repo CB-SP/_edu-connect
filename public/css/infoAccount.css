@@ -1,14 +1,17 @@
 @media screen and (max-width: 768px) {
 
     .info-account,
-    .security, .school-info-section {
+    .security,
+    .school-info-section {
         padding: 1rem;
         display: flex;
         flex-direction: column;
         gap: 20px;
     }
 
-    .info-account .up-section, .security .up-section, .school-info-section .up-section {
+    .info-account .up-section,
+    .security .up-section,
+    .school-info-section .up-section {
         display: flex;
         flex-direction: column;
         gap: 5px;
@@ -33,8 +36,13 @@
         padding: 3px 5px;
         border-radius: var(--radius-md);
         transition: background-color .2s ease;
-        color: var(--Primary);
         text-decoration: none;
+    }
+
+    .icon-back a p,
+    .icon-back a svg {
+        color: var(--Primary);
+        font-weight: var(--weigth-nl);
     }
 
     .icon-back a:hover {
@@ -153,7 +161,8 @@
 
     /*ACCOUNT INFORMATIONS*/
 
-    .info-account .account-info-card, .school-info-section .account-info-card {
+    .info-account .account-info-card,
+    .school-info-section .account-info-card {
         padding: 1.3rem;
         border: 1px solid var(--SwitchBackground);
         border-radius: var(--radius-md);
@@ -233,6 +242,10 @@
         border-radius: var(--radius-full);
     }
 
+    .icon-security-area svg {
+        color: var(--AccentBlue);
+    }
+
     .alter-pass-area .alter-pass-form .alter-form {
         padding: 1.3rem;
         display: flex;
@@ -295,6 +308,11 @@
         background-color: var(--AccentBlueHover);
     }
 
+    .btn-box button[type="submit"] svg {
+        height: 20px;
+        width: 20px;
+    }
+
     .btn-box button[type="button"] {
         border: 1px solid var(--SwitchBackground);
         background-color: var(--Background);
@@ -305,7 +323,7 @@
     }
 
     /*SECURITY TIPS AREA*/
-    .security .security-tips-area{
+    .security .security-tips-area {
         padding: 1.3rem;
         border: 1PX solid var(--SwitchBackground);
         border-radius: var(--radius-md);
@@ -313,35 +331,45 @@
         flex-direction: column;
         gap: 12px;
     }
-   
+
     .security-tips-area .title-area {
         display: flex;
         gap: 10px;
         align-items: center;
     }
 
-     .title-area .icon-lock-area {
+    .title-area .icon-lock-area {
         height: 30px;
         width: 30px;
         display: flex;
         justify-content: center;
         align-items: center;
     }
-    .security-tips-area .tips-list{
+
+    .icon-lock-area svg {
+        color: var(--AccentBlue);
+        height: 20px;
+        width: 20px;
+    }
+
+    .security-tips-area .tips-list {
         display: flex;
         flex-direction: column;
         gap: 10px;
         margin-left: 25px;
     }
-    .tips-list .tip-item{
+
+    .tips-list .tip-item {
         display: flex;
         gap: 10px;
         align-items: center;
     }
-    .tip-item img{
+
+    .tip-item img {
         flex-shrink: 0;
     }
-    .tip-item p{
+
+    .tip-item p {
         font-size: var(--text-sm);
         color: var(--MutedForegroundC);
     }
@@ -351,7 +379,8 @@
 @media screen and (min-width: 769px) {
 
     .info-account,
-    .security, .school-info-section {
+    .security,
+    .school-info-section {
         width: 100%;
         padding: 1rem 1.5rem;
         display: flex;
@@ -359,7 +388,9 @@
         gap: 25px;
     }
 
-    .info-account .up-section, .security .up-section, .school-info-section .up-section {
+    .info-account .up-section,
+    .security .up-section,
+    .school-info-section .up-section {
         display: flex;
         flex-direction: column;
         gap: 5px;
@@ -378,7 +409,6 @@
     .up-section .icon-back a {
         display: flex;
         justify-content: center;
-        align-items: center;
         gap: 12px;
         margin-bottom: 15px;
         width: 90px;
@@ -386,9 +416,14 @@
         padding: 3px 5px;
         border-radius: var(--radius-md);
         transition: background-color .2s ease;
-        color: var(--Primary);
         text-decoration: none;
     }
+
+    .icon-back a p,
+    .icon-back a svg {
+        color: var(--Primary);
+    }
+
 
     .icon-back a:hover {
         background-color: var(--InputBackground);
@@ -510,7 +545,8 @@
 
     /*ACCOUNT INFORMATIONS*/
 
-    .info-account .account-info-card, .school-info-section .account-info-card {
+    .info-account .account-info-card,
+    .school-info-section .account-info-card {
         padding: 1.3rem;
         border: 1px solid var(--SwitchBackground);
         border-radius: var(--radius-md);
@@ -569,15 +605,16 @@
     }
 
 
-     /*SECURITY PAGE*/
+    /*SECURITY PAGE*/
     .security .alter-pass-area {
         border: 1PX solid var(--SwitchBackground);
         border-radius: var(--radius-md);
     }
 
-     .up-section h4{
+    .up-section h4 {
         font-size: 1.05rem;
     }
+
     .alter-pass-area .title-area {
         padding: 1.3rem;
         border-bottom: 1px solid var(--SwitchBackground);
@@ -594,6 +631,10 @@
         align-items: center;
         background-color: var(--bgImgColor);
         border-radius: var(--radius-full);
+    }
+
+    .icon-security-area svg {
+        color: var(--AccentBlue);
     }
 
     .alter-pass-area .alter-pass-form .alter-form {
@@ -658,6 +699,11 @@
         background-color: var(--AccentBlueHover);
     }
 
+    .btn-box button[type="submit"] svg {
+        height: 20px;
+        width: 20px;
+    }
+
     .btn-box button[type="button"] {
         border: 1px solid var(--SwitchBackground);
         background-color: var(--Background);
@@ -669,7 +715,7 @@
     }
 
     /*SECURITY TIPS AREA*/
-    .security .security-tips-area{
+    .security .security-tips-area {
         padding: 1.3rem;
         border: 1PX solid var(--SwitchBackground);
         border-radius: var(--radius-md);
@@ -677,38 +723,49 @@
         flex-direction: column;
         gap: 12px;
     }
-   
+
     .security-tips-area .title-area {
         display: flex;
         gap: 10px;
         align-items: center;
     }
-    .security-tips-area .title-area .title-desc h4{
+
+    .security-tips-area .title-area .title-desc h4 {
         font-size: 1.05rem;
     }
 
-     .title-area .icon-lock-area {
+    .title-area .icon-lock-area {
         height: 30px;
         width: 30px;
         display: flex;
         justify-content: center;
         align-items: center;
     }
-    .security-tips-area .tips-list{
+
+    .icon-lock-area svg {
+        color: var(--AccentBlue);
+        height: 21px;
+        width: 21px;
+    }
+
+    .security-tips-area .tips-list {
         display: flex;
         flex-direction: column;
         gap: 10px;
         margin-left: 30px;
     }
-    .tips-list .tip-item{
+
+    .tips-list .tip-item {
         display: flex;
         gap: 10px;
         align-items: center;
     }
-    .tip-item img{
+
+    .tip-item img {
         flex-shrink: 0;
     }
-    .tip-item p{
+
+    .tip-item p {
         color: var(--MutedForegroundC);
     }
 }

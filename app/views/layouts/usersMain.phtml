@@ -18,7 +18,7 @@
     <script src="<?= URL ?>public/js/admin.js" defer></script>
     <script src="<?= URL ?>public/js/feed.js" defer></script>
     <script src="<?= URL ?>public/js/class.js" defer></script>
-    
+
 </head>
 
 <body>
@@ -27,7 +27,7 @@
             <div class="show-info">
                 <div class="logo-system">
                     <h2>EduConnect</h2>
-                    <img src="<?= URL ?>public/assets/images/x.png" alt=" " id="close-menu">
+                    <img src="<?= URL ?>public/assets/icons/x.png" alt=" " id="close-menu">
                 </div>
                 <div class="info-profile">
                     <div class="profile-poto">
@@ -42,22 +42,71 @@
             <nav class="nav-bar">
                 <div class="main-nav">
                     <ul class="nav-list">
-                        <li class="nav-item selectedFeed" data-link="painel" ><a href="<?= URL ?>user/index" class="nav-link selectedFeedLink"><span class="nav-icon"><img src="" alt=" "></span>Feed</a></li>
-                        <?php if($_SESSION['role'] === 'director'):?>
-                            <li class="nav-item selectedPainel" id="selected data-link="painel"><a href="<?= URL ?>principal/index" class="nav-link"><span class="nav-icon"><img src="" alt=" "></span>Gestão Escola</a></li>
-                        <?php endif;?>
-                        <?php if($_SESSION['role'] === 'professor'):?>
-                            <li class="nav-item selectedClass" data-link="painel"><a href="<?= URL ?>teacher/classes" class="nav-link"><span class="nav-icon"><img src="" alt=" "></span>Turmas</a></li>
-                        <?php endif;?>
-                        <?php if($_SESSION['role'] === 'director'):?>
-                            <li class="nav-item selectedMessages" data-link="painel"><a href="<?= URL ?>principal/messages" class="nav-link"><span class="nav-icon"><img src="" alt=" "></span>Mensagens</a></li>
-                        <?php endif;?>
+                        <li class="nav-item selectedFeed" data-link="pa
+                        inel"><a href="<?= URL ?>user/index" class="nav-link selectedFeedLink">
+                                <span class="nav-icon">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-house-icon lucide-house">
+                                        <path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8" />
+                                        <path d="M3 10a2 2 0 0 1 .709-1.528l7-6a2 2 0 0 1 2.582 0l7 6A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+                                    </svg>
+
+                                </span>Feed
+                            </a>
+                        </li>
+                        <?php if ($_SESSION['role'] === 'director'): ?>
+                            <li class="nav-item selectedPainel" id="selected data-l
+                            ink=" painel"><a href="<?= URL ?>principal/index" class="nav-link">
+                                    <span class="nav-icon">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-building2-icon lucide-building-2">
+                                            <path d="M10 12h4" />
+                                            <path d="M10 8h4" />
+                                            <path d="M14 21v-3a2 2 0 0 0-4 0v3" />
+                                            <path d="M6 10H4a2 2 0 0 0-2 2v7a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-2" />
+                                            <path d="M6 21V5a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v16" />
+                                        </svg>
+
+                                    </span>Gestão Escola
+                                </a>
+                            </li>
+                        <?php endif; ?>
+                        <?php if ($_SESSION['role'] === 'professor'): ?>
+                            <li class="nav-item selectedClass" data-link="painel">
+                                <a href="<?= URL ?>teacher/classes" class="nav-link">
+                                    <span class="nav-icon">
+                                        <img src="" alt=" ">
+                                    </span>Turmas
+                                </a>
+                            </li>
+                        <?php endif; ?>
+                        <?php if ($_SESSION['role'] === 'teacher'): ?>
+                            <li class="nav-item selectedMessages" data-link="painel">
+                                <a href="<?= URL ?>teacher/messages" class="nav-link">
+                                    <span class="nav-icon">
+                                        <img src="" alt=" ">
+                                    </span>Mensagens
+                                </a>
+                            </li>
+                        <?php endif; ?>
                     </ul>
                 </div>
                 <div class="set-nav">
                     <ul class="nav-list">
-                        <li class="nav-item"><a href="<?= URL ?>user/settings" class="nav-link"><span class="nav-icon"><img src="" alt=" "></span>Configurações</a></li>
-                        <li class="nav-item"><a href="<?= URL ?>user/logout" class="nav-link"><span class="nav-icon"><img src="" alt=" "></span>Sair</a></li>
+                        <li class="nav-item">
+                            <a href="<?= URL ?>user/settings" class="nav-link">
+                                <span class="nav-icon">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-settings-icon lucide-settings"><path d="M9.671 4.136a2.34 2.34 0 0 1 4.659 0 2.34 2.34 0 0 0 3.319 1.915 2.34 2.34 0 0 1 2.33 4.033 2.34 2.34 0 0 0 0 3.831 2.34 2.34 0 0 1-2.33 4.033 2.34 2.34 0 0 0-3.319 1.915 2.34 2.34 0 0 1-4.659 0 2.34 2.34 0 0 0-3.32-1.915 2.34 2.34 0 0 1-2.33-4.033 2.34 2.34 0 0 0 0-3.831A2.34 2.34 0 0 1 6.35 6.051a2.34 2.34 0 0 0 3.319-1.915"/><circle cx="12" cy="12" r="3"/></svg>
+
+                                </span>Configurações
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="<?= URL ?>user/logout" class="nav-link">
+                                <span class="nav-icon">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-log-out-icon lucide-log-out"><path d="m16 17 5-5-5-5"/><path d="M21 12H9"/><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/></svg>
+
+                                </span>Sair
+                            </a>
+                        </li>
                     </ul>
                 </div>
             </nav>
@@ -65,14 +114,14 @@
         <div class="overlay"></div>
         <header class="header">
             <div class="open-menu">
-                <img src="<?= URL ?>public/assets/images/menu.png" alt="icon-menu">
+                <img src="<?= URL ?>public/assets/icons/menu.png" alt="icon-menu">
             </div>
             <h2>EduConnect</h2>
         </header>
         <main class="main">
-        <section class="head-section">
-            <div class="icon-school-area">
-                <img src="" alt=" ">
-            </div>
-            <h3><?= $_SESSION['school'] ?></h3>
-        </section>
+            <section class="head-section">
+                <div class="icon-school-area">
+                    <img src="" alt=" ">
+                </div>
+                <h3><?= $_SESSION['school'] ?></h3>
+            </section>

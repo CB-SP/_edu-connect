@@ -171,6 +171,15 @@ body {
         font-size: var(--text-xm);
     }
 
+    .nav-link .nav-icon {
+        display: flex;
+        align-items: center;
+    }
+
+    .nav-icon svg {
+        height: 18px;
+        width: 18px;
+    }
 
     .layout-admin .set-nav {
         width: 98%;
@@ -404,13 +413,23 @@ body {
         padding-left: 15px;
     }
 
-   
+
     .layout-admin .main-nav .nav-list .nav-link {
         text-decoration: none;
         display: flex;
         color: var(--Primary);
         align-items: center;
         gap: 12px;
+    }
+
+    .nav-link .nav-icon {
+        display: flex;
+        align-items: center;
+    }
+
+    .nav-icon svg {
+        height: 18px;
+        width: 18px;
     }
 
 

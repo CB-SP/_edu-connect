@@ -72,6 +72,10 @@
         flex-shrink: 0;
     }
 
+    .icon-area svg {
+        color: var(--AccentBlue);
+    }
+
     .setting-card a .desc-setting-card {
         display: flex;
         flex-direction: column;
@@ -94,8 +98,16 @@
         background-color: var(--bgIconDestructive);
     }
 
+    #exit-card .icon-area svg {
+        color: var(--Destructive);
+    }
+
     #exit-card .desc-setting-card h4 {
         color: var(--Destructive);
+    }
+
+    .redirect-icon {
+        color: var(--MutedForegroundC);
     }
 }
 
@@ -188,6 +200,10 @@
         flex-shrink: 0;
     }
 
+    .icon-area svg {
+        color: var(--AccentBlue);
+    }
+
     .setting-card a .desc-setting-card {
         display: flex;
         flex-direction: column;
@@ -210,7 +226,15 @@
         background-color: var(--bgIconDestructive);
     }
 
+    #exit-card .icon-area svg {
+        color: var(--Destructive);
+    }
+
     #exit-card .desc-setting-card h4 {
         color: var(--Destructive);
+    }
+
+    .redirect-icon {
+        color: var(--MutedForegroundC);
     }
 }
