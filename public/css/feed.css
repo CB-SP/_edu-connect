@@ -58,6 +58,16 @@
         gap: 15px;
         font-size: var(--text-sm);
         font-weight: vr(--weight-br);
+        transition: all .1s ease-in-out;
+    }
+
+    .header-feed .btn-new-publish:hover {
+        background-color: var(--AccentBlueHover);
+    }
+
+    .btn-new-publish svg {
+        height: 20px;
+        width: 20px;
     }
 
     /*PUBLICATION MODAL*/
@@ -226,6 +236,11 @@
         justify-content: center;
         align-items: center;
         gap: 10px;
+    }
+
+    .tabs-publication button svg {
+        height: 20px;
+        width: 20px;
     }
 
     .tabs-publication .active {
@@ -662,6 +677,11 @@
         background-color: var(--AccentBlueHover);
     }
 
+    .btn-new-publish svg {
+        height: 21px;
+        width: 21px;
+    }
+
     /*PUBLICATION MODAL*/
     .feed-modal {
         width: 650px;
@@ -830,6 +850,11 @@
         align-items: center;
         gap: 10px;
         font-size: var(--text-md);
+    }
+
+    .tabs-publication button svg {
+        height: 20px;
+        width: 20px;
     }
 
     .tabs-publication .active {
