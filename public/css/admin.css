@@ -36,6 +36,11 @@
         gap: 7px;
     }
 
+    .role-info svg {
+        height: 15px;
+        width: 15px;
+    }
+
     .painel-dash .dash-info {
         display: flex;
         flex-direction: column;
@@ -85,6 +90,7 @@
 
 
     .tabs .tab {
+        height: 32px;
         width: 50%;
         text-decoration: none;
         display: flex;
@@ -94,10 +100,13 @@
         color: var(--Primary);
         border: none;
         border-radius: var(--radius-lg);
-        padding: 8px 12px;
         overflow: hidden;
     }
 
+    .tab svg {
+        height: 18px;
+        width: 18px;
+    }
 
     .list-info .search-add-area {
         display: flex;
@@ -140,10 +149,21 @@
 
     .add-school-btn,
     .add-user-btn {
-        width: 45%;
+        width: 150px;
+        height: 40px;
         background-color: var(--AccentBlue);
         padding: 10px;
+        display: flex;
+        justify-content: center;
+        border: none;
+        color: var(--Background);
+        transition: all .2s ease-in-out;
+        font-size: var(--text-nl);
+    }
 
+    .add-school-btn:hover,
+    .add-user-btn:hover {
+        background-color: var(--AccentBlueHover);
     }
 
     .search-add-area .search-school-box input,
@@ -158,25 +178,18 @@
         color: var(--Primary);
     }
 
-    .search-add-area .search-school-box img,
-    .search-add-area .search-user-box img {
-        padding-left: 15px;
+    .search-add-area .search-school-box svg,
+    .search-add-area .search-user-box svg {
+        height: 18px;
+        width: 18px;
+        color: var(--MutedForeground);
+        margin-left: 10px;
     }
 
-    .search-add-area .add-school-btn button,
-    .search-add-area .add-user-btn button {
-        border: none;
-        font-size: var(--text-md);
-        color: var(--Background);
-        background-color: var(--AccentBlue);
-        width: 100%;
-
-    }
-
-
-    .search-add-area .add-school-btn img,
-    .search-add-area .add-user-btn img {
-        padding-left: 5px;
+    .add-user-btn svg,
+    .add-school-btn svg {
+        height: 18px;
+        width: 18px;
     }
 
     /*ADD MODAL*/
@@ -326,7 +339,8 @@
         height: 300px;
         width: 100%;
     }
-    .school-list{
+
+    .school-list {
         overflow: auto;
     }
 
@@ -516,6 +530,11 @@
         gap: 7px;
     }
 
+    .role-info svg {
+        height: 15px;
+        width: 15px;
+    }
+
     .painel-dash .dash-info {
         display: flex;
         flex-direction: column;
@@ -568,6 +587,7 @@
 
 
     .tabs .tab {
+        height: 32px;
         width: 50%;
         text-decoration: none;
         display: flex;
@@ -577,8 +597,12 @@
         color: var(--Primary);
         border: none;
         border-radius: var(--radius-lg);
-        padding: 8px 12px;
         overflow: hidden;
+    }
+
+    .tab svg {
+        height: 18px;
+        width: 18px;
     }
 
     .list-info .search-add-area {
@@ -618,10 +642,21 @@
 
     .add-school-btn,
     .add-user-btn {
-        width: 20%;
+        width: 150px;
+        height: 40px;
         background-color: var(--AccentBlue);
-        padding: 12px;
+        padding: 10px;
+        display: flex;
+        justify-content: center;
+        border: none;
+        color: var(--Background);
+        transition: all .2s ease-in-out;
+        font-size: var(--text-nl);
+    }
 
+    .add-school-btn:hover,
+    .add-user-btn:hover {
+        background-color: var(--AccentBlueHover);
     }
 
     .search-add-area .search-school-box input,
@@ -636,19 +671,18 @@
         color: var(--Primary);
     }
 
-    .search-add-area .search-school-box img,
-    .search-add-area .search-user-box img {
-        padding-left: 15px;
+    .search-add-area .search-school-box svg,
+    .search-add-area .search-user-box svg {
+        height: 18px;
+        width: 18px;
+        color: var(--MutedForeground);
+        margin-left: 10px;
     }
 
-    .search-add-area .add-school-btn button,
-    .search-add-area .add-user-btn button {
-        border: none;
-        font-size: var(--text-md);
-        color: var(--Background);
-        background-color: var(--AccentBlue);
-        width: 100%;
-
+    .add-user-btn svg,
+    .add-school-btn svg {
+        height: 18px;
+        width: 18px;
     }
 
     /*ADD USER MODAL*/
@@ -963,6 +997,7 @@
     .header-painel .title p {
         color: var(--MutedForeground);
         line-height: 1.4;
+        font-size: 1.05rem;
     }
 
     .header-painel .role-info {
@@ -974,6 +1009,11 @@
         align-items: center;
         justify-content: center;
         gap: 7px;
+    }
+
+    .role-info svg {
+        height: 15px;
+        width: 15px;
     }
 
     .role-info p {
@@ -1002,6 +1042,7 @@
 
     .cards-info p {
         font-weight: var(--weight-lg);
+        font-size: 1.05rem;
     }
 
     .cards-info h2 {
@@ -1030,6 +1071,7 @@
     }
 
     .tabs .tab {
+        height: 32px;
         width: 50%;
         text-decoration: none;
         display: flex;
@@ -1039,8 +1081,12 @@
         color: var(--Primary);
         border: none;
         border-radius: var(--radius-lg);
-        padding: 8px 12px;
         overflow: hidden;
+    }
+
+    .tab svg {
+        height: 18px;
+        width: 18px;
     }
 
     .list-info .search-add-area {
@@ -1063,27 +1109,21 @@
         border-radius: var(--radius-sm);
     }
 
+
     .search-school-box,
     .search-user-box {
-        width: 85%;
+        width: 100%;
         background-color: var(--Muted);
         border: 1px solid transparent;
         outline: 3px solid transparent;
         transition: all .2s ease-in-out;
+        display: flex;
     }
 
     .search-school-box:focus-within,
     .search-user-box:focus-within {
         outline-color: var(--SwitchBackground);
         border-color: gray;
-    }
-
-    .add-school-btn,
-    .add-user-btn {
-        width: 15%;
-        background-color: var(--AccentBlue);
-        padding: 10px;
-
     }
 
     .search-add-area .search-school-box input,
@@ -1098,19 +1138,37 @@
         color: var(--Primary);
     }
 
-    .search-add-area .search-school-box img,
-    .search-add-area .search-user-box img {
-        padding-left: 15px;
+    .search-add-area .search-school-box svg,
+    .search-add-area .search-user-box svg {
+        height: 18px;
+        width: 18px;
+        color: var(--MutedForeground);
+        margin-left: 10px;
     }
 
-    .search-add-area .add-school-btn button,
-    .search-add-area .add-user-btn button {
-        border: none;
-        font-size: var(--text-md);
-        color: var(--Background);
+    .add-school-btn,
+    .add-user-btn {
+        width: 200px;
+        height: 40px;
         background-color: var(--AccentBlue);
-        width: 100%;
+        padding: 10px;
+        display: flex;
+        justify-content: center;
+        border: none;
+        color: var(--Background);
+        transition: all .2s ease-in-out;
+        font-size: var(--text-nl);
+    }
 
+    .add-school-btn:hover,
+    .add-user-btn:hover {
+        background-color: var(--AccentBlueHover);
+    }
+
+    .add-user-btn svg,
+    .add-school-btn svg {
+        height: 19px;
+        width: 19px;
     }
 
     /*ADD USER MODAL*/

@@ -51,6 +51,11 @@ body {
         justify-content: center;
         margin-bottom: 15px;
     }
+    .logo svg{
+        color: var(--Background);
+        height: 40px;
+        width: 40px;
+    }
 
     .login-modal h3,
     .register-modal h3 {
@@ -191,6 +196,11 @@ body {
         align-items: center;
         justify-content: center;
         margin-bottom: 15px;
+    }
+      .logo svg{
+        color: var(--Background);
+        height: 45px;
+        width: 45px;
     }
 
     .login-modal h3,
