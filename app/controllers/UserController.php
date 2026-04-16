@@ -42,6 +42,11 @@
             $this->is_user();
             $this->show_page("class");
         }
+        public function messages() {
+            $this->isLoged();
+            $this->is_user();
+            $this->show_page("messages");
+        }
 
         
         //users login

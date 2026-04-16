@@ -228,7 +228,11 @@
         padding: 10px;
     }
 
-    .icon-search-class svg {}
+    .icon-search-class svg {
+        height: 18px;
+        width: 18px;
+        color: var(--MutedForegroundC);
+    }
 
     .search-class input {
         width: 100%;
@@ -510,7 +514,7 @@
         height: 40px;
         border-radius: var(--radius-sm);
         border: 1px solid transparent;
-        outline: 4px solid transparent;
+        outline: 3px solid transparent;
         transition: all .1s ease-in-out;
     }
 
@@ -526,7 +530,11 @@
         padding: 10px;
     }
 
-    .icon-search-class svg {}
+    .icon-search-class svg {
+        height: 18px;
+        width: 18px;
+        color: var(--MutedForegroundC);
+    }
 
     .search-class input {
         width: 100%;
