@@ -1,0 +1,40 @@
+@media screen and (max-width: 768px) {}
+
+@media screen and (min-width: 768px) {
+    .icon-back {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 30px;
+        width: 90px;
+    }
+
+     .icon-back a {
+        display: flex;
+        justify-content: center;
+        gap: 12px;
+        margin-bottom: 15px;
+        width: 90px;
+        height: 100%;
+        padding: 3px 5px;
+        border-radius: var(--radius-md);
+        transition: background-color .2s ease;
+        text-decoration: none;
+    }
+
+    .icon-back a p,
+    .icon-back a svg {
+        color: var(--Primary);
+    }
+
+
+    .icon-back a:hover {
+        background-color: var(--InputBackground);
+    }
+
+
+    .icon-back p {
+        font-weight: var(--weight-bd);
+        color: black;
+    }
+}
