@@ -296,8 +296,8 @@
     }
 
     .students-info .icon-students {
-        height: 20px;
-        width: 20px;
+        height: 18px;
+        width: 18px;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -593,7 +593,7 @@
         font-size: 1.01rem;
     }
 
-    .prof-info .prof-profile-img {
+    .prof-info .prof-profile-img{
         height: 30px;
         width: 30px;
         border-radius: var(--radius-full);
@@ -601,11 +601,15 @@
         display: flex;
         justify-content: center;
         align-items: center;
+        overflow: hidden;
+    }
+    .prof-info .prof-profile-img img{
+      aspect-ratio: 3/4; 
     }
 
     .students-info .icon-students {
-        height: 20px;
-        width: 20px;
+        height: 18px;
+        width: 18px;
         display: flex;
         justify-content: center;
         align-items: center;

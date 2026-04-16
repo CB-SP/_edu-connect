@@ -37,10 +37,10 @@
             $this->is_user();
             $this->show_page("security");
         }
-        public function class() {
+        public function currentClass() {
             $this->isLoged();
             $this->is_user();
-            $this->show_page("class");
+            $this->show_page("currentClass");
         }
         public function messages() {
             $this->isLoged();
