@@ -311,6 +311,11 @@
             $this->redirect($this->reaction->react() ? 'user/index' : 'user/index');
         }
 
+        //get user reactions
+        public function get_reactions($user, $post) {
+            return $this->reaction->get_reactions($user, $post);
+        }
+
         //comment in posts
         public function comment() {
             $this->redirect($this->comment->comment() ? 'user/index' : 'user/index');
