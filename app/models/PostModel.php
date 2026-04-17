@@ -14,11 +14,10 @@
         //get all posts of a school
         public function get_posts($school) {
             try {
-                $this->stmt = $this->pdo->prepare("SELECT p.id, p.conteudo, p.tipo, p.created_at, u.nome AS user, u.id AS user_id, u.foto, r.tipo AS reaction, e.id AS school
+                $this->stmt = $this->pdo->prepare("SELECT p.id, p.conteudo, p.tipo, p.created_at, u.nome AS user, u.id AS user_id, u.foto, e.id AS school
                     FROM posts AS p
                     JOIN usuarios AS u ON u.id = p.usuario
                     JOIN escolas AS e ON e.id = p.escola
-                    LEFT JOIN reacoes AS r ON r.post = p.id
                     WHERE p.escola = ?
                     ORDER BY p.created_at DESC
                 ");
