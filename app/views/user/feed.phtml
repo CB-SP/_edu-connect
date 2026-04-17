@@ -271,6 +271,7 @@
                     foreach ($notices as $notice):
                     $interactionsCount = $user->get_interactions($notice['id']);
                     $comments = $user->get_post_comments($notice['id']);
+                    $reaction = $user->get_reactions($_SESSION['id'], $notice['id']);
                 ?>
                     <div class="publication-card">
                         <div class="header-publication-card">
