@@ -48,5 +48,15 @@
                 return null;
             }
         }
+
+        //get interactions quantity
+        public function get_interactions($post) {
+            try {
+                return $this->post->get_interactions($post);
+            } catch (PDOException $e) {
+                error_log("ERRO_BUSCAR_QUANTIDADE_INTERACCOES: ". $e->getMessage(). "\n". $e->getTraceAsString());
+                return null;
+            }
+        }
     }
 ?>

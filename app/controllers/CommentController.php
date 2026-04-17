@@ -28,5 +28,15 @@
 
             return true;
         }
+
+        //get post comments
+        public function get_post_comments($post) {
+            try {
+                return $this->comment->get_post_comments($post);
+            } catch (PDOException $e) {
+                error_log("ERRO_BUSCAR_COMENTARIOS: ". $e->getMessage(). "\n". $e->getTraceAsString());
+                return false;
+            }
+        }
     }
 ?>
