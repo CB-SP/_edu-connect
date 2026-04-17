@@ -316,6 +316,16 @@
             $this->redirect($this->comment->comment() ? 'user/index' : 'user/index');
         }
 
+        //get post comments
+        public function get_post_comments($post) {
+            return $this->comment->get_post_comments($post);
+        }
+
+        //get interactions quantity
+        public function get_interactions($post) {
+            return $this->post->get_interactions($post);
+        }
+
         //search users password hash
         private function fetch_password_hash($nif) {
             if (empty($nif)) {

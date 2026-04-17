@@ -52,5 +52,23 @@
                 throw $e;
             }
         }
+
+        //get interactions quantity
+        public function get_interactions($post) {
+            try {
+                $this->stmt = $this->pdo->prepare("SELECT
+                    (SELECT COUNT(id) FROM reacoes WHERE post = ? AND tipo = 'like') AS likes,
+                    (SELECT COUNT(id) FROM reacoes WHERE post = ? AND tipo = 'adoro') AS adores,
+                    (SELECT COUNT(id) FROM comentarios WHERE post = ?) AS comments
+                ");
+                $this->stmt->execute([$post, $post, $post]);
+
+                $interactions = $this->stmt->fetch(PDO::FETCH_ASSOC);
+
+                return !empty($interactions) ? $interactions : null;
+            } catch (PDOException $e) {
+                throw $e;
+            }
+        }
     }
 ?>
