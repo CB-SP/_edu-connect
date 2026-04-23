@@ -2,8 +2,8 @@
 require_once './app/views/layouts/usersMain.phtml'
 ?>
 
-<div class="class-wrapper">
-    <section id="class-section">
+<div class="current-class-wrapper">
+    <section id="current-class-section">
         <div class="icon-back">
             <a href="<?= URL ?>teacher/classes">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-left-icon lucide-arrow-left"><path d="m12 19-7-7 7-7"/><path d="M19 12H5"/></svg>
@@ -18,19 +18,38 @@ require_once './app/views/layouts/usersMain.phtml'
                     <p>Descrição Turma</p>
                 </div>
                 <button>
-                    <img src="" alt="">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-user-plus-icon lucide-user-plus"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><line x1="19" x2="19" y1="8" y2="14"/><line x1="22" x2="16" y1="11" y2="11"/></svg>
+
                     <p>Gerir Alunos</p>
                 </button>
             </div>
             <div class="info-nome-teacher">
-                <img src="" alt="">
+                <div class="teacher-photo">
+                    <img src="" alt=" ">
+                </div>
                 <div class="nome-teacher">
                     <h3>Nome Prof</h3>
                     <p>Professor</p>
                 </div>
             </div>
         </div>
-        <h1>Class</h1>
+        <div class="tabs-class">
+            <button class="tab-class activeClass">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-newspaper-icon lucide-newspaper"><path d="M15 18h-5"/><path d="M18 14h-8"/><path d="M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v16a2 2 0 0 1-4 0v-9a2 2 0 0 1 2-2h2"/><rect width="8" height="4" x="10" y="6" rx="1"/></svg>
+
+                <p>Publicações (1)</p>
+            </button>
+            <button class="tab-class">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-message-square-icon lucide-message-square"><path d="M22 17a2 2 0 0 1-2 2H6.828a2 2 0 0 0-1.414.586l-2.202 2.202A.71.71 0 0 1 2 21.286V5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2z"/></svg>
+
+                <p>Chat (3)</p>
+            </button>
+            <button class="tab-class">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-users-icon lucide-users"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><path d="M16 3.128a4 4 0 0 1 0 7.744"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><circle cx="9" cy="7" r="4"/></svg>
+
+                <p>Alunos (12)</p>
+            </button>
+        </div>
     </section>
 </div>
 
