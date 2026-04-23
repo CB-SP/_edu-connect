@@ -1,6 +1,15 @@
-@media screen and (max-width: 768px) {}
+@media screen and (max-width: 990px) {
+    .current-class-wrapper {
+        margin-top: 70px;
+        padding: 1.3rem;
+    }
 
-@media screen and (min-width: 768px) {
+    .current-class-wrapper #current-class-section {
+        display: flex;
+        flex-direction: column;
+        gap: 25px;
+    }
+
     .icon-back {
         display: flex;
         justify-content: center;
@@ -9,7 +18,173 @@
         width: 90px;
     }
 
-     .icon-back a {
+    .icon-back a {
+        display: flex;
+        justify-content: center;
+        gap: 12px;
+        margin-bottom: 15px;
+        width: 90px;
+        height: 100%;
+        padding: 3px 5px;
+        border-radius: var(--radius-md);
+        transition: background-color .2s ease;
+        text-decoration: none;
+    }
+
+    .icon-back a p,
+    .icon-back a svg {
+        color: var(--Primary);
+    }
+
+    .icon-back a:hover {
+        background-color: var(--InputBackground);
+    }
+
+
+    .icon-back p {
+        font-weight: var(--weight-bd);
+        color: black;
+    }
+
+    .class-info {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .class-info .top-side {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .top-side .nome-desc-class {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        font-size: 1.05rem;
+    }
+
+    .nome-desc-class h4 {
+        font-weight: var(--weight-nl);
+        font-size: var(--text-nl);
+    }
+
+    .nome-desc-class p {
+        color: var(--MutedForegroundC);
+        font-size: var(--text-nl);
+        word-wrap: break-word;
+        max-width: 220px;
+    }
+
+    .top-side button {
+        height: 38px;
+        border: 1px solid var(--SwitchBackground);
+        border-radius: var(--radius-md);
+        display: flex;
+        gap: 10px;
+        align-items: center;
+        padding: 5px 10px;
+        background-color: var(--Background);
+        transition: all .1s ease-in-out;
+        cursor: pointer;
+    }
+
+    .top-side button:hover {
+        background-color: var(--Muted);
+    }
+
+    .top-side button svg {
+        height: 18px;
+        width: 18px;
+    }
+
+    .info-nome-teacher {
+        border: 1px solid var(--SwitchBackground);
+        border-radius: var(--radius-md);
+        padding: 1.3rem 1.1rem;
+        display: flex;
+        gap: 10px;
+    }
+
+    .info-nome-teacher .teacher-photo {
+        height: 40px;
+        width: 40px;
+        background-color: var(--Muted);
+        border-radius: var(--radius-full);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .teacher-photo img {}
+
+    .info-nome-teacher .nome-teacher {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .nome-teacher h3 {
+        font-weight: var(--weight-bd);
+    }
+
+    .nome-teacher p {
+        color: var(--MutedForegroundC);
+    }
+
+    /*TABS CLASSROOM*/
+    .tabs-class {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        background-color: var(--Muted);
+        border-radius: var(--radius-lg);
+        padding: 5px;
+    }
+
+    .tabs-class .tab-class {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        border: none;
+        border-radius: var(--radius-lg);
+        height: 30px;
+        padding: 0 5px;
+    }
+
+    .activeClass {
+        color: var(--Background);
+        background-color: var(--AccentBlue);
+    }
+
+    .tab-class svg {
+        height: 18px;
+        width: 18px;
+    }
+}
+
+@media screen and (min-width: 991px) {
+    .current-class-wrapper {
+        margin-top: 110px;
+        display: grid;
+        grid-template: 1fr / 10% 1fr 10%;
+    }
+
+    #current-class-section {
+        grid-column: 2;
+        display: flex;
+        flex-direction: column;
+        gap: 25px;
+    }
+
+    .icon-back {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 30px;
+        width: 90px;
+    }
+
+    .icon-back a {
         display: flex;
         justify-content: center;
         gap: 12px;
@@ -32,9 +207,133 @@
         background-color: var(--InputBackground);
     }
 
-
     .icon-back p {
         font-weight: var(--weight-bd);
         color: black;
+    }
+
+
+    .class-info {
+        display: flex;
+        flex-direction: column;
+        gap: 25px;
+        margin-bottom: 5px;
+    }
+
+    .class-info .top-side {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .top-side .nome-desc-class {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        font-size: 1.05rem;
+    }
+
+    .nome-desc-class h4 {
+        font-weight: var(--weight-nl);
+        font-size: 1.2rem;
+    }
+
+    .nome-desc-class p {
+        color: var(--MutedForegroundC);
+        font-size: var(--text-nl);
+    }
+
+    .top-side button {
+        width: 150px;
+        height: 40px;
+        border: 1px solid var(--SwitchBackground);
+        border-radius: var(--radius-md);
+        display: flex;
+        gap: 10px;
+        justify-content: center;
+        align-items: center;
+        padding: 5px 10px;
+        background-color: var(--Background);
+        transition: all .1s ease-in-out;
+        cursor: pointer;
+    }
+
+    .top-side button:hover {
+        background-color: var(--Muted);
+    }
+
+    .top-side button svg {
+        height: 18px;
+        width: 18px;
+    }
+
+    .top-side button p {
+        font-size: 1rem;
+    }
+
+    .info-nome-teacher {
+        border: 1px solid var(--SwitchBackground);
+        border-radius: var(--radius-md);
+        padding: 1.5rem 1.1rem;
+        display: flex;
+        gap: 10px;
+    }
+
+    .info-nome-teacher .teacher-photo {
+        height: 45px;
+        width: 45px;
+        background-color: var(--Muted);
+        border-radius: var(--radius-full);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .teacher-photo img {}
+
+    .info-nome-teacher .nome-teacher {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .nome-teacher h3 {
+        font-weight: var(--weight-bd);
+    }
+
+    .nome-teacher p {
+        color: var(--MutedForegroundC);
+        font-size: 1.05rem;
+    }
+
+    /*TABS CLASSROOM*/
+    .tabs-class {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        background-color: var(--Muted);
+        border-radius: var(--radius-lg);
+        padding: 5px;
+    }
+
+    .tabs-class .tab-class {
+        width: 33%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 15px;
+        border: none;
+        border-radius: var(--radius-lg);
+        height: 35px;
+        padding: 0 5px;
+        font-size: var(--text-nl);
+    }
+
+    .activeClass {
+        color: var(--Background);
+        background-color: var(--AccentBlue);
+    }
+
+    .tab-class svg {
+        height: 18px;
+        width: 18px;
     }
 }
