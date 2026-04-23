@@ -1,27 +1,38 @@
 //TOGGLE PUBLICATION MODAL 
-const btnNewPost = document.querySelector('.btn-new-publish')
-const closeIcon = document.querySelector('.close-icon-btn')
+const btnNewPost = document.querySelectorAll('.btn-new-publish')
+const closeIcon = document.querySelectorAll('.close-icon-btn')
 const feedModal = document.querySelector('.feed-modal')
-const overlayFeed = document.querySelector('.overlay-feed')
+const overlayFeed = document.querySelectorAll('.overlay-feed')
 
 if (btnNewPost) {
-    btnNewPost.addEventListener('click', () => {
-        overlayFeed.classList.add('active')
-        feedModal.classList.add('show')
+    btnNewPost.forEach(btn=>{
+        btn.addEventListener('click', () => {
+            overlayFeed.forEach(o =>{o.classList.add('active')})
+            feedModal.classList.add('show')
+        })
+
     })
 }
 
 if (closeIcon) {
-    closeIcon.addEventListener('click', () => {
-        feedModal.classList.remove('show')
-        overlayFeed.classList.remove('active')
+    if(feedModal){
+    closeIcon.forEach(icon=>{
+        icon.addEventListener('click', () => {
+            feedModal.classList.remove('show')
+            overlayFeed.forEach(o =>{o.classList.remove('active')})
+        })
+
     })
+    }
 }
 
 if (overlayFeed) {
-    overlayFeed.addEventListener('click', () => {
-        feedModal.classList.remove('show')
-        overlayFeed.classList.remove('active')
+    overlayFeed.forEach(over =>{
+        over.addEventListener('click', () => {
+            feedModal.classList.remove('show')
+            overlayFeed.forEach(o =>{o.classList.remove('active')})
+        })
+
     })
 }
 

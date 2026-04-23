@@ -8,3 +8,17 @@ if (tabsClass) {
         })
     })
 }
+
+const contentClass = document.querySelectorAll('.class-content')
+
+contentClass.forEach(content => {
+    tabsClass.forEach(tab => {
+        tab.addEventListener('click', () => {
+            contentClass.forEach(c => c.classList.remove('active'))
+            const a = document.querySelector('.' + tab.dataset.currentClass)
+            a.classList.add('active')
+
+        })
+
+    })
+})

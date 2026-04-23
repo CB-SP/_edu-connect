@@ -3,7 +3,7 @@ const classModal = document.querySelector('.class-modal')
 const overlayClass = document.querySelector('.overlay-class')
 const btnClose = document.querySelector('.close-icon-btn')
 
-if (btnClose) {
+if (btnNewClass) {
     btnNewClass.addEventListener('click', () => {
         classModal.classList.add('showC')
         overlayClass.classList.add('activeOverlayClass')
@@ -12,10 +12,12 @@ if (btnClose) {
 }
 
 if (btnClose) {
-    btnClose.addEventListener('click', () => {
-        classModal.classList.remove('showC')
-        overlayClass.classList.remove('activeOverlayClass')
-    })
+    if (classModal) {
+        btnClose.addEventListener('click', () => {
+            classModal.classList.remove('showC')
+            overlayClass.classList.remove('activeOverlayClass')
+        })
+    }
 }
 if (overlayClass) {
     overlayClass.addEventListener('click', () => {
@@ -23,3 +25,4 @@ if (overlayClass) {
         overlayClass.classList.remove('activeOverlayClass')
     })
 }
+
