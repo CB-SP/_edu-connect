@@ -33,8 +33,7 @@
                 <p>Publicações e comunicados da sua escola</p>
             </div>
             <button class="btn-new-publish">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-plus-icon lucide-plus"><path d="M5 12h14"/><path d="M12 5v14"/></svg>
-
+                <img src="" alt=" ">
                 Nova Publicação
             </button>
         </div>
@@ -44,7 +43,7 @@
                 <p>Compartilhe conteúdo com a comunidade escolar.</p>
 
                 <button class="close-icon-btn">
-                    <img src="<?= URL ?>public/assets/icons/x.png" alt="close-icon">
+                    <img src="<?= URL ?>public/assets/images/x.png" alt="close-icon">
                 </button>
             </div>
             <form action="<?= URL ?>user/publish" class="publication-form" method="post">
@@ -80,19 +79,17 @@
         </div>
 
         <div class="tabs-publication">
-            <button class="tab-publication active" data-type="posts">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-newspaper-icon lucide-newspaper"><path d="M15 18h-5"/><path d="M18 14h-8"/><path d="M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v16a2 2 0 0 1-4 0v-9a2 2 0 0 1 2-2h2"/><rect width="8" height="4" x="10" y="6" rx="1"/></svg>
-
-                Publicações (<?= $pubsCount['posts'] ?>)
+            <button class="tab-publication active">
+                <img src="" alt=" ">
+                Todas (<?= $pubsCount['posts'] ?>)
             </button>
-            <button class="tab-publication" data-type="announcements">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-megaphone-icon lucide-megaphone"><path d="M11 6a13 13 0 0 0 8.4-2.8A1 1 0 0 1 21 4v12a1 1 0 0 1-1.6.8A13 13 0 0 0 11 14H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2z"/><path d="M6 14a12 12 0 0 0 2.4 7.2 2 2 0 0 0 3.2-2.4A8 8 0 0 1 10 14"/><path d="M8 6v8"/></svg>
-
+            <button class="tab-publication">
+                <img src="" alt=" ">
                 Comunicados (<?= $pubsCount['notices'] ?>)
             </button>
         </div>
 
-        <div class="publication-cards active-pub" id="posts">
+        <div class="publication-cards">
             <?php if (empty($posts)): ?>
                 <h3>Nada para ver</h3>
             <?php else: ?>
@@ -261,7 +258,7 @@
             <?php endif; ?>
         </div>
 
-        <div class="publication-cards" id="announcements">
+        <div class="notices-cards">
             <?php if (empty($posts)): ?>
                 <h3>Nada para ver</h3>
             <?php else: ?>
@@ -274,6 +271,7 @@
                     foreach ($notices as $notice):
                     $interactionsCount = $user->get_interactions($notice['id']);
                     $comments = $user->get_post_comments($notice['id']);
+                    $reaction = $user->get_reactions($_SESSION['id'], $notice['id']);
                 ?>
                     <div class="publication-card">
                         <div class="header-publication-card">
