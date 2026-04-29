@@ -1,5 +1,7 @@
 <?php
-require_once './app/views/layouts/usersMain.phtml'
+    require_once './app/views/layouts/usersMain.phtml';
+    $class = new ClassController;
+    $classes = $class->get_teachers_classes($_SESSION['id']);
 ?>
 
 <div class="class-wrapper">
@@ -27,7 +29,6 @@ require_once './app/views/layouts/usersMain.phtml'
         </div>
 
         <!--CLASS MODAL-->
-
         <div class="class-modal">
             <div class="class-modal-header">
                 <h3>Nova Turma</h3>
@@ -37,26 +38,19 @@ require_once './app/views/layouts/usersMain.phtml'
                     <img src="<?= URL ?>public/assets/icons/x.png" alt="close-icon">
                 </button>
             </div>
-            <form action="" class="class-form" method="post">
+            <form action="<?= URL ?>class/create_class" class="class-form" method="post">
                 <div class="input-box">
-                    <label for="">Nome da Turma *</label>
-                    <input type="text" name="" id="class-name" placeholder="Ex: Matemática 12ª A">
-                </div>
-                <div class="input-box">
-                    <label for="">Professor Responsável *</label>
-                    <select name="type" id="type-publication">
-                        <option value="post">Selecione o professor</option>
-                    </select>
+                    <label for="class_name">Nome da Turma *</label>
+                    <input type="text" name="class_name" id="class_name" placeholder="Ex: Matemática 12ª A">
                 </div>
 
+                <input type="hidden" name="teacher" value="<?= $_SESSION['id'] ?>">
+                <input type="hidden" name="school" value="<?= $_SESSION['school_id'] ?>">
 
                 <div class="btn-create-box">
                     <button>Cancelar</button>
                     <button>Criar</button>
                 </div>
-
-                <input type="hidden" name="user" value="<?= $_SESSION['id'] ?>">
-                <input type="hidden" name="school" value="<?= $_SESSION['school_id'] ?>">
             </form>
         </div>
 
@@ -71,74 +65,26 @@ require_once './app/views/layouts/usersMain.phtml'
 
         <!--CLASS CARDS SECTION-->
         <div class="class-cards">
-            <a href="<?= URL ?>teacher/currentClass" class="class-card">
-                <h3>Matemática 11ª B</h3>
-                <p class="desc-turma">Turma de Matemática para 11ª Classe - Turno da Manhã</p>
-                <div class="prof-info">
-                    <div class="prof-profile-img">
-                        <img src="" alt=" ">
-                    </div>
-                    <h4>Nome do Prof.</h4>
-                </div>
-                <div class="students-info">
-                    <div class="icon-students">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-users-icon lucide-users"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><path d="M16 3.128a4 4 0 0 1 0 7.744"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><circle cx="9" cy="7" r="4"/></svg>
+            <?php if (!empty($classes)):?>
+                <?php foreach ($classes as $t_class):?>
+                    <a href="<?= URL ?>teacher/currentClass" class="class-card">
+                        <h3><?= $t_class['class'] ?></h3>
+                        <div class="prof-info">
+                            <div class="prof-profile-img">
+                                <img src="" alt=" ">
+                            </div>
+                            <h4><?= $t_class['teacher'] ?></h4>
+                        </div>
+                        <div class="students-info">
+                            <div class="icon-students">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-users-icon lucide-users"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><path d="M16 3.128a4 4 0 0 1 0 7.744"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><circle cx="9" cy="7" r="4"/></svg>
 
-                    </div>
-                    <h4>nº alunos</h4>
-                </div>
-            </a>
-            <a href="" class="class-card">
-                <h3>Português 11ª B</h3>
-                <p class="desc-turma">Turma de Português para 11ª Classe - Turno da Manhã</p>
-                <div class="prof-info">
-                    <div class="prof-profile-img">
-                        <img src="" alt=" ">
-                    </div>
-                    <h4>Nome do Prof.</h4>
-                </div>
-                <div class="students-info">
-                    <div class="icon-students">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-users-icon lucide-users"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><path d="M16 3.128a4 4 0 0 1 0 7.744"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><circle cx="9" cy="7" r="4"/></svg>
-
-                    </div>
-                    <h4>nº alunos</h4>
-                </div>
-            </a>
-            <a href="" class="class-card">
-                <h3>Português 11ª B</h3>
-                <p class="desc-turma">Turma de Português para 11ª Classe - Turno da Manhã</p>
-                <div class="prof-info">
-                    <div class="prof-profile-img">
-                        <img src="" alt=" ">
-                    </div>
-                    <h4>Nome do Prof.</h4>
-                </div>
-                <div class="students-info">
-                    <div class="icon-students">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-users-icon lucide-users"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><path d="M16 3.128a4 4 0 0 1 0 7.744"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><circle cx="9" cy="7" r="4"/></svg>
-
-                    </div>
-                    <h4>nº alunos</h4>
-                </div>
-            </a>
-            <a href="" class="class-card">
-                <h3>Português 11ª B</h3>
-                <p class="desc-turma">Turma de Português para 11ª Classe - Turno da Manhã</p>
-                <div class="prof-info">
-                    <div class="prof-profile-img">
-                        <img src="" alt=" ">
-                    </div>
-                    <h4>Nome do Prof.</h4>
-                </div>
-                <div class="students-info">
-                    <div class="icon-students">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-users-icon lucide-users"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><path d="M16 3.128a4 4 0 0 1 0 7.744"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><circle cx="9" cy="7" r="4"/></svg>
-
-                    </div>
-                    <h4>nº alunos</h4>
-                </div>
-            </a>
+                            </div>
+                            <h4><?= $t_class['students'] === 1 ? "{$t_class['students']} aluno" : "{$t_class['students']} alunos" ?></h4>
+                        </div>
+                    </a>
+                <?php endforeach;?>
+            <?php endif;?>
         </div>
     </section>
 </div>
