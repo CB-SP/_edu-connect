@@ -17,7 +17,7 @@
                 $this->stmt = $this->pdo->prepare("SELECT t.nome AS class, p.nome as teacher, COUNT(sc.id) AS students
                     FROM turmas AS t
                     JOIN usuarios AS p ON p.id = t.professor
-                    JOIN alunos_turmas AS sc ON sc.turma = t.id
+                    LEFT JOIN alunos_turmas AS sc ON sc.turma = t.id
                     WHERE t.professor = ?
                     GROUP BY t.nome
                 ");
