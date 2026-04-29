@@ -182,6 +182,11 @@
             return true;
         }
 
+        //redirect after edit user
+        public function redirect_edit_user() {
+            $this->redirect($this->edit_user() ? 'user/infoAccount' : 'admin/infoAccount');
+        }
+
         //search for every users of a school
         public function fetch_users() {
             try {

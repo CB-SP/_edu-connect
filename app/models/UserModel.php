@@ -61,7 +61,7 @@
         //find user
         public function find_user($id) {
             try {
-                $this->stmt = $this->pdo->prepare("SELECT email, created_at FROM usuarios WHERE id = ? AND deleted_at IS NULL");
+                $this->stmt = $this->pdo->prepare("SELECT email, contacto_1, contacto_2, nif, foto, created_at FROM usuarios WHERE id = ? AND deleted_at IS NULL");
                 $this->stmt->execute([$id]);
 
                 $user = $this->stmt->fetch(PDO::FETCH_ASSOC);
