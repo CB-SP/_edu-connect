@@ -1,818 +1,1085 @@
-@media screen and (max-width: 990px) {
-    .current-class-wrapper {
-        margin-top: 70px;
-        padding: 1.3rem;
-    }
-
-    .current-class-wrapper #current-class-section {
-        display: flex;
-        flex-direction: column;
-        gap: 25px;
-    }
-
-    .icon-back {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 30px;
-        width: 90px;
-    }
-
-    .icon-back a {
-        display: flex;
-        justify-content: center;
-        gap: 12px;
-        margin-bottom: 15px;
-        width: 90px;
-        height: 100%;
-        padding: 3px 5px;
-        border-radius: var(--radius-md);
-        transition: background-color .2s ease;
-        text-decoration: none;
-    }
-
-    .icon-back a p,
-    .icon-back a svg {
-        color: var(--Primary);
-    }
-
-    .icon-back a:hover {
-        background-color: var(--InputBackground);
-    }
-
-
-    .icon-back p {
-        font-weight: var(--weight-bd);
-        color: black;
-    }
-
-    .class-info {
-        display: flex;
-        flex-direction: column;
-        gap: 20px;
-    }
-
-    .class-info .top-side {
-        display: flex;
-        justify-content: space-between;
-    }
-
-    .top-side .nome-desc-class {
-        display: flex;
-        flex-direction: column;
-        gap: 5px;
-        font-size: 1.05rem;
-    }
-
-    .nome-desc-class h4 {
-        font-weight: var(--weight-nl);
-        font-size: var(--text-nl);
-    }
-
-    .nome-desc-class p {
-        color: var(--MutedForegroundC);
-        font-size: var(--text-nl);
-        word-wrap: break-word;
-        max-width: 220px;
-    }
-
-    .top-side button {
-        height: 38px;
-        border: 1px solid var(--SwitchBackground);
-        border-radius: var(--radius-md);
-        display: flex;
-        gap: 10px;
-        align-items: center;
-        padding: 5px 10px;
-        background-color: var(--Background);
-        transition: all .1s ease-in-out;
-        cursor: pointer;
-    }
-
-    .top-side button:hover {
-        background-color: var(--Muted);
-    }
-
-    .top-side button svg {
-        height: 18px;
-        width: 18px;
-    }
-
-    .info-nome-teacher {
-        border: 1px solid var(--SwitchBackground);
-        border-radius: var(--radius-md);
-        padding: 1.3rem 1.1rem;
-        display: flex;
-        gap: 10px;
-    }
-
-    .info-nome-teacher .teacher-photo {
-        height: 40px;
-        width: 40px;
-        background-color: var(--Muted);
-        border-radius: var(--radius-full);
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-
-    .teacher-photo img {}
-
-    .info-nome-teacher .nome-teacher {
-        display: flex;
-        flex-direction: column;
-    }
-
-    .nome-teacher h3 {
-        font-weight: var(--weight-bd);
-    }
-
-    .nome-teacher p {
-        color: var(--MutedForegroundC);
-    }
-
-    /*TABS CLASSROOM*/
-    .tabs-class {
-        display: flex;
-        align-items: center;
-        gap: 15px;
-        background-color: var(--Muted);
-        border-radius: var(--radius-lg);
-        padding: 5px;
-    }
-
-    .tabs-class .tab-class {
-        display: flex;
-        align-items: center;
-        gap: 5px;
-        border: none;
-        border-radius: var(--radius-lg);
-        height: 30px;
-        padding: 0 5px;
-    }
-
-    .activeClass {
-        color: var(--Background);
-        background-color: var(--AccentBlue);
-    }
-
-    .tab-class svg {
-        height: 18px;
-        width: 18px;
-    }
-
-    /*MODAL NEW PUB CLASS*/
-    .pub-class .btn-new-publish {
-        width: 100%;
-        border: none;
-        border-radius: var(--radius-md);
-        height: 38px;
-        background-color: var(--AccentBlue);
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        gap: 10px;
-        color: var(--Background);
-        font-size: var(--text-nl);
-        transition: all .1s ease-in-out;
-    }
-
-    .pub-class .btn-new-publish:hover {
-        background-color: var(--AccentBlueHover);
-    }
-
-    /*CHAT SECTION*/
-    .chat-section {
-        display: flex;
-        flex-direction: column;
-        gap: 20px;
-    }
-
-    .chat-section .messages-box {
-        width: 100%;
-        border: 1px solid var(--SwitchBackground);
-        border-radius: var(--radius-lg);
-        margin-bottom: 15px;
-        padding: 1rem;
-        display: flex;
-        flex-direction: column;
-        gap: 15px;
-    }
-
-    .messages-box .message {
-        display: flex;
-        gap: 10px;
-    }
-
-    .messages-box .received .message-content {
-        border-top-left-radius: 2px;
-    }
-
-    .messages-box .sent {
-        flex-direction: row-reverse;
-        align-self: flex-end;
-    }
-
-    .messages-box .sent .message-content {
-        background-color: var(--AccentBlue);
-        color: var(--Background);
-        border-top-right-radius: 2px;
-
-    }
-
-    .message .sender-profile {
-        height: 40px;
-        width: 40px;
-        border-radius: var(--radius-full);
-        background-color: var(--Muted);
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-shrink: 0;
-    }
-
-    .message .message-box {
-        display: flex;
-        flex-direction: column;
-        gap: 5px;
-    }
-
-    .message-box .message-content {
-        background-color: var(--Muted);
-        padding: 5px 10px;
-        border-radius: 12px;
-        display: flex;
-        flex-direction: column;
-    }
-
-    .message-content h4 {
-        font-weight: var(--weight-bd);
-    }
-
-    .message-box span {
-        font-size: var(--text-sm);
-    }
-
-    .chat-section .send-message-box {
-        display: flex;
-        gap: 10px;
-        border: 1px solid var(--SwitchBackground);
-        border-radius: var(--radius-lg);
-        padding: 1rem;
-    }
-
-    .send-message-box .img-profile {
-        height: 40px;
-        width: 40px;
-        border-radius: var(--radius-full);
-        background-color: var(--Muted);
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-
-    .send-message-box .message-input {
-        display: flex;
-        flex-direction: column;
-        gap: 5px;
-        width: 100%;
-    }
-
-    .message-input .input-box textarea {
-        width: 100%;
-        height: 90px;
-    }
-
-    .message-input .msg-action-btns {
-        display: flex;
-        gap: 10px;
-    }
-
-    .msg-action-btns svg {
-        height: 18px;
-        width: 18px;
-    }
-
-    .msg-action-btns label {
-        width: 100px;
-        display: flex;
-        gap: 10px;
-        justify-content: center;
-        align-items: center;
-        cursor: pointer;
-    }
-
-    .msg-action-btns button {
-        width: 100px;
-        display: flex;
-        gap: 10px;
-        justify-content: center;
-        align-items: center;
-        border: none;
-        border-radius: var(--radius-sm);
-        background-color: var(--AccentBlue);
-        color: var(--Background);
-        cursor: pointer;
-    }
-
-    /*STUDENTS MANEGEMENT*/
-    .students-manegement {
-        width: 100%;
-    }
-
-    .students-manegement .student-item {
-        display: flex;
-        justify-content: space-between;
-        width: 100%;
-        border: 1px solid var(--SwitchBackground);
-        border-radius: var(--radius-md);
-        padding: 1rem;
-        margin-bottom: 10px;
-    }
-
-    .student-item .info-student {
-        display: flex;
-        gap: 10px;
-    }
-
-    .info-student .student-profile {
-        height: 40px;
-        width: 40px;
-        border-radius: var(--radius-full);
-        background-color: var(--Muted);
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-
-    .info-student .student-name-email {
-        width: 100%;
-        display: flex;
-        flex-direction: column;
-    }
-
-    .student-name-email h4 {
-        font-weight: var(--weight-sb);
-    }
-
-    .student-name-email p {
-        color: var(--MutedForegroundC);
-        max-width: 150px;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-    }
-
-    .student-item .student-action {
-        display: flex;
-        gap: 10px;
-        align-items: center;
-        height: 40px;
-        padding: 10px;
-        border: 1px solid var(--SwitchBackground);
-        border-radius: var(--radius-md);
-        background-color: var(--Background);
-        transition: all .1s ease-in-out;
-    }
-
-    .student-item .student-action:hover {
-        background-color: var(--Muted);
-    }
-
-    .student-action svg {
-        height: 18px;
-        width: 18px;
-    }
-
-    .class-content {
-        display: none;
-    }
-
-    .active {
-        display: block;
-    }
-}
-
-@media screen and (min-width: 991px) {
-    .current-class-wrapper {
-        margin-top: 110px;
-        display: grid;
-        grid-template: 1fr / 10% 1fr 10%;
-    }
-
-    #current-class-section {
-        grid-column: 2;
-        display: flex;
-        flex-direction: column;
-        gap: 25px;
-    }
-
-    .icon-back {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 30px;
-        width: 90px;
-    }
-
-    .icon-back a {
-        display: flex;
-        justify-content: center;
-        gap: 12px;
-        margin-bottom: 15px;
-        width: 90px;
-        height: 100%;
-        padding: 3px 5px;
-        border-radius: var(--radius-md);
-        transition: background-color .2s ease;
-        text-decoration: none;
-    }
-
-    .icon-back a p,
-    .icon-back a svg {
-        color: var(--Primary);
-    }
-
-
-    .icon-back a:hover {
-        background-color: var(--InputBackground);
-    }
-
-    .icon-back p {
-        font-weight: var(--weight-bd);
-        color: black;
-    }
-
-
-    .class-info {
-        display: flex;
-        flex-direction: column;
-        gap: 25px;
-        margin-bottom: 5px;
-    }
-
-    .class-info .top-side {
-        display: flex;
-        justify-content: space-between;
-    }
-
-    .top-side .nome-desc-class {
-        display: flex;
-        flex-direction: column;
-        gap: 5px;
-        font-size: 1.05rem;
-    }
-
-    .nome-desc-class h4 {
-        font-weight: var(--weight-nl);
-        font-size: 1.2rem;
-    }
-
-    .nome-desc-class p {
-        color: var(--MutedForegroundC);
-        font-size: var(--text-nl);
-    }
-
-    .top-side button {
-        width: 150px;
-        height: 40px;
-        border: 1px solid var(--SwitchBackground);
-        border-radius: var(--radius-md);
-        display: flex;
-        gap: 10px;
-        justify-content: center;
-        align-items: center;
-        padding: 5px 10px;
-        background-color: var(--Background);
-        transition: all .1s ease-in-out;
-        cursor: pointer;
-    }
-
-    .top-side button:hover {
-        background-color: var(--Muted);
-    }
-
-    .top-side button svg {
-        height: 18px;
-        width: 18px;
-    }
-
-    .top-side button p {
-        font-size: 1rem;
-    }
-
-    .info-nome-teacher {
-        border: 1px solid var(--SwitchBackground);
-        border-radius: var(--radius-md);
-        padding: 1.5rem 1.1rem;
-        display: flex;
-        gap: 10px;
-    }
-
-    .info-nome-teacher .teacher-photo {
-        height: 45px;
-        width: 45px;
-        background-color: var(--Muted);
-        border-radius: var(--radius-full);
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-
-    .teacher-photo img {}
-
-    .info-nome-teacher .nome-teacher {
-        display: flex;
-        flex-direction: column;
-    }
-
-    .nome-teacher h3 {
-        font-weight: var(--weight-bd);
-    }
-
-    .nome-teacher p {
-        color: var(--MutedForegroundC);
-        font-size: 1.05rem;
-    }
-
-    /*TABS CLASSROOM*/
-    .tabs-class {
-        display: flex;
-        align-items: center;
-        gap: 15px;
-        background-color: var(--Muted);
-        border-radius: var(--radius-lg);
-        padding: 5px;
-    }
-
-    .tabs-class .tab-class {
-        width: 33%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        gap: 15px;
-        border: none;
-        border-radius: var(--radius-lg);
-        height: 35px;
-        padding: 0 5px;
-        font-size: var(--text-nl);
-        cursor: 2;
-    }
-
-    .activeClass {
-        color: var(--Background);
-        background-color: var(--AccentBlue);
-    }
-
-    .tab-class svg {
-        height: 18px;
-        width: 18px;
-    }
-
-    /*MODAL NEW PUB CLASS*/
-    .pub-class .btn-new-publish {
-        width: 100%;
-        border: none;
-        border-radius: var(--radius-md);
-        height: 38px;
-        background-color: var(--AccentBlue);
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        gap: 10px;
-        color: var(--Background);
-        font-size: var(--text-nl);
-        transition: all .1s ease-in-out;
-        cursor: pointer;
-    }
-
-    .pub-class .btn-new-publish:hover {
-        background-color: var(--AccentBlueHover);
-    }
-
-    /*CHAT SECTION*/
-    .chat-section {
-        display: flex;
-        flex-direction: column;
-        gap: 20px;
-    }
-
-    .chat-section .messages-box {
-        width: 100%;
-        border: 1px solid var(--SwitchBackground);
-        border-radius: var(--radius-lg);
-        margin-bottom: 15px;
-        padding: 1rem;
-        display: flex;
-        flex-direction: column;
-        gap: 15px;
-    }
-
-    .messages-box .message {
-        display: flex;
-        gap: 10px;
-    }
-
-    .messages-box .received .message-content {
-        border-top-left-radius: 2px;
-    }
-
-    .messages-box .sent {
-        flex-direction: row-reverse;
-        align-self: flex-end;
-    }
-
-    .messages-box .sent .message-content {
-        background-color: var(--AccentBlue);
-        color: var(--Background);
-        border-top-right-radius: 2px;
-    }
-
-    .sent .message-content h4 {
-        display: none;
-    }
-
-    .message .sender-profile {
-        height: 40px;
-        width: 40px;
-        border-radius: var(--radius-full);
-        background-color: var(--Muted);
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-shrink: 0;
-    }
-
-    .message .message-box {
-        display: flex;
-        flex-direction: column;
-        gap: 5px;
-    }
-
-    .message-box .message-content {
-        background-color: var(--Muted);
-        padding: 5px 10px;
-        border-radius: 12px;
-        display: flex;
-        flex-direction: column;
-    }
-
-    .message-content h4 {
-        font-weight: var(--weight-bd);
-    }
-
-    .message-box span {
-        font-size: var(--text-sm);
-    }
-
-    .chat-section .send-message-box {
-        display: flex;
-        gap: 10px;
-        border: 1px solid var(--SwitchBackground);
-        border-radius: var(--radius-lg);
-        padding: 1rem;
-    }
-
-    .send-message-box .img-profile {
-        height: 40px;
-        width: 40px;
-        border-radius: var(--radius-full);
-        background-color: var(--Muted);
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-
-    .send-message-box .message-input {
-        display: flex;
-        flex-direction: column;
-        gap: 5px;
-        width: 100%;
-    }
-
-    .message-input .input-box textarea {
-        width: 100%;
-        height: 80px;
-    }
-
-    .message-input .msg-action-btns {
-        display: flex;
-        gap: 10px;
-    }
-
-    .msg-action-btns svg {
-        height: 18px;
-        width: 18px;
-    }
-
-    .msg-action-btns label {
-        width: 100px;
-        height: 35px;
-        display: flex;
-        gap: 10px;
-        justify-content: center;
-        align-items: center;
-        cursor: pointer;
-    }
-
-    .msg-action-btns button {
-        width: 100px;
-        height: 35px;
-        display: flex;
-        gap: 10px;
-        justify-content: center;
-        align-items: center;
-        border: none;
-        border-radius: var(--radius-sm);
-        background-color: var(--AccentBlue);
-        color: var(--Background);
-        cursor: pointer;
-        transition: all .1s ease-in-out;
-    }
-
-    .msg-action-btns button:hover {
-        background-color: var(--AccentBlueHover);
-    }
-
-    /*STUDENTS MANEGEMENT*/
-    .students-manegement {
-        width: 100%;
-    }
-
-    .students-manegement .student-item {
-        height: 95px;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        width: 100%;
-        border: 1px solid var(--SwitchBackground);
-        border-radius: var(--radius-md);
-        padding: 1rem;
-        margin-bottom: 10px;
-    }
-
-    .student-item .info-student {
-        display: flex;
-        gap: 10px;
-    }
-
-    .info-student .student-profile {
-        height: 45px;
-        width: 45px;
-        border-radius: var(--radius-full);
-        background-color: var(--Muted);
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-
-    .info-student .student-name-email {
-        width: 100%;
-        display: flex;
-        flex-direction: column;
-    }
-
-    .student-name-email h4 {
-        font-weight: var(--weight-bd);
-        font-size: 1.05rem;
-    }
-
-    .student-name-email p {
-        color: var(--MutedForegroundC);
-    }
-
-    .student-item .student-action {
-        display: flex;
-        justify-content: center;
-        gap: 10px;
-        align-items: center;
-        height: 40px;
-        width: 130px;
-        padding: 10px;
-        border: 1px solid var(--SwitchBackground);
-        border-radius: var(--radius-md);
-        background-color: var(--Background);
-        transition: all .1s ease-in-out;
-    }
-
-    .student-item .student-action:hover {
-        background-color: var(--Muted);
-    }
-
-    .student-action svg {
-        height: 18px;
-        width: 18px;
-    }
-
-    .student-action p {
-        font-weight: var(--weight-bd);
-    }
-
-    .class-content {
-        display: none;
-    }
-
-    .active {
-        display: block;
-    }
-}
+ .overlay-current-class {
+     position: fixed;
+     inset: 0;
+     background-color: rgba(0, 0, 0, .4);
+     display: none;
+ }
+
+ .overlay-current-class.activeOver {
+     display: block;
+ }
+
+ @media screen and (max-width: 990px) {
+     .current-class-wrapper {
+         margin-top: 70px;
+         padding: 1.3rem;
+     }
+
+     .current-class-wrapper #current-class-section {
+         display: flex;
+         flex-direction: column;
+         gap: 25px;
+     }
+
+     .icon-back {
+         display: flex;
+         justify-content: center;
+         align-items: center;
+         height: 30px;
+         width: 90px;
+     }
+
+     .icon-back a {
+         display: flex;
+         justify-content: center;
+         gap: 12px;
+         margin-bottom: 15px;
+         width: 90px;
+         height: 100%;
+         padding: 3px 5px;
+         border-radius: var(--radius-md);
+         transition: background-color .2s ease;
+         text-decoration: none;
+     }
+
+     .icon-back a p,
+     .icon-back a svg {
+         color: var(--Primary);
+     }
+
+     .icon-back a:hover {
+         background-color: var(--InputBackground);
+     }
+
+
+     .icon-back p {
+         font-weight: var(--weight-bd);
+         color: black;
+     }
+
+     .class-info {
+         display: flex;
+         flex-direction: column;
+         gap: 20px;
+     }
+
+     .class-info .top-side {
+         display: flex;
+         justify-content: space-between;
+     }
+
+     .top-side .nome-desc-class {
+         display: flex;
+         flex-direction: column;
+         gap: 5px;
+         font-size: 1.05rem;
+     }
+
+     .nome-desc-class h4 {
+         font-weight: var(--weight-nl);
+         font-size: var(--text-nl);
+     }
+
+     .nome-desc-class p {
+         color: var(--MutedForegroundC);
+         font-size: var(--text-nl);
+         word-wrap: break-word;
+         max-width: 220px;
+     }
+
+     .top-side button {
+         height: 38px;
+         border: 1px solid var(--SwitchBackground);
+         border-radius: var(--radius-md);
+         display: flex;
+         gap: 10px;
+         align-items: center;
+         padding: 5px 10px;
+         background-color: var(--Background);
+         transition: all .1s ease-in-out;
+         cursor: pointer;
+     }
+
+     .top-side button:hover {
+         background-color: var(--Muted);
+     }
+
+     .top-side button svg {
+         height: 18px;
+         width: 18px;
+     }
+
+     .info-nome-teacher {
+         border: 1px solid var(--SwitchBackground);
+         border-radius: var(--radius-md);
+         padding: 1.3rem 1.1rem;
+         display: flex;
+         gap: 10px;
+     }
+
+     .info-nome-teacher .teacher-photo {
+         height: 40px;
+         width: 40px;
+         background-color: var(--Muted);
+         border-radius: var(--radius-full);
+         display: flex;
+         justify-content: center;
+         align-items: center;
+     }
+
+     .teacher-photo img {}
+
+     .info-nome-teacher .nome-teacher {
+         display: flex;
+         flex-direction: column;
+     }
+
+     .nome-teacher h3 {
+         font-weight: var(--weight-bd);
+     }
+
+     .nome-teacher p {
+         color: var(--MutedForegroundC);
+     }
+
+     /*TABS CLASSROOM*/
+     .tabs-class {
+         display: flex;
+         align-items: center;
+         gap: 15px;
+         background-color: var(--Muted);
+         border-radius: var(--radius-lg);
+         padding: 5px;
+     }
+
+     .tabs-class .tab-class {
+         display: flex;
+         align-items: center;
+         gap: 5px;
+         border: none;
+         border-radius: var(--radius-lg);
+         height: 30px;
+         padding: 0 5px;
+     }
+
+     .activeClass {
+         color: var(--Background);
+         background-color: var(--AccentBlue);
+     }
+
+     .tab-class svg {
+         height: 18px;
+         width: 18px;
+     }
+
+     /*MODAL NEW PUB CLASS*/
+     .pub-class .btn-new-publish {
+         width: 100%;
+         border: none;
+         border-radius: var(--radius-md);
+         height: 38px;
+         background-color: var(--AccentBlue);
+         display: flex;
+         justify-content: center;
+         align-items: center;
+         gap: 10px;
+         color: var(--Background);
+         font-size: var(--text-nl);
+         transition: all .1s ease-in-out;
+     }
+
+     .pub-class .btn-new-publish:hover {
+         background-color: var(--AccentBlueHover);
+     }
+
+     /*CHAT SECTION*/
+     .chat-section {
+         display: flex;
+         flex-direction: column;
+         gap: 20px;
+     }
+
+     .chat-section .messages-box {
+         width: 100%;
+         border: 1px solid var(--SwitchBackground);
+         border-radius: var(--radius-lg);
+         margin-bottom: 15px;
+         padding: 1rem;
+         display: flex;
+         flex-direction: column;
+         gap: 15px;
+     }
+
+     .messages-box .message {
+         display: flex;
+         gap: 10px;
+     }
+
+     .messages-box .received .message-content {
+         border-top-left-radius: 2px;
+     }
+
+     .messages-box .sent {
+         flex-direction: row-reverse;
+         align-self: flex-end;
+     }
+
+     .messages-box .sent .message-content {
+         background-color: var(--AccentBlue);
+         color: var(--Background);
+         border-top-right-radius: 2px;
+
+     }
+
+     .message .sender-profile {
+         height: 40px;
+         width: 40px;
+         border-radius: var(--radius-full);
+         background-color: var(--Muted);
+         display: flex;
+         justify-content: center;
+         align-items: center;
+         flex-shrink: 0;
+     }
+
+     .message .message-box {
+         display: flex;
+         flex-direction: column;
+         gap: 5px;
+     }
+
+     .message-box .message-content {
+         background-color: var(--Muted);
+         padding: 5px 10px;
+         border-radius: 12px;
+         display: flex;
+         flex-direction: column;
+     }
+
+     .message-content h4 {
+         font-weight: var(--weight-bd);
+     }
+
+     .message-box span {
+         font-size: var(--text-sm);
+     }
+
+     .chat-section .send-message-box {
+         display: flex;
+         gap: 10px;
+         border: 1px solid var(--SwitchBackground);
+         border-radius: var(--radius-lg);
+         padding: 1rem;
+     }
+
+     .send-message-box .img-profile {
+         height: 40px;
+         width: 40px;
+         border-radius: var(--radius-full);
+         background-color: var(--Muted);
+         display: flex;
+         justify-content: center;
+         align-items: center;
+     }
+
+     .send-message-box .message-input {
+         display: flex;
+         flex-direction: column;
+         gap: 5px;
+         width: 100%;
+     }
+
+     .message-input .input-box textarea {
+         width: 100%;
+         height: 90px;
+     }
+
+     .message-input .msg-action-btns {
+         display: flex;
+         gap: 10px;
+     }
+
+     .msg-action-btns svg {
+         height: 18px;
+         width: 18px;
+     }
+
+     .msg-action-btns label {
+         width: 100px;
+         display: flex;
+         gap: 10px;
+         justify-content: center;
+         align-items: center;
+         cursor: pointer;
+     }
+
+     .msg-action-btns button {
+         width: 100px;
+         display: flex;
+         gap: 10px;
+         justify-content: center;
+         align-items: center;
+         border: none;
+         border-radius: var(--radius-sm);
+         background-color: var(--AccentBlue);
+         color: var(--Background);
+         cursor: pointer;
+     }
+
+     /*STUDENTS MANEGEMENT*/
+     .students-manegement {
+         width: 100%;
+     }
+
+     .students-manegement .student-item {
+         display: flex;
+         justify-content: space-between;
+         width: 100%;
+         border: 1px solid var(--SwitchBackground);
+         border-radius: var(--radius-md);
+         padding: 1rem;
+         margin-bottom: 10px;
+     }
+
+     .student-item .info-student {
+         display: flex;
+         gap: 10px;
+     }
+
+     .info-student .student-profile {
+         height: 40px;
+         width: 40px;
+         border-radius: var(--radius-full);
+         background-color: var(--Muted);
+         display: flex;
+         justify-content: center;
+         align-items: center;
+     }
+
+     .info-student .student-name-email {
+         width: 100%;
+         display: flex;
+         flex-direction: column;
+     }
+
+     .student-name-email h4 {
+         font-weight: var(--weight-sb);
+     }
+
+     .student-name-email p {
+         color: var(--MutedForegroundC);
+         max-width: 150px;
+         white-space: nowrap;
+         overflow: hidden;
+         text-overflow: ellipsis;
+     }
+
+     .student-item .student-action {
+         display: flex;
+         gap: 10px;
+         align-items: center;
+         height: 40px;
+         padding: 10px;
+         border: 1px solid var(--SwitchBackground);
+         border-radius: var(--radius-md);
+         background-color: var(--Background);
+         transition: all .1s ease-in-out;
+     }
+
+     .student-item .student-action:hover {
+         background-color: var(--Muted);
+     }
+
+     .student-action svg {
+         height: 18px;
+         width: 18px;
+     }
+
+     .class-content {
+         display: none;
+     }
+
+     .active {
+         display: block;
+     }
+
+     /*MODAL MANAGE STUDENTS*/
+     .modal-students-list {
+         position: absolute;
+         top: 50%;
+         left: 50%;
+         transform: translate(-50%, -50%);
+         width: 90%;
+         max-height: 500px;
+         background-color: var(--Background);
+         border-radius: var(--radius-md);
+         padding: 1.5rem;
+         box-shadow: 0 2px 23px rgba(0, 0, 0, .4);
+         display: flex;
+         flex-direction: column;
+         gap: 10px;
+         display: none;
+     }
+
+     .modal-students-list.show {
+         display: block;
+     }
+
+     .modal-students-list .head-modal {
+         display: flex;
+         flex-direction: column;
+         gap: 10px;
+         padding: 10px 0;
+     }
+
+     .head-modal .up-side {
+         display: flex;
+         justify-content: space-between;
+         gap: 10px;
+     }
+
+     .up-side h3 {
+         font-weight: var(--weight-sb);
+         margin-top: -10px;
+     }
+
+     .up-side #close-menu-m {
+         position: absolute;
+         right: 12px;
+         top: 15px;
+         height: 22px;
+         color: var(--MutedForegroundC);
+         border-radius: var(--radius-sm);
+     }
+
+     #close-menu-m:hover {
+         background-color: var(--Muted);
+     }
+
+     .head-modal .search-class {
+         width: 100%;
+     }
+
+     .list {
+         display: flex;
+         flex-direction: column;
+         gap: 10px;
+         border-bottom: 1px solid var(--SwitchBackground);
+         border-top: 1px solid var(--SwitchBackground);
+         padding: 1.3rem 0;
+         overflow: auto;
+     }
+
+     .list .student-item {
+         display: flex;
+         justify-content: space-between;
+         align-items: center;
+         padding: 3px;
+         border-radius: var(--radius-md);
+         transition: all .1s ease-in-out;
+     }
+
+     .list .student-item:hover {
+         background-color: var(--InputBackground);
+     }
+
+     .list .add {
+         background-color: var(--AccentBlue);
+         color: var(--Background);
+         cursor: pointer;
+     }
+
+     .list .add:hover {
+         background-color: var(--AccentBlue);
+         color: var(--Background);
+     }
+
+     .list .drop {
+         background-color: var(--Destructive);
+         color: var(--Background);
+         cursor: pointer;
+     }
+
+     .list .drop:hover {
+         background-color: var(--Destructive);
+         color: var(--Background);
+     }
+
+     .bottom-side {
+         display: flex;
+         justify-content: space-between;
+         align-items: center;
+         padding: 10px 0;
+     }
+
+     .bottom-side .btn-close-student-modal {
+         background-color: var(--AccentBlue);
+         color: var(--Background);
+         border: none;
+         width: 80px;
+         display: flex;
+         justify-content: center;
+         align-items: center;
+         transition: all .1s ease-in-out;
+         cursor: pointer;
+     }
+
+     .bottom-side .btn-close-student-modal:hover {
+         background-color: var(--AccentBlueHover);
+     }
+ }
+
+ @media screen and (min-width: 991px) {
+     .current-class-wrapper {
+         margin-top: 110px;
+         display: grid;
+         grid-template: 1fr / 10% 1fr 10%;
+     }
+
+     #current-class-section {
+         grid-column: 2;
+         display: flex;
+         flex-direction: column;
+         gap: 25px;
+     }
+
+     .icon-back {
+         display: flex;
+         justify-content: center;
+         align-items: center;
+         height: 30px;
+         width: 90px;
+     }
+
+     .icon-back a {
+         display: flex;
+         justify-content: center;
+         gap: 12px;
+         margin-bottom: 15px;
+         width: 90px;
+         height: 100%;
+         padding: 3px 5px;
+         border-radius: var(--radius-md);
+         transition: background-color .2s ease;
+         text-decoration: none;
+     }
+
+     .icon-back a p,
+     .icon-back a svg {
+         color: var(--Primary);
+     }
+
+
+     .icon-back a:hover {
+         background-color: var(--InputBackground);
+     }
+
+     .icon-back p {
+         font-weight: var(--weight-bd);
+         color: black;
+     }
+
+
+     .class-info {
+         display: flex;
+         flex-direction: column;
+         gap: 25px;
+         margin-bottom: 5px;
+     }
+
+     .class-info .top-side {
+         display: flex;
+         justify-content: space-between;
+     }
+
+     .top-side .nome-desc-class {
+         display: flex;
+         flex-direction: column;
+         gap: 5px;
+         font-size: 1.05rem;
+     }
+
+     .nome-desc-class h4 {
+         font-weight: var(--weight-nl);
+         font-size: 1.2rem;
+     }
+
+     .nome-desc-class p {
+         color: var(--MutedForegroundC);
+         font-size: var(--text-nl);
+     }
+
+     .top-side button {
+         width: 150px;
+         height: 40px;
+         border: 1px solid var(--SwitchBackground);
+         border-radius: var(--radius-md);
+         display: flex;
+         gap: 10px;
+         justify-content: center;
+         align-items: center;
+         padding: 5px 10px;
+         background-color: var(--Background);
+         transition: all .1s ease-in-out;
+         cursor: pointer;
+     }
+
+     .top-side button:hover {
+         background-color: var(--Muted);
+     }
+
+     .top-side button svg {
+         height: 18px;
+         width: 18px;
+     }
+
+     .top-side button p {
+         font-size: 1rem;
+     }
+
+     .info-nome-teacher {
+         border: 1px solid var(--SwitchBackground);
+         border-radius: var(--radius-md);
+         padding: 1.5rem 1.1rem;
+         display: flex;
+         gap: 10px;
+     }
+
+     .info-nome-teacher .teacher-photo {
+         height: 45px;
+         width: 45px;
+         background-color: var(--Muted);
+         border-radius: var(--radius-full);
+         display: flex;
+         justify-content: center;
+         align-items: center;
+     }
+
+     .teacher-photo img {}
+
+     .info-nome-teacher .nome-teacher {
+         display: flex;
+         flex-direction: column;
+     }
+
+     .nome-teacher h3 {
+         font-weight: var(--weight-bd);
+     }
+
+     .nome-teacher p {
+         color: var(--MutedForegroundC);
+         font-size: 1.05rem;
+     }
+
+     /*TABS CLASSROOM*/
+     .tabs-class {
+         display: flex;
+         align-items: center;
+         gap: 15px;
+         background-color: var(--Muted);
+         border-radius: var(--radius-lg);
+         padding: 5px;
+     }
+
+     .tabs-class .tab-class {
+         width: 33%;
+         display: flex;
+         justify-content: center;
+         align-items: center;
+         gap: 15px;
+         border: none;
+         border-radius: var(--radius-lg);
+         height: 35px;
+         padding: 0 5px;
+         font-size: var(--text-nl);
+         cursor: 2;
+     }
+
+     .activeClass {
+         color: var(--Background);
+         background-color: var(--AccentBlue);
+     }
+
+     .tab-class svg {
+         height: 18px;
+         width: 18px;
+     }
+
+     /*MODAL NEW PUB CLASS*/
+     .pub-class .btn-new-publish {
+         width: 100%;
+         border: none;
+         border-radius: var(--radius-md);
+         height: 38px;
+         background-color: var(--AccentBlue);
+         display: flex;
+         justify-content: center;
+         align-items: center;
+         gap: 10px;
+         color: var(--Background);
+         font-size: var(--text-nl);
+         transition: all .1s ease-in-out;
+         cursor: pointer;
+     }
+
+     .pub-class .btn-new-publish:hover {
+         background-color: var(--AccentBlueHover);
+     }
+
+     /*CHAT SECTION*/
+     .chat-section {
+         display: flex;
+         flex-direction: column;
+         gap: 20px;
+     }
+
+     .chat-section .messages-box {
+         width: 100%;
+         border: 1px solid var(--SwitchBackground);
+         border-radius: var(--radius-lg);
+         margin-bottom: 15px;
+         padding: 1rem;
+         display: flex;
+         flex-direction: column;
+         gap: 15px;
+     }
+
+     .messages-box .message {
+         display: flex;
+         gap: 10px;
+     }
+
+     .messages-box .received .message-content {
+         border-top-left-radius: 2px;
+     }
+
+     .messages-box .sent {
+         flex-direction: row-reverse;
+         align-self: flex-end;
+     }
+
+     .messages-box .sent .message-content {
+         background-color: var(--AccentBlue);
+         color: var(--Background);
+         border-top-right-radius: 2px;
+     }
+
+     .sent .message-content h4 {
+         display: none;
+     }
+
+     .message .sender-profile {
+         height: 40px;
+         width: 40px;
+         border-radius: var(--radius-full);
+         background-color: var(--Muted);
+         display: flex;
+         justify-content: center;
+         align-items: center;
+         flex-shrink: 0;
+     }
+
+     .message .message-box {
+         display: flex;
+         flex-direction: column;
+         gap: 5px;
+     }
+
+     .message-box .message-content {
+         background-color: var(--Muted);
+         padding: 5px 10px;
+         border-radius: 12px;
+         display: flex;
+         flex-direction: column;
+     }
+
+     .message-content h4 {
+         font-weight: var(--weight-bd);
+     }
+
+     .message-box span {
+         font-size: var(--text-sm);
+     }
+
+     .chat-section .send-message-box {
+         display: flex;
+         gap: 10px;
+         border: 1px solid var(--SwitchBackground);
+         border-radius: var(--radius-lg);
+         padding: 1rem;
+     }
+
+     .send-message-box .img-profile {
+         height: 40px;
+         width: 40px;
+         border-radius: var(--radius-full);
+         background-color: var(--Muted);
+         display: flex;
+         justify-content: center;
+         align-items: center;
+     }
+
+     .send-message-box .message-input {
+         display: flex;
+         flex-direction: column;
+         gap: 5px;
+         width: 100%;
+     }
+
+     .message-input .input-box textarea {
+         width: 100%;
+         height: 80px;
+     }
+
+     .message-input .msg-action-btns {
+         display: flex;
+         gap: 10px;
+     }
+
+     .msg-action-btns svg {
+         height: 18px;
+         width: 18px;
+     }
+
+     .msg-action-btns label {
+         width: 100px;
+         height: 35px;
+         display: flex;
+         gap: 10px;
+         justify-content: center;
+         align-items: center;
+         cursor: pointer;
+     }
+
+     .msg-action-btns button {
+         width: 100px;
+         height: 35px;
+         display: flex;
+         gap: 10px;
+         justify-content: center;
+         align-items: center;
+         border: none;
+         border-radius: var(--radius-sm);
+         background-color: var(--AccentBlue);
+         color: var(--Background);
+         cursor: pointer;
+         transition: all .1s ease-in-out;
+     }
+
+     .msg-action-btns button:hover {
+         background-color: var(--AccentBlueHover);
+     }
+
+     /*STUDENTS MANEGEMENT*/
+     .students-manegement {
+         width: 100%;
+     }
+
+     .students-manegement .student-item {
+         height: 95px;
+         display: flex;
+         justify-content: space-between;
+         align-items: center;
+         width: 100%;
+         border: 1px solid var(--SwitchBackground);
+         border-radius: var(--radius-md);
+         padding: 1rem;
+         margin-bottom: 10px;
+     }
+
+     .student-item .info-student {
+         display: flex;
+         gap: 10px;
+     }
+
+     .info-student .student-profile {
+         height: 45px;
+         width: 45px;
+         border-radius: var(--radius-full);
+         background-color: var(--Muted);
+         display: flex;
+         justify-content: center;
+         align-items: center;
+     }
+
+     .info-student .student-name-email {
+         width: 100%;
+         display: flex;
+         flex-direction: column;
+     }
+
+     .student-name-email h4 {
+         font-weight: var(--weight-bd);
+         font-size: 1.05rem;
+     }
+
+     .student-name-email p {
+         color: var(--MutedForegroundC);
+     }
+
+     .student-item .student-action {
+         display: flex;
+         justify-content: center;
+         gap: 10px;
+         align-items: center;
+         height: 40px;
+         width: 130px;
+         padding: 10px;
+         border: 1px solid var(--SwitchBackground);
+         border-radius: var(--radius-md);
+         background-color: var(--Background);
+         transition: all .1s ease-in-out;
+     }
+
+     .student-item .student-action:hover {
+         background-color: var(--Muted);
+     }
+
+     .student-action svg {
+         height: 18px;
+         width: 18px;
+     }
+
+     .student-action p {
+         font-weight: var(--weight-bd);
+     }
+
+     .class-content {
+         display: none;
+         margin-bottom: 1.8rem;
+     }
+
+     .active {
+         display: block;
+     }
+
+     /*MODAL MANAGE STUDENTS*/
+     .modal-students-list {
+         position: absolute;
+         top: 50%;
+         left: 50%;
+         transform: translate(-50%, -50%);
+         width: 700px;
+         max-height: 520px;
+         background-color: var(--Background);
+         border-radius: var(--radius-md);
+         padding: 1.5rem;
+         box-shadow: 0 2px 23px rgba(0, 0, 0, .4);
+         display: flex;
+         justify-content: space-between;
+         flex-direction: column;
+         gap: 10px;
+         display: none;
+     }
+
+     .modal-students-list.show {
+         display: block;
+         display: flex;
+         justify-content: space-between;
+         flex-direction: column;
+         gap: 10px;
+     }
+
+     .modal-students-list .head-modal {
+         display: flex;
+         flex-direction: column;
+         gap: 10px;
+         padding: 10px 0;
+     }
+
+     .head-modal .up-side {
+         display: flex;
+         justify-content: space-between;
+         gap: 10px;
+     }
+
+     .up-side h3 {
+         font-weight: var(--weight-sb);
+         margin-top: -10px;
+     }
+
+     .up-side #close-menu-m {
+         position: absolute;
+         right: 12px;
+         top: 15px;
+         height: 22px;
+         color: var(--MutedForegroundC);
+         border-radius: var(--radius-sm);
+     }
+
+     #close-menu-m:hover {
+         background-color: var(--Muted);
+     }
+
+     .head-modal .search-class {
+         width: 100%;
+     }
+
+     .list {
+         display: flex;
+         flex-direction: column;
+         gap: 10px;
+         border-bottom: 1px solid var(--SwitchBackground);
+         border-top: 1px solid var(--SwitchBackground);
+         padding: 1.3rem 0;
+         overflow: auto;
+     }
+
+     .list .student-item {
+         display: flex;
+         justify-content: space-between;
+         align-items: center;
+         padding: 8px;
+         border-radius: var(--radius-md);
+         transition: all .1s ease-in-out;
+     }
+
+     .list .student-item:hover {
+         background-color: var(--InputBackground);
+     }
+
+     .list .add {
+         background-color: var(--AccentBlue);
+         color: var(--Background);
+         cursor: pointer;
+     }
+
+     .list .add:hover {
+         background-color: var(--AccentBlue);
+         color: var(--Background);
+     }
+
+     .list .drop {
+         background-color: var(--Destructive);
+         color: var(--Background);
+         cursor: pointer;
+     }
+
+     .list .drop:hover {
+         background-color: var(--Destructive);
+         color: var(--Background);
+     }
+
+     .bottom-side {
+         display: flex;
+         justify-content: space-between;
+         align-items: center;
+         padding: 10px 0;
+     }
+
+     .bottom-side .btn-close-student-modal {
+         background-color: var(--AccentBlue);
+         color: var(--Background);
+         border: none;
+         width: 80px;
+         display: flex;
+         justify-content: center;
+         align-items: center;
+         transition: all .1s ease-in-out;
+         cursor: pointer;
+     }
+
+     .bottom-side .btn-close-student-modal:hover {
+         background-color: var(--AccentBlueHover);
+     }
+ }
