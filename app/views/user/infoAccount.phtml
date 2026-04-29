@@ -35,15 +35,30 @@
                 <p>Edite as suas informações</p>
                 <img src="<?= URL ?>public/assets/icons/x.png" alt="" class="close-modal-icon">
             </div>
-            <form action="<?= URL ?>user/edit_user" method="post" enctype="multipart/form-data">
+            <form action="<?= URL ?>user/redirect_edit_user" method="post" enctype="multipart/form-data">
                 <div class="input-box">
                     <label for="adminName">Nome Completo</label>
                     <input type="text" name="name" id="adminName" placeholder="Nome completo do admin" value="<?= $_SESSION['name'] ?>">
                 </div>
-
-                <div class="input-box">
-                    <label for="adminEmail">Email</label>
-                    <input type="text" name="email" id="adminEmail" placeholder="admin@gmail.com" value="<?= $user_data['email'] ?>">
+                <div class="contacts-box">
+                    <div class="input-box">
+                        <label for="userPrimaryContact">Contacto principal</label>
+                        <input type="text" name="contact_1" id="userPrimaryContact" placeholder="+244 XXX XXX XXX" value="<?= $user_data['contacto_1'] ?>">
+                    </div>
+                    <div class="input-box">
+                        <label for="userSecundaryContact">Contacto secundário</label>
+                        <input type="text" name="contact_2" id="userSecundaryContact" placeholder="+244 XXX XXX XXX" value="<?= $user_data['contacto_2'] ?>">
+                    </div>
+                </div>
+                <div class="contacts-box">
+                    <div class="input-box">
+                        <label for="nifUser">NIF</label>
+                        <input type="text" name="nif" id="nifUser" placeholder="936501275HA043" value="<?= $user_data['nif'] ?>">
+                    </div>
+                    <div class="input-box">
+                        <label for="emailUser">Email</label>
+                        <input type="text" name="email" id="emailUser" placeholder="usuario@gmail.com" value="<?= $user_data['email'] ?>">
+                    </div>
                 </div>
                 <div class="input-box">
                     <label for="">Foto do usuário</label>
