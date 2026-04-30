@@ -1,9 +1,10 @@
 <?php
     class ClassController extends Controller {
-        private $class, $name, $teacher, $school;
+        private $class, $name, $teacher, $school, $chat;
 
         public function __construct() {
             $this->class = new ClassModel;
+            $this->chat = new ChatController;
         }
 
         //create a class
@@ -13,16 +14,20 @@
             $this->school = $_POST['school'] ?? null;
 
             if (empty($this->name) || empty($this->teacher) || empty($this->school)) {
-                $this->redirect("teacher/classes/error0");
+                $this->redirect("teacher/classes/error");
             }
 
             try {
                 if (!$this->class->create_class($this->name, $this->teacher, $this->school)) {
-                    $this->redirect("teacher/classes/error1");
+                    $this->redirect("teacher/classes/error");
+                }
+
+                if (!$this->chat->create_chat($this->get_class_id($this->name), $this->school)) {
+                    $this->redirect("teacher/classes/error");
                 }
             } catch (PDOException $e) {
                 error_log("ERRO_CRIAR_TURMA: ". $e->getMessage(). "\n". $e->getTraceAsString());
-                $this->redirect("teacher/classes/error2");
+                $this->redirect("teacher/classes/error");
             }
 
             $this->redirect("teacher/classes");
@@ -70,14 +75,14 @@
             }
         }
 
-        //get class chats
-        public function get_class_chats(int $id) {
-            if (empty($id)) {
+        //get class id
+        private function get_class_id(string $name) {
+            if (empty($name)) {
                 return null;
             }
 
             try {
-                return $this->class->get_class_chats($id);
+                return $this->class->get_class_id($name);
             } catch (PDOException $e) {
                 error_log("ERRO_BUSCAR_TURMA: ". $e->getMessage(). "\n". $e->getTraceAsString());
                 return null;

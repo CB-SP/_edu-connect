@@ -78,13 +78,14 @@
         }
 
         //get class chats
-        public function get_class_chats(int $id) {
+        public function get_class_id(string $name) {
             try {
-                $this->stmt = $this->pdo->prepare("");
-                $this->stmt->execute([$id]);
+                $this->stmt = $this->pdo->prepare("SELECT id FROM turmas WHERE nome = ?");
+                $this->stmt->execute([$name]);
 
-                
-                return !empty($class_data) ? $class_data : null;
+                $id = $this->stmt->fetch(PDO::FETCH_ASSOC)['id'];
+
+                return !empty($id) ? $id : null;
             } catch (PDOException $e) {
                 throw $e;
             }
