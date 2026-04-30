@@ -35,10 +35,10 @@
             }
         }
 
-        //get class
-        public function get_class_data(int $id) {
+        //get class students
+        public function get_class_students(int $id) {
             try {
-                $this->stmt = $this->pdo->prepare("SELECT c.nome AS class, t.nome AS teacher, t.foto AS teacher_foto, s.id AS student_id, s.nome AS student, s.foto AS student_foto, s.email
+                $this->stmt = $this->pdo->prepare("SELECT s.id, s.nome, s.foto, s.email
                     FROM turmas AS c
                     JOIN usuarios AS t ON t.id = c.professor
                     JOIN alunos_turmas AS sc ON sc.turma = c.id
@@ -47,11 +47,42 @@
                 ");
                 $this->stmt->execute([$id]);
 
-                $class_data = [];
+                $students = [];
 
                 while ($result = $this->stmt->fetch(PDO::FETCH_ASSOC)) {
-                    $class_data[] = $result;
+                    $students[] = $result;
                 }
+                
+                return !empty($students) ? $students : null;
+            } catch (PDOException $e) {
+                throw $e;
+            }
+        }
+
+        //get class data
+        public function get_class_data(int $id) {
+            try {
+                $this->stmt = $this->pdo->prepare("SELECT c.nome AS class, t.nome AS teacher, t.foto
+                    FROM turmas AS c
+                    JOIN usuarios AS t ON t.id = c.professor
+                    WHERE c.id = ?
+                ");
+                $this->stmt->execute([$id]);
+
+                $class_data = $this->stmt->fetch(PDO::FETCH_ASSOC);
+                
+                return !empty($class_data) ? $class_data : null;
+            } catch (PDOException $e) {
+                throw $e;
+            }
+        }
+
+        //get class chats
+        public function get_class_chats(int $id) {
+            try {
+                $this->stmt = $this->pdo->prepare("");
+                $this->stmt->execute([$id]);
+
                 
                 return !empty($class_data) ? $class_data : null;
             } catch (PDOException $e) {

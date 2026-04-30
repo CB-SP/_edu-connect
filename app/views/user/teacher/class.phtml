@@ -4,6 +4,7 @@
 
     $class = new ClassController;
     $class_data = $class->get_class_data($class_id);
+    $students = $class->get_class_students($class_id);
 ?>
 
 <div class="current-class-wrapper">
@@ -22,7 +23,7 @@
         <div class="class-info">
             <div class="top-side">
                 <div class="nome-desc-class">
-                    <h4><?= $class_data[0]['class'] ?></h4>
+                    <h4><?= $class_data['class'] ?></h4>
                 </div>
                 <button>
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-user-plus-icon lucide-user-plus">
@@ -37,10 +38,10 @@
             </div>
             <div class="info-nome-teacher">
                 <div class="teacher-photo">
-                    <img src="<?= $class_data[0]['teacher_foto'] ?>" alt=" ">
+                    <img src="<?= $class_data['foto'] ?>" alt=" ">
                 </div>
                 <div class="nome-teacher">
-                    <h3><?= $class_data[0]['teacher'] ?></h3>
+                    <h3><?= $class_data['teacher'] ?></h3>
                     <p>Professor</p>
                 </div>
             </div>
@@ -143,16 +144,16 @@
         </div>
         <!--STUDENTS MANAGEMENT-->
         <div class="students-manegement class-content" id="">
-            <?php if (!empty($class_data)):?>
-                <?php foreach ($class_data as $c):?>
+            <?php if (!empty($students)):?>
+                <?php foreach ($students as $s):?>
                     <div class="student-item">
                         <div class="info-student">
                             <div class="student-profile">
                                 <img src="" alt=" ">
                             </div>
                             <div class="student-name-email">
-                                <h4><?= $c['student'] ?></h4>
-                                <p><?= $c['email'] ?></p>
+                                <h4><?= $s['nome'] ?></h4>
+                                <p><?= $s['email'] ?></p>
                             </div>
                         </div>
                         <button class="student-action">

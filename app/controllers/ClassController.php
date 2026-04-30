@@ -42,7 +42,21 @@
             }
         }
 
-        //get class
+        //get class students
+        public function get_class_students(int $id) {
+            if (empty($id)) {
+                return null;
+            }
+
+            try {
+                return $this->class->get_class_students($id);
+            } catch (PDOException $e) {
+                error_log("ERRO_BUSCAR_TURMA: ". $e->getMessage(). "\n". $e->getTraceAsString());
+                return null;
+            }
+        }
+
+        //get class data
         public function get_class_data(int $id) {
             if (empty($id)) {
                 return null;
@@ -50,6 +64,20 @@
 
             try {
                 return $this->class->get_class_data($id);
+            } catch (PDOException $e) {
+                error_log("ERRO_BUSCAR_TURMA: ". $e->getMessage(). "\n". $e->getTraceAsString());
+                return null;
+            }
+        }
+
+        //get class chats
+        public function get_class_chats(int $id) {
+            if (empty($id)) {
+                return null;
+            }
+
+            try {
+                return $this->class->get_class_chats($id);
             } catch (PDOException $e) {
                 error_log("ERRO_BUSCAR_TURMA: ". $e->getMessage(). "\n". $e->getTraceAsString());
                 return null;
