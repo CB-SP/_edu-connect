@@ -3,6 +3,11 @@
     $class_id = $_SESSION['class_id'];
 
     $class = new ClassController;
+    $messages = new MessageController;
+    $chats = new ChatController;
+
+    $class_chat = $chats->get_chat($class_id, $_SESSION['school_id']);
+    $class_messages = $messages->get_chat_messages($_SESSION['school_id'], $class_chat);
     $class_data = $class->get_class_data($class_id);
     $students = $class->get_class_students($class_id);
 ?>
@@ -77,68 +82,82 @@
         </div>
         <!--CHAT SECTION-->
         <div class="chat-section class-content">
+            <?php
+                if (!empty($class_messages)) {
+                    $messages_received = array_filter($class_messages, function ($n) {
+                        return $n['user_id'] !== $_SESSION['id'];
+                    });
+
+                    $messages_sended = array_filter($class_messages, function ($n) {
+                        return $n['user_id'] === $_SESSION['id'];
+                    });
+                }
+            ?>
+
             <div class="messages-box">
-            <div class="message received">
-                <div class="sender-profile">
-                    <img src="" alt=" ">
-                </div>
-                <div class="message-box">
-                    <div class="message-content">
-                        <h4>Nome Emissor</h4>
-                        <p>Conteúdo Mensagem</p>
+                <?php if (!empty($messages_received)):?>
+                    <?php foreach ($messages_received as $received):?>
+                        <div class="message received">
+                            <div class="sender-profile">
+                                <img src="<?= $received['user_foto'] ?>" alt=" ">
+                            </div>
+                            <div class="message-box">
+                                <div class="message-content">
+                                    <h4><?= $received['user'] ?></h4>
+                                    <p><?= $received['conteudo'] ?></p>
+                                </div>
+                                <span><?= $received['created_at'] ?></span>
+                            </div>
+                        </div>
+                    <?php endforeach;?>
+                <?php endif;?>
+                <?php if (!empty($messages_sended)):?>
+                    <?php foreach ($messages_sended as $sended):?>
+                        <div class="message sent">
+                            <div class="sender-profile">
+                                <img src="<?= $sended['user_foto'] ?>" alt=" ">
+                            </div>
+                            <div class="message-box">
+                                <div class="message-content">
+                                    <h4><?= $sended['user'] ?></h4>
+                                    <p><?= $sended['conteudo'] ?></p>
+                                </div>
+                                <span><?= $sended['created_at'] ?></span>
+                            </div>
+                        </div>
+                    <?php endforeach;?>
+                <?php endif;?>
+                <div class="send-message-box">
+                    <div class="img-profile">
+                        <img src="" alt=" ">
                     </div>
-                    <span>Tempo Enviado</span>
-                </div>
-            </div>
-            <div class="message received">
-                <div class="sender-profile">
-                    <img src="" alt=" ">
-                </div>
-                <div class="message-box">
-                    <div class="message-content">
-                        <h4>Nome Emissor</h4>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit odio commodi nobis consequuntur reiciendis fuga aut veritatis</p>
-                    </div>
-                    <span>Tempo Enviado</span>
-                </div>
-            </div>
-            <div class="message sent">
-                <div class="sender-profile">
-                    <img src="" alt=" ">
-                </div>
-                <div class="message-box">
-                    <div class="message-content">
-                        <h4>Nome Emissor</h4>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-                    </div>
-                    <span>Tempo Enviado</span>
-                </div>
-            </div>
-            </div>
-            <div class="send-message-box">
-                <div class="img-profile">
-                    <img src="" alt=" ">
-                </div>
-                <div class="message-input">
-                    <div class="input-box">
-                        <textarea name="" class="fileName" id="msg-content" placeholder="Escreva uma mensagem"></textarea>
-                    </div>
-                    <div class="msg-action-btns">
-                        <label for="publication-file" class="labelFile">
-                            <input type="file" name="file" id="publication-file" class="fotoFile" hidden>
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-paperclip-icon lucide-paperclip">
-                                <path d="m16 6-8.414 8.586a2 2 0 0 0 2.829 2.829l8.414-8.586a4 4 0 1 0-5.657-5.657l-8.379 8.551a6 6 0 1 0 8.485 8.485l8.379-8.551" />
-                            </svg>
-                            Anexar
-                        </label>
-                        <button type="submit">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-send-icon lucide-send">
-                                <path d="M14.536 21.686a.5.5 0 0 0 .937-.024l6.5-19a.496.496 0 0 0-.635-.635l-19 6.5a.5.5 0 0 0-.024.937l7.93 3.18a2 2 0 0 1 1.112 1.11z" />
-                                <path d="m21.854 2.147-10.94 10.939" />
-                            </svg>
-                            <p>Enviar</p>
-                        </button>
-                    </div>
+                    <form action="<?= URL ?>message/send_message/<?= $class_id ?>" method="POST" class="message-input">
+                        <div class="input-box">
+                            <textarea name="content" class="fileName" id="msg-content" placeholder="Escreva uma mensagem"></textarea>
+                        </div>
+
+                        <input type="hidden" name="chat" value="<?= $class_chat ?>">
+                        <input type="hidden" name="school" value="<?= $_SESSION['school_id'] ?>">
+                        <input type="hidden" name="school" value="<?= $_SESSION['school_id'] ?>">
+                        <input type="hidden" name="user" value="<?= $_SESSION['id'] ?>">
+
+                        <div class="msg-action-btns">
+                            <label for="publication-file" class="labelFile">
+                                <input type="file" name="file" id="publication-file" class="fotoFile" hidden>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-paperclip-icon lucide-paperclip">
+                                    <path d="m16 6-8.414 8.586a2 2 0 0 0 2.829 2.829l8.414-8.586a4 4 0 1 0-5.657-5.657l-8.379 8.551a6 6 0 1 0 8.485 8.485l8.379-8.551" />
+                                </svg>
+                                Anexar
+                            </label>
+                            <button type="submit">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-send-icon lucide-send">
+                                    <path d="M14.536 21.686a.5.5 0 0 0 .937-.024l6.5-19a.496.496 0 0 0-.635-.635l-19 6.5a.5.5 0 0 0-.024.937l7.93 3.18a2 2 0 0 1 1.112 1.11z" />
+                                    <path d="m21.854 2.147-10.94 10.939" />
+                                </svg>
+                                <p>Enviar</p>
+                            </button>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
@@ -169,6 +188,4 @@
     </section>
 </div>
 
-<?php
-require_once './app/views/layouts/closure.phtml'
-?>
+<?php require_once './app/views/layouts/closure.phtml'?>
