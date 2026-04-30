@@ -8,6 +8,13 @@ require_once './app/views/layouts/usersMain.phtml'
         .selectedClass {
             background-color: var(--AccentBlue);
         }
+        .selectedClass:hover {
+            background-color: var(--AccentBlueHover);
+        }
+
+        li:not(.selectedClass):hover {
+            background-color: var(--Muted);
+        }
 
         .selectedClass a {
             color: var(--Background) !important;
@@ -20,7 +27,10 @@ require_once './app/views/layouts/usersMain.phtml'
                 <p>Turmas que leciona</p>
             </div>
             <button class="btn-new-class">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-plus-icon lucide-plus"><path d="M5 12h14"/><path d="M12 5v14"/></svg>
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-plus-icon lucide-plus">
+                    <path d="M5 12h14" />
+                    <path d="M12 5v14" />
+                </svg>
 
                 Nova Turma
             </button>
@@ -63,7 +73,10 @@ require_once './app/views/layouts/usersMain.phtml'
         <!--SEARCH CLASS BOX-->
         <div class="search-class">
             <div class="icon-search-class">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-search-icon lucide-search"><path d="m21 21-4.34-4.34"/><circle cx="11" cy="11" r="8"/></svg>
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-search-icon lucide-search">
+                    <path d="m21 21-4.34-4.34" />
+                    <circle cx="11" cy="11" r="8" />
+                </svg>
 
             </div>
             <input type="text" name="" id="" placeholder="Pesquisar Turmas">
@@ -82,7 +95,12 @@ require_once './app/views/layouts/usersMain.phtml'
                 </div>
                 <div class="students-info">
                     <div class="icon-students">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-users-icon lucide-users"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><path d="M16 3.128a4 4 0 0 1 0 7.744"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><circle cx="9" cy="7" r="4"/></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-users-icon lucide-users">
+                            <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
+                            <path d="M16 3.128a4 4 0 0 1 0 7.744" />
+                            <path d="M22 21v-2a4 4 0 0 0-3-3.87" />
+                            <circle cx="9" cy="7" r="4" />
+                        </svg>
 
                     </div>
                     <h4>nº alunos</h4>
@@ -99,7 +117,12 @@ require_once './app/views/layouts/usersMain.phtml'
                 </div>
                 <div class="students-info">
                     <div class="icon-students">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-users-icon lucide-users"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><path d="M16 3.128a4 4 0 0 1 0 7.744"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><circle cx="9" cy="7" r="4"/></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-users-icon lucide-users">
+                            <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
+                            <path d="M16 3.128a4 4 0 0 1 0 7.744" />
+                            <path d="M22 21v-2a4 4 0 0 0-3-3.87" />
+                            <circle cx="9" cy="7" r="4" />
+                        </svg>
 
                     </div>
                     <h4>nº alunos</h4>
@@ -116,7 +139,12 @@ require_once './app/views/layouts/usersMain.phtml'
                 </div>
                 <div class="students-info">
                     <div class="icon-students">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-users-icon lucide-users"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><path d="M16 3.128a4 4 0 0 1 0 7.744"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><circle cx="9" cy="7" r="4"/></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-users-icon lucide-users">
+                            <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
+                            <path d="M16 3.128a4 4 0 0 1 0 7.744" />
+                            <path d="M22 21v-2a4 4 0 0 0-3-3.87" />
+                            <circle cx="9" cy="7" r="4" />
+                        </svg>
 
                     </div>
                     <h4>nº alunos</h4>
@@ -133,7 +161,12 @@ require_once './app/views/layouts/usersMain.phtml'
                 </div>
                 <div class="students-info">
                     <div class="icon-students">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-users-icon lucide-users"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><path d="M16 3.128a4 4 0 0 1 0 7.744"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><circle cx="9" cy="7" r="4"/></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-users-icon lucide-users">
+                            <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
+                            <path d="M16 3.128a4 4 0 0 1 0 7.744" />
+                            <path d="M22 21v-2a4 4 0 0 0-3-3.87" />
+                            <circle cx="9" cy="7" r="4" />
+                        </svg>
 
                     </div>
                     <h4>nº alunos</h4>
