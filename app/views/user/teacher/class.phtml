@@ -1,0 +1,173 @@
+<?php
+    require_once './app/views/layouts/usersMain.phtml';
+    $class_id = $_SESSION['class_id'];
+
+    $class = new ClassController;
+    $class_data = $class->get_class_data($class_id);
+?>
+
+<div class="current-class-wrapper">
+    <div class="overlay-feed"></div>
+    <section id="current-class-section">
+        <div class="icon-back">
+            <a href="<?= URL ?>teacher/classes">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-left-icon lucide-arrow-left">
+                    <path d="m12 19-7-7 7-7" />
+                    <path d="M19 12H5" />
+                </svg>
+
+                <p>Voltar</p>
+            </a>
+        </div>
+        <div class="class-info">
+            <div class="top-side">
+                <div class="nome-desc-class">
+                    <h4><?= $class_data[0]['class'] ?></h4>
+                </div>
+                <button>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-user-plus-icon lucide-user-plus">
+                        <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
+                        <circle cx="9" cy="7" r="4" />
+                        <line x1="19" x2="19" y1="8" y2="14" />
+                        <line x1="22" x2="16" y1="11" y2="11" />
+                    </svg>
+
+                    <p>Gerir Alunos</p>
+                </button>
+            </div>
+            <div class="info-nome-teacher">
+                <div class="teacher-photo">
+                    <img src="<?= $class_data[0]['teacher_foto'] ?>" alt=" ">
+                </div>
+                <div class="nome-teacher">
+                    <h3><?= $class_data[0]['teacher'] ?></h3>
+                    <p>Professor</p>
+                </div>
+            </div>
+        </div>
+        <div class="tabs-class">
+            <button class="tab-class activeClass" data-current-class="pub-class">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-newspaper-icon lucide-newspaper">
+                    <path d="M15 18h-5" />
+                    <path d="M18 14h-8" />
+                    <path d="M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v16a2 2 0 0 1-4 0v-9a2 2 0 0 1 2-2h2" />
+                    <rect width="8" height="4" x="10" y="6" rx="1" />
+                </svg>
+
+                <p>Publicações (1)</p>
+            </button>
+            <button class="tab-class" data-current-class="chat-section">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-message-square-icon lucide-message-square">
+                    <path d="M22 17a2 2 0 0 1-2 2H6.828a2 2 0 0 0-1.414.586l-2.202 2.202A.71.71 0 0 1 2 21.286V5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2z" />
+                </svg>
+
+                <p>Chat</p>
+            </button>
+            <button class="tab-class" data-current-class="students-manegement">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-users-icon lucide-users">
+                    <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
+                    <path d="M16 3.128a4 4 0 0 1 0 7.744" />
+                    <path d="M22 21v-2a4 4 0 0 0-3-3.87" />
+                    <circle cx="9" cy="7" r="4" />
+                </svg>
+
+                <p>Alunos</p>
+            </button>
+        </div>
+        <!--CHAT SECTION-->
+        <div class="chat-section class-content">
+            <div class="messages-box">
+            <div class="message received">
+                <div class="sender-profile">
+                    <img src="" alt=" ">
+                </div>
+                <div class="message-box">
+                    <div class="message-content">
+                        <h4>Nome Emissor</h4>
+                        <p>Conteúdo Mensagem</p>
+                    </div>
+                    <span>Tempo Enviado</span>
+                </div>
+            </div>
+            <div class="message received">
+                <div class="sender-profile">
+                    <img src="" alt=" ">
+                </div>
+                <div class="message-box">
+                    <div class="message-content">
+                        <h4>Nome Emissor</h4>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit odio commodi nobis consequuntur reiciendis fuga aut veritatis</p>
+                    </div>
+                    <span>Tempo Enviado</span>
+                </div>
+            </div>
+            <div class="message sent">
+                <div class="sender-profile">
+                    <img src="" alt=" ">
+                </div>
+                <div class="message-box">
+                    <div class="message-content">
+                        <h4>Nome Emissor</h4>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+                    </div>
+                    <span>Tempo Enviado</span>
+                </div>
+            </div>
+            </div>
+            <div class="send-message-box">
+                <div class="img-profile">
+                    <img src="" alt=" ">
+                </div>
+                <div class="message-input">
+                    <div class="input-box">
+                        <textarea name="" class="fileName" id="msg-content" placeholder="Escreva uma mensagem"></textarea>
+                    </div>
+                    <div class="msg-action-btns">
+                        <label for="publication-file" class="labelFile">
+                            <input type="file" name="file" id="publication-file" class="fotoFile" hidden>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-paperclip-icon lucide-paperclip">
+                                <path d="m16 6-8.414 8.586a2 2 0 0 0 2.829 2.829l8.414-8.586a4 4 0 1 0-5.657-5.657l-8.379 8.551a6 6 0 1 0 8.485 8.485l8.379-8.551" />
+                            </svg>
+                            Anexar
+                        </label>
+                        <button type="submit">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-send-icon lucide-send">
+                                <path d="M14.536 21.686a.5.5 0 0 0 .937-.024l6.5-19a.496.496 0 0 0-.635-.635l-19 6.5a.5.5 0 0 0-.024.937l7.93 3.18a2 2 0 0 1 1.112 1.11z" />
+                                <path d="m21.854 2.147-10.94 10.939" />
+                            </svg>
+                            <p>Enviar</p>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--STUDENTS MANAGEMENT-->
+        <div class="students-manegement class-content" id="">
+            <?php if (!empty($class_data)):?>
+                <?php foreach ($class_data as $c):?>
+                    <div class="student-item">
+                        <div class="info-student">
+                            <div class="student-profile">
+                                <img src="" alt=" ">
+                            </div>
+                            <div class="student-name-email">
+                                <h4><?= $c['student'] ?></h4>
+                                <p><?= $c['email'] ?></p>
+                            </div>
+                        </div>
+                        <button class="student-action">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-user-minus-icon lucide-user-minus"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><line x1="22" x2="16" y1="11" y2="11"/></svg>
+
+                            <p>Remover</p>
+                        </button>
+                    </div>
+                <?php endforeach;?>
+            <?php endif;?>
+        </div>
+
+    </section>
+</div>
+
+<?php
+require_once './app/views/layouts/closure.phtml'
+?>

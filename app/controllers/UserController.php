@@ -37,11 +37,7 @@
             $this->is_user();
             $this->show_page("security");
         }
-        public function currentClass() {
-            $this->isLoged();
-            $this->is_user();
-            $this->show_page("currentClass");
-        }
+
         public function messages() {
             $this->isLoged();
             $this->is_user();
