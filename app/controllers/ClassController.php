@@ -41,5 +41,19 @@
                 return null;
             }
         }
+
+        //get class
+        public function get_class_data(int $id) {
+            if (empty($id)) {
+                return null;
+            }
+
+            try {
+                return $this->class->get_class_data($id);
+            } catch (PDOException $e) {
+                error_log("ERRO_BUSCAR_TURMA: ". $e->getMessage(). "\n". $e->getTraceAsString());
+                return null;
+            }
+        }
     }
 ?>

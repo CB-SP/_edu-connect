@@ -67,7 +67,7 @@
         <div class="class-cards">
             <?php if (!empty($classes)):?>
                 <?php foreach ($classes as $t_class):?>
-                    <a href="<?= URL ?>teacher/currentClass" class="class-card">
+                    <a href="<?= URL ?>teacher/class/<?= $t_class['id'] ?>" class="class-card">
                         <h3><?= $t_class['class'] ?></h3>
                         <div class="prof-info">
                             <div class="prof-profile-img">
