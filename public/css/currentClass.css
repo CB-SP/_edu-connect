@@ -815,4 +815,141 @@
     .active {
         display: block;
     }
+
+    /*MODAL MANAGE STUDENTS*/
+     .modal-students-list {
+         position: absolute;
+         top: 50%;
+         left: 50%;
+         transform: translate(-50%, -50%);
+         width: 700px;
+         max-height: 520px;
+         background-color: var(--Background);
+         border-radius: var(--radius-md);
+         padding: 1.5rem;
+         box-shadow: 0 2px 23px rgba(0, 0, 0, .4);
+         display: flex;
+         justify-content: space-between;
+         flex-direction: column;
+         gap: 10px;
+         display: none;
+     }
+
+     .modal-students-list.show {
+         display: block;
+         display: flex;
+         justify-content: space-between;
+         flex-direction: column;
+         gap: 10px;
+     }
+
+     .modal-students-list .head-modal {
+         display: flex;
+         flex-direction: column;
+         gap: 10px;
+         padding: 10px 0;
+     }
+
+     .head-modal .up-side {
+         display: flex;
+         justify-content: space-between;
+         gap: 10px;
+     }
+
+     .up-side h3 {
+         font-weight: var(--weight-sb);
+         margin-top: -10px;
+     }
+
+     .up-side #close-menu-m {
+         position: absolute;
+         right: 12px;
+         top: 15px;
+         height: 20px;
+         color: var(--MutedForegroundC);
+         border-radius: var(--radius-sm);
+     }
+
+     #close-menu-m:hover {
+         background-color: var(--Muted);
+     }
+
+     .head-modal .search-class {
+         width: 100%;
+     }
+
+     .list {
+         display: flex;
+         flex-direction: column;
+         gap: 10px;
+         border-bottom: 1px solid var(--SwitchBackground);
+         border-top: 1px solid var(--SwitchBackground);
+         padding: 1.3rem 0;
+         overflow: auto;
+     }
+
+     .list .student-item {
+         display: flex;
+         justify-content: space-between;
+         align-items: center;
+         padding: 8px;
+         border-radius: var(--radius-md);
+         transition: all .1s ease-in-out;
+     }
+
+     .list .student-item:hover {
+         background-color: var(--InputBackground);
+     }
+
+     .list .add {
+         background-color: var(--AccentBlue);
+         color: var(--Background);
+         cursor: pointer;
+         border: none;
+         height: 40px;
+         width: 120px;
+     }
+
+     .list .add:hover {
+         background-color: var(--AccentBlue);
+         color: var(--Background);
+     }
+
+     .list .drop {
+         background-color: var(--Destructive);
+         color: var(--Background);
+         cursor: pointer;
+         border: none;
+         height: 40px;
+         width: 120px;
+     }
+
+     .list .drop:hover {
+         background-color: var(--Destructive);
+         color: var(--Background);
+     }
+
+     .bottom-side {
+         display: flex;
+         justify-content: space-between;
+         align-items: center;
+         padding: 10px 0;
+     }
+
+     .bottom-side .btn-close-student-modal {
+         background-color: var(--AccentBlue);
+         color: var(--Background);
+         border: none;
+         width: 80px;
+         display: flex;
+         justify-content: center;
+         align-items: center;
+         transition: all .1s ease-in-out;
+         cursor: pointer;
+     }
+
+     .bottom-side .btn-close-student-modal:hover {
+         background-color: var(--AccentBlueHover);
+     }
+
 }
