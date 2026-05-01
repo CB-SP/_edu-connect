@@ -10,6 +10,7 @@
                     JOIN turmas AS t ON t.id = c.turma
                     JOIN escolas AS e ON e.id = m.escola
                     WHERE e.id = ? AND c.id = ?
+                    ORDER BY m.created_at ASC
                 ");
                 $this->stmt->execute([$school, $chat]);
 
