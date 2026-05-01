@@ -8,7 +8,15 @@
     <div class="overlay-class"></div>
     <style>
         .selectedClass {
-            background-color: var(--AccentBlue);
+        background-color: var(--AccentBlue);
+        }
+        
+        .selectedClass:hover {
+            background-color: var(--AccentBlueHover);
+        }
+
+        li:not(.selectedClass):hover {
+            background-color: var(--Muted);
         }
 
         .selectedClass a {

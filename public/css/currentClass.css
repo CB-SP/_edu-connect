@@ -1,3 +1,16 @@
+
+ .overlay-current-class {
+     position: fixed;
+     inset: 0;
+     background-color: rgba(0, 0, 0, .4);
+     display: none;
+ }
+
+ .overlay-current-class.activeOver {
+     display: block;
+ }
+
+
 @media screen and (max-width: 990px) {
     .current-class-wrapper {
         margin-top: 70px;
