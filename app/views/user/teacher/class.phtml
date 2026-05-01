@@ -82,49 +82,36 @@
         </div>
         <!--CHAT SECTION-->
         <div class="chat-section class-content">
-            <?php
-                if (!empty($class_messages)) {
-                    $messages_received = array_filter($class_messages, function ($n) {
-                        return $n['user_id'] !== $_SESSION['id'];
-                    });
-
-                    $messages_sended = array_filter($class_messages, function ($n) {
-                        return $n['user_id'] === $_SESSION['id'];
-                    });
-                }
-            ?>
-
             <div class="messages-box">
-                <?php if (!empty($messages_received)):?>
-                    <?php foreach ($messages_received as $received):?>
-                        <div class="message received">
-                            <div class="sender-profile">
-                                <img src="<?= $received['user_foto'] ?>" alt=" ">
-                            </div>
-                            <div class="message-box">
-                                <div class="message-content">
-                                    <h4><?= $received['user'] ?></h4>
-                                    <p><?= $received['conteudo'] ?></p>
+                <?php if (!empty($class_messages)):?>
+                    <?php foreach ($class_messages as $message):?>
+                        <?php if($message['user_id'] !== $_SESSION['id']):?>
+                            <div class="message received">
+                                <div class="sender-profile">
+                                    <img src="<?= $message['user_foto'] ?>" alt=" ">
                                 </div>
-                                <span><?= $received['created_at'] ?></span>
-                            </div>
-                        </div>
-                    <?php endforeach;?>
-                <?php endif;?>
-                <?php if (!empty($messages_sended)):?>
-                    <?php foreach ($messages_sended as $sended):?>
-                        <div class="message sent">
-                            <div class="sender-profile">
-                                <img src="<?= $sended['user_foto'] ?>" alt=" ">
-                            </div>
-                            <div class="message-box">
-                                <div class="message-content">
-                                    <h4><?= $sended['user'] ?></h4>
-                                    <p><?= $sended['conteudo'] ?></p>
+                                <div class="message-box">
+                                    <div class="message-content">
+                                        <h4><?= $message['user'] ?></h4>
+                                        <p><?= $message['conteudo'] ?></p>
+                                    </div>
+                                    <span><?= $message['created_at'] ?></span>
                                 </div>
-                                <span><?= $sended['created_at'] ?></span>
                             </div>
-                        </div>
+                        <?php else:?>
+                            <div class="message sent">
+                                <div class="sender-profile">
+                                    <img src="<?= $message['user_foto'] ?>" alt=" ">
+                                </div>
+                                <div class="message-box">
+                                    <div class="message-content">
+                                        <h4><?= $message['user'] ?></h4>
+                                        <p><?= $message['conteudo'] ?></p>
+                                    </div>
+                                    <span><?= $message['created_at'] ?></span>
+                                </div>
+                            </div>
+                        <?php endif;?>
                     <?php endforeach;?>
                 <?php endif;?>
                 <div class="send-message-box">
