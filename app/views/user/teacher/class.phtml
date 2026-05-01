@@ -30,7 +30,7 @@
                 <div class="nome-desc-class">
                     <h4><?= $class_data['class'] ?></h4>
                 </div>
-                <button>
+                <button id="btn-show-modal">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-user-plus-icon lucide-user-plus">
                         <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
                         <circle cx="9" cy="7" r="4" />
@@ -40,6 +40,85 @@
 
                     <p>Gerir Alunos</p>
                 </button>
+                <div class="modal-students-list">
+                    <div class="head-modal">
+                        <div class="up-side">
+                            <h3>Gerir Alunos</h3>
+                            <img src="<?= URL ?>public/assets/icons/x.png" alt=" " id="close-menu-m">
+                        </div>
+                        <div class="search-class">
+                            <div class="icon-search-class">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-search-icon lucide-search">
+                                    <path d="m21 21-4.34-4.34" />
+                                    <circle cx="11" cy="11" r="8" />
+                                </svg>
+
+                            </div>
+                            <input type="text" name="" id="" placeholder="Pesquisar alunos">
+                        </div>
+                    </div>
+                    <div class="list">
+                        <div class="student-item">
+                            <div class="info-student">
+                                <div class="student-profile">
+                                    <img src="" alt=" ">
+                                </div>
+                                <div class="student-name-email">
+                                    <h4>Nome Estudante Nome Estudante</h4>
+                                    <p>emailestudanteteste</p>
+                                </div>
+                            </div>
+                            <button class="student-action add">
+                               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-user-plus-icon lucide-user-plus"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><line x1="19" x2="19" y1="8" y2="14"/><line x1="22" x2="16" y1="11" y2="11"/></svg>
+
+
+                                <p>Adicionar</p>
+                            </button>
+                        </div>
+                        <div class="student-item">
+                            <div class="info-student">
+                                <div class="student-profile">
+                                    <img src="" alt=" ">
+                                </div>
+                                <div class="student-name-email">
+                                    <h4>Nome Estudante Nome Estudante</h4>
+                                    <p>emailestudanteteste</p>
+                                </div>
+                            </div>
+                            <button class="student-action add">
+                               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-user-plus-icon lucide-user-plus"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><line x1="19" x2="19" y1="8" y2="14"/><line x1="22" x2="16" y1="11" y2="11"/></svg>
+
+
+                                <p>Adicionar</p>
+                            </button>
+                        </div>
+                       
+                        <div class="student-item">
+                            <div class="info-student">
+                                <div class="student-profile">
+                                    <img src="" alt=" ">
+                                </div>
+                                <div class="student-name-email">
+                                    <h4>Nome Estudante Nome Estudante</h4>
+                                    <p>emailestudanteteste</p>
+                                </div>
+                            </div>
+                            <button class="student-action drop">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-user-minus-icon lucide-user-minus">
+                                    <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
+                                    <circle cx="9" cy="7" r="4" />
+                                    <line x1="22" x2="16" y1="11" y2="11" />
+                                </svg>
+
+                                <p>Remover</p>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="bottom-side">
+                        <p>Número estudantes</p>
+                        <button class="btn-close-student-modal">Fechar</button>
+                    </div>
+                </div>
             </div>
             <div class="info-nome-teacher">
                 <div class="teacher-photo">
