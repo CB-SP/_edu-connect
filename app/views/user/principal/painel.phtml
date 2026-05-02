@@ -32,7 +32,8 @@
                 <p><?= $school['nome'] ?></p>
             </div>
             <div class="role-info">
-                <img src="" alt=" ">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-building2-icon lucide-building-2"><path d="M10 12h4"/><path d="M10 8h4"/><path d="M14 21v-3a2 2 0 0 0-4 0v3"/><path d="M6 10H4a2 2 0 0 0-2 2v7a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-2"/><path d="M6 21V5a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v16"/></svg>
+
                 <p><?= ucfirst($_SESSION['role']) ?></p>
             </div>
         </div>
@@ -90,14 +91,25 @@
     <!--SEARCH & ADD USER SECTION-->
     <div class="search-add-area">
         <div class="inputs">
-            <div class="search-user-box">
-                <img src="" alt=" ">
+          <div class="search-user-box">
+                <div class="icon-search-class">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-search-icon lucide-search">
+                        <path d="m21 21-4.34-4.34" />
+                        <circle cx="11" cy="11" r="8" />
+                    </svg>
+
+                </div>
+
                 <input type="search" name="searchUsers" id="searchUsers" placeholder="Pesquisar usuário">
             </div>
-            <div class="add-user-btn">
-                <img src="" alt=" ">
-                <button class="add-button" id="btn-add-school">Novo Usuário</button>
-            </div>
+            <button class="add-user-btn add-button">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-plus-icon lucide-plus">
+                    <path d="M5 12h14" />
+                    <path d="M12 5v14" />
+                </svg>
+
+                Novo usuário
+            </button>
         </div>
         <!--ADD-USERS-MODAL-->
         <div class="add-modal" id="add-user-modal">
