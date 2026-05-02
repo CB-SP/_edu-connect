@@ -59,7 +59,7 @@
         }
 
         //read all
-        public function fetch_users(int $school) {
+        public function fetch_school_users(int $school) {
             return $this->user->fetch_users($school);
         }
 

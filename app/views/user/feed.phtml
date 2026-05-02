@@ -93,9 +93,7 @@
         </div>
 
         <div class="publication-cards active-pub" id="posts">
-            <?php if (empty($posts)): ?>
-                <h3>Nada para ver</h3>
-            <?php else: ?>
+            <?php if (!empty($posts)): ?>
                 <?php
                     $publications = array_filter($posts, function ($n) {
                         return $n['tipo'] === 'post';
@@ -111,7 +109,8 @@
                         <div class="header-publication-card">
                             <div class="info-user-publication-card">
                                 <div class="img-user">
-                                    <img src="<?= $publication['foto'] ?>" alt="">
+                                    <?php $photo = empty($publication['foto']) ? 'assets/icons/circle-user-round.svg' : $publication['foto']?>
+                                    <!--img src="<//?= URL. "public/". $photo ?>"-->
                                 </div>
                                 <div class="name-user">
                                     <h4><?= $publication['user'] ?></h4>
@@ -262,9 +261,7 @@
         </div>
 
         <div class="publication-cards" id="announcements">
-            <?php if (empty($posts)): ?>
-                <h3>Nada para ver</h3>
-            <?php else: ?>
+            <?php if (!empty($posts)): ?>
                 <?php
                     $notices = array_filter($posts, function ($n) {
                         return $n['tipo'] === 'aviso';
@@ -280,7 +277,8 @@
                         <div class="header-publication-card">
                             <div class="info-user-publication-card">
                                 <div class="img-user">
-                                    <img src="<?= $notice['foto'] ?>" alt="">
+                                    <?php $photo = empty($notice['foto']) ? 'assets/icons/circle-user-round.svg' : $notice['foto']?>
+                                    <!--img src="<//?= URL. "public/". $photo ?>"-->
                                 </div>
                                 <div class="name-user">
                                     <h4><?= $notice['user'] ?></h4>

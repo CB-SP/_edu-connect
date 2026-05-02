@@ -25,7 +25,8 @@
                 </div>
                 <div class="info-profile">
                     <div class="profile-poto">
-                        <img src="" alt=" ">
+                        <?php $photo = empty($_SESSION['photo']) ? 'assets/icons/circle-user-round.svg' : $_SESSION['photo']?>
+                        <img src="<?= URL. 'public/'. $photo ?>">
                     </div>
                     <div class="user-details">
                         <h3><?= $_SESSION['name'] ?></h3>
