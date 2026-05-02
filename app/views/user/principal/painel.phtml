@@ -1,9 +1,9 @@
 <?php
-require_once './app/views/layouts/usersMain.phtml';
-$principal = new PrincipalController;
-$school = $principal->find_school($_SESSION['school_id']);
-$users = $principal->fetch_users();
-$entities = $principal->total_entities($_SESSION['school_id']);
+    require_once './app/views/layouts/usersMain.phtml';
+    $principal = new PrincipalController;
+    $school = $principal->find_school($_SESSION['school_id']);
+    $users = $principal->fetch_users((int) $_SESSION['school_id']);
+    $entities = $principal->total_entities($_SESSION['school_id']);
 ?>
 
 <section id="director-section">
@@ -250,7 +250,7 @@ $entities = $principal->total_entities($_SESSION['school_id']);
                         <?php else: ?>
                             <?php
                             $teachers = array_filter($users, function ($n) {
-                                return ($n['role'] !== 'director') && ($n['escola_id'] === $_SESSION['id']) && ($n['role'] === 'professor');
+                                return ($n['role'] !== 'director') && ($n['escola_id'] === $_SESSION['school_id']) && ($n['role'] === 'professor');
                             });
                             ?>
                             <?php foreach ($teachers as $teacher): ?>
@@ -295,7 +295,7 @@ $entities = $principal->total_entities($_SESSION['school_id']);
                         <?php else: ?>
                             <?php
                             $coordinators = array_filter($users, function ($n) {
-                                return ($n['role'] !== 'director') && ($n['escola_id'] === $_SESSION['id']) && ($n['coordinator_role'] === 'coordenador');
+                                return ($n['role'] !== 'director') && ($n['escola_id'] === $_SESSION['school_id']) && ($n['coordinator_role'] === 'coordenador');
                             });
                             ?>
                             <?php foreach ($coordinators as $coordinator): ?>
