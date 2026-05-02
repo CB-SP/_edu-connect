@@ -34,7 +34,8 @@
                 </div>
                 <div class="info-profile">
                     <div class="profile-poto">
-                        <img src="http://localhost/_edu-connect/public/uploads/avatars/IMG-20260126-WA0086.jpg" alt="kjn">
+                        <?php $photo = empty($_SESSION['photo']) ? 'assets/icons/circle-user-round.svg' : $_SESSION['photo']?>
+                        <!--img src="<//?= URL. 'public/'. $photo?>"-->
                     </div>
                     <div class="user-details">
                         <h3><?= $_SESSION['name'] ?></h3>
@@ -137,7 +138,8 @@
         <main class="main">
             <section class="head-section">
                 <div class="icon-school-area">
-                    <img src="" alt=" ">
+                    <?php $logo = empty($_SESSION['logo']) ? 'assets/icons/building-2.svg' : $_SESSION['logo']?>
+                    <img src="<?= URL. 'public/'. $logo ?>">
                 </div>
                 <h3><?= $_SESSION['school'] ?></h3>
             </section>

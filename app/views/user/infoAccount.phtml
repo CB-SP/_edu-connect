@@ -33,7 +33,6 @@
             <div class="desc-form">
                 <h3>Editar Informações</h3>
                 <p>Edite as suas informações</p>
-                <img src="<?= URL ?>public/assets/icons/x.png" alt="" class="close-modal-icon">
             </div>
             <form action="<?= URL ?>user/redirect_edit_user" method="post" enctype="multipart/form-data">
                 <div class="input-box">
@@ -80,7 +79,8 @@
         </div>
         <div class="profile-photo-area">
             <div class="profile-img">
-                <img src="" alt=" ">
+                <?php $photo = empty($_SESSION['photo']) ? 'assets/icons/circle-user-round.svg' : $_SESSION['photo']?>
+                <!--img src="<//?= URL. "public/". $photo ?>"-->
             </div>
             <div class="nome-role">
                 <h4><?= $_SESSION['name'] ?></h4>

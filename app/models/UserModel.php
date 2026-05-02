@@ -23,13 +23,40 @@
         }
 
         //search for every users of a school
+        public function fetch_school_users(int $school) {
+            try {
+                $this->stmt = $this->pdo->prepare("SELECT u.id, u.nome, u.contacto_1, u.contacto_2, u.nif, u.email, u.foto, u.role, u.deleted_at, e.nome AS escola,
+                    e.id AS escola_id, e.deleted_at AS estado_escola, c.role AS coordinator_role
+                    FROM usuarios AS u
+                    LEFT JOIN coordenadores AS c ON c.id = u.id
+                    JOIN escolas AS e ON u.escola = e.id
+                    WHERE e.id = ? AND u.role != 'director'
+                    ORDER BY u.nome
+                ");
+                $this->stmt->execute([$school]);
+
+                $users = [];
+                
+                while ($result = $this->stmt->fetch(PDO::FETCH_ASSOC)) {
+                    $users[] = $result;
+                }
+
+                return !empty($users) ? $users : null;
+            } catch (PDOException $e) {
+                throw $e;
+            }
+        }
+
+        //search for every users
         public function fetch_users() {
             try {
                 $this->stmt = $this->pdo->prepare("SELECT u.id, u.nome, u.contacto_1, u.contacto_2, u.nif, u.email, u.foto, u.role, u.deleted_at, e.nome AS escola,
                     e.id AS escola_id, e.deleted_at AS estado_escola, c.role AS coordinator_role
                     FROM usuarios AS u
                     LEFT JOIN coordenadores AS c ON c.id = u.id
-                    JOIN escolas AS e ON u.escola = e.id ORDER BY u.nome");
+                    JOIN escolas AS e ON u.escola = e.id
+                    ORDER BY u.nome
+                ");
                 $this->stmt->execute();
 
                 $users = [];
@@ -136,7 +163,7 @@
         //fetch user id
         public function fetch_user_data_login($nif) {
             try {
-                $this->stmt = $this->pdo->prepare("SELECT u.id, u.nome, u.role, u.foto, e.nome AS escola, e.id AS escola_id FROM usuarios AS u JOIN escolas AS e ON e.id = u.escola WHERE u.nif = ? AND u.deleted_at IS NULL AND e.deleted_at IS NULL");
+                $this->stmt = $this->pdo->prepare("SELECT u.id, u.nome, u.role, u.foto, e.nome AS escola, e.id AS escola_id, e.logo FROM usuarios AS u JOIN escolas AS e ON e.id = u.escola WHERE u.nif = ? AND u.deleted_at IS NULL AND e.deleted_at IS NULL");
                 $this->stmt->execute([$nif]);
 
                 $user = $this->stmt->fetch(PDO::FETCH_ASSOC);
