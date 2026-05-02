@@ -55,7 +55,7 @@
         //fetch admin
         public function fetch_admin($email) {
             try {
-                $this->stmt = $this->pdo->prepare("SELECT id, nome FROM admins WHERE email = ? AND deleted_at IS NULL");
+                $this->stmt = $this->pdo->prepare("SELECT id, nome, foto FROM admins WHERE email = ? AND deleted_at IS NULL");
                 $this->stmt->execute([$email]);
 
                 $admin = $this->stmt->fetch(PDO::FETCH_ASSOC);

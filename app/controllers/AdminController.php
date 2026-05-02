@@ -103,6 +103,7 @@
 
                 $_SESSION['id'] = $admin['id'];
                 $_SESSION['name'] = $admin['nome'];
+                $_SESSION['photo'] = $admin['foto'];
             } catch (PDOException $e) {
                 error_log("ERRO_LOGIN_ADMIN: ". $e->getMessage(). "\n". $e->getTraceAsString());
                 $this->redirect("admin/login");

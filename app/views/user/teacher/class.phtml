@@ -168,7 +168,8 @@
                         <?php if($message['user_id'] !== $_SESSION['id']):?>
                             <div class="message received">
                                 <div class="sender-profile">
-                                    <img src="<?= $message['user_foto'] ?>" alt=" ">
+                                    <?php $photo = empty($message['foto']) ? 'assets/icons/circle-user-round.svg' : $message['foto']?>
+                                    <!--img src="<//?= URL. "public/". $photo ?>"-->
                                 </div>
                                 <div class="message-box">
                                     <div class="message-content">
@@ -181,7 +182,8 @@
                         <?php else:?>
                             <div class="message sent">
                                 <div class="sender-profile">
-                                    <img src="<?= $message['user_foto'] ?>" alt=" ">
+                                    <?php $photo = empty($message['foto']) ? 'assets/icons/circle-user-round.svg' : $message['foto']?>
+                                    <!--img src="<//?= URL. "public/". $photo ?>"-->
                                 </div>
                                 <div class="message-box">
                                     <div class="message-content">
@@ -196,7 +198,8 @@
                 <?php endif;?>
                 <div class="send-message-box">
                     <div class="img-profile">
-                        <img src="" alt=" ">
+                        <?php $photo = empty($_SESSION['photo']) ? 'assets/icons/circle-user-round.svg' : $_SESSION['photo']?>
+                        <!--img src="<//?= URL. "public/". $photo ?>"-->
                     </div>
                     <form action="<?= URL ?>message/send_message/<?= $class_id ?>" method="POST" class="message-input">
                         <div class="input-box">
@@ -235,6 +238,8 @@
                     <div class="student-item">
                         <div class="info-student">
                             <div class="student-profile">
+                                <?php $photo = empty($s['foto']) ? 'assets/icons/circle-user-round.svg' : $s['foto']?>
+                                <!--img src="<//?= URL. "public/". $photo ?>"-->
                                 <img src="" alt=" ">
                             </div>
                             <div class="student-name-email">
