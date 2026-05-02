@@ -69,6 +69,7 @@
                 $_SESSION['name'] = $user_login['nome'];
                 $_SESSION['school'] = $user_login['escola'];
                 $_SESSION['school_id'] = $user_login['escola_id'];
+                $_SESSION['logo'] = $user_login['logo'];
                 $_SESSION['role'] = $user_login['role'];
                 $_SESSION['photo'] = $user_login['foto'];
             } catch (PDOException $e) {
@@ -184,6 +185,16 @@
         }
 
         //search for every users of a school
+        public function fetch_school_users(int $school) {
+            try {
+                return $this->user->fetch_school_users($school);
+            } catch (PDOException $e) {
+                error_log("ERRO_BUSCAR_USUARIOS_DA_ESCOLA: ". $e->getMessage(). "\n". $e->getTraceAsString());
+                return null;
+            }
+        }
+
+        //search for every users
         public function fetch_users() {
             try {
                 return $this->user->fetch_users();

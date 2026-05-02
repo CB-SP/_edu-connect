@@ -164,7 +164,8 @@
                         <?php if($message['user_id'] !== $_SESSION['id']):?>
                             <div class="message received">
                                 <div class="sender-profile">
-                                    <img src="<?= $message['user_foto'] ?>" alt=" ">
+                                    <?php $photo = empty($message['foto']) ? 'assets/icons/circle-user-round.svg' : $message['foto']?>
+                                    <!--img src="<//?= URL. "public/". $photo ?>"-->
                                 </div>
                                 <div class="message-box">
                                     <div class="message-content">
@@ -177,7 +178,8 @@
                         <?php else:?>
                             <div class="message sent">
                                 <div class="sender-profile">
-                                    <img src="<?= $message['user_foto'] ?>" alt=" ">
+                                    <?php $photo = empty($message['foto']) ? 'assets/icons/circle-user-round.svg' : $message['foto']?>
+                                    <!--img src="<//?= URL. "public/". $photo ?>"-->
                                 </div>
                                 <div class="message-box">
                                     <div class="message-content">
@@ -190,10 +192,38 @@
                         <?php endif;?>
                     <?php endforeach;?>
                 <?php endif;?>
-            </div>
-            <div class="send-message-box">
-                <div class="img-profile">
-                    <img src="" alt=" ">
+                <div class="send-message-box">
+                    <div class="img-profile">
+                        <?php $photo = empty($_SESSION['photo']) ? 'assets/icons/circle-user-round.svg' : $_SESSION['photo']?>
+                        <!--img src="<//?= URL. "public/". $photo ?>"-->
+                    </div>
+                    <form action="<?= URL ?>message/send_message/<?= $class_id ?>" method="POST" class="message-input">
+                        <div class="input-box">
+                            <textarea name="content" class="fileName" id="msg-content" placeholder="Escreva uma mensagem"></textarea>
+                        </div>
+
+                        <input type="hidden" name="chat" value="<?= $class_chat ?>">
+                        <input type="hidden" name="school" value="<?= $_SESSION['school_id'] ?>">
+                        <input type="hidden" name="school" value="<?= $_SESSION['school_id'] ?>">
+                        <input type="hidden" name="user" value="<?= $_SESSION['id'] ?>">
+
+                        <div class="msg-action-btns">
+                            <label for="publication-file" class="labelFile">
+                                <input type="file" name="file" id="publication-file" class="fotoFile" hidden>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-paperclip-icon lucide-paperclip">
+                                    <path d="m16 6-8.414 8.586a2 2 0 0 0 2.829 2.829l8.414-8.586a4 4 0 1 0-5.657-5.657l-8.379 8.551a6 6 0 1 0 8.485 8.485l8.379-8.551" />
+                                </svg>
+                                Anexar
+                            </label>
+                            <button type="submit">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-send-icon lucide-send">
+                                    <path d="M14.536 21.686a.5.5 0 0 0 .937-.024l6.5-19a.496.496 0 0 0-.635-.635l-19 6.5a.5.5 0 0 0-.024.937l7.93 3.18a2 2 0 0 1 1.112 1.11z" />
+                                    <path d="m21.854 2.147-10.94 10.939" />
+                                </svg>
+                                <p>Enviar</p>
+                            </button>
+                        </div>
+                    </form>
                 </div>
                 <form action="<?= URL ?>message/send_message/<?= $class_id ?>" method="POST" class="message-input">
                     <div class="input-box">
@@ -231,6 +261,8 @@
                     <div class="student-item">
                         <div class="info-student">
                             <div class="student-profile">
+                                <?php $photo = empty($s['foto']) ? 'assets/icons/circle-user-round.svg' : $s['foto']?>
+                                <!--img src="<//?= URL. "public/". $photo ?>"-->
                                 <img src="" alt=" ">
                             </div>
                             <div class="student-name-email">
