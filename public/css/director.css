@@ -691,18 +691,27 @@
         border-radius: var(--radius-sm);
     }
 
-    .search-user-box {
-        width: 85%;
+   .search-user-box {
+        width: 100%;
         background-color: var(--Muted);
     }
 
     .add-user-btn {
-        width: 15%;
+        height: 40px;
+        width: 200px;
         background-color: var(--AccentBlue);
         padding: 10px;
-
+        color: var(--Background);
+        display: flex;
+        border: none;
+        justify-content: center;
+        font-size: var(--text-md);
+        transition: all .1s ease-in-out;
     }
 
+    .add-user-btn:hover {
+        background-color: var(--AccentBlueHover);
+    }
 
     .inputs .search-user-box input {
         border: none;
@@ -713,13 +722,18 @@
         outline: none;
         border-radius: var(--radius-sm);
         color: var(--Primary);
-
-
     }
 
     .inputs .search-user-box {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        background-color: var(--InputBackground);
+        height: 38px;
+        border-radius: var(--radius-sm);
         border: 1px solid transparent;
         outline: 3px solid transparent;
+        transition: all .1s ease-in-out;
     }
 
     .inputs .search-user-box:focus-within {
@@ -727,23 +741,25 @@
         border-color: gray;
     }
 
-    .inputs .search-user-box img {
-        padding-left: 15px;
+    .search-user-box .icon-search-class {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 10px;
     }
 
-    .inputs .add-user-btn button {
-        border: none;
-        font-size: var(--text-md);
-        color: var(--Background);
-        background-color: var(--AccentBlue);
+    .inputs .search-user-box svg {
+
+        color: var(--MutedForegroundC);
+    }
+
+    .inputs .search-user-box input {
         width: 100%;
+        border: none;
+        outline: none;
+        background-color: transparent;
+        font-size: var(--text-nl);
     }
-
-
-    .inputs .add-user-btn img {
-        padding-left: 5px;
-    }
-
     /*ADD MODAL*/
     .search-add-area .add-modal,
     .edit-modal {
