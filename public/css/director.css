@@ -41,6 +41,15 @@
         gap: 7px;
     }
 
+    .role-info svg {
+        height: 16px;
+        width: 16px;
+    }
+
+    .role-info p {
+        align-self: self-end;
+    }
+
     /*
     .painel-info .painel-info {
         display: flex;
@@ -573,7 +582,15 @@
         justify-content: center;
         gap: 7px;
     }
-    
+
+    .role-info svg {
+        height: 16px;
+        width: 16px;
+    }
+
+    .role-info p {
+        align-self: self-end;
+    }
 
     /* SCHOOL INFO*/
     .painel-info .school-info-area {
@@ -693,7 +710,7 @@
         border-radius: var(--radius-sm);
     }
 
-   .search-user-box {
+    .search-user-box {
         width: 100%;
         background-color: var(--Muted);
     }
@@ -762,6 +779,7 @@
         background-color: transparent;
         font-size: var(--text-nl);
     }
+
     /*ADD MODAL*/
     .search-add-area .add-modal,
     .edit-modal {
