@@ -184,9 +184,9 @@
         }
 
         //search for every users of a school
-        public function fetch_users() {
+        public function fetch_users(int $school) {
             try {
-                return $this->user->fetch_users();
+                return $this->user->fetch_users($school);
             } catch (PDOException $e) {
                 error_log("ERRO_BUSCAR_USUARIOS: ". $e->getMessage(). "\n". $e->getTraceAsString());
                 return null;
