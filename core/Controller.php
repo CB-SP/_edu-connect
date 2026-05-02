@@ -4,7 +4,7 @@
             $parent_class = get_parent_class($this);
             $class = get_class($this);
 
-            if ($parent_class === 'UserController') {
+            if (($parent_class === 'UserController') || ($parent_class === 'TeacherController')) {
                 $parent_folder = strtolower(str_replace("Controller", "", $parent_class));
                 $child_folder = strtolower(str_replace("Controller", "", $class));
 

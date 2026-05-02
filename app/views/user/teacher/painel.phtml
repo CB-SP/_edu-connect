@@ -8,19 +8,19 @@ $entities = $principal->total_entities($_SESSION['school_id']);
 
 <section id="director-section">
     <style>
-        .nav-item.selectedPainel {
+        .nav-item.selectedTeacherPainel {
             background-color: var(--AccentBlue);
         }
 
-        .nav-item.selectedPainel:hover {
+        .nav-item.selectedTeacherPainel:hover {
             background-color: var(--AccentBlueHover);
         }
 
-        .selectedPainel a {
+        .selectedTeacherPainel a {
             color: var(--Background) !important;
         }
 
-        .nav-item:not(.selectedPainel):hover {
+        .nav-item:not(.selectedTeacherPainel):hover {
             background-color: var(--Muted);
         }
     </style>
@@ -28,70 +28,23 @@ $entities = $principal->total_entities($_SESSION['school_id']);
     <section class="painel-info">
         <div class="header-painel">
             <div class="title">
-                <h2>Gestão da escola</h2>
+                <h2>Gestão de alunos</h2>
                 <p><?= $school['nome'] ?></p>
             </div>
             <div class="role-info">
-                <img src="" alt=" ">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-book-open-icon lucide-book-open"><path d="M12 7v14"/><path d="M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z"/></svg>
+
                 <p><?= ucfirst($_SESSION['role']) ?></p>
             </div>
         </div>
-        <!--INFO SCHOOL-->
-        <div class="school-info-area">
-            <div class="title">
-                <h4>Informações da Escola</h4>
-            </div>
-            <div class="data-area">
-                <div class="data">
-                    <p>Endereço</p>
-                    <h4><?= $school['endereco'] ?></h4>
-                </div>
-                <div class="data">
-                    <p>Contacto</p>
-                    <h4><?= $school['contacto_1'] ?></h4>
-                </div>
-                <div class="data">
-                    <p>Níveis de Ensino</p>
-                    <div class="grade-category">
-                        <h5>Ensino Médio</h5>
-                    </div>
-                </div>
-                <div class="data">
-                    <p>Cursos</p>
-                    <div class="courses-category">
-                        <h5>Inforgest</h5>
-                        <h5>Congest</h5>
-                        <h5>Adm Pública</h5>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!--STATISTICS INFO-->
-        <div class="statistics-info">
-            <div class="cards-info">
-                <p>Total Usuários</p>
-                <h2><?= $entities[0]['school_users'] ?></h2>
-            </div>
-            <div class="cards-info">
-                <p>Professores</p>
-                <h2><?= $entities[0]['teachers'] ?></h2>
-            </div>
-            <div class="cards-info">
-                <p>Coordenadores</p>
-                <h2><?= $entities[0]['coordinators'] ?></h2>
-            </div>
-            <div class="cards-info">
-                <p>Alunos</p>
-                <h2><?= $entities[0]['students'] ?></h2>
-            </div>
-        </div>
+
     </section>
 
     <!--SEARCH & ADD USER SECTION-->
     <div class="search-add-area">
         <div class="inputs">
             <div class="search-user-box">
-                <div class="icon-search-class">
+                 <div class="icon-search-class">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-search-icon lucide-search">
                         <path d="m21 21-4.34-4.34" />
                         <circle cx="11" cy="11" r="8" />
@@ -101,20 +54,22 @@ $entities = $principal->total_entities($_SESSION['school_id']);
 
                 <input type="search" name="searchUsers" id="searchUsers" placeholder="Pesquisar usuário">
             </div>
-            <button class="add-user-btn add-button">
+            
+
+            <button class="add-user-btn add-button" id="btn-add-school">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-plus-icon lucide-plus">
                     <path d="M5 12h14" />
                     <path d="M12 5v14" />
                 </svg>
 
-                Novo usuário
+                Novo aluno
             </button>
         </div>
         <!--ADD-USERS-MODAL-->
         <div class="add-modal" id="add-user-modal">
             <div class="desc-form">
-                <h3>Novo usuário</h3>
-                <p>Cadastre um novo usuário no sistema</p>
+                <h3>Novo aluno</h3>
+                <p>Cadastre um novo aluno no sistema</p>
                 <img src="<?= URL ?>public/assets/icons/x.png" alt="" class="close-modal-icon">
             </div>
             <form action="<?= URL ?>principal/add_user" method="post" enctype="multipart/form-data">
@@ -177,8 +132,8 @@ $entities = $principal->total_entities($_SESSION['school_id']);
         <!--EDIT-USERS-MODAL-->
         <div class="edit-modal" id="edit-user-modal">
             <div class="desc-form">
-                <h3>Editar usuário</h3>
-                <p>Edite as informações de usuário</p>
+                <h3>Editar aluno</h3>
+                <p>Edite as informações do aluno</p>
                 <img src="<?= URL ?>public/assets/icons/x.png" alt="" class="close-modal-icon">
             </div>
             <form action="<?= URL ?>principal/edit_user" method="post" enctype="multipart/form-data">
@@ -228,11 +183,8 @@ $entities = $principal->total_entities($_SESSION['school_id']);
 
     <!--TAB USERS SECTION-->
     <div class="tabs">
-        <button class="tab active" data-target="teachers-section">
-            <span>Professores (<?= $entities[0]['teachers'] ?>)</span>
-        </button>
-        <button class="tab" data-target="coordinators-section">
-            <span>Coordenadores (<?= $entities[0]['coordinators'] ?>)</span>
+        <button class="tab active" data-target="students-section">
+            <span>Alunos (<?= $entities[0]['teachers'] ?>)</span>
         </button>
     </div>
 
@@ -240,8 +192,8 @@ $entities = $principal->total_entities($_SESSION['school_id']);
     <section class="list-info">
 
         <section class="users-list">
-            <!--TEACHERS LIST-->
-            <div class="tab-content active" id="teachers-section">
+            <!--STUDENTS LIST-->
+            <div class="tab-content active" id="students-section">
 
                 <table class="tbl-users">
                     <thead>
@@ -257,25 +209,25 @@ $entities = $principal->total_entities($_SESSION['school_id']);
                             <h3>Dados não encontrados</h3>
                         <?php else: ?>
                             <?php
-                            $teachers = array_filter($users, function ($n) {
-                                return ($n['role'] !== 'director') && ($n['escola_id'] === $_SESSION['id']) && ($n['role'] === 'professor');
+                            $students = array_filter($users, function ($n) {
+                                return ($n['role'] !== 'director') && ($n['escola_id'] === $_SESSION['id']) && ($n['role'] === 'aluno');
                             });
                             ?>
-                            <?php foreach ($teachers as $teacher): ?>
+                            <?php foreach ($students as $student): ?>
                                 <tr>
-                                    <td><?= $teacher['nome'] ?></td>
-                                    <td><?= $teacher['contacto_1'] ?></td>
+                                    <td><?= $student['nome'] ?></td>
+                                    <td><?= $student['contacto_1'] ?></td>
                                     <td>
-                                        <?= $status = empty($teacher['deleted_at']) ? 'Activo' : 'Inactivo' ?>
+                                        <?= $status = empty($student['deleted_at']) ? 'Activo' : 'Inactivo' ?>
                                     </td>
                                     <td class="btn-down-actions ">
                                         <button class="action-btn">Acções</button>
                                         <div class="drop-actions">
                                             <?php if ($status == 'Inactivo'): ?>
-                                                <button class="restore-action" onclick="window.location.href='<?= URL ?>principal/restore_user/<?= $teacher['id'] ?>'"><img src="" alt=" ">Restaurar</button>
+                                                <button class="restore-action" onclick="window.location.href='<?= URL ?>principal/restore_user/<?= $student['id'] ?>'"><img src="" alt=" ">Restaurar</button>
                                             <?php else: ?>
-                                                <button class="edit-action" data-id=<?= $teacher['id'] ?> data-type="user"><img src="" alt=" ">Editar</button>
-                                                <button class="delete-action" onclick="window.location.href='<?= URL ?>principal/delete_user/<?= $teacher['id'] ?>'"><img src="" alt=" ">Eliminar</button>
+                                                <button class="edit-action" data-id=<?= $student['id'] ?> data-type="user"><img src="" alt=" ">Editar</button>
+                                                <button class="delete-action" onclick="window.location.href='<?= URL ?>principal/delete_user/<?= $student['id'] ?>'"><img src="" alt=" ">Eliminar</button>
                                             <?php endif; ?>
                                         </div>
                                     </td>
@@ -285,51 +237,7 @@ $entities = $principal->total_entities($_SESSION['school_id']);
                     </tbody>
                 </table>
             </div>
-            <!--COORDINATORS LIST-->
-            <div class="tab-content" id="coordinators-section">
 
-                <table class="tbl-users">
-                    <thead>
-                        <tr>
-                            <th>Usuário</th>
-                            <th>Contacto</th>
-                            <th>Estado</th>
-                            <th>Acções</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php if (empty($users)): ?>
-                            <h3>Dados não encontrados</h3>
-                        <?php else: ?>
-                            <?php
-                            $coordinators = array_filter($users, function ($n) {
-                                return ($n['role'] !== 'director') && ($n['escola_id'] === $_SESSION['id']) && ($n['coordinator_role'] === 'coordenador');
-                            });
-                            ?>
-                            <?php foreach ($coordinators as $coordinator): ?>
-                                <tr>
-                                    <td><?= $coordinator['nome'] ?></td>
-                                    <td><?= $coordinator['contacto_1'] ?></td>
-                                    <td>
-                                        <?= $status = empty($coordinator['deleted_at']) ? 'Activo' : 'Inactivo' ?>
-                                    </td>
-                                    <td class="btn-down-actions ">
-                                        <button class="action-btn">Acções</button>
-                                        <div class="drop-actions">
-                                            <?php if ($status == 'Inactivo'): ?>
-                                                <button class="restore-action" onclick="window.location.href='<?= URL ?>principal/restore_user/<?= $coordinator['id'] ?>'"><img src="" alt=" ">Restaurar</button>
-                                            <?php else: ?>
-                                                <button class="edit-action" data-id=<?= $coordinator['id'] ?> data-type="user"><img src="" alt=" ">Editar</button>
-                                                <button class="delete-action" onclick="window.location.href='<?= URL ?>principal/delete_user/<?= $coordinator['id'] ?>'"><img src="" alt=" ">Eliminar</button>
-                                            <?php endif; ?>
-                                        </div>
-                                    </td>
-                                </tr>
-                            <?php endforeach; ?>
-                        <?php endif; ?>
-                    </tbody>
-                </table>
-            </div>
         </section>
 
     </section>
