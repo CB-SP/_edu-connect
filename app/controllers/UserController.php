@@ -72,6 +72,7 @@
                 $_SESSION['logo'] = $user_login['logo'];
                 $_SESSION['role'] = $user_login['role'];
                 $_SESSION['photo'] = $user_login['foto'];
+                $_SESSION['coordinator_role'] = $user_login['coordinator_role'];
             } catch (PDOException $e) {
                 error_log("ERRO_LOGIN_USUARIO: ". $e->getMessage(). "\n". $e->getTraceAsString());
                 $this->redirect("user/login");

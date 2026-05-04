@@ -79,7 +79,8 @@
                         <h3><?= $t_class['class'] ?></h3>
                         <div class="prof-info">
                             <div class="prof-profile-img">
-                                <img src="" alt=" ">
+                                <?php $photo = empty($t_class['teacher_photo']) ? 'assets/icons/circle-user-round.svg' : $t_class['teacher_photo']?>
+                                <img src="<?= URL. 'public/'. $photo ?>">
                             </div>
                             <h4><?= $t_class['teacher'] ?></h4>
                         </div>

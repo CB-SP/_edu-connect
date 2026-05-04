@@ -14,7 +14,7 @@
         //get teachers classes
         public function get_teachers_classes(int $id) {
             try {
-                $this->stmt = $this->pdo->prepare("SELECT t.id, t.nome AS class, p.nome as teacher, COUNT(sc.id) AS students
+                $this->stmt = $this->pdo->prepare("SELECT t.id, t.nome AS class, p.nome as teacher, p.foto AS teacher_photo, COUNT(sc.id) AS students
                     FROM turmas AS t
                     JOIN usuarios AS p ON p.id = t.professor
                     LEFT JOIN alunos_turmas AS sc ON sc.turma = t.id

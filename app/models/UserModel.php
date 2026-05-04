@@ -163,7 +163,12 @@
         //fetch user id
         public function fetch_user_data_login($nif) {
             try {
-                $this->stmt = $this->pdo->prepare("SELECT u.id, u.nome, u.role, u.foto, e.nome AS escola, e.id AS escola_id, e.logo FROM usuarios AS u JOIN escolas AS e ON e.id = u.escola WHERE u.nif = ? AND u.deleted_at IS NULL AND e.deleted_at IS NULL");
+                $this->stmt = $this->pdo->prepare("SELECT u.id, u.nome, u.role, u.foto, e.nome AS escola, e.id AS escola_id, e.logo, c.role AS coordinator_role
+                    FROM usuarios AS u
+                    JOIN escolas AS e ON e.id = u.escola
+                    LEFT JOIN coordenadores AS c ON c.id = u.id
+                    WHERE u.nif = ? AND u.deleted_at IS NULL AND e.deleted_at IS NULL
+                ");
                 $this->stmt->execute([$nif]);
 
                 $user = $this->stmt->fetch(PDO::FETCH_ASSOC);

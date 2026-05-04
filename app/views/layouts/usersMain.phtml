@@ -35,11 +35,11 @@
                 <div class="info-profile">
                     <div class="profile-poto">
                         <?php $photo = empty($_SESSION['photo']) ? 'assets/icons/circle-user-round.svg' : $_SESSION['photo']?>
-                        <!--img src="<//?= URL. 'public/'. $photo?>"-->
+                        <img src="<?= URL. 'public/'. $photo?>">
                     </div>
                     <div class="user-details">
                         <h3><?= $_SESSION['name'] ?></h3>
-                        <span><?= $_SESSION['role'] ?></span>
+                        <span><?= empty($_SESSION['coordinator_role']) ? $_SESSION['role'] : $_SESSION['coordinator_role'] ?></span>
                     </div>
                 </div>
             </div>
@@ -93,7 +93,7 @@
                                 </a>
                             </li>
                         <?php endif; ?>
-                         <?php if ($_SESSION['role'] === 'professor'): ?>
+                         <?php if (isset($_SESSION['coordinator_role']) && !empty($_SESSION['coordinator_role'])): ?>
                             <li class="nav-item selectedTeacherPainel" data-link="painel">
                                 <a href="<?= URL ?>teacher/painel" class="nav-link">
                                     <span class="nav-icon">
