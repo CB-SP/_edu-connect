@@ -27,12 +27,14 @@ if (closeIcon) {
     }
 }
 
-btnCancelFeed.forEach(btn => {
-    btn.addEventListener('click', () => {
-        feedModal.classList.remove('show')
-        overlayFeed.forEach(o => { o.classList.remove('active') })
+if(btnCancelFeed){
+    btnCancelFeed.forEach(btn => {
+        btn.addEventListener('click', () => {
+            feedModal.classList.remove('show')
+            overlayFeed.forEach(o => { o.classList.remove('active') })
+        })
     })
-})
+}
 
 if (overlayFeed) {
     overlayFeed.forEach(over => {

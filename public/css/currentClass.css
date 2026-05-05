@@ -147,6 +147,7 @@
     /*TABS CLASSROOM*/
     .tabs-class {
         display: flex;
+        justify-content: space-between;
         align-items: center;
         gap: 15px;
         background-color: var(--Muted);
@@ -155,7 +156,9 @@
     }
 
     .tabs-class .tab-class {
+        width: 33%;
         display: flex;
+        justify-content: center;
         align-items: center;
         gap: 5px;
         border: none;

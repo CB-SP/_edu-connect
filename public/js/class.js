@@ -2,6 +2,7 @@ const btnNewClass = document.querySelector('.btn-new-class')
 const classModal = document.querySelector('.class-modal')
 const overlayClass = document.querySelector('.overlay-class')
 const btnClose = document.querySelector('.close-icon-btn')
+const btnCancelClasses = document.querySelector('#btn-cancel-classes')
 
 if (btnNewClass) {
     btnNewClass.addEventListener('click', () => {
@@ -26,3 +27,9 @@ if (overlayClass) {
     })
 }
 
+if(btnCancelClasses){
+    btnCancelClasses.addEventListener('click', ()=>{
+        classModal.classList.remove('showC')
+        overlayClass.classList.remove('activeOverlayClass')
+    })
+}

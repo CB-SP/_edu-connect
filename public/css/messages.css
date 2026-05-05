@@ -1,6 +1,5 @@
 @media screen and (max-width: 768px) {
     .message-wrapper {
-        display: grid;
         margin-top: 70px;
     }
 
@@ -36,9 +35,11 @@
     .list-messages {
         display: flex;
         flex-direction: column;
+        width: 100%;
     }
 
     .list-messages .message-item {
+        width: 100%;
         text-decoration: none;
         display: flex;
         align-items: center;
@@ -99,14 +100,13 @@
         flex-direction: column;
         gap: 2px;
         color: var(--MutedForegroundC);
-
     }
 
     .info-sms p {
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
         overflow: hidden;
-        text-overflow: ellipsis;
-        white-space: nowrap;
-        max-width: 95%;
     }
 
     .info-sms p span {
@@ -155,12 +155,14 @@
 
     /*LIST OF MESSAGES*/
     .list-messages {
+        width: 100%;
         display: flex;
         flex-direction: column;
         margin-top: 30px;
     }
 
     .list-messages .message-item {
+        width: 100%;
         text-decoration: none;
         display: flex;
         gap: 25px;
@@ -221,14 +223,14 @@
         flex-direction: column;
         gap: 5px;
         color: var(--MutedForegroundC);
-
+        width: 100%;
     }
 
     .info-sms p {
+        display: -webkit-box;
+        -webkit-line-clamp: 1;
+        -webkit-box-orient: vertical;
         overflow: hidden;
-        text-overflow: ellipsis;
-        white-space: nowrap;
-        max-width: 95%;
     }
 
     .info-sms p span {
