@@ -98,6 +98,7 @@ fotoFiles.forEach(fotoFile => {
 const addBtns = document.querySelectorAll('.add-button')
 const closeModalIcons = document.querySelectorAll('.close-modal-icon')
 const addModais = document.querySelectorAll('.add-modal')
+const btnCancel = document.querySelectorAll('#btn-cancel')
 
 const overlayModal = document.querySelector('.overlay-modal')
 
@@ -133,8 +134,23 @@ if (closeModalIcons) {
         })
     })
 }
+if (btnCancel) {
+    btnCancel.forEach(btn => {
+        btn.addEventListener('click', () => {
+            addModais.forEach(addModal => {
 
-/*REMOVE CLICKING ON ENTIRE SCREEN*/
+                addModal.classList.remove('show')
+                document.body.classList.remove('no-scroll')
+                overlayModal.classList.remove('active')
+
+            })
+        })
+
+    })
+}
+
+
+/*REMOVE CLICKING ON OVERLAY*/
 document.addEventListener('click', () => {
     addModais.forEach(addModal => {
 
@@ -211,6 +227,20 @@ if (closeModalIcons) {
         })
     })
 }
+if (btnCancel) {
+    btnCancel.forEach(btn => {
+        btn.addEventListener('click', () => {
+            editModais.forEach(editModal => {
+                editModal.classList.remove('show')
+                document.body.classList.remove('no-scroll')
+                overlayModal.classList.remove('active')
+            })
+        })
+
+    })
+}
+
+
 
 document.body.addEventListener('click', () => {
     editModais.forEach(editModal => {

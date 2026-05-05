@@ -116,7 +116,7 @@
             <div class="desc-form">
                 <h3>Novo usuário</h3>
                 <p>Cadastre um novo usuário no sistema</p>
-                <img src="<?= URL ?>public/assets/images/x.png" alt="" class="close-modal-icon">
+                <img src="<?= URL ?>public/assets/icons/x.png" alt="" class="close-modal-icon">
             </div>
             <form action="<?= URL ?>principal/add_user" method="post" enctype="multipart/form-data">
                 <div class="input-box">
@@ -180,7 +180,7 @@
             <div class="desc-form">
                 <h3>Editar usuário</h3>
                 <p>Edite as informações de usuário</p>
-                <img src="<?= URL ?>public/assets/images/x.png" alt="" class="close-modal-icon">
+                <img src="<?= URL ?>public/assets/icons/x.png" alt="" class="close-modal-icon">
             </div>
             <form action="<?= URL ?>principal/edit_user" method="post" enctype="multipart/form-data">
                 <div class="input-box">
@@ -234,9 +234,6 @@
         </button>
         <button class="tab" data-target="coordinators-section">
             <span>Coordenadores (<?= $entities[0]['coordinators'] ?>)</span>
-        </button>
-        <button class="tab" data-target="students-section">
-            <span>Alunos (<?= $entities[0]['students'] ?>)</span>
         </button>
     </div>
 
@@ -325,51 +322,6 @@
                                             <?php else: ?>
                                                 <button class="edit-action" data-id=<?= $coordinator['id'] ?> data-type="user"><img src="" alt=" ">Editar</button>
                                                 <button class="delete-action" onclick="window.location.href='<?= URL ?>principal/delete_user/<?= $coordinator['id'] ?>'"><img src="" alt=" ">Eliminar</button>
-                                            <?php endif; ?>
-                                        </div>
-                                    </td>
-                                </tr>
-                            <?php endforeach; ?>
-                        <?php endif; ?>
-                    </tbody>
-                </table>
-            </div>
-            <!--STUDENTS LIST-->
-            <div class="tab-content" id="students-section">
-
-                <table class="tbl-users">
-                    <thead>
-                        <tr>
-                            <th>Usuário</th>
-                            <th>Contacto</th>
-                            <th>Estado</th>
-                            <th>Acções</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php if (empty($users)): ?>
-                            <h3>Dados não encontrados</h3>
-                        <?php else: ?>
-                            <?php
-                            $students = array_filter($users, function ($n) {
-                                return ($n['role'] !== 'director') && ($n['escola_id'] === $_SESSION['id']) && ($n['role'] === 'aluno');
-                            });
-                            ?>
-                            <?php foreach ($students as $student): ?>
-                                <tr>
-                                    <td><?= $student['nome'] ?></td>
-                                    <td><?= $student['contacto_1'] ?></td>
-                                    <td>
-                                        <?= $status = empty($student['deleted_at']) ? 'Activo' : 'Inactivo' ?>
-                                    </td>
-                                    <td class="btn-down-actions ">
-                                        <button class="action-btn">Acções</button>
-                                        <div class="drop-actions">
-                                            <?php if ($status == 'Inactivo'): ?>
-                                                <button class="restore-action" onclick="window.location.href='<?= URL ?>principal/restore_user/<?= $student['id'] ?>'"><img src="" alt=" ">Restaurar</button>
-                                            <?php else: ?>
-                                                <button class="edit-action" data-id=<?= $student['id'] ?> data-type="user"><img src="" alt=" ">Editar</button>
-                                                <button class="delete-action" onclick="window.location.href='<?= URL ?>principal/delete_user/<?= $student['id'] ?>'"><img src="" alt=" ">Eliminar</button>
                                             <?php endif; ?>
                                         </div>
                                     </td>
