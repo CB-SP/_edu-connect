@@ -6,240 +6,246 @@ $users = $principal->fetch_school_users($_SESSION['school_id']);
 $entities = $principal->total_entities($_SESSION['school_id']);
 ?>
 
-<section id="director-section">
-    <style>
-        .nav-item.selectedTeacherPainel {
-            background-color: var(--AccentBlue);
-        }
-
-        .nav-item.selectedTeacherPainel:hover {
-            background-color: var(--AccentBlueHover);
-        }
-
-        .selectedTeacherPainel a {
-            color: var(--Background) !important;
-        }
-
-        .nav-item:not(.selectedTeacherPainel):hover {
-            background-color: var(--Muted);
-        }
-    </style>
-    <div class="overlay-modal"></div>
-    <section class="painel-info">
-        <div class="header-painel">
-            <div class="title">
-                <h2>Gestão de alunos</h2>
-                <p><?= $school['nome'] ?></p>
+<div class="painel-wrapper">
+    <section id="director-section">
+        <style>
+            .nav-item.selectedTeacherPainel {
+                background-color: var(--AccentBlue);
+            }
+    
+            .nav-item.selectedTeacherPainel:hover {
+                background-color: var(--AccentBlueHover);
+            }
+    
+            .selectedTeacherPainel a {
+                color: var(--Background) !important;
+            }
+    
+            .nav-item:not(.selectedTeacherPainel):hover {
+                background-color: var(--Muted);
+            }
+        </style>
+        <div class="overlay-modal"></div>
+        <section class="painel-info">
+            <div class="header-painel">
+                <div class="title">
+                    <h2>Gestão de alunos</h2>
+                    <p><?= $school['nome'] ?></p>
+                </div>
+                <div class="role-info">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-book-open-icon lucide-book-open">
+                        <path d="M12 7v14" />
+                        <path d="M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z" />
+                    </svg>
+    
+                    <p><?= ucfirst($_SESSION['role']) ?></p>
+                </div>
             </div>
-            <div class="role-info">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-book-open-icon lucide-book-open"><path d="M12 7v14"/><path d="M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z"/></svg>
-
-                <p><?= ucfirst($_SESSION['role']) ?></p>
+    
+        </section>
+    
+        <!--SEARCH & ADD USER SECTION-->
+        <div class="search-add-area">
+            <div class="inputs">
+                <div class="search-user-box">
+                    <div class="icon-search-class">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-search-icon lucide-search">
+                            <path d="m21 21-4.34-4.34" />
+                            <circle cx="11" cy="11" r="8" />
+                        </svg>
+    
+                    </div>
+    
+                    <input type="search" name="searchUsers" id="searchUsers" placeholder="Pesquisar usuário">
+                </div>
+    
+    
+                <button class="add-user-btn add-button" id="btn-add-school">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-plus-icon lucide-plus">
+                        <path d="M5 12h14" />
+                        <path d="M12 5v14" />
+                    </svg>
+    
+                    Novo aluno
+                </button>
+            </div>
+            <!--ADD-USERS-MODAL-->
+            <div class="add-modal" id="add-user-modal">
+                <div class="desc-form">
+                    <h3>Novo aluno</h3>
+                    <p>Cadastre um novo aluno no sistema</p>
+                    <img src="<?= URL ?>public/assets/icons/x.png" alt="" class="close-modal-icon">
+                </div>
+                <form action="<?= URL ?>principal/add_user" method="post" enctype="multipart/form-data">
+                    <div class="input-box">
+                        <label for="userName">Nome Completo</label>
+                        <input type="text" name="name" placeholder="Nome completo do usuário">
+                    </div>
+                    <div class="contacts-box">
+                        <div class="input-box">
+                            <label for="primaryContact">Contacto principal</label>
+                            <input type="text" name="contact_1" placeholder="+244 XXX XXX XXX">
+                        </div>
+                        <div class="input-box">
+                            <label for="secundaryContact">Contacto secundário</label>
+                            <input type="text" name="contact_2" placeholder="+244 XXX XXX XXX">
+                        </div>
+                    </div>
+                    <div class="contacts-box">
+                        <div class="input-box">
+                            <label for="nifUser">NIF</label>
+                            <input type="text" name="nif" placeholder="H244875734543">
+                        </div>
+                        <div class="input-box">
+                            <label for="emailUser">Email</label>
+                            <input type="text" name="email" placeholder="usuario@email.com">
+                        </div>
+                    </div>
+                    <div class="input-box">
+                        <label for="userPassword">Senha</label>
+                        <input type="text" name="password" placeholder="Digite uma senha segura">
+                    </div>
+                    <div class="input-box">
+                        <label for="">Foto do usuário</label>
+                        <label for="fotoFile" class="labelFile">
+                            <input type="file" name="photo" id="fotoFile" class="fotoFile" hidden>
+                            Escolher ficheiro.
+                            <span class="fileName">Nenhum ficheiro escolhido</span>
+                        </label>
+                    </div>
+                    <div class="input-box">
+                        <label for="userSchool">Escola</label>
+                        <select name="school" id="userSchool">
+                            <option value="<?= $school['id'] ?>"><?= $school['nome'] ?></option>
+                        </select>
+                    </div>
+                    <div class="input-box">
+                        <label for="role">Nível de acesso</label>
+                        <select name="role" id="role">
+                            <option value="aluno">Aluno</option>
+                            <option value="professor">Professor</option>
+                            <option value="coordenador">Coordenador</option>
+                        </select>
+                    </div>
+                    <div class="final-btn-actions">
+                        <button type="button" class="btn" id="btn-cancel">Cancelar</button>
+                        <button type="submit" class="btn" id="btn-create">Criar usuário</button>
+                    </div>
+                </form>
+            </div>
+            <!--EDIT-USERS-MODAL-->
+            <div class="edit-modal" id="edit-user-modal">
+                <div class="desc-form">
+                    <h3>Editar aluno</h3>
+                    <p>Edite as informações do aluno</p>
+                    <img src="<?= URL ?>public/assets/icons/x.png" alt="" class="close-modal-icon">
+                </div>
+                <form action="<?= URL ?>principal/edit_user" method="post" enctype="multipart/form-data">
+                    <div class="input-box">
+                        <label for="userName">Nome Completo</label>
+                        <input type="text" name="name" id="userName" placeholder="Nome completo do usuário">
+                    </div>
+                    <div class="contacts-box">
+                        <div class="input-box">
+                            <label for="primaryContact">Contacto principal</label>
+                            <input type="text" name="contact_1" id="userPrimaryContact" placeholder="+244 XXX XXX XXX">
+                        </div>
+                        <div class="input-box">
+                            <label for="secundaryContact">Contacto secundário</label>
+                            <input type="text" name="contact_2" id="userSecundaryContact" placeholder="+244 XXX XXX XXX">
+                        </div>
+                    </div>
+                    <div class="contacts-box">
+                        <div class="input-box">
+                            <label for="nifUser">NIF</label>
+                            <input type="text" name="nif" id="nifUser" placeholder="936501275HA043">
+                        </div>
+                        <div class="input-box">
+                            <label for="emailUser">Email</label>
+                            <input type="text" name="email" id="emailUser" placeholder="usuario@gmail.com">
+                        </div>
+                    </div>
+                    <div class="input-box">
+                        <label for="">Foto do usuário</label>
+                        <label for="fotoFile" class="labelFile">
+                            <input type="file" name="photo" id="fotoFile" class="fotoFile" hidden>
+                            Escolher ficheiro.
+                            <span class="fileName">Nenhum ficheiro escolhido</span>
+                        </label>
+                    </div>
+    
+                    <input type="hidden" name="id" id="userId">
+                    <input type="hidden" name="current_photo" id="current_photo">
+    
+                    <div class="final-btn-actions">
+                        <button type="button" class="btn" id="btn-cancel">Cancelar</button>
+                        <button type="submit" class="btn" id="btn-create">Editar usuário</button>
+                    </div>
+                </form>
             </div>
         </div>
-
-    </section>
-
-    <!--SEARCH & ADD USER SECTION-->
-    <div class="search-add-area">
-        <div class="inputs">
-            <div class="search-user-box">
-                 <div class="icon-search-class">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-search-icon lucide-search">
-                        <path d="m21 21-4.34-4.34" />
-                        <circle cx="11" cy="11" r="8" />
-                    </svg>
-
-                </div>
-
-                <input type="search" name="searchUsers" id="searchUsers" placeholder="Pesquisar usuário">
-            </div>
-            
-
-            <button class="add-user-btn add-button" id="btn-add-school">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-plus-icon lucide-plus">
-                    <path d="M5 12h14" />
-                    <path d="M12 5v14" />
-                </svg>
-
-                Novo aluno
+    
+        <!--TAB USERS SECTION-->
+        <div class="tabs">
+            <button class="tab active" data-target="students-section">
+                <span>Alunos (<?= $entities[0]['teachers'] ?>)</span>
             </button>
         </div>
-        <!--ADD-USERS-MODAL-->
-        <div class="add-modal" id="add-user-modal">
-            <div class="desc-form">
-                <h3>Novo aluno</h3>
-                <p>Cadastre um novo aluno no sistema</p>
-                <img src="<?= URL ?>public/assets/icons/x.png" alt="" class="close-modal-icon">
-            </div>
-            <form action="<?= URL ?>principal/add_user" method="post" enctype="multipart/form-data">
-                <div class="input-box">
-                    <label for="userName">Nome Completo</label>
-                    <input type="text" name="name" placeholder="Nome completo do usuário">
+    
+        <!--USERS LIST SECTION-->
+        <section class="list-info">
+    
+            <section class="users-list">
+                <!--STUDENTS LIST-->
+                <div class="tab-content active" id="students-section">
+    
+                    <table class="tbl-users">
+                        <thead>
+                            <tr>
+                                <th>Usuário</th>
+                                <th>Contacto</th>
+                                <th>Estado</th>
+                                <th>Acções</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php if (empty($users)): ?>
+                                <h3>Dados não encontrados</h3>
+                            <?php else: ?>
+                                <?php
+                                $students = array_filter($users, function ($n) {
+                                    return ($n['role'] !== 'director') && ($n['escola_id'] === $_SESSION['id']) && ($n['role'] === 'aluno');
+                                });
+                                ?>
+                                <?php foreach ($students as $student): ?>
+                                    <tr>
+                                        <td><?= $student['nome'] ?></td>
+                                        <td><?= $student['contacto_1'] ?></td>
+                                        <td>
+                                            <?= $status = empty($student['deleted_at']) ? 'Activo' : 'Inactivo' ?>
+                                        </td>
+                                        <td class="btn-down-actions ">
+                                            <button class="action-btn">Acções</button>
+                                            <div class="drop-actions">
+                                                <?php if ($status == 'Inactivo'): ?>
+                                                    <button class="restore-action" onclick="window.location.href='<?= URL ?>principal/restore_user/<?= $student['id'] ?>'"><img src="" alt=" ">Restaurar</button>
+                                                <?php else: ?>
+                                                    <button class="edit-action" data-id=<?= $student['id'] ?> data-type="user"><img src="" alt=" ">Editar</button>
+                                                    <button class="delete-action" onclick="window.location.href='<?= URL ?>principal/delete_user/<?= $student['id'] ?>'"><img src="" alt=" ">Eliminar</button>
+                                                <?php endif; ?>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                <?php endforeach; ?>
+                            <?php endif; ?>
+                        </tbody>
+                    </table>
                 </div>
-                <div class="contacts-box">
-                    <div class="input-box">
-                        <label for="primaryContact">Contacto principal</label>
-                        <input type="text" name="contact_1" placeholder="+244 XXX XXX XXX">
-                    </div>
-                    <div class="input-box">
-                        <label for="secundaryContact">Contacto secundário</label>
-                        <input type="text" name="contact_2" placeholder="+244 XXX XXX XXX">
-                    </div>
-                </div>
-                <div class="contacts-box">
-                    <div class="input-box">
-                        <label for="nifUser">NIF</label>
-                        <input type="text" name="nif" placeholder="H244875734543">
-                    </div>
-                    <div class="input-box">
-                        <label for="emailUser">Email</label>
-                        <input type="text" name="email" placeholder="usuario@email.com">
-                    </div>
-                </div>
-                <div class="input-box">
-                    <label for="userPassword">Senha</label>
-                    <input type="text" name="password" placeholder="Digite uma senha segura">
-                </div>
-                <div class="input-box">
-                    <label for="">Foto do usuário</label>
-                    <label for="fotoFile" class="labelFile">
-                        <input type="file" name="photo" id="fotoFile" class="fotoFile" hidden>
-                        Escolher ficheiro.
-                        <span class="fileName">Nenhum ficheiro escolhido</span>
-                    </label>
-                </div>
-                <div class="input-box">
-                    <label for="userSchool">Escola</label>
-                    <select name="school" id="userSchool">
-                        <option value="<?= $school['id'] ?>"><?= $school['nome'] ?></option>
-                    </select>
-                </div>
-                <div class="input-box">
-                    <label for="role">Nível de acesso</label>
-                    <select name="role" id="role">
-                        <option value="aluno">Aluno</option>
-                        <option value="professor">Professor</option>
-                        <option value="coordenador">Coordenador</option>
-                    </select>
-                </div>
-                <div class="final-btn-actions">
-                    <button type="button" class="btn" id="btn-cancel">Cancelar</button>
-                    <button type="submit" class="btn" id="btn-create">Criar usuário</button>
-                </div>
-            </form>
-        </div>
-        <!--EDIT-USERS-MODAL-->
-        <div class="edit-modal" id="edit-user-modal">
-            <div class="desc-form">
-                <h3>Editar aluno</h3>
-                <p>Edite as informações do aluno</p>
-                <img src="<?= URL ?>public/assets/icons/x.png" alt="" class="close-modal-icon">
-            </div>
-            <form action="<?= URL ?>principal/edit_user" method="post" enctype="multipart/form-data">
-                <div class="input-box">
-                    <label for="userName">Nome Completo</label>
-                    <input type="text" name="name" id="userName" placeholder="Nome completo do usuário">
-                </div>
-                <div class="contacts-box">
-                    <div class="input-box">
-                        <label for="primaryContact">Contacto principal</label>
-                        <input type="text" name="contact_1" id="userPrimaryContact" placeholder="+244 XXX XXX XXX">
-                    </div>
-                    <div class="input-box">
-                        <label for="secundaryContact">Contacto secundário</label>
-                        <input type="text" name="contact_2" id="userSecundaryContact" placeholder="+244 XXX XXX XXX">
-                    </div>
-                </div>
-                <div class="contacts-box">
-                    <div class="input-box">
-                        <label for="nifUser">NIF</label>
-                        <input type="text" name="nif" id="nifUser" placeholder="936501275HA043">
-                    </div>
-                    <div class="input-box">
-                        <label for="emailUser">Email</label>
-                        <input type="text" name="email" id="emailUser" placeholder="usuario@gmail.com">
-                    </div>
-                </div>
-                <div class="input-box">
-                    <label for="">Foto do usuário</label>
-                    <label for="fotoFile" class="labelFile">
-                        <input type="file" name="photo" id="fotoFile" class="fotoFile" hidden>
-                        Escolher ficheiro.
-                        <span class="fileName">Nenhum ficheiro escolhido</span>
-                    </label>
-                </div>
-
-                <input type="hidden" name="id" id="userId">
-                <input type="hidden" name="current_photo" id="current_photo">
-
-                <div class="final-btn-actions">
-                    <button type="button" class="btn" id="btn-cancel">Cancelar</button>
-                    <button type="submit" class="btn" id="btn-create">Editar usuário</button>
-                </div>
-            </form>
-        </div>
-    </div>
-
-    <!--TAB USERS SECTION-->
-    <div class="tabs">
-        <button class="tab active" data-target="students-section">
-            <span>Alunos (<?= $entities[0]['teachers'] ?>)</span>
-        </button>
-    </div>
-
-    <!--USERS LIST SECTION-->
-    <section class="list-info">
-
-        <section class="users-list">
-            <!--STUDENTS LIST-->
-            <div class="tab-content active" id="students-section">
-
-                <table class="tbl-users">
-                    <thead>
-                        <tr>
-                            <th>Usuário</th>
-                            <th>Contacto</th>
-                            <th>Estado</th>
-                            <th>Acções</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php if (empty($users)): ?>
-                            <h3>Dados não encontrados</h3>
-                        <?php else: ?>
-                            <?php
-                            $students = array_filter($users, function ($n) {
-                                return ($n['role'] !== 'director') && ($n['escola_id'] === $_SESSION['id']) && ($n['role'] === 'aluno');
-                            });
-                            ?>
-                            <?php foreach ($students as $student): ?>
-                                <tr>
-                                    <td><?= $student['nome'] ?></td>
-                                    <td><?= $student['contacto_1'] ?></td>
-                                    <td>
-                                        <?= $status = empty($student['deleted_at']) ? 'Activo' : 'Inactivo' ?>
-                                    </td>
-                                    <td class="btn-down-actions ">
-                                        <button class="action-btn">Acções</button>
-                                        <div class="drop-actions">
-                                            <?php if ($status == 'Inactivo'): ?>
-                                                <button class="restore-action" onclick="window.location.href='<?= URL ?>principal/restore_user/<?= $student['id'] ?>'"><img src="" alt=" ">Restaurar</button>
-                                            <?php else: ?>
-                                                <button class="edit-action" data-id=<?= $student['id'] ?> data-type="user"><img src="" alt=" ">Editar</button>
-                                                <button class="delete-action" onclick="window.location.href='<?= URL ?>principal/delete_user/<?= $student['id'] ?>'"><img src="" alt=" ">Eliminar</button>
-                                            <?php endif; ?>
-                                        </div>
-                                    </td>
-                                </tr>
-                            <?php endforeach; ?>
-                        <?php endif; ?>
-                    </tbody>
-                </table>
-            </div>
-
+    
+            </section>
+    
         </section>
-
     </section>
+</div>
 
-    <?php require_once './app/views/layouts/closure.phtml' ?>
+<?php require_once './app/views/layouts/closure.phtml' ?>

@@ -623,8 +623,8 @@
 
     .feed-wrapper {
         display: grid;
-        grid-template: 1fr / 12% 1fr 12%;
-        margin-top: 100px;
+        grid-template: 1fr / 170px 1fr 170px;
+        margin-top: 110px;
     }
 
     #feed-section {
