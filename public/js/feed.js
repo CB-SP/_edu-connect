@@ -3,11 +3,12 @@ const btnNewPost = document.querySelectorAll('.btn-new-publish')
 const closeIcon = document.querySelectorAll('.close-icon-btn')
 const feedModal = document.querySelector('.feed-modal')
 const overlayFeed = document.querySelectorAll('.overlay-feed')
+const btnCancelFeed = document.querySelectorAll('#btn-cancel-feed')
 
 if (btnNewPost) {
-    btnNewPost.forEach(btn=>{
+    btnNewPost.forEach(btn => {
         btn.addEventListener('click', () => {
-            overlayFeed.forEach(o =>{o.classList.add('active')})
+            overlayFeed.forEach(o => { o.classList.add('active') })
             feedModal.classList.add('show')
         })
 
@@ -15,22 +16,29 @@ if (btnNewPost) {
 }
 
 if (closeIcon) {
-    if(feedModal){
-    closeIcon.forEach(icon=>{
-        icon.addEventListener('click', () => {
-            feedModal.classList.remove('show')
-            overlayFeed.forEach(o =>{o.classList.remove('active')})
-        })
+    if (feedModal) {
+        closeIcon.forEach(icon => {
+            icon.addEventListener('click', () => {
+                feedModal.classList.remove('show')
+                overlayFeed.forEach(o => { o.classList.remove('active') })
+            })
 
-    })
+        })
     }
 }
 
+btnCancelFeed.forEach(btn => {
+    btn.addEventListener('click', () => {
+        feedModal.classList.remove('show')
+        overlayFeed.forEach(o => { o.classList.remove('active') })
+    })
+})
+
 if (overlayFeed) {
-    overlayFeed.forEach(over =>{
+    overlayFeed.forEach(over => {
         over.addEventListener('click', () => {
             feedModal.classList.remove('show')
-            overlayFeed.forEach(o =>{o.classList.remove('active')})
+            overlayFeed.forEach(o => { o.classList.remove('active') })
         })
 
     })
