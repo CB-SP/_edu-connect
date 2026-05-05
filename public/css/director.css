@@ -265,6 +265,14 @@
         right: 12px;
         width: 20px;
         height: 20px;
+        padding: 2px;
+        border-radius: var(--radius-sm);
+        transition: all .1s ease-in-out;
+    }
+
+    .add-modal .desc-form img:hover,
+    .edit-modal .desc-form img:hover {
+        background-color: var(--Muted);
     }
 
     .add-modal form,
@@ -821,6 +829,14 @@
         right: 12px;
         width: 20px;
         height: 20px;
+        padding: 2px;
+        border-radius: var(--radius-sm);
+        transition: all .1s ease-in-out;
+    }
+
+    .add-modal .desc-form img:hover,
+    .edit-modal .desc-form img:hover {
+        background-color: var(--Muted);
     }
 
     .add-modal form,
