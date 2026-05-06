@@ -123,7 +123,12 @@
         display: flex;
         justify-content: center;
         align-items: center;
+    }
+
+    .profile-img img {
         aspect-ratio: 3/4;
+        height: 100%;
+        width: 100%;
     }
 
     .personal-info-card .nome-role {
@@ -192,6 +197,13 @@
         gap: 8px;
         flex-direction: column;
         padding: 10px;
+    }
+
+    .status p {
+        background-color: var(--status);
+        border-radius: var(--radius-sm);
+        padding: 0 8px;
+        width: fit-content;
     }
 
     .account-info:nth-child(4) {
@@ -361,12 +373,14 @@
 
     .tips-list .tip-item {
         display: flex;
-        gap: 10px;
-        align-items: center;
+        gap: 5px;
     }
 
-    .tip-item img {
+    .tip-item svg {
         flex-shrink: 0;
+        height: 28px;
+        width: 28px;
+        color: var(--AccentBlue);
     }
 
     .tip-item p {
@@ -441,6 +455,7 @@
 
     .up-section p {
         color: var(--MutedForegroundC);
+        font-size: var(--text-lg);
     }
 
     /*PERSONAL INFORMATIONS*/
@@ -466,7 +481,7 @@
     }
 
     .title-area .title-desc p {
-        font-weight: 300;
+        color: var(--MutedForegroundC);
     }
 
     .title-area .btn-edit-info {
@@ -507,7 +522,12 @@
         display: flex;
         justify-content: center;
         align-items: center;
+    }
+
+    .profile-img img {
         aspect-ratio: 3/4;
+        height: 100%;
+        width: 100%;
     }
 
     .nome-role {
@@ -532,7 +552,7 @@
     .personal-info-area .data {
         display: flex;
         flex-direction: column;
-        gap: 5px;
+        gap: 2px;
     }
 
     .data h5 {
@@ -540,7 +560,7 @@
     }
 
     .data p {
-        font-weight: 300;
+        color: var(--MutedForegroundC);
     }
 
     /*ACCOUNT INFORMATIONS*/
@@ -578,6 +598,14 @@
         padding: 10px;
     }
 
+    .status p {
+        background-color: var(--status);
+        border-radius: var(--radius-md);
+        padding: 0 8px;
+        display: flex;
+        align-items: center;
+    }
+
     .account-info:nth-child(4) {
         border: none;
     }
@@ -589,7 +617,7 @@
     }
 
     .account-info p {
-        font-weight: 300;
+        color: var(--MutedForegroundC);
     }
 
 
@@ -612,7 +640,7 @@
     }
 
     .up-section h4 {
-        font-size: 1.05rem;
+        font-size: 1.1rem;
     }
 
     .alter-pass-area .title-area {
@@ -751,18 +779,21 @@
     .security-tips-area .tips-list {
         display: flex;
         flex-direction: column;
-        gap: 10px;
+        gap: 3px;
         margin-left: 30px;
     }
 
     .tips-list .tip-item {
         display: flex;
-        gap: 10px;
+        gap: 5px;
         align-items: center;
     }
 
-    .tip-item img {
+    .tip-item svg {
         flex-shrink: 0;
+        height: 30px;
+        width: 30px;
+        color: var(--AccentBlue);
     }
 
     .tip-item p {

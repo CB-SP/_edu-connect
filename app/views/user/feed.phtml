@@ -1,9 +1,9 @@
 <?php
-    require_once './app/views/layouts/usersMain.phtml';
-    $user = new UserController;
-    $posts = $user->get($_SESSION['school_id']);
-    $pubsCount = $user->count_publications($_SESSION['school_id']);
-    $interactionsCount = null;
+require_once './app/views/layouts/usersMain.phtml';
+$user = new UserController;
+$posts = $user->get($_SESSION['school_id']);
+$pubsCount = $user->count_publications($_SESSION['school_id']);
+$interactionsCount = null;
 ?>
 
 <div class="feed-wrapper">
@@ -33,7 +33,10 @@
                 <p>Publicações e comunicados da sua escola</p>
             </div>
             <button class="btn-new-publish">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-plus-icon lucide-plus"><path d="M5 12h14"/><path d="M12 5v14"/></svg>
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-plus-icon lucide-plus">
+                    <path d="M5 12h14" />
+                    <path d="M12 5v14" />
+                </svg>
 
                 Nova Publicação
             </button>
@@ -81,12 +84,21 @@
 
         <div class="tabs-publication">
             <button class="tab-publication active" data-type="posts">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-newspaper-icon lucide-newspaper"><path d="M15 18h-5"/><path d="M18 14h-8"/><path d="M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v16a2 2 0 0 1-4 0v-9a2 2 0 0 1 2-2h2"/><rect width="8" height="4" x="10" y="6" rx="1"/></svg>
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-newspaper-icon lucide-newspaper">
+                    <path d="M15 18h-5" />
+                    <path d="M18 14h-8" />
+                    <path d="M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v16a2 2 0 0 1-4 0v-9a2 2 0 0 1 2-2h2" />
+                    <rect width="8" height="4" x="10" y="6" rx="1" />
+                </svg>
 
                 Publicações (<?= $pubsCount['posts'] ?>)
             </button>
             <button class="tab-publication" data-type="announcements">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-megaphone-icon lucide-megaphone"><path d="M11 6a13 13 0 0 0 8.4-2.8A1 1 0 0 1 21 4v12a1 1 0 0 1-1.6.8A13 13 0 0 0 11 14H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2z"/><path d="M6 14a12 12 0 0 0 2.4 7.2 2 2 0 0 0 3.2-2.4A8 8 0 0 1 10 14"/><path d="M8 6v8"/></svg>
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-megaphone-icon lucide-megaphone">
+                    <path d="M11 6a13 13 0 0 0 8.4-2.8A1 1 0 0 1 21 4v12a1 1 0 0 1-1.6.8A13 13 0 0 0 11 14H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2z" />
+                    <path d="M6 14a12 12 0 0 0 2.4 7.2 2 2 0 0 0 3.2-2.4A8 8 0 0 1 10 14" />
+                    <path d="M8 6v8" />
+                </svg>
 
                 Comunicados (<?= $pubsCount['notices'] ?>)
             </button>
@@ -95,12 +107,12 @@
         <div class="publication-cards active-pub" id="posts">
             <?php if (!empty($posts)): ?>
                 <?php
-                    $publications = array_filter($posts, function ($n) {
-                        return $n['tipo'] === 'post';
-                    });
+                $publications = array_filter($posts, function ($n) {
+                    return $n['tipo'] === 'post';
+                });
                 ?>
-                <?php 
-                    foreach ($publications as $publication):
+                <?php
+                foreach ($publications as $publication):
                     $interactionsCount = $user->get_interactions($publication['id']);
                     $comments = $user->get_post_comments($publication['id']);
                     $reaction = $user->get_reactions($_SESSION['id'], $publication['id']);
@@ -109,7 +121,7 @@
                         <div class="header-publication-card">
                             <div class="info-user-publication-card">
                                 <div class="img-user">
-                                    <?php $photo = empty($publication['foto']) ? 'assets/icons/circle-user-round.svg' : $publication['foto']?>
+                                    <?php $photo = empty($publication['foto']) ? 'assets/icons/circle-user-round.svg' : $publication['foto'] ?>
                                     <!--img src="<//?= URL. "public/". $photo ?>"-->
                                 </div>
                                 <div class="name-user">
@@ -130,19 +142,27 @@
                                     <?php if ($_SESSION['id'] === $publication['user_id']): ?>
                                         <div class="drop-post-card-action">
                                             <div class="icon-area">
-                                                <img src="" alt=" ">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-lock-icon lucide-lock"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+
                                             </div>
                                             <p>Bloquear comentários</p>
                                         </div>
-                                    <?php endif;?>
+                                    <?php endif; ?>
                                     <?php if ($_SESSION['role'] === 'director' || $_SESSION['role'] === 'professor'): ?>
                                         <div class="drop-post-card-action">
                                             <div class="icon-area">
-                                                <img src="" alt=" ">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-trash2-icon lucide-trash-2">
+                                                    <path d="M10 11v6" />
+                                                    <path d="M14 11v6" />
+                                                    <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6" />
+                                                    <path d="M3 6h18" />
+                                                    <path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" />
+                                                </svg>
+
                                             </div>
                                             <p>Remover publicação</p>
                                         </div>
-                                    <?php endif;?>
+                                    <?php endif; ?>
                                     <?php if (!($_SESSION['role'] === 'director' || $_SESSION['role'] === 'professor') && !($_SESSION['id'] === $publication['user_id'])): ?>
                                         <div class="drop-post-card-action">
                                             <div class="icon-area">
@@ -150,7 +170,7 @@
                                             </div>
                                             <p>Sem acções</p>
                                         </div>
-                                    <?php endif;?>
+                                    <?php endif; ?>
                                 </div>
                             </button>
                         </div>
@@ -238,11 +258,11 @@
                                     </div>
                                 </form>
                             </div>
-                            <?php if(!empty($comments)):?>
-                                <?php foreach($comments as $comment):?>
+                            <?php if (!empty($comments)): ?>
+                                <?php foreach ($comments as $comment): ?>
                                     <div class="show-comment-area">
                                         <div class="img-user">
-                                            <img src="" alt=" ">
+                                            <img src="" alt="">
                                         </div>
                                         <div class="show-comment-box">
                                             <div class="show-comment">
@@ -252,8 +272,8 @@
                                             <span class="comment-time"><?= $comment['created_at'] ?></span>
                                         </div>
                                     </div>
-                                <?php endforeach;?>
-                            <?php endif;?>
+                                <?php endforeach; ?>
+                            <?php endif; ?>
                         </section>
                     </div>
                 <?php endforeach; ?>
@@ -263,12 +283,12 @@
         <div class="publication-cards" id="announcements">
             <?php if (!empty($posts)): ?>
                 <?php
-                    $notices = array_filter($posts, function ($n) {
-                        return $n['tipo'] === 'aviso';
-                    });
+                $notices = array_filter($posts, function ($n) {
+                    return $n['tipo'] === 'aviso';
+                });
                 ?>
-                <?php 
-                    foreach ($notices as $notice):
+                <?php
+                foreach ($notices as $notice):
                     $interactionsCount = $user->get_interactions($notice['id']);
                     $comments = $user->get_post_comments($notice['id']);
                     $reaction = $user->get_reactions($_SESSION['id'], $notice['id']);
@@ -277,7 +297,7 @@
                         <div class="header-publication-card">
                             <div class="info-user-publication-card">
                                 <div class="img-user">
-                                    <?php $photo = empty($notice['foto']) ? 'assets/icons/circle-user-round.svg' : $notice['foto']?>
+                                    <?php $photo = empty($notice['foto']) ? 'assets/icons/circle-user-round.svg' : $notice['foto'] ?>
                                     <!--img src="<//?= URL. "public/". $photo ?>"-->
                                 </div>
                                 <div class="name-user">
@@ -298,19 +318,25 @@
                                     <?php if ($_SESSION['id'] === $notice['user_id']): ?>
                                         <div class="drop-post-card-action">
                                             <div class="icon-area">
-                                                <img src="" alt=" ">
+                                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-lock-icon lucide-lock"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
                                             </div>
                                             <p>Bloquear comentários</p>
                                         </div>
-                                    <?php endif;?>
+                                    <?php endif; ?>
                                     <?php if ($_SESSION['role'] === 'director' || $_SESSION['role'] === 'professor'): ?>
                                         <div class="drop-post-card-action">
                                             <div class="icon-area">
-                                                <img src="" alt=" ">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-trash2-icon lucide-trash-2">
+                                                    <path d="M10 11v6" />
+                                                    <path d="M14 11v6" />
+                                                    <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6" />
+                                                    <path d="M3 6h18" />
+                                                    <path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" />
+                                                </svg>
                                             </div>
                                             <p>Remover publicação</p>
                                         </div>
-                                    <?php endif;?>
+                                    <?php endif; ?>
                                     <?php if (!($_SESSION['role'] === 'director' || $_SESSION['role'] === 'professor') && !($_SESSION['id'] === $notice['user_id'])): ?>
                                         <div class="drop-post-card-action">
                                             <div class="icon-area">
@@ -318,7 +344,7 @@
                                             </div>
                                             <p>Sem acções</p>
                                         </div>
-                                    <?php endif;?>
+                                    <?php endif; ?>
                                 </div>
                             </button>
                         </div>
@@ -406,8 +432,8 @@
                                     </div>
                                 </form>
                             </div>
-                            <?php if(!empty($comments)):?>
-                                <?php foreach($comments as $comment):?>
+                            <?php if (!empty($comments)): ?>
+                                <?php foreach ($comments as $comment): ?>
                                     <div class="show-comment-area">
                                         <div class="img-user">
                                             <img src="" alt=" ">
@@ -420,8 +446,8 @@
                                             <span class="comment-time"><?= $comment['created_at'] ?></span>
                                         </div>
                                     </div>
-                                <?php endforeach;?>
-                            <?php endif;?>
+                                <?php endforeach; ?>
+                            <?php endif; ?>
                         </section>
                     </div>
                 <?php endforeach; ?>

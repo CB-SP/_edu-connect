@@ -119,6 +119,7 @@ body {
         justify-content: center;
         align-items: center;
         background-color: var(--Secondary);
+        flex-shrink: 0;
     }
 
     .profile-poto img {
@@ -127,10 +128,14 @@ body {
         width: 100%;
     }
 
-
     .layout-admin .user-details h3 {
         font-weight: var(--weight-nl);
         font-size: var(--text-lg);
+        line-height: 1.2rem;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
     }
 
     .layout-admin .user-details span {
@@ -288,14 +293,21 @@ body {
         justify-content: center;
         align-items: center;
         background-color: var(--Secondary);
-        height: 48px;
-        width: 48px;
+        height: 40px;
+        width: 40px;
         border-radius: var(--radius-md);
+        background-color: var(--Background);
     }
 
     .icon-school-area img {
         height: 100%;
         width: 100%;
+    }
+
+    .icon-school-area svg {
+        height: 100%;
+        width: 100%;
+        color: var(--AccentBlue);
     }
 
     .head-section h3 {
@@ -359,8 +371,7 @@ body {
     }
 
     .layout-admin .info-profile {
-        padding-left: 15px;
-        height: 45%;
+        padding: 5px 15px;
         display: flex;
         align-items: center;
         gap: 10px;
@@ -374,6 +385,7 @@ body {
         justify-content: center;
         align-items: center;
         background-color: var(--Secondary);
+        flex-shrink: 0;
     }
 
     .profile-poto img {
@@ -383,9 +395,15 @@ body {
         aspect-ratio: 3/4;
     }
 
+
     .layout-admin .user-details h3 {
         font-weight: var(--weight-nl);
-        font-size: var(--text-lg);
+        font-size: 1rem;
+        line-height: 1.2rem;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
     }
 
     .layout-admin .user-details span {
@@ -498,10 +516,16 @@ body {
         background-color: var(--Background);
     }
 
+    /*
     .icon-school-area img {
         border-radius: var(--radius-md);
         height: 100%;
         width: 100%;
+    }*/
+    .icon-school-area svg {
+        height: 100%;
+        width: 100%;
+        color: var(--AccentBlue);
     }
 
     .head-section h3 {

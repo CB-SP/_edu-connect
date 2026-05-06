@@ -121,6 +121,13 @@ body {
         background-color: var(--Secondary);
     }
 
+    .info-profile .profile-poto svg {
+        height: 100%;
+        width: 100%;
+        color: var(--AccentBlue);
+        background-color: var(--Background);
+    }
+
     .layout-admin .user-details h3 {
         font-weight: var(--weight-nl);
         font-size: var(--text-lg);
@@ -335,6 +342,14 @@ body {
         justify-content: center;
         align-items: center;
         background-color: var(--Secondary);
+        overflow: hidden;
+    }
+
+    .info-profile .profile-poto svg {
+        height: 100%;
+        width: 100%;
+        color: var(--AccentBlue);
+        background-color: var(--Background);
     }
 
     .layout-admin .user-details h3 {
