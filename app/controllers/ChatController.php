@@ -25,7 +25,7 @@
         }
 
         //get chat
-       /* public function get_chat(int $class, int $school) {
+        public function get_chat(int $class, int $school) {
             if (empty($class) || empty($school)) {
                 return null;
             }
@@ -36,6 +36,6 @@
                 error_log("ERRO_CRIAR_CHAT: ". $e->getMessage(). "\n". $e->getTraceAsString());
                 return null;
             }
-        }*/
+        }
     }
 ?>
