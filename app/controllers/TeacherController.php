@@ -22,4 +22,5 @@ class TeacherController extends UserController
         $_SESSION['class_id'] = $id;
         $this->show_page("class");
     }
+    
 }
