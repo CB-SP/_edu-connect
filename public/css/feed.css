@@ -298,6 +298,8 @@
     }
 
     .img-user img {
+        height: 100%;
+        width: 100%;
         aspect-ratio: 3/4;
     }
 
@@ -368,7 +370,10 @@
         transition: background-color .1s ease;
         padding: 5px;
         padding: 6px 5px;
+    }
 
+    .drop-post-card-action svg {
+        color: var(--Destructive);
     }
 
     .drop-post-card-action:hover {
@@ -911,6 +916,8 @@
     }
 
     .img-user img {
+        height: 100%;
+        width: 100%;
         aspect-ratio: 3/4;
     }
 
@@ -981,6 +988,10 @@
         border-radius: var(--radius-sm);
         align-items: center;
         transition: background-color .1s ease;
+    }
+
+    .drop-post-card-action svg {
+        color: var(--Destructive);
     }
 
     .drop-post-card-action:nth-child(2) {

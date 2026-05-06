@@ -262,7 +262,8 @@
         cursor: pointer;
         transition: all .2s ease-in-out;
     }
-    .class-card:hover{
+
+    .class-card:hover {
         box-shadow: 0px 7px 23px rgba(0, 0, 0, .15);
     }
 
@@ -293,6 +294,11 @@
         display: flex;
         justify-content: center;
         align-items: center;
+    }
+
+    .prof-profile-img img {
+        height: 100%;
+        width: 100%;
     }
 
     .students-info .icon-students {
@@ -543,7 +549,7 @@
         font-size: var(--text-nl);
     }
 
-     /*CLASS CARDS*/
+    /*CLASS CARDS*/
     .class-cards {
         display: flex;
         flex-wrap: wrap;
@@ -564,7 +570,8 @@
         cursor: pointer;
         transition: all .2s ease-in-out;
     }
-    .class-card:hover{
+
+    .class-card:hover {
         box-shadow: 0px 7px 23px rgba(0, 0, 0, .15);
     }
 
@@ -575,9 +582,10 @@
         font-size: 1.3rem;
     }
 
-    .class-card p{
+    .class-card p {
         font-size: 1.01rem;
     }
+
     .class-card .prof-info,
     .class-card .students-info {
         display: flex;
@@ -592,7 +600,7 @@
         font-size: 1.01rem;
     }
 
-    .prof-info .prof-profile-img{
+    .prof-info .prof-profile-img {
         height: 30px;
         width: 30px;
         border-radius: var(--radius-full);
@@ -602,8 +610,11 @@
         align-items: center;
         overflow: hidden;
     }
-    .prof-info .prof-profile-img img{
-      aspect-ratio: 3/4; 
+
+    .prof-info .prof-profile-img img {
+        height: 100%;
+        width: 100%;
+        aspect-ratio: 3/4;
     }
 
     .students-info .icon-students {

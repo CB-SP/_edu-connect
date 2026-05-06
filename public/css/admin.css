@@ -345,6 +345,7 @@
         margin: auto;
         height: 300px;
         width: 100%;
+        overflow: hidden;
     }
 
     .school-list {
@@ -449,8 +450,15 @@
         padding-right: 30px;
         width: 100%;
         display: flex;
+        align-items: center;
+        justify-content: center;
         gap: 10px;
     }
+
+    .drop-actions button svg {
+        
+    }
+
 
     .drop-actions button:hover {
         cursor: pointer;
@@ -940,6 +948,7 @@
         padding-right: 30px;
         width: 100%;
         display: flex;
+        align-items: center;
         gap: 10px;
     }
 
@@ -1435,7 +1444,13 @@
         padding-right: 30px;
         width: 100%;
         display: flex;
+        align-items: center;
         gap: 10px;
+    }
+    
+    .drop-actions button svg {
+        height: 30px;
+        width: 30px;
     }
 
     .drop-actions button:hover {

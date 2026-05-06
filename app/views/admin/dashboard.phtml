@@ -29,7 +29,9 @@ $total_entities = $admin->total_entities();
                 <p>Gestão de escolas e usuários do sistema</p>
             </div>
             <div class="role-info">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-shield-icon lucide-shield"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/></svg>
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-shield-icon lucide-shield">
+                    <path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z" />
+                </svg>
 
                 <p>Administrador</p>
             </div>
@@ -64,12 +66,23 @@ $total_entities = $admin->total_entities();
     <section class="list-info">
         <div class="tabs">
             <button class="tab active" data-target="schools-section">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-building2-icon lucide-building-2"><path d="M10 12h4"/><path d="M10 8h4"/><path d="M14 21v-3a2 2 0 0 0-4 0v3"/><path d="M6 10H4a2 2 0 0 0-2 2v7a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-2"/><path d="M6 21V5a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v16"/></svg>
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-building2-icon lucide-building-2">
+                    <path d="M10 12h4" />
+                    <path d="M10 8h4" />
+                    <path d="M14 21v-3a2 2 0 0 0-4 0v3" />
+                    <path d="M6 10H4a2 2 0 0 0-2 2v7a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-2" />
+                    <path d="M6 21V5a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v16" />
+                </svg>
 
                 <span>Escolas</span>
             </button>
             <button class="tab" data-target="users-section">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-users-icon lucide-users"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><path d="M16 3.128a4 4 0 0 1 0 7.744"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><circle cx="9" cy="7" r="4"/></svg>
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-users-icon lucide-users">
+                    <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
+                    <path d="M16 3.128a4 4 0 0 1 0 7.744" />
+                    <path d="M22 21v-2a4 4 0 0 0-3-3.87" />
+                    <circle cx="9" cy="7" r="4" />
+                </svg>
 
                 <span>Usuários</span>
             </button>
@@ -79,7 +92,10 @@ $total_entities = $admin->total_entities();
         <section class="tab-content active" id="schools-section">
             <div class="search-add-area">
                 <div class="search-school-box">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-search-icon lucide-search"><path d="m21 21-4.34-4.34"/><circle cx="11" cy="11" r="8"/></svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-search-icon lucide-search">
+                        <path d="m21 21-4.34-4.34" />
+                        <circle cx="11" cy="11" r="8" />
+                    </svg>
 
                     <input type="search" name="searchSchool" id="searchSchool" placeholder="Pesquisar escolas">
                 </div>
@@ -205,8 +221,19 @@ $total_entities = $admin->total_entities();
                                             <?php if ($status == 'Inactiva'): ?>
                                                 <button class="restore-action" onclick="window.location.href='<?= URL ?>admin/restore_school/<?= $school['id'] ?>'"><img src="" alt=" ">Restaurar</button>
                                             <?php else: ?>
-                                                <button class="edit-action" data-id=<?= $school['id'] ?>><img src="" alt=" ">Editar</button>
-                                                <button class="delete-action" onclick="window.location.href='<?= URL ?>admin/delete_school/<?= $school['id'] ?>'"><img src="" alt=" ">Eliminar</button>
+                                                <button class="edit-action" data-id=<?= $school['id'] ?>>
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-pencil-icon lucide-pencil">
+                                                        <path d="M21.174 6.812a1 1 0 0 0-3.986-3.987L3.842 16.174a2 2 0 0 0-.5.83l-1.321 4.352a.5.5 0 0 0 .623.622l4.353-1.32a2 2 0 0 0 .83-.497z" />
+                                                        <path d="m15 5 4 4" />
+                                                    </svg>
+                                                    Editar
+                                                </button>
+                                                <button class="delete-action" onclick="window.location.href='<?= URL ?>admin/delete_school/<?= $school['id'] ?>'">
+                                                   <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-trash2-icon lucide-trash-2"><path d="M10 11v6"/><path d="M14 11v6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6"/><path d="M3 6h18"/><path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>
+
+
+                                                    Eliminar
+                                                </button>
                                             <?php endif; ?>
                                         </div>
                                     </td>
@@ -223,12 +250,20 @@ $total_entities = $admin->total_entities();
         <section class="tab-content" id="users-section">
             <div class="search-add-area">
                 <div class="search-user-box">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-search-icon lucide-search"><path d="m21 21-4.34-4.34"/><circle cx="11" cy="11" r="8"/></svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-search-icon lucide-search">
+                        <path d="m21 21-4.34-4.34" />
+                        <circle cx="11" cy="11" r="8" />
+                    </svg>
 
                     <input type="search" name="searchUser" id="searchUser" placeholder="Pesquisar usuários">
                 </div>
                 <button class="add-user-btn add-button" id="btn-add-user">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-user-plus-icon lucide-user-plus"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><line x1="19" x2="19" y1="8" y2="14"/><line x1="22" x2="16" y1="11" y2="11"/></svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-user-plus-icon lucide-user-plus">
+                        <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
+                        <circle cx="9" cy="7" r="4" />
+                        <line x1="19" x2="19" y1="8" y2="14" />
+                        <line x1="22" x2="16" y1="11" y2="11" />
+                    </svg>
 
                     <p>Novo Usuário</p>
                 </button>
@@ -394,8 +429,22 @@ $total_entities = $admin->total_entities();
                                                 <?php if ($status == 'Inactivo'): ?>
                                                     <button class="restore-action" onclick="window.location.href='<?= URL ?>admin/restore_user/<?= $user['id'] ?>'"><img src="" alt=" ">Restaurar</button>
                                                 <?php else: ?>
-                                                    <button class="edit-action" data-id="<?= $user['id'] ?>" data-type="user"><img src="" alt=" ">Editar</button>
-                                                    <button class="delete-action" onclick="window.location.href='<?= URL ?>admin/delete_user/<?= $user['id'] ?>'"><img src="" alt=" ">Eliminar</button>
+                                                    <button class="edit-action" data-id="<?= $user['id'] ?>" data-type="user">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-pencil-icon lucide-pencil">
+                                                            <path d="M21.174 6.812a1 1 0 0 0-3.986-3.987L3.842 16.174a2 2 0 0 0-.5.83l-1.321 4.352a.5.5 0 0 0 .623.622l4.353-1.32a2 2 0 0 0 .83-.497z" />
+                                                            <path d="m15 5 4 4" />
+                                                        </svg>
+                                                        Editar</button>
+                                                    <button class="delete-action" onclick="window.location.href='<?= URL ?>admin/delete_user/<?= $user['id'] ?>'">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-trash2-icon lucide-trash-2">
+                                                            <path d="M10 11v6" />
+                                                            <path d="M14 11v6" />
+                                                            <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6" />
+                                                            <path d="M3 6h18" />
+                                                            <path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" />
+                                                        </svg>
+
+                                                        Eliminar</button>
                                                 <?php endif; ?>
                                             </div>
                                         </td>

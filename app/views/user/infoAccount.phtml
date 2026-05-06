@@ -33,6 +33,7 @@
             <div class="desc-form">
                 <h3>Editar Informações</h3>
                 <p>Edite as suas informações</p>
+                <img src="<?= URL ?>public/assets/icons/x.png" alt="" class="close-modal-icon">
             </div>
             <form action="<?= URL ?>user/redirect_edit_user" method="post" enctype="multipart/form-data">
                 <div class="input-box">
@@ -116,7 +117,7 @@
                 <h5>Função</h5>
                 <p><?=ucfirst( $_SESSION['role']) ?></p>
             </div>
-            <div class="account-info">
+            <div class="account-info status">
                 <h5>Status</h5>
                 <p>Ativo</p>
             </div>

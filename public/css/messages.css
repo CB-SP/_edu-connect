@@ -66,6 +66,11 @@
         align-items: center;
     }
 
+    .sender-profile img {
+        height: 100%;
+        width: 100%;
+    }
+
     .message-item .desc-message {
         display: flex;
         flex-direction: column;
@@ -186,6 +191,11 @@
         display: flex;
         justify-content: center;
         align-items: center;
+    }
+
+    .sender-profile img {
+        height: 100%;
+        width: 100%;
     }
 
     .message-item .desc-message {
