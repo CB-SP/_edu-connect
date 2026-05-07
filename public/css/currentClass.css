@@ -121,7 +121,7 @@
     .info-nome-teacher .teacher-photo {
         height: 40px;
         width: 40px;
-        background-color: var(--Muted);
+        background-color: var(--Secondary);
         border-radius: var(--radius-full);
         display: flex;
         justify-content: center;
@@ -131,6 +131,12 @@
     .teacher-photo img {
         height: 100%;
         width: 100%;
+    }
+
+    .teacher-photo svg {
+        height: 100%;
+        width: 100%;
+        color: var(--AccentBlue);
     }
 
     .info-nome-teacher .nome-teacher {
@@ -242,7 +248,7 @@
         height: 40px;
         width: 40px;
         border-radius: var(--radius-full);
-        background-color: var(--Muted);
+        background-color: var(--Secondary);
         display: flex;
         justify-content: center;
         align-items: center;
@@ -252,6 +258,12 @@
     .sender-profile img {
         height: 100%;
         width: 100%;
+    }
+
+    .sender-profile svg {
+        height: 100%;
+        width: 100%;
+        color: var(--AccentBlue);
     }
 
     .message .message-box {
@@ -288,10 +300,24 @@
         height: 40px;
         width: 40px;
         border-radius: var(--radius-full);
-        background-color: var(--Muted);
+        background-color: var(--Secondary);
         display: flex;
         justify-content: center;
         align-items: center;
+    }
+
+    .img-profile img {
+        height: 100%;
+        width: 100%;
+        aspect-ratio: 3/4;
+        color: var(--AccentBlue);
+    }
+
+    .img-profile svg {
+        height: 100%;
+        width: 100%;
+        aspect-ratio: 3/4;
+        color: var(--AccentBlue);
     }
 
     .send-message-box .message-input {
@@ -667,7 +693,7 @@
     .info-nome-teacher .teacher-photo {
         height: 45px;
         width: 45px;
-        background-color: var(--Muted);
+        background-color: var(--Secondary);
         border-radius: var(--radius-full);
         display: flex;
         justify-content: center;
@@ -677,6 +703,12 @@
     .teacher-photo img {
         height: 100%;
         width: 100%;
+    }
+
+    .teacher-photo svg {
+        height: 100%;
+        width: 100%;
+        color: var(--AccentBlue);
     }
 
     .info-nome-teacher .nome-teacher {
@@ -794,7 +826,7 @@
         height: 40px;
         width: 40px;
         border-radius: var(--radius-full);
-        background-color: var(--Muted);
+        background-color: var(--Secondary);
         display: flex;
         justify-content: center;
         align-items: center;
@@ -804,6 +836,12 @@
     .sender-profile img {
         height: 100%;
         width: 100%;
+    }
+
+    .sender-profile svg {
+        height: 100%;
+        width: 100%;
+        color: var(--AccentBlue);
     }
 
     .message .message-box {
@@ -840,10 +878,24 @@
         height: 40px;
         width: 40px;
         border-radius: var(--radius-full);
-        background-color: var(--Muted);
+        background-color: var(--Secondary);
         display: flex;
         justify-content: center;
         align-items: center;
+    }
+
+    .img-profile img {
+        height: 100%;
+        width: 100%;
+        aspect-ratio: 3/4;
+        color: var(--AccentBlue);
+    }
+
+    .img-profile svg {
+        height: 100%;
+        width: 100%;
+        aspect-ratio: 3/4;
+        color: var(--AccentBlue);
     }
 
     .send-message-box .message-input {

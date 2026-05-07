@@ -290,7 +290,7 @@
         height: 30px;
         width: 30px;
         border-radius: var(--radius-full);
-        background-color: var(--Muted);
+        background-color: var(--Secondary);
         display: flex;
         justify-content: center;
         align-items: center;
@@ -299,6 +299,12 @@
     .prof-profile-img img {
         height: 100%;
         width: 100%;
+    }
+
+    .prof-profile-img svg {
+        height: 100%;
+        width: 100%;
+        color: var(--AccentBlue);
     }
 
     .students-info .icon-students {
@@ -604,7 +610,7 @@
         height: 30px;
         width: 30px;
         border-radius: var(--radius-full);
-        background-color: var(--Muted);
+        background-color: var(--Secondary);
         display: flex;
         justify-content: center;
         align-items: center;
@@ -615,6 +621,12 @@
         height: 100%;
         width: 100%;
         aspect-ratio: 3/4;
+    }
+
+    .prof-profile-img svg {
+        height: 100%;
+        width: 100%;
+        color: var(--AccentBlue);
     }
 
     .students-info .icon-students {

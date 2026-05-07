@@ -1,12 +1,12 @@
 <?php
-    require_once './app/views/layouts/usersMain.phtml';
-    $class_id = $_SESSION['class_id'];
+require_once './app/views/layouts/usersMain.phtml';
+$class_id = $_SESSION['class_id'];
 
-    $class = new ClassController;
-    $messages = new MessageController;
-    $chats = new ChatController;
+$class = new ClassController;
+$messages = new MessageController;
+$chats = new ChatController;
 
-  /*  $class_chat = $chats->get_chat($class_id, $_SESSION['school_id']);
+/*  $class_chat = $chats->get_chat($class_id, $_SESSION['school_id']);
     $class_messages = $messages->get_chat_messages($_SESSION['school_id'], $class_chat);
     $class_data = $class->get_class_data($class_id);
     $students = $class->get_class_students($class_id);*/
@@ -34,7 +34,12 @@
             </div>
             <div class="info-nome-teacher">
                 <div class="teacher-photo">
-                    <img src="<//?= $class_data['foto'] ?>" alt=" ">
+                    <!--<img src="<//?= $class_data['foto'] ?>" alt=" ">-->
+                    <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-circle-user-round-icon lucide-circle-user-round">
+                        <path d="M17.925 20.056a6 6 0 0 0-11.851.001" />
+                        <circle cx="12" cy="11" r="4" />
+                        <circle cx="12" cy="12" r="10" />
+                    </svg>
                 </div>
                 <div class="nome-teacher">
                     <h3><!--<//?= $class_data['teacher'] ?>--></h3>
@@ -44,7 +49,9 @@
         </div>
         <div class="tabs-class">
             <button class="tab-class activeClass" data-current-class="pub-class">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-paperclip-icon lucide-paperclip"><path d="m16 6-8.414 8.586a2 2 0 0 0 2.829 2.829l8.414-8.586a4 4 0 1 0-5.657-5.657l-8.379 8.551a6 6 0 1 0 8.485 8.485l8.379-8.551"/></svg>
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-paperclip-icon lucide-paperclip">
+                    <path d="m16 6-8.414 8.586a2 2 0 0 0 2.829 2.829l8.414-8.586a4 4 0 1 0-5.657-5.657l-8.379 8.551a6 6 0 1 0 8.485 8.485l8.379-8.551" />
+                </svg>
 
 
                 <p>Anexos (1)</p>
@@ -70,13 +77,18 @@
         <!--CHAT SECTION-->
         <div class="chat-section class-content">
             <div class="messages-box">
-                <?php if (!empty($class_messages)):?>
-                    <?php foreach ($class_messages as $message):?>
-                        <?php if($message['user_id'] !== $_SESSION['id']):?>
+                <?php if (!empty($class_messages)): ?>
+                    <?php foreach ($class_messages as $message): ?>
+                        <?php if ($message['user_id'] !== $_SESSION['id']): ?>
                             <div class="message received">
                                 <div class="sender-profile">
-                                    <?php $photo = empty($message['foto']) ? 'assets/icons/circle-user-round.svg' : $message['foto']?>
+                                    <?php $photo = empty($message['foto']) ? 'assets/icons/circle-user-round.svg' : $message['foto'] ?>
                                     <!--img src="<//?= URL. "public/". $photo ?>"-->
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-circle-user-round-icon lucide-circle-user-round">
+                                        <path d="M17.925 20.056a6 6 0 0 0-11.851.001" />
+                                        <circle cx="12" cy="11" r="4" />
+                                        <circle cx="12" cy="12" r="10" />
+                                    </svg>
                                 </div>
                                 <div class="message-box">
                                     <div class="message-content">
@@ -86,11 +98,16 @@
                                     <span><?= $message['created_at'] ?></span>
                                 </div>
                             </div>
-                        <?php else:?>
+                        <?php else: ?>
                             <div class="message sent">
                                 <div class="sender-profile">
-                                    <?php $photo = empty($message['foto']) ? 'assets/icons/circle-user-round.svg' : $message['foto']?>
+                                    <?php $photo = empty($message['foto']) ? 'assets/icons/circle-user-round.svg' : $message['foto'] ?>
                                     <!--img src="<//?= URL. "public/". $photo ?>"-->
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-circle-user-round-icon lucide-circle-user-round">
+                                        <path d="M17.925 20.056a6 6 0 0 0-11.851.001" />
+                                        <circle cx="12" cy="11" r="4" />
+                                        <circle cx="12" cy="12" r="10" />
+                                    </svg>
                                 </div>
                                 <div class="message-box">
                                     <div class="message-content">
@@ -100,14 +117,19 @@
                                     <span><?= $message['created_at'] ?></span>
                                 </div>
                             </div>
-                        <?php endif;?>
-                    <?php endforeach;?>
-                <?php endif;?>
+                        <?php endif; ?>
+                    <?php endforeach; ?>
+                <?php endif; ?>
             </div>
             <div class="send-message-box">
                 <div class="img-profile">
-                    <?php $photo = empty($_SESSION['photo']) ? 'assets/icons/circle-user-round.svg' : $_SESSION['photo']?>
+                    <?php $photo = empty($_SESSION['photo']) ? 'assets/icons/circle-user-round.svg' : $_SESSION['photo'] ?>
                     <!--img src="<//?= URL. "public/". $photo ?>"-->
+                    <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-circle-user-round-icon lucide-circle-user-round">
+                        <path d="M17.925 20.056a6 6 0 0 0-11.851.001" />
+                        <circle cx="12" cy="11" r="4" />
+                        <circle cx="12" cy="12" r="10" />
+                    </svg>
                 </div>
                 <form action="<?= URL ?>message/send_message/<?= $class_id ?>" method="POST" class="message-input">
                     <div class="input-box">
@@ -140,14 +162,18 @@
         </div>
         <!--STUDENTS MANAGEMENT-->
         <div class="students-manegement class-content" id="">
-            <?php if (!empty($students)):?>
-                <?php foreach ($students as $s):?>
+            <?php if (!empty($students)): ?>
+                <?php foreach ($students as $s): ?>
                     <div class="student-item">
                         <div class="info-student">
                             <div class="student-profile">
-                                <?php $photo = empty($s['foto']) ? 'assets/icons/circle-user-round.svg' : $s['foto']?>
+                                <?php $photo = empty($s['foto']) ? 'assets/icons/circle-user-round.svg' : $s['foto'] ?>
                                 <!--img src="<//?= URL. "public/". $photo ?>"-->
-                                <img src="" alt=" ">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-circle-user-round-icon lucide-circle-user-round">
+                                    <path d="M17.925 20.056a6 6 0 0 0-11.851.001" />
+                                    <circle cx="12" cy="11" r="4" />
+                                    <circle cx="12" cy="12" r="10" />
+                                </svg>
                             </div>
                             <div class="student-name-email">
                                 <h4><?= $s['nome'] ?></h4>
@@ -155,11 +181,11 @@
                             </div>
                         </div>
                     </div>
-                <?php endforeach;?>
-            <?php endif;?>
+                <?php endforeach; ?>
+            <?php endif; ?>
         </div>
 
     </section>
 </div>
 
-<?php require_once './app/views/layouts/closure.phtml'?>
+<?php require_once './app/views/layouts/closure.phtml' ?>
