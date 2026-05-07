@@ -125,7 +125,7 @@ body {
         height: 100%;
         width: 100%;
         color: var(--AccentBlue);
-        background-color: var(--Background);
+        padding: .5px;
     }
 
     .layout-admin .user-details h3 {
@@ -336,8 +336,8 @@ body {
 
     .layout-admin .info-profile .profile-poto {
         border-radius: var(--radius-full);
-        height: 48px;
-        width: 48px;
+        height: 50px;
+        width: 50px;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -349,7 +349,7 @@ body {
         height: 100%;
         width: 100%;
         color: var(--AccentBlue);
-        background-color: var(--Background);
+        padding: .5px;
     }
 
     .layout-admin .user-details h3 {
