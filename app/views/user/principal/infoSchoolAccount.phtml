@@ -1,7 +1,7 @@
 <?php
-    require_once './app/views/layouts/usersMain.phtml';
-    $principal = new PrincipalController;
-    $school = $principal->find_school($_SESSION['school_id']);
+require_once './app/views/layouts/usersMain.phtml';
+$principal = new PrincipalController;
+$school = $principal->find_school($_SESSION['school_id']);
 ?>
 
 <section class="school-info-section">
@@ -9,7 +9,10 @@
     <section class="up-section">
         <div class="icon-back">
             <a href="<?= URL ?>user/settings">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-left-icon lucide-arrow-left"><path d="m12 19-7-7 7-7"/><path d="M19 12H5"/></svg>
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-left-icon lucide-arrow-left">
+                    <path d="m12 19-7-7 7-7" />
+                    <path d="M19 12H5" />
+                </svg>
 
                 <p>Voltar</p>
             </a>
@@ -22,7 +25,15 @@
         <div class="title-area">
             <div class="logo-name-school-area">
                 <div class="logo-img">
-                    <img src=""  alt=" ">
+                    <!--<img src=""  alt=" ">-->
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-building2-icon lucide-building-2">
+                        <path d="M10 12h4" />
+                        <path d="M10 8h4" />
+                        <path d="M14 21v-3a2 2 0 0 0-4 0v3" />
+                        <path d="M6 10H4a2 2 0 0 0-2 2v7a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-2" />
+                        <path d="M6 21V5a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v16" />
+                    </svg>
+
                 </div>
                 <div class="title-desc">
                     <h4>Informações da Escola</h4>
@@ -114,7 +125,7 @@
             </div>
             <div class="account-info status">
                 <h5>Status</h5>
-                <p><?= empty($school['deleted_at']) ? 'Activa' : 'Inactiva'?></p>
+                <p><?= empty($school['deleted_at']) ? 'Activa' : 'Inactiva' ?></p>
             </div>
             <div class="account-info">
                 <h5>Data de Criação</h5>

@@ -71,6 +71,8 @@
         gap: 15px;
     }
 
+    .title-area .logo-img{
+    }
     .title-area .title-desc {
         line-height: 1.5rem;
     }
@@ -118,7 +120,7 @@
     .profile-photo-area .profile-img {
         height: 90px;
         width: 90px;
-        background-color: var(--bgImgColor);
+        background-color: var(--Secondary);
         border-radius: var(--radius-full);
         display: flex;
         justify-content: center;
@@ -129,6 +131,12 @@
         aspect-ratio: 3/4;
         height: 100%;
         width: 100%;
+    }
+    .profile-img svg {
+        aspect-ratio: 3/4;
+        height: 100%;
+        width: 100%;
+        color: var(--AccentBlue);
     }
 
     .personal-info-card .nome-role {
@@ -517,7 +525,7 @@
     .profile-photo-area .profile-img {
         height: 75px;
         width: 75px;
-        background-color: var(--bgImgColor);
+        background-color: var(--Secondary);
         border-radius: var(--radius-full);
         display: flex;
         justify-content: center;
@@ -528,6 +536,12 @@
         aspect-ratio: 3/4;
         height: 100%;
         width: 100%;
+    }
+    .profile-img svg {
+        aspect-ratio: 3/4;
+        height: 100%;
+        width: 100%;
+        color: var(--AccentBlue);
     }
 
     .nome-role {

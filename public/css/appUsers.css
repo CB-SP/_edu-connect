@@ -122,10 +122,12 @@ body {
         flex-shrink: 0;
     }
 
-    .profile-poto img {
+    .profile-poto svg {
         border-radius: var(--radius-full);
         height: 100%;
         width: 100%;
+        color: var(--AccentBlue);
+        padding: .5px;
     }
 
     .layout-admin .user-details h3 {
@@ -379,8 +381,8 @@ body {
 
     .layout-admin .info-profile .profile-poto {
         border-radius: var(--radius-full);
-        height: 48px;
-        width: 48px;
+        height: 50px;
+        width: 50px;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -388,11 +390,12 @@ body {
         flex-shrink: 0;
     }
 
-    .profile-poto img {
-        border-radius: var(--radius-full);
+    .profile-poto svg {
         height: 100%;
         width: 100%;
         aspect-ratio: 3/4;
+        color: var(--AccentBlue);
+        padding: .5px;
     }
 
 

@@ -12,9 +12,9 @@
     }
 
     .logo-name-school-area .logo-img {
-        background-color: var(--bgImgColor);
-        height: 50px;
-        width: 50px;
+        background-color: var(--Background);
+        height: 45px;
+        width: 45px;
         border-radius: var(--radius-full);
         display: flex;
         justify-content: center;
@@ -24,6 +24,12 @@
     .logo-img img {
         height: 100%;
         width: 100%;
+    }
+
+    .logo-img svg {
+        height: 100%;
+        width: 100%;
+        color: var(--AccentBlue);
     }
 
     /*INFO SCHOOL ACCOUNT*/
@@ -62,19 +68,21 @@
     }
 
     .logo-name-school-area .logo-img {
-        background-color: var(--bgImgColor);
+        background-color: var(--Background);
         height: 50px;
         width: 50px;
         border-radius: var(--radius-full);
-        display: flex;
-        justify-content: center;
-        align-items: center;
-
     }
 
     .logo-img img {
         height: 100%;
         width: 100%;
+    }
+    
+    .logo-img svg {
+        height: 100%;
+        width: 100%;
+        color: var(--AccentBlue);
     }
 
     /*INFO SCHOOL ACCOUNT*/
