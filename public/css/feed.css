@@ -294,13 +294,20 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        background-color: var(--Muted);
+        background-color: var(--Secondary);
     }
 
     .img-user img {
         height: 100%;
         width: 100%;
         aspect-ratio: 3/4;
+    }
+
+    .img-user svg {
+        height: 100%;
+        width: 100%;
+        aspect-ratio: 3/4;
+        color: var(--AccentBlue);
     }
 
     .info-user-publication-card .name-user {
@@ -907,18 +914,26 @@
 
     .info-user-publication-card .img-user {
         border-radius: var(--radius-full);
-        height: 40px;
-        width: 40px;
+        height: 43px;
+        width: 43px;
         display: flex;
         justify-content: center;
         align-items: center;
-        background-color: var(--Muted);
+        background-color: var(--Secondary);
     }
 
     .img-user img {
         height: 100%;
         width: 100%;
         aspect-ratio: 3/4;
+    }
+
+    .img-user svg {
+        height: 100%;
+        width: 100%;
+        aspect-ratio: 3/4;
+        color: var(--AccentBlue);
+        padding: .5px;
     }
 
     .info-user-publication-card .name-user {
