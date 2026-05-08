@@ -221,6 +221,8 @@
         display: flex;
         flex-direction: column;
         gap: 15px;
+        max-height: 400px;
+        overflow-y: auto;
     }
 
     .messages-box .message {
@@ -270,6 +272,8 @@
         display: flex;
         flex-direction: column;
         gap: 5px;
+        max-width: 400px;
+        word-break: break-all;
     }
 
     .message-box .message-content {
@@ -579,6 +583,7 @@
         margin-top: 110px;
         display: grid;
         grid-template: 1fr / 10% 1fr 10%;
+        padding-bottom: 1.5rem;
     }
 
     #current-class-section {
@@ -796,6 +801,8 @@
         display: flex;
         flex-direction: column;
         gap: 15px;
+        max-height: 380px;
+        overflow-y: auto;
     }
 
     .messages-box .message {
@@ -848,6 +855,8 @@
         display: flex;
         flex-direction: column;
         gap: 5px;
+        max-width: 500px;
+        word-break: break-all;
     }
 
     .message-box .message-content {
