@@ -7,13 +7,13 @@
         }
 
         //send messages
-        public function send_message(int $class) {
+        public function send_message(int $class, string $role) {
             $this->school = $_POST['school'] ?? null;
             $this->chat = $_POST['chat'] ?? null;
             $this->content = $_POST['content'] ?? null;
             $this->user = $_POST['user'] ?? null;
 
-            if (empty($this->school) || empty($this->chat) || empty($this->content) || empty($this->user)) {
+            if (empty($this->school) || empty($this->chat) || empty($this->content) || empty($this->user) || empty($role)) {
                 $this->redirect("teacher/class/$class/error");
             }
 
@@ -26,7 +26,7 @@
                 $this->redirect("teacher/class/$class/error");
             }
 
-            $this->redirect("teacher/class/$class");
+            $this->redirect($role === 'professor' ? "teacher/class/$class" : "student/class/$class");
         }
 
         //get chat messages

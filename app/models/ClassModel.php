@@ -59,6 +59,31 @@
             }
         }
 
+        //get students classes
+        public function get_students_classes(int $id) {
+            try {
+                $this->stmt = $this->pdo->prepare("SELECT t.id, t.nome AS class, p.nome AS teacher, COUNT(sc_all.id) AS students
+                    FROM turmas AS t
+                    JOIN usuarios AS p ON p.id = t.professor
+                    JOIN alunos_turmas AS sc_filter ON sc_filter.turma = t.id
+                    LEFT JOIN alunos_turmas AS sc_all ON sc_all.turma = t.id
+                    WHERE sc_filter.aluno = ?
+                    GROUP BY t.id, t.nome, p.nome
+                ");
+                $this->stmt->execute([$id]);
+
+                $classes = [];
+
+                while ($result = $this->stmt->fetch(PDO::FETCH_ASSOC)) {
+                    $classes[] = $result;
+                }
+                
+                return !empty($classes) ? $classes : null;
+            } catch (PDOException $e) {
+                throw $e;
+            }
+        }
+
         //get class data
         public function get_class_data(int $id) {
             try {

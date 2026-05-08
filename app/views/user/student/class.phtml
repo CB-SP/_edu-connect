@@ -6,10 +6,10 @@
     $messages = new MessageController;
     $chats = new ChatController;
 
-/*  $class_chat = $chats->get_chat($class_id, $_SESSION['school_id']);
+    $class_chat = $chats->get_chat($class_id, $_SESSION['school_id']);
     $class_messages = $messages->get_chat_messages($_SESSION['school_id'], $class_chat);
     $class_data = $class->get_class_data($class_id);
-    $students = $class->get_class_students($class_id);*/
+    $students = $class->get_class_students($class_id);
 ?>
 
 <div class="current-class-wrapper">
@@ -29,7 +29,7 @@
         <div class="class-info">
             <div class="top-side">
                 <div class="nome-desc-class">
-                    <h4><!--<//?= $class_data['class'] ?>--></h4>
+                    <h4><?= $class_data['class'] ?></h4>
                 </div>
             </div>
             <div class="info-nome-teacher">
@@ -42,7 +42,7 @@
                     </svg>
                 </div>
                 <div class="nome-teacher">
-                    <h3><!--<//?= $class_data['teacher'] ?>--></h3>
+                    <h3><?= $class_data['teacher'] ?></h3>
                     <p>Professor</p>
                 </div>
             </div>
@@ -131,13 +131,12 @@
                         <circle cx="12" cy="12" r="10" />
                     </svg>
                 </div>
-                <form action="<?= URL ?>message/send_message/<?= $class_id ?>" method="POST" class="message-input">
+                <form action="<?= URL ?>message/send_message/<?= $class_id ?>/<?= $_SESSION['role'] ?>" method="POST" class="message-input">
                     <div class="input-box">
                         <textarea name="content" class="fileName" id="msg-content" placeholder="Escreva uma mensagem"></textarea>
                     </div>
 
-                    <input type="hidden" name="chat" value="<//?= $class_chat ?>">
-                    <input type="hidden" name="school" value="<?= $_SESSION['school_id'] ?>">
+                    <input type="hidden" name="chat" value="<?= $class_chat ?>">
                     <input type="hidden" name="school" value="<?= $_SESSION['school_id'] ?>">
                     <input type="hidden" name="user" value="<?= $_SESSION['id'] ?>">
 
