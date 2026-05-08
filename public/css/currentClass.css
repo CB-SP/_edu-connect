@@ -392,7 +392,7 @@
         height: 40px;
         width: 40px;
         border-radius: var(--radius-full);
-        background-color: var(--Muted);
+        background-color: var(--Secondary);
         display: flex;
         justify-content: center;
         align-items: center;
@@ -402,6 +402,15 @@
     .student-profile img {
         height: 100%;
         width: 100%;
+        aspect-ratio: 3/4;
+    }
+
+    .student-profile svg {
+        height: 100%;
+        width: 100%;
+        aspect-ratio: 3/4;
+        color: var(--AccentBlue);
+        padding: .5px;
     }
 
     .info-student .student-name-email {
@@ -984,7 +993,7 @@
         height: 45px;
         width: 45px;
         border-radius: var(--radius-full);
-        background-color: var(--Muted);
+        background-color: var(--Secondary);
         display: flex;
         justify-content: center;
         align-items: center;
@@ -994,6 +1003,15 @@
     .student-profile img {
         height: 100%;
         width: 100%;
+        aspect-ratio: 3/4;
+    }
+
+    .student-profile svg {
+        height: 100%;
+        width: 100%;
+        aspect-ratio: 3/4;
+        color: var(--AccentBlue);
+        padding: .5px;
     }
 
     .info-student .student-name-email {
