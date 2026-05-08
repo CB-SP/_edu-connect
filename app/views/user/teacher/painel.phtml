@@ -1,9 +1,9 @@
 <?php
-require_once './app/views/layouts/usersMain.phtml';
-$principal = new PrincipalController;
-$school = $principal->find_school($_SESSION['school_id']);
-$users = $principal->fetch_school_users($_SESSION['school_id']);
-$entities = $principal->total_entities($_SESSION['school_id']);
+    require_once './app/views/layouts/usersMain.phtml';
+    $coordinator = new CoordinatorController;
+    $school = $coordinator->find_school($_SESSION['school_id']);
+    $students = $coordinator->fetch_school_students($_SESSION['school_id']);
+    $total_students = $coordinator->get_total_students($_SESSION['school_id']);
 ?>
 
 <div class="painel-wrapper">
@@ -74,9 +74,9 @@ $entities = $principal->total_entities($_SESSION['school_id']);
                 <div class="desc-form">
                     <h3>Novo aluno</h3>
                     <p>Cadastre um novo aluno no sistema</p>
-                    <img src="<?= URL ?>public/assets/icons/x.png" alt="" class="close-modal-icon">
+                    <img src="<?= URL ?>public/assets/icons/x.png" class="close-modal-icon">
                 </div>
-                <form action="<?= URL ?>principal/add_user" method="post" enctype="multipart/form-data">
+                <form action="<?= URL ?>coordinator/add_student" method="post" enctype="multipart/form-data">
                     <div class="input-box">
                         <label for="userName">Nome Completo</label>
                         <input type="text" name="name" placeholder="Nome completo do usuário">
@@ -123,8 +123,6 @@ $entities = $principal->total_entities($_SESSION['school_id']);
                         <label for="role">Nível de acesso</label>
                         <select name="role" id="role">
                             <option value="aluno">Aluno</option>
-                            <option value="professor">Professor</option>
-                            <option value="coordenador">Coordenador</option>
                         </select>
                     </div>
                     <div class="final-btn-actions">
@@ -140,7 +138,7 @@ $entities = $principal->total_entities($_SESSION['school_id']);
                     <p>Edite as informações do aluno</p>
                     <img src="<?= URL ?>public/assets/icons/x.png" alt="" class="close-modal-icon">
                 </div>
-                <form action="<?= URL ?>principal/edit_user" method="post" enctype="multipart/form-data">
+                <form action="<?= URL ?>coordinator/edit_student" method="post" enctype="multipart/form-data">
                     <div class="input-box">
                         <label for="userName">Nome Completo</label>
                         <input type="text" name="name" id="userName" placeholder="Nome completo do usuário">
@@ -188,7 +186,7 @@ $entities = $principal->total_entities($_SESSION['school_id']);
         <!--TAB USERS SECTION-->
         <div class="tabs">
             <button class="tab active" data-target="students-section">
-                <span>Alunos (<?= $entities[0]['teachers'] ?>)</span>
+                <span>Alunos (<?= $total_students ?>)</span>
             </button>
         </div>
     
@@ -202,21 +200,14 @@ $entities = $principal->total_entities($_SESSION['school_id']);
                     <table class="tbl-users">
                         <thead>
                             <tr>
-                                <th>Usuário</th>
+                                <th>Aluno</th>
                                 <th>Contacto</th>
                                 <th>Estado</th>
                                 <th>Acções</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <?php if (empty($users)): ?>
-                                <h3>Dados não encontrados</h3>
-                            <?php else: ?>
-                                <?php
-                                $students = array_filter($users, function ($n) {
-                                    return ($n['role'] !== 'director') && ($n['escola_id'] === $_SESSION['id']) && ($n['role'] === 'aluno');
-                                });
-                                ?>
+                            <?php if (!empty($students)): ?>
                                 <?php foreach ($students as $student): ?>
                                     <tr>
                                         <td><?= $student['nome'] ?></td>
@@ -228,10 +219,10 @@ $entities = $principal->total_entities($_SESSION['school_id']);
                                             <button class="action-btn">Acções</button>
                                             <div class="drop-actions">
                                                 <?php if ($status == 'Inactivo'): ?>
-                                                    <button class="restore-action" onclick="window.location.href='<?= URL ?>principal/restore_user/<?= $student['id'] ?>'"><img src="" alt=" ">Restaurar</button>
+                                                    <button class="restore-action" onclick="window.location.href='<?= URL ?>coordinator/restore_student/<?= $student['id'] ?>'"><img src="">Restaurar</button>
                                                 <?php else: ?>
                                                     <button class="edit-action" data-id=<?= $student['id'] ?> data-type="user"><img src="" alt=" ">Editar</button>
-                                                    <button class="delete-action" onclick="window.location.href='<?= URL ?>principal/delete_user/<?= $student['id'] ?>'"><img src="" alt=" ">Eliminar</button>
+                                                    <button class="delete-action" onclick="window.location.href='<?= URL ?>coordinator/delete_student/<?= $student['id'] ?>'"><img src="" alt=" ">Eliminar</button>
                                                 <?php endif; ?>
                                             </div>
                                         </td>

@@ -2,7 +2,7 @@
     class CoordinatorModel extends Model {
 
         //insert a new coordinator
-        public function add_coordinator($id, $role) {
+        public function add_coordinator(int $id, string $role) {
             try {
                 $this->stmt = $this->pdo->prepare("INSERT INTO coordenadores (id, role) VALUES (?, ?)");
 

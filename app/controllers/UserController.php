@@ -4,7 +4,7 @@
 
         public function __construct() {
             $this->user = new UserModel;
-            $this->coordinator = new CoordinatorController;
+            $this->coordinator = new CoordinatorModel;
             $this->post = new PostController;
             $this->reaction = new ReactionController;
             $this->comment = new CommentController;
@@ -37,31 +37,6 @@
             $this->is_user();
             $this->show_page("security");
         }
-
-        public function messages() {
-            $this->isLoged();
-            $this->is_user();
-            $this->show_page("messages");
-        }
-       
-        public function messagesA() {
-            $this->isLoged();
-            $this->is_user();
-            $this->show_page("messagesA");
-        }
-        public function classesA() {
-            $this->isLoged();
-            $this->is_user();
-            $this->show_page("classesA");
-        }
-       
-        public function classA() {
-            $this->isLoged();
-            $this->is_user();
-            $this->show_page("classA");
-        }
-       
-
         
         //users login
         public function login_user() {
@@ -89,6 +64,7 @@
                 $_SESSION['school_id'] = $user_login['escola_id'];
                 $_SESSION['logo'] = $user_login['logo'];
                 $_SESSION['role'] = $user_login['role'];
+                $_SESSION['coordinator_role'] = $user_login['coordinator_role'];
                 $_SESSION['photo'] = $user_login['foto'];
             } catch (PDOException $e) {
                 error_log("ERRO_LOGIN_USUARIO: ". $e->getMessage(). "\n". $e->getTraceAsString());
@@ -131,7 +107,7 @@
                 }
 
                 if ($isCoordinator === 'coordenador') {
-                    if (!$this->coordinator->add_coordinator($this->get_user_id($this->nif))) {
+                    if (!$this->coordinator->add_coordinator($this->get_user_id($this->nif), 'coordinator')) {
                         return false;
                     }
 

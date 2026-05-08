@@ -1,7 +1,7 @@
 <?php
     class PostModel extends Model {
         //make a post
-        public function publish($content, $type, $user, $school) {
+        public function publish(string $content, string $type, int $user, int $school) {
             try {
                 $this->stmt = $this->pdo->prepare("INSERT INTO posts (conteudo, tipo, usuario, escola) VALUES (?, ?, ?, ?)");
                 
@@ -12,7 +12,7 @@
         }
 
         //get all posts of a school
-        public function get_posts($school) {
+        public function get_posts(int $school) {
             try {
                 $this->stmt = $this->pdo->prepare("SELECT p.id, p.conteudo, p.tipo, p.created_at, u.nome AS user, u.id AS user_id, u.foto, e.id AS school
                     FROM posts AS p
@@ -36,7 +36,7 @@
         }
 
         //get publications count
-        public function count_publications($school) {
+        public function count_publications(int $school) {
             try {
                 $this->stmt = $this->pdo->prepare("SELECT
                     (SELECT COUNT(id) FROM POSTS WHERE tipo = 'post' AND escola = ?) AS posts,
@@ -53,7 +53,7 @@
         }
 
         //get interactions quantity
-        public function get_interactions($post) {
+        public function get_interactions(int $post) {
             try {
                 $this->stmt = $this->pdo->prepare("SELECT
                     (SELECT COUNT(id) FROM reacoes WHERE post = ? AND tipo = 'like') AS likes,

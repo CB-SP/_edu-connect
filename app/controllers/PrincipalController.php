@@ -60,7 +60,7 @@
 
         //read all
         public function fetch_school_users(int $school) {
-            return $this->user->fetch_users($school);
+            return $this->user->fetch_school_users($school);
         }
 
         //read one

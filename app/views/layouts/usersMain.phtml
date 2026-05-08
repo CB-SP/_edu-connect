@@ -44,8 +44,8 @@
 
                     </div>
                     <div class="user-details">
-                        <h3><?= $_SESSION['name'] ?> Tchpita Cambéu</h3>
-                        <span><?= $_SESSION['role'] ?></span>
+                        <h3><?= $_SESSION['name'] ?></h3>
+                        <span><?= !empty($_SESSION['coordinator_role']) ? $_SESSION['coordinator_role'] : $_SESSION['role'] ?></span>
                     </div>
                 </div>
             </div>
@@ -96,7 +96,7 @@
                         <?php endif; ?>
                         <?php if ($_SESSION['role'] === 'aluno'): ?>
                             <li class="nav-item selectedClass" data-link="painel">
-                                <a href="<?= URL ?>teacher/classesA" class="nav-link">
+                                <a href="<?= URL ?>student/classes" class="nav-link">
                                     <span class="nav-icon">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-users-icon lucide-users">
                                             <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
@@ -123,7 +123,7 @@
                         <?php endif; ?>
                         <?php if ($_SESSION['role'] === 'aluno'): ?>
                             <li class="nav-item selectedMessages" data-link="painel">
-                                <a href="<?= URL ?>teacher/messagesA" class="nav-link">
+                                <a href="<?= URL ?>student/messages" class="nav-link">
                                     <span class="nav-icon">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-message-square-icon lucide-message-square">
                                             <path d="M22 17a2 2 0 0 1-2 2H6.828a2 2 0 0 0-1.414.586l-2.202 2.202A.71.71 0 0 1 2 21.286V5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2z" />
@@ -133,7 +133,7 @@
                                 </a>
                             </li>
                         <?php endif; ?>
-                        <?php if ($_SESSION['role'] === 'professor'): ?>
+                        <?php if (!empty($_SESSION['coordinator_role'])): ?>
                             <li class="nav-item selectedTeacherPainel" data-link="painel">
                                 <a href="<?= URL ?>teacher/painel" class="nav-link">
                                     <span class="nav-icon">

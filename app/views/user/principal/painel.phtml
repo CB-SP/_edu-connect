@@ -1,9 +1,9 @@
 <?php
-require_once './app/views/layouts/usersMain.phtml';
-$principal = new PrincipalController;
-$school = $principal->find_school($_SESSION['school_id']);
-$users = $principal->fetch_school_users((int) $_SESSION['school_id']);
-$entities = $principal->total_entities($_SESSION['school_id']);
+    require_once './app/views/layouts/usersMain.phtml';
+    $principal = new PrincipalController;
+    $school = $principal->find_school($_SESSION['school_id']);
+    $users = $principal->fetch_school_users((int) $_SESSION['school_id']);
+    $entities = $principal->total_entities($_SESSION['school_id']);
 ?>
 
 <div class="painel-wrapper">

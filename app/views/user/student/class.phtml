@@ -1,10 +1,10 @@
 <?php
-require_once './app/views/layouts/usersMain.phtml';
-$class_id = $_SESSION['class_id'];
+    require_once './app/views/layouts/usersMain.phtml';
+    $class_id = $_SESSION['class_id'];
 
-$class = new ClassController;
-$messages = new MessageController;
-$chats = new ChatController;
+    $class = new ClassController;
+    $messages = new MessageController;
+    $chats = new ChatController;
 
 /*  $class_chat = $chats->get_chat($class_id, $_SESSION['school_id']);
     $class_messages = $messages->get_chat_messages($_SESSION['school_id'], $class_chat);
@@ -17,7 +17,7 @@ $chats = new ChatController;
     <div class="overlay-current-class"></div>
     <section id="current-class-section">
         <div class="icon-back">
-            <a href="<?= URL ?>teacher/classesA">
+            <a href="<?= URL ?>student/classes">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-left-icon lucide-arrow-left">
                     <path d="m12 19-7-7 7-7" />
                     <path d="M19 12H5" />
