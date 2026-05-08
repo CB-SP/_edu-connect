@@ -107,15 +107,15 @@ $interactionsCount = null;
         <div class="publication-cards active-pub" id="posts">
             <?php if (!empty($posts)): ?>
                 <?php
-                $publications = array_filter($posts, function ($n) {
-                    return $n['tipo'] === 'post';
-                });
+                    $publications = array_filter($posts, function ($n) {
+                        return $n['tipo'] === 'post';
+                    });
                 ?>
                 <?php
-                foreach ($publications as $publication):
-                    $interactionsCount = $user->get_interactions($publication['id']);
-                    $comments = $user->get_post_comments($publication['id']);
-                    $reaction = $user->get_reactions($_SESSION['id'], $publication['id']);
+                    foreach ($publications as $publication):
+                        $interactionsCount = $user->get_interactions($publication['id']);
+                        $comments = $user->get_post_comments($publication['id']);
+                        $reaction = $user->get_reactions($_SESSION['id'], $publication['id']);
                 ?>
                     <div class="publication-card">
                         <div class="header-publication-card">
