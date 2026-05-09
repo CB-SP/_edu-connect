@@ -194,9 +194,7 @@ $total_entities = $admin->total_entities();
 
             <!--SCHOOLS LIST-->
             <div class="school-list">
-                <?php if (empty($schools)): ?>
-                    <h3>Dados não encontrados</h3>
-                <?php else: ?>
+                <?php if (!empty($schools)): ?>
                     <table class="tbl-schools">
                         <thead>
                             <tr>
@@ -401,9 +399,7 @@ $total_entities = $admin->total_entities();
                     <p><span>Todos os usuários do sistema.</span> <br> Usuários de todas as escolas cadastradas.</p>
                 </div>
                 <div class="tbl">
-                    <?php if (empty($users)): ?>
-                        <h2>Dados não encontrados</h2>
-                    <?php else: ?>
+                    <?php if (!empty($users)): ?>
                         <table class="tbl-users">
                             <thead>
                                 <tr>
