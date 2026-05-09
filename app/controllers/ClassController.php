@@ -61,6 +61,20 @@
             }
         }
 
+        //get students classes
+        public function get_students_classes(int $id) {
+            if (empty($id)) {
+                return null;
+            }
+
+            try {
+                return $this->class->get_students_classes($id);
+            } catch (PDOException $e) {
+                error_log("ERRO_BUSCAR_TURMAS_ESTUDANTES: ". $e->getMessage(). "\n". $e->getTraceAsString());
+                return null;
+            }
+        }
+
         //get class data
         public function get_class_data(int $id) {
             if (empty($id)) {
