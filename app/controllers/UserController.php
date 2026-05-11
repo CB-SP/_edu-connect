@@ -107,7 +107,7 @@
                 }
 
                 if ($isCoordinator === 'coordenador') {
-                    if (!$this->coordinator->add_coordinator($this->get_user_id($this->nif), 'coordinator')) {
+                    if (!$this->coordinator->add_coordinator($this->get_user_id($this->nif), 'coordenador')) {
                         return false;
                     }
 

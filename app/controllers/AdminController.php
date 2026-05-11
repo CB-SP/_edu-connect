@@ -40,7 +40,7 @@
         }
 
         //add admins
-        public function add_admin($name, $photo, $email, $password) {
+        public function add_admin(string $name, string $photo, string $email, string $password) {
             if (empty($name) || empty($email) || empty($password)) {
                 return false;
             }
@@ -113,7 +113,7 @@
         }
 
         //find admin
-        public function find_admin($id) {
+        public function find_admin(int $id) {
             if (empty($id)) {
                 return false;
             }
@@ -213,7 +213,7 @@
         }
 
         //read one
-        public function fetch_school($id) {
+        public function fetch_school(int $id) {
             header('Content-Type: application/json');
 
             echo json_encode($this->school->fetch_school($id));
@@ -221,12 +221,12 @@
         }
 
         //delete
-        public function delete_school($id) {
+        public function delete_school(int $id) {
             $this->redirect($this->school->delete_school($id) ? 'admin/index' : 'admin/index');
         }
 
         //restore
-        public function restore_school($id) {
+        public function restore_school(int $id) {
             $this->redirect($this->school->restore_school($id) ? 'admin/index' : 'admin/index');
         }
 
@@ -247,7 +247,7 @@
         }
 
         //read one
-        public function fetch_user($id) {
+        public function fetch_user(int $id) {
             header('Content-Type: application/json');
 
             echo json_encode($this->user->fetch_user($id));
@@ -255,12 +255,12 @@
         }
 
         //delete
-        public function delete_user($id) {
+        public function delete_user(int $id) {
             $this->redirect($this->user->delete_user($id) ? 'admin/index' : 'admin/index');
         }
 
         //restore
-        public function restore_user($id) {
+        public function restore_user(int $id) {
             $this->redirect($this->user->restore_user($id) ? 'admin/index' : 'admin/index');
         }
 
@@ -283,7 +283,7 @@
         }
 
         //search admins password hash
-        private function fetch_password_hash($email) {
+        private function fetch_password_hash(string $email) {
             if (empty($email)) {
                 return null;
             }
@@ -297,7 +297,7 @@
         }
 
         //search admins password hash
-        private function find_password_hash($id) {
+        private function find_password_hash(int $id) {
             if (empty($id)) {
                 return null;
             }

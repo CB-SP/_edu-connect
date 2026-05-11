@@ -415,7 +415,7 @@ $total_entities = $admin->total_entities();
                                     <tr>
                                         <td><?= $user['nome'] ?></td>
                                         <td><?= $user['escola'] ?></td>
-                                        <td><?= $user['role'] ?></td>
+                                        <td><?= empty($user['coordinator_role']) ? $user['role'] : $user['coordinator_role'] ?></td>
                                         <td>
                                             <?= $status = empty($user['deleted_at']) && empty($user['estado_escola']) ? 'Activo' : 'Inactivo' ?>
                                         </td>
