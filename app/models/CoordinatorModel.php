@@ -6,7 +6,7 @@
             try {
                 $this->stmt = $this->pdo->prepare("INSERT INTO coordenadores (id, role) VALUES (?, ?)");
 
-                return $this->stmt->execute([$id, $role]) ?: false;
+                return $this->stmt->execute([$id, $role]) ? true : false;
             } catch (PDOException $e) {
                 throw $e;
             }
