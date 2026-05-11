@@ -341,11 +341,9 @@
         border: 1px solid var(--SwitchBackground);
         border-radius: var(--radius-lg);
         max-height: 400px;
-        width: 100%;
         margin: auto;
         height: 300px;
-        width: 100%;
-        overflow: hidden;
+        overflow: auto;
     }
 
     .school-list {
@@ -355,7 +353,7 @@
     .users-list .tbl {
         overflow: auto;
         height: 100%;
-        width: 100%;
+        width: 340px;
     }
 
     .users-list .text-users-header {
@@ -481,11 +479,12 @@
     }
 
     .tab-content {
-        width: 96vw;
+        width: 100%;
         display: none;
     }
 
     .tab-content.active {
+        width: 100%;
         display: block;
     }
 
