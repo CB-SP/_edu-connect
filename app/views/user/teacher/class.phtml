@@ -55,11 +55,11 @@ $students = $class->get_class_students($class_id);
                                 </svg>
 
                             </div>
-                            <input type="text" name="" id="" placeholder="Pesquisar alunos">
+                            <input type="text" name="searchUser" id="searchUser" placeholder="Pesquisar alunos">
                         </div>
                     </div>
-                    <div class="list">
-                        <div class="student-item">
+                    <div class="list" id="usersResults">
+                        <div class="student-item" >
                             <div class="info-student">
                                 <div class="student-profile">
                                     <img src="" alt=" ">
@@ -294,5 +294,9 @@ $students = $class->get_class_students($class_id);
 
     </section>
 </div>
+<input type="hidden" id="schoolId" value="<?= $_SESSION['school_id'] ?>">
+<input type="hidden" id="userRole" value="professor">
+<input type="hidden" id="type" value="classSearch">
+<script src="<?= URL ?>public/js/searchUsers.js"></script>
 
 <?php require_once './app/views/layouts/closure.phtml' ?>

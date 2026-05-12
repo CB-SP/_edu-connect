@@ -107,7 +107,7 @@
     
                     </div>
     
-                    <input type="search" name="searchUsers" id="searchUsers" placeholder="Pesquisar usuário">
+                    <input type="search" name="searchUser" id="searchUser" placeholder="Pesquisar usuário">
                 </div>
                 <button class="add-user-btn add-button">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-plus-icon lucide-plus">
@@ -236,7 +236,7 @@
     
         <!--TAB USERS SECTION-->
         <div class="tabs">
-            <button class="tab active" data-target="teachers-section">
+            <button class="tab active" data-target="usersResults">
                 <span>Professores (<?= $entities[0]['teachers'] ?>)</span>
             </button>
             <button class="tab" data-target="coordinators-section">
@@ -249,7 +249,7 @@
     
             <section class="users-list">
                 <!--TEACHERS LIST-->
-                <div class="tab-content active" id="teachers-section">
+                <div class="tab-content active" id="usersResults">
     
                     <table class="tbl-users">
                         <thead>
@@ -343,5 +343,9 @@
         </section>
     </section>
 </div>
+<input type="hidden" id="schoolId" value="<?= $_SESSION['school_id'] ?>">
+<input type="hidden" id="userRole" value="professor">
+<input type="hidden" id="type" value="classSearch">
+<script src="<?= URL ?>public/js/searchUsers.js"></script>
 
 <?php require_once './app/views/layouts/closure.phtml' ?>

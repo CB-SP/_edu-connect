@@ -56,7 +56,7 @@
     
                     </div>
     
-                    <input type="search" name="searchUsers" id="searchUsers" placeholder="Pesquisar usuário">
+                    <input type="search" name="searchUser" id="searchUser" placeholder="Pesquisar usuário">
                 </div>
     
     
@@ -185,7 +185,7 @@
     
         <!--TAB USERS SECTION-->
         <div class="tabs">
-            <button class="tab active" data-target="students-section">
+            <button class="tab active" data-target="usersResults">
                 <span>Alunos (<?= $total_students ?>)</span>
             </button>
         </div>
@@ -195,7 +195,7 @@
     
             <section class="users-list">
                 <!--STUDENTS LIST-->
-                <div class="tab-content active" id="students-section">
+                <div class="tab-content active" id="usersResults">
     
                     <table class="tbl-users">
                         <thead>
@@ -238,5 +238,9 @@
         </section>
     </section>
 </div>
+<input type="hidden" id="schoolId" value="<?= $_SESSION['school_id'] ?>">
+<input type="hidden" id="userRole" value="aluno">
+<input type="hidden" id="type" value="classSearch">
+<script src="<?= URL ?>public/js/searchUsers.js"></script>
 
 <?php require_once './app/views/layouts/closure.phtml' ?>

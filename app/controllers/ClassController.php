@@ -47,6 +47,27 @@
             }
         }
 
+        //search teachers classes
+        public function search_teachers_classes(string $term, int $id) {
+            try {
+                header('Content-Type: application/json');
+
+                $t = $term;
+
+                $classes = null;
+
+                $classes = $this->class->search_teachers_classes($t, $id);
+
+                echo json_encode([
+                    'success' => true,
+                    'classes' => $classes
+                ]);
+            } catch (PDOException $e) {
+                error_log("ERRO_BUSCAR_TURMAS: ". $e->getMessage(). "\n". $e->getTraceAsString());
+                return null;
+            }
+        }
+
         //get class students
         public function get_class_students(int $id) {
             if (empty($id)) {
@@ -69,6 +90,27 @@
 
             try {
                 return $this->class->get_students_classes($id);
+            } catch (PDOException $e) {
+                error_log("ERRO_BUSCAR_TURMAS_ESTUDANTES: ". $e->getMessage(). "\n". $e->getTraceAsString());
+                return null;
+            }
+        }
+        
+        //search students classes
+        public function search_students_classes(string $term, int $id) {
+            try {
+                header('Content-Type: application/json');
+
+                $t = $term;
+
+                $classes = null;
+
+                $classes = $this->class->search_students_classes($t, $id);
+
+                echo json_encode([
+                    'success' => true,
+                    'classes' => $classes
+                ]);
             } catch (PDOException $e) {
                 error_log("ERRO_BUSCAR_TURMAS_ESTUDANTES: ". $e->getMessage(). "\n". $e->getTraceAsString());
                 return null;

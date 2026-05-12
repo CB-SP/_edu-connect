@@ -1,7 +1,7 @@
 <?php
     class UserModel extends Model {
         //add users
-        public function add_user($name, $email, $first_contact, $second_contact, $nif, $school, $role, $photo, $password) {
+        public function add_user(string $name, string $email, string $first_contact, string $second_contact, string $nif, int $school, string $role, string $photo, string $password) {
             try {
                 $this->stmt = $this->pdo->prepare("INSERT INTO usuarios (nome, contacto_1, contacto_2, nif, email, foto, password, role, escola) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
 
@@ -72,7 +72,7 @@
         }
 
         //search for a unic user
-        public function fetch_user($id) {
+        public function fetch_user(int $id) {
             try {
                 $this->stmt = $this->pdo->prepare("SELECT u.nome, u.contacto_1, u.contacto_2, u.nif, u.email, u.foto, u.role, e.id AS escola FROM usuarios AS u JOIN escolas AS e ON u.escola = e.id WHERE u.id = ? AND u.deleted_at IS NULL AND e.deleted_at IS NULL");
                 $this->stmt->execute([$id]);
@@ -86,7 +86,7 @@
         }
 
         //find user
-        public function find_user($id) {
+        public function find_user(int $id) {
             try {
                 $this->stmt = $this->pdo->prepare("SELECT email, contacto_1, contacto_2, nif, foto, created_at FROM usuarios WHERE id = ? AND deleted_at IS NULL");
                 $this->stmt->execute([$id]);
@@ -100,7 +100,7 @@
         }
 
         //delete users
-        public function delete_user($id) {
+        public function delete_user(int $id) {
             try {
                 $this->stmt = $this->pdo->prepare("UPDATE usuarios SET deleted_at = ? WHERE id = ?");
 
@@ -111,7 +111,7 @@
         }
 
         //restore users
-        public function restore_user($id) {
+        public function restore_user(int $id) {
             try {
                 $this->stmt = $this->pdo->prepare("UPDATE usuarios SET deleted_at = null WHERE id = ?");
 
@@ -122,7 +122,7 @@
         }
 
         //search users password hash
-        public function find_password_hash($id) {
+        public function find_password_hash(int $id) {
             try {
                 $this->stmt = $this->pdo->prepare("SELECT password FROM usuarios WHERE id = ? AND deleted_at IS NULL");
                 $this->stmt->execute([$id]);
@@ -136,7 +136,7 @@
         }
 
         //search users password hash
-        public function fetch_password_hash($nif) {
+        public function fetch_password_hash(string $nif) {
             try {
                 $this->stmt = $this->pdo->prepare("SELECT u.password FROM usuarios AS u JOIN escolas AS e ON e.id = u.escola WHERE nif = ? AND u.deleted_at IS NULL AND e.deleted_at IS NULL");
                 $this->stmt->execute([$nif]);
@@ -150,7 +150,7 @@
         }
 
         //change user password
-        public function change_password($password, $id) {
+        public function change_password(string $password, int $id) {
             try {
                 $this->stmt = $this->pdo->prepare("UPDATE usuarios SET password = ? WHERE id = ? AND deleted_at IS NULL");
 
@@ -161,7 +161,7 @@
         }
 
         //fetch user id
-        public function fetch_user_data_login($nif) {
+        public function fetch_user_data_login(string $nif) {
             try {
                 $this->stmt = $this->pdo->prepare("SELECT u.id, u.nome, u.role, u.foto, e.nome AS escola, e.id AS escola_id, e.logo, c.role AS coordinator_role
                     FROM usuarios AS u
@@ -179,7 +179,7 @@
         }
 
         //get user id
-        public function get_user_id($nif) {
+        public function get_user_id(string $nif) {
             try {
                 $this->stmt = $this->pdo->prepare("SELECT id FROM usuarios WHERE nif = ? LIMIT 1");
                 $this->stmt->execute([$nif]);
@@ -190,6 +190,58 @@
             } catch (PDOException $e) {
                 throw $e;
             }
+        }
+
+        //search users
+        public function search_users(string $search) {
+            try {
+                $this->stmt = $this->pdo->prepare("SELECT u.id, u.nome, u.contacto_1, u.contacto_2, u.nif, u.email, u.foto, u.role, u.deleted_at, e.nome AS escola,
+                    e.id AS escola_id, e.deleted_at AS estado_escola, c.role AS coordinator_role
+                    FROM usuarios AS u
+                    JOIN escolas AS e ON e.id = u.escola
+                    LEFT JOIN coordenadores AS c ON c.id = u.id
+                    WHERE u.nome LIKE ?
+                ");
+                
+                $s = "%$search%";
+                $this->stmt->execute([$s]);
+
+                $users = [];
+
+                while ($result = $this->stmt->fetch(PDO::FETCH_ASSOC)) {
+                    $users[] = $result;
+                }
+
+                return !empty($users) ? $users : null;
+            } catch (PDOException $e) {
+                throw $e;
+            }   
+        }
+
+        //search school users
+        public function search_school_users(string $search, int $school, string $role) {
+            try {
+                $this->stmt = $this->pdo->prepare("SELECT u.id, u.nome, u.contacto_1, u.contacto_2, u.nif, u.email, u.foto, u.role, u.deleted_at, e.nome AS escola,
+                    e.id AS escola_id, e.deleted_at AS estado_escola, c.role AS coordinator_role
+                    FROM usuarios AS u
+                    JOIN escolas AS e ON e.id = u.escola
+                    LEFT JOIN coordenadores AS c ON c.id = u.id
+                    WHERE u.nome LIKE ? AND u.escola = ? AND u.role = ?
+                ");
+                
+                $s = "%$search%";
+                $this->stmt->execute([$s, $school, $role]);
+
+                $users = [];
+
+                while ($result = $this->stmt->fetch(PDO::FETCH_ASSOC)) {
+                    $users[] = $result;
+                }
+
+                return !empty($users) ? $users : null;
+            } catch (PDOException $e) {
+                throw $e;
+            }   
         }
     }
 ?>
