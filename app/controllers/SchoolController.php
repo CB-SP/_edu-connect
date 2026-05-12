@@ -75,7 +75,7 @@
         }
 
         //search for a unic school
-        public function fetch_school($id) {
+        public function fetch_school(int $id) {
             if (empty($id)) {
                 return null;
             }
@@ -93,7 +93,7 @@
         }
 
         //search for a unic school
-        public function find_school($id) {
+        public function find_school(int $id) {
             if (empty($id)) {
                 return null;
             }
@@ -106,7 +106,7 @@
         }
 
         //delete schools
-        public function delete_school($id) {
+        public function delete_school(int $id) {
             if (empty($id)) {
                 return false;
             }
@@ -124,7 +124,7 @@
         }
 
         //restore schools
-        public function restore_school($id) {
+        public function restore_school(int $id) {
             if (empty($id)) {
                 return false;
             }
@@ -139,6 +139,22 @@
             }
 
             return true;
+        }
+
+        //search schools
+        public function search_schools(string $term) {
+            header('Content-Type: application/json');
+
+            $t = $term;
+
+            $schools = null;
+
+            $schools = $this->school->search_schools($t);
+
+            echo json_encode([
+                'success' => true,
+                'schools' => $schools
+            ]);
         }
     }
 ?>

@@ -42,7 +42,7 @@
         }
 
         //search for a unic school
-        public function fetch_school($id) {
+        public function fetch_school(int $id) {
             try {
                 $this->stmt = $this->pdo->prepare("SELECT id, nome, endereco, contacto_1, contacto_2, logo, created_at FROM escolas WHERE id = ? AND deleted_at IS NULL");
                 $this->stmt->execute([$id]);
@@ -56,7 +56,7 @@
         }
 
         //delete schools
-        public function delete_school($id) {
+        public function delete_school(int $id) {
             try {
                 $this->stmt = $this->pdo->prepare("UPDATE escolas SET deleted_at = ? WHERE id = ?");
 
@@ -67,7 +67,7 @@
         }
 
         //restore schools
-        public function restore_school($id) {
+        public function restore_school(int $id) {
             try {
                 $this->stmt = $this->pdo->prepare("UPDATE escolas SET deleted_at = null WHERE id = ?");
 
@@ -75,6 +75,29 @@
             } catch (PDOException $e) {
                 throw $e;
             }
+        }
+
+        //search schools
+        public function search_schools(string $search) {
+            try {
+                $this->stmt = $this->pdo->prepare("SELECT id, nome, endereco, contacto_1, contacto_2, logo, deleted_at
+                    FROM escolas
+                    WHERE nome LIKE ?
+                ");
+                
+                $s = "%$search%";
+                $this->stmt->execute([$s]);
+
+                $schools = [];
+
+                while ($result = $this->stmt->fetch(PDO::FETCH_ASSOC)) {
+                    $schools[] = $result;
+                }
+
+                return !empty($schools) ? $schools : null;
+            } catch (PDOException $e) {
+                throw $e;
+            }   
         }
     }
 ?>

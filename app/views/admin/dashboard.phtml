@@ -1,9 +1,9 @@
 <?php
-require_once './app/views/layouts/adminMain.phtml';
-$admin = new AdminController;
-$schools = $admin->fetch_schools();
-$users = $admin->fetch_users();
-$total_entities = $admin->total_entities();
+    require_once './app/views/layouts/adminMain.phtml';
+    $admin = new AdminController;
+    $schools = $admin->fetch_schools();
+    $users = $admin->fetch_users();
+    $total_entities = $admin->total_entities();
 ?>
 
 <section class="painel-dash">
@@ -193,7 +193,7 @@ $total_entities = $admin->total_entities();
             </div>
 
             <!--SCHOOLS LIST-->
-            <div class="school-list">
+            <div class="school-list" id="schoolsResults">
                 <?php if (!empty($schools)): ?>
                     <table class="tbl-schools">
                         <thead>
@@ -398,7 +398,7 @@ $total_entities = $admin->total_entities();
                 <div class="text-users-header">
                     <p><span>Todos os usuários do sistema.</span> <br> Usuários de todas as escolas cadastradas.</p>
                 </div>
-                <div class="tbl">
+                <div class="tbl" id="usersResults">
                     <?php if (!empty($users)): ?>
                         <table class="tbl-users">
                             <thead>
@@ -456,5 +456,208 @@ $total_entities = $admin->total_entities();
         </section>
     </section>
 </section>
+<script>
+
+    const input = document.getElementById('searchUser');
+    const results = document.getElementById('usersResults');
+
+    let timeout;
+
+    input.addEventListener('input', () => {
+
+        clearTimeout(timeout);
+
+        timeout = setTimeout(async () => {
+
+            const term = input.value.trim();
+
+            try {
+
+                const response = await fetch(
+                    `http://localhost/_edu-connect/user/search_users/${encodeURIComponent(term)}`
+                );
+
+                const data = await response.json();
+
+                renderUsers(data.users);
+
+            } catch (error) {
+                console.log(error);
+            }
+
+        }, 300);
+
+    });
+
+    function renderUsers(users) {
+        if (!users || users.length === 0) {
+            results.innerHTML = `<p>Nenhum usuário encontrado.</p>`;
+            return;
+        }
+
+        let html = `
+            <table class="tbl-users">
+                <thead>
+                    <tr>
+                        <th>Usuário</th>
+                        <th>Escola</th>
+                        <th>Função</th>
+                        <th>Estado</th>
+                        <th>Acções</th>
+                    </tr>
+                </thead>
+                <tbody>
+        `;
+
+        users.forEach(user => {
+
+            const isInactive = user.deleted_at !== null;
+            const role = user.coordinator_role ?? user.role;
+            const status = isInactive ? 'Inactivo' : 'Activo';
+
+            html += `
+                <tr>
+                    <td>${user.nome}</td>
+                    <td>${user.escola}</td>
+                    <td>${role}</td>
+                    <td>${status}</td>
+
+                    <td class="btn-down-actions">
+                        <button class="action-btn">Acções</button>
+
+                        <div class="drop-actions">
+
+                            ${isInactive ? `
+                                <button class="restore-action"
+                                    onclick="window.location.href='/_edu-connect/admin/restore_user/${user.id}'">
+                                    Restaurar
+                                </button>
+                            ` : `
+                                <button class="edit-action"
+                                    data-id="${user.id}"
+                                    data-type="user">
+                                    Editar
+                                </button>
+
+                                <button class="delete-action"
+                                    onclick="window.location.href='/_edu-connect/admin/delete_user/${user.id}'">
+                                    Eliminar
+                                </button>
+                            `}
+
+                        </div>
+                    </td>
+                </tr>
+            `;
+        });
+
+        html += `
+                </tbody>
+            </table>
+        `;
+
+        results.innerHTML = html;
+}
+
+</script>
+
+<script>
+
+    const inputSchool = document.getElementById('searchSchool');
+    const schoolsResults = document.getElementById('schoolsResults');
+
+    inputSchool.addEventListener('input', () => {
+
+        clearTimeout(timeout);
+
+        timeout = setTimeout(async () => {
+
+            const term = inputSchool.value.trim();
+
+            try {
+
+                const response = await fetch(
+                    `http://localhost/_edu-connect/school/search_schools/${encodeURIComponent(term)}`
+                );
+
+                const data = await response.json();
+
+                renderSchools(data.schools);
+
+            } catch (error) {
+                console.log(error);
+            }
+
+        }, 300);
+
+    });
+
+    function renderSchools(schools) {
+        if (!schools || schools.length === 0) {
+            schoolsResults.innerHTML = `<p>Nenhuma escola encontrada.</p>`;
+            return;
+        }
+
+        let html = `
+            <table class="tbl-schools">
+                <thead>
+                    <tr>
+                        <th>Escola</th>
+                        <th>Contacto</th>
+                        <th>Estado</th>
+                        <th>Acções</th>
+                    </tr>
+                </thead>
+                <tbody>
+        `;
+
+        schools.forEach(school => {
+
+            const isInactive = school.deleted_at !== null;
+            const status = isInactive ? 'Inactivo' : 'Activo';
+
+            html += `
+                <tr>
+                    <td>${school.nome}</td>
+                    <td>${school.contacto_1}</td>
+                    <td>${status}</td>
+                    <td class="btn-down-actions">
+                        <button class="action-btn">Acções</button>
+
+                        <div class="drop-actions">
+
+                            ${isInactive ? `
+                                <button class="restore-action"
+                                    onclick="window.location.href='/_edu-connect/admin/restore_school/${school.id}'">
+                                    Restaurar
+                                </button>
+                            ` : `
+                                <button class="edit-action"
+                                    data-id="${school.id}"
+                                    data-type="user">
+                                    Editar
+                                </button>
+
+                                <button class="delete-action"
+                                    onclick="window.location.href='/_edu-connect/admin/delete_school/${school.id}'">
+                                    Eliminar
+                                </button>
+                            `}
+
+                        </div>
+                    </td>
+                </tr>
+            `;
+        });
+
+        html += `
+                </tbody>
+            </table>
+        `;
+
+        schoolsResults.innerHTML = html;
+}
+
+</script>
 
 <?php require_once './app/views/layouts/closure.phtml' ?>

@@ -199,7 +199,7 @@
         }
 
         //search for a unic user
-        public function fetch_user($id) {
+        public function fetch_user(int $id) {
             try {
                 header('Content-Type: application/json');
                 echo json_encode($this->user->fetch_user($id));
@@ -213,7 +213,7 @@
         }
 
         //find user
-        public function find_user($id) {
+        public function find_user(int $id) {
             if (empty($id)) {
                 return false;
             }
@@ -227,7 +227,7 @@
         }
 
         //delete users
-        public function delete_user($id) {
+        public function delete_user(int $id) {
             if (empty($id)) {
                 return false;
             }
@@ -245,7 +245,7 @@
         }
 
         //restore users
-        public function restore_user($id) {
+        public function restore_user(int $id) {
             if (empty($id)) {
                 return false;
             }
@@ -314,12 +314,12 @@
         }
 
         //get all posts of a school
-        public function get($school) {
+        public function get(int $school) {
             return $this->post->get_posts($school);
         }
 
         //get publications count
-        public function count_publications($school) {
+        public function count_publications(int $school) {
             return $this->post->count_publications($school);
         }
 
@@ -329,7 +329,7 @@
         }
 
         //get user reactions
-        public function get_reactions($user, $post) {
+        public function get_reactions(int $user, int $post) {
             return $this->reaction->get_reactions($user, $post);
         }
 
@@ -339,17 +339,49 @@
         }
 
         //get post comments
-        public function get_post_comments($post) {
+        public function get_post_comments(int $post) {
             return $this->comment->get_post_comments($post);
         }
 
         //get interactions quantity
-        public function get_interactions($post) {
+        public function get_interactions(int $post) {
             return $this->post->get_interactions($post);
         }
 
+        //search users
+        public function search_users(string $term) {
+            header('Content-Type: application/json');
+
+            $t = $term;
+
+            $users = null;
+
+            $users = $this->user->search_users($t);
+
+            echo json_encode([
+                'success' => true,
+                'users' => $users
+            ]);
+        }
+
+        //search school users
+        public function search_school_users(string $term, int $school, string $role) {
+            header('Content-Type: application/json');
+
+            $t = $term;
+
+            $users = null;
+
+            $users = $this->user->search_school_users($t, $school, $role);
+
+            echo json_encode([
+                'success' => true,
+                'users' => $users
+            ]);
+        }
+
         //search users password hash
-        private function fetch_password_hash($nif) {
+        private function fetch_password_hash(string $nif) {
             if (empty($nif)) {
                 return null;
             }
@@ -363,7 +395,7 @@
         }
 
         //get user id
-        private function get_user_id($nif) {
+        private function get_user_id(string $nif) {
             if (empty($nif)) {
                 return false;
             }
@@ -378,7 +410,7 @@
         }
 
         //search users password hash
-        private function find_password_hash($id) {
+        private function find_password_hash(int $id) {
             if (empty($id)) {
                 return null;
             }
