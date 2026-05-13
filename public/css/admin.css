@@ -453,9 +453,7 @@
         gap: 10px;
     }
 
-    .drop-actions button svg {
-        
-    }
+    .drop-actions button svg {}
 
 
     .drop-actions button:hover {
@@ -1002,6 +1000,12 @@
         height: 100%;
         padding: 18px;
         width: calc(100vw - 280px);
+        display: grid;
+        grid-template: 1fr / 100px 1fr 100px;
+    }
+
+    .dashboard-section {
+        grid-column: 2;
     }
 
     .painel-dash .header-painel {
@@ -1051,6 +1055,7 @@
 
     .dash-info .statistics-info {
         display: flex;
+        flex-wrap: wrap;
         gap: 16px;
     }
 
@@ -1058,7 +1063,7 @@
         border: 1px solid var(--SwitchBackground);
         padding: 19px 15px;
         border-radius: var(--radius-md);
-        width: 200px;
+        width: 195px;
         height: 100px;
     }
 
@@ -1070,11 +1075,6 @@
     .cards-info h2 {
         font-weight: var(--weight-sb);
         font-size: var(--text-2xl);
-    }
-
-    .painel-dash .list-info {
-        display: flex;
-        flex-direction: column;
     }
 
     .painel-dash .tabs {
@@ -1446,7 +1446,7 @@
         align-items: center;
         gap: 10px;
     }
-    
+
     .drop-actions button svg {
         height: 30px;
         width: 30px;
