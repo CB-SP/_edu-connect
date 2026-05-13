@@ -66,7 +66,7 @@
             $file = $_FILES['photo'] ?? $_FILES['logo'];
 
             if ($file['error'] === 4) {
-                return null;
+                return "null";
             }
 
             if ($file['error'] !== 0) {

@@ -42,7 +42,9 @@
             $this->address = $_POST['address'] ?? null;
             $this->contact_1 = $_POST['contact_1'] ?? null; 
             $this->contact_2 = $_POST['contact_2'] ?? null;
-            $this->logo = Utils::uploadAvatar() ?? null;
+
+            $currentLogo = $_POST['current_logo'] ?? null;
+            $newLogo = Utils::uploadAvatar() ?? null;
 
             if (empty($this->name) || empty($this->address) || empty($this->contact_1) || empty($this->id)) {
                 return false;
@@ -50,6 +52,21 @@
 
             if (!Utils::phone_number_length($this->contact_1) || (!empty($this->contact_2) && !Utils::phone_number_length($this->contact_2))) {
                 return false;
+            }
+
+            if ($newLogo !== null) {
+                $this->logo = $newLogo;
+
+                if (!empty($currentLogo)) {
+                    $oldPath = __DIR__ . "/../../public/" . $currentLogo;
+
+                    if (file_exists($oldPath)) {
+                        unlink($oldPath);
+                    }
+                }
+
+            } else {
+                $this->logo = $currentLogo;
             }
 
             try {

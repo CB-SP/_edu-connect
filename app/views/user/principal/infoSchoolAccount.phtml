@@ -72,15 +72,15 @@ $school = $principal->find_school($_SESSION['school_id']);
 
                 <div class="input-box">
                     <label for="">Logotipo da Escola</label>
-                    <label for="fotoFile" class="labelFile">
-                        <input type="file" name="photo" id="fotoFile" class="fotoFile" hidden>
+                    <label for="logoFile" class="labelFile">
+                        <input type="file" name="logo" id="logoFile" class="logoFile" hidden>
                         Escolher ficheiro.
                         <span class="fileName">Nenhum ficheiro escolhido</span>
                     </label>
                 </div>
 
                 <input type="hidden" name="id" value="<?= $school['id'] ?>">
-                <input type="hidden" name="current_photo" id="current_photo">
+                <input type="hidden" name="current_logo" id="current_logo" value="<?= $school['logo'] ?>">
 
                 <div class="final-btn-actions">
                     <button type="button" class="btn" id="btn-cancel">Cancelar</button>
