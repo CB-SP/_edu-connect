@@ -7,7 +7,6 @@
     $chats = new ChatController;
 
     $class_chat = $chats->get_chat($class_id, $_SESSION['school_id']);
-    $class_messages = $messages->get_chat_messages($_SESSION['school_id'], $class_chat);
     $class_data = $class->get_class_data($class_id);
     $students = $class->get_class_students($class_id);
 ?>
@@ -76,7 +75,7 @@
         </div>
         <!--CHAT SECTION-->
         <div class="chat-section class-content">
-            <div class="messages-box">
+            <div class="messages-box" id="messages-box">
                 <?php if (!empty($class_messages)): ?>
                     <?php foreach ($class_messages as $message): ?>
                         <?php if ($message['user_id'] !== $_SESSION['id']): ?>
@@ -186,5 +185,10 @@
 
     </section>
 </div>
+
+<input type="hidden" id="school" value="<?= $_SESSION['school_id'] ?>">
+<input type="hidden" id="chat" value="<?= $class_chat ?>">
+<input type="hidden" id="user" value="<?= $_SESSION['id'] ?>">
+<script src="<?= URL ?>public/js/chatRealTime.js"></script>
 
 <?php require_once './app/views/layouts/closure.phtml' ?>
