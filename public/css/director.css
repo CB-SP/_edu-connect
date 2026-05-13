@@ -503,12 +503,22 @@
         background-color: var(--Muted);
     }
 
-    .drop-actions .delete-action {
-        color: var(--Destructive);
+    .drop-actions .edit-action {
+        display: flex;
+        align-items: center;
     }
 
-    .drop-actions .delete-action:hover {
-        color: var(--Primary);
+    .edit-action svg,
+    .delete-action svg {
+        flex-shrink: 0;
+        height: 15px;
+        width: 15px;
+    }
+
+    .drop-actions .delete-action {
+        color: var(--Destructive);
+        display: flex;
+        align-items: center;
     }
 
     /*ALTERNATE BETWEEN USERS AND SCHOOLS SECTIONS EFFECT*/
@@ -1074,12 +1084,22 @@
         background-color: var(--Muted);
     }
 
-    .drop-actions .delete-action {
-        color: var(--Destructive);
+    .drop-actions .edit-action {
+        display: flex;
+        align-items: center;
     }
 
-    .drop-actions .delete-action:hover {
-        color: var(--Primary);
+    .edit-action svg,
+    .delete-action svg {
+        flex-shrink: 0;
+        height: 17px;
+        width: 17px;
+    }
+
+    .drop-actions .delete-action {
+        color: var(--Destructive);
+        display: flex;
+        align-items: center;
     }
 
     /*ALTERNATE BETWEEN USERS AND SCHOOLS SECTIONS EFFECT*/
