@@ -350,34 +350,42 @@
 
         //search users
         public function search_users(string $term) {
-            header('Content-Type: application/json');
+            try {
+                header('Content-Type: application/json');
 
-            $t = $term;
+                $t = $term;
 
-            $users = null;
+                $users = null;
 
-            $users = $this->user->search_users($t);
+                $users = $this->user->search_users($t);
 
-            echo json_encode([
-                'success' => true,
-                'users' => $users
-            ]);
+                echo json_encode([
+                    'success' => true,
+                    'users' => $users
+                ]);
+            } catch (PDOException $e) {
+                error_log("ERRO_PESQUISAR_USUARIOS: ". $e->getMessage(). "\n". $e->getTraceAsString());
+            }
         }
 
         //search school users
         public function search_school_users(string $term, int $school, string $role) {
-            header('Content-Type: application/json');
+            try {
+                header('Content-Type: application/json');
 
-            $t = $term;
+                $t = $term;
 
-            $users = null;
+                $users = null;
 
-            $users = $this->user->search_school_users($t, $school, $role);
+                $users = $this->user->search_school_users($t, $school, $role);
 
-            echo json_encode([
-                'success' => true,
-                'users' => $users
-            ]);
+                echo json_encode([
+                    'success' => true,
+                    'users' => $users
+                ]);
+            } catch (PDOException $e) {
+                error_log("ERRO_PESQUISAR_USUARIOS_ESCOLA: ". $e->getMessage(). "\n". $e->getTraceAsString());
+            }
         }
 
         //search users password hash

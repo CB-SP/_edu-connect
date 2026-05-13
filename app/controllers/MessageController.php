@@ -36,10 +36,15 @@
             }
 
             try {
-                return $this->message->get_chat_messages($school, $chat);
+                header('Content-Type: application/json');
+                
+                echo json_encode($this->message->get_chat_messages($school, $chat));
+                exit;
             } catch (PDOException $e) {
                 error_log("ERRO_BUSCAR_MENSAGENS: ". $e->getMessage(). "\n". $e->getTraceAsString());
-                return null;
+
+                echo json_encode(['error' => 'Erro ao buscar usuário']);
+                exit;
             }
         }
     }
