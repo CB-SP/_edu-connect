@@ -54,7 +54,7 @@ $school = $principal->find_school($_SESSION['school_id']);
             <form action="<?= URL ?>principal/edit_school" method="post" enctype="multipart/form-data">
                 <div class="input-box">
                     <label for="schoolName">Nome da Escola</label>
-                    <input type="text" name="name" id="schoolName" placeholder="Digite o nome da Escola" value="<?= $school['nome'] ?>">
+                    <input type="text" name="name" id="schoolName" placeholder="Digite o nome da Escola" value="<?= $school['nome'] ?>" required>
                 </div>
 
                 <div class="input-box">
@@ -63,11 +63,11 @@ $school = $principal->find_school($_SESSION['school_id']);
                 </div>
                 <div class="input-box">
                     <label for="schoolTelefone_1">Telefone</label>
-                    <input type="tel" name="contact_1" id="schoolTelefone_1" placeholder="+244 XXX XXX XXX" value="<?= $school['contacto_1'] ?>">
+                    <input type="tel" name="contact_1" id="schoolTelefone_1" placeholder="+244 XXX XXX XXX" value="<?= $school['contacto_1'] ?>" pattern="\+[0-9]{3}\s[0-9]{3}\s[0-9]{3}\s[0-9]{3}" inputmode="numeric" maxlength="16" required>
                 </div>
                 <div class="input-box">
                     <label for="schoolTelefone_2">Telefone Secundário</label>
-                    <input type="tel" name="contact_2" id="schoolTelefone_2" placeholder="+244 XXX XXX XXX" value="<?= $school['contacto_2'] ?>">
+                    <input type="tel" name="contact_2" id="schoolTelefone_2" placeholder="+244 XXX XXX XXX" value="<?= $school['contacto_2'] ?>" pattern="\+[0-9]{3}\s[0-9]{3}\s[0-9]{3}\s[0-9]{3}" inputmode="numeric" maxlength="16">
                 </div>
 
                 <div class="input-box">
