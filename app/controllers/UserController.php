@@ -131,7 +131,7 @@
             $this->email = $_POST['email'] ?? null;
 
             $currentPhoto = $_POST['current_photo'] ?? null;
-            $newPhoto = Utils::uploadAvatar();
+            $newPhoto = Utils::uploadAvatar() ?? null;
 
             if (empty($this->name) || empty($this->contact_1) || empty($this->nif) || empty($this->id)) {
                 return false;

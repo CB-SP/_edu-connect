@@ -131,7 +131,7 @@
                             <div class="input-box">
                                 <label for="">Logo da escola</label>
                                 <label for="logoFile" class="labelFile">
-                                    <input type="file" name="logo" id="logoFile" class="logoFile" hidden>
+                                    <input type="file" name="logo" class="logoFile" hidden>
                                     Escolher ficheiro.
                                     <span class="fileName">Nenhum ficheiro escolhido</span>
                                 </label>
@@ -149,7 +149,7 @@
                             <p>Editar as informações da escola</p>
                             <img src="<?= URL ?>public/assets/icons/x.png" alt="" class="close-modal-icon">
                         </div>
-                        <form action="<?= URL ?>admin/edit_school" method="post">
+                        <form action="<?= URL ?>admin/edit_school" method="post" enctype="multipart/form-data">
                             <div class="input-box" id="input-school">
                                 <label for="scholName">Nome da escola</label>
                                 <input type="text" name="name" id="schoolName" placeholder="Nome completo da instituição" required>
@@ -176,7 +176,9 @@
                                     <span class="fileName">Nenhum ficheiro escolhido</span>
                                 </label>
                             </div>
+
                             <input type="hidden" name="id" id="schoolId">
+                            <input type="hidden" name="current_logo" id="current_logo">
                             <div class="final-btn-actions">
                                 <button class="btn" id="btn-cancel">Cancelar</button>
                                 <button class="btn" id="btn-create">Editar escola</button>
@@ -289,7 +291,7 @@
                             <div class="input-box">
                                 <label for="">Foto do usuário</label>
                                 <label for="fotoFile" class="labelFile">
-                                    <input type="file" name="photo" id="fotoFile" class="fotoFile" hidden>
+                                    <input type="file" name="photo" class="fotoFile" hidden>
                                     Escolher ficheiro.
                                     <span class="fileName">Nenhum ficheiro escolhido</span>
                                 </label>

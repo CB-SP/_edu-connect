@@ -151,11 +151,12 @@ document.addEventListener('click', async (e) => {
             const response = await fetch(`http://localhost/_edu-connect/admin/fetch_school/${id}`);
             const school = await response.json();
 
+            document.querySelector('#schoolId').value = id;
             document.querySelector('#schoolName').value = school.nome;
             document.querySelector('#schoolAddress').value = school.endereco;
             document.querySelector('#primaryContact').value = school.contacto_1;
             document.querySelector('#secundaryContact').value = school.contacto_2;
-            document.querySelector('#schoolId').value = id;
+            document.querySelector('#current_logo').value = school.logo || '';
         }
 
         editModais.forEach(m => m.classList.add('show'));
