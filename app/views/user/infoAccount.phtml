@@ -41,26 +41,26 @@ $user_data = $user->find_user($_SESSION['id']);
             <form action="<?= URL ?>user/redirect_edit_user" method="post" enctype="multipart/form-data">
                 <div class="input-box">
                     <label for="adminName">Nome Completo</label>
-                    <input type="text" name="name" id="adminName" placeholder="Nome completo do admin" value="<?= $_SESSION['name'] ?>">
+                    <input type="text" name="name" id="adminName" placeholder="Nome completo do admin" value="<?= $_SESSION['name'] ?>" required>
                 </div>
                 <div class="contacts-box">
                     <div class="input-box">
                         <label for="userPrimaryContact">Contacto principal</label>
-                        <input type="text" name="contact_1" id="userPrimaryContact" placeholder="+244 XXX XXX XXX" value="<?= $user_data['contacto_1'] ?>">
+                        <input type="text" name="contact_1" id="userPrimaryContact" placeholder="+244 XXX XXX XXX" value="<?= $user_data['contacto_1'] ?>" pattern="\+[0-9]{3}\s[0-9]{3}\s[0-9]{3}\s[0-9]{3}" inputmode="numeric" maxlength="16" required>
                     </div>
                     <div class="input-box">
                         <label for="userSecundaryContact">Contacto secundário</label>
-                        <input type="text" name="contact_2" id="userSecundaryContact" placeholder="+244 XXX XXX XXX" value="<?= $user_data['contacto_2'] ?>">
+                        <input type="text" name="contact_2" id="userSecundaryContact" placeholder="+244 XXX XXX XXX" value="<?= $user_data['contacto_2'] ?>" pattern="\+[0-9]{3}\s[0-9]{3}\s[0-9]{3}\s[0-9]{3}" inputmode="numeric" maxlength="16">
                     </div>
                 </div>
                 <div class="contacts-box">
                     <div class="input-box">
                         <label for="nifUser">NIF</label>
-                        <input type="text" name="nif" id="nifUser" placeholder="936501275HA043" value="<?= $user_data['nif'] ?>">
+                        <input type="text" name="nif" id="nifUser" placeholder="936501275HA043" value="<?= $user_data['nif'] ?>" pattern="[a-zA-Z0-9]{14}" maxlength="14" required>
                     </div>
                     <div class="input-box">
                         <label for="emailUser">Email</label>
-                        <input type="text" name="email" id="emailUser" placeholder="usuario@gmail.com" value="<?= $user_data['email'] ?>">
+                        <input type="text" name="email" id="emailUser" placeholder="usuario@gmail.com" value="<?= $user_data['email'] ?>" pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9._%+-]+\.[a-zA-Z]{2,}" required>
                     </div>
                 </div>
                 <div class="input-box">

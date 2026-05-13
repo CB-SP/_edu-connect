@@ -128,31 +128,31 @@
                 <form action="<?= URL ?>principal/add_user" method="post" enctype="multipart/form-data">
                     <div class="input-box">
                         <label for="userName">Nome Completo</label>
-                        <input type="text" name="name" placeholder="Nome completo do usuário">
+                        <input type="text" name="name" placeholder="Nome completo do usuário" required>
                     </div>
                     <div class="contacts-box">
                         <div class="input-box">
                             <label for="primaryContact">Contacto principal</label>
-                            <input type="text" name="contact_1" placeholder="+244 XXX XXX XXX">
+                            <input type="text" name="contact_1" placeholder="+244 XXX XXX XXX" pattern="\+[0-9]{3}\s[0-9]{3}\s[0-9]{3}\s[0-9]{3}" maxlength="16" required>
                         </div>
                         <div class="input-box">
                             <label for="secundaryContact">Contacto secundário</label>
-                            <input type="text" name="contact_2" placeholder="+244 XXX XXX XXX">
+                            <input type="text" name="contact_2" placeholder="+244 XXX XXX XXX" pattern="\+[0-9]{3}\s[0-9]{3}\s[0-9]{3}\s[0-9]{3}" maxlength="16">
                         </div>
                     </div>
                     <div class="contacts-box">
                         <div class="input-box">
                             <label for="nifUser">NIF</label>
-                            <input type="text" name="nif" placeholder="H244875734543">
+                            <input type="text" name="nif" placeholder="H244875734543" pattern="[a-zA-Z0-9]{14}" maxlength="14" required>
                         </div>
                         <div class="input-box">
                             <label for="emailUser">Email</label>
-                            <input type="text" name="email" placeholder="usuario@email.com">
+                            <input type="email" name="email" placeholder="usuario@email.com" pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9._%+-]+\.[a-zA-Z]{2,}" required>
                         </div>
                     </div>
                     <div class="input-box">
                         <label for="userPassword">Senha</label>
-                        <input type="text" name="password" placeholder="Digite uma senha segura">
+                        <input type="text" name="password" placeholder="Digite uma senha segura" autocomplete="off" minlength="8" maxlength="25" required>
                     </div>
                     <div class="input-box">
                         <label for="">Foto do usuário</label>
@@ -192,26 +192,26 @@
                 <form action="<?= URL ?>principal/edit_user" method="post" enctype="multipart/form-data">
                     <div class="input-box">
                         <label for="userName">Nome Completo</label>
-                        <input type="text" name="name" id="userName" placeholder="Nome completo do usuário">
+                        <input type="text" name="name" id="userName" placeholder="Nome completo do usuário" required>
                     </div>
                     <div class="contacts-box">
                         <div class="input-box">
                             <label for="primaryContact">Contacto principal</label>
-                            <input type="text" name="contact_1" id="userPrimaryContact" placeholder="+244 XXX XXX XXX">
+                            <input type="text" name="contact_1" id="userPrimaryContact" placeholder="+244 XXX XXX XXX" pattern="\+[0-9]{3}\s[0-9]{3}\s[0-9]{3}\s[0-9]{3}" maxlength="16" required>
                         </div>
                         <div class="input-box">
                             <label for="secundaryContact">Contacto secundário</label>
-                            <input type="text" name="contact_2" id="userSecundaryContact" placeholder="+244 XXX XXX XXX">
+                            <input type="text" name="contact_2" id="userSecundaryContact" placeholder="+244 XXX XXX XXX" pattern="\+[0-9]{3}\s[0-9]{3}\s[0-9]{3}\s[0-9]{3}" maxlength="16">
                         </div>
                     </div>
                     <div class="contacts-box">
                         <div class="input-box">
                             <label for="nifUser">NIF</label>
-                            <input type="text" name="nif" id="nifUser" placeholder="936501275HA043">
+                            <input type="text" name="nif" id="nifUser" placeholder="936501275HA043" pattern="[a-zA-Z0-9]{14}" maxlength="14" required>
                         </div>
                         <div class="input-box">
                             <label for="emailUser">Email</label>
-                            <input type="text" name="email" id="emailUser" placeholder="usuario@gmail.com">
+                            <input type="email" name="email" id="emailUser" placeholder="usuario@gmail.com" pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9._%+-]+\.[a-zA-Z]{2,}" required>
                         </div>
                     </div>
                     <div class="input-box">

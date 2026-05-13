@@ -41,12 +41,12 @@ $admin_data = $admin->find_admin($_SESSION['id']);
             <form action="<?= URL ?>admin/edit_admin" method="post" enctype="multipart/form-data">
                 <div class="input-box">
                     <label for="adminName">Nome Completo</label>
-                    <input type="text" name="name" id="adminName" placeholder="Nome completo do admin" value="<?= $_SESSION['name'] ?>">
+                    <input type="text" name="name" id="adminName" placeholder="Nome completo do admin" value="<?= $_SESSION['name'] ?>" required>
                 </div>
 
                 <div class="input-box">
                     <label for="adminEmail">Email</label>
-                    <input type="text" name="email" id="adminEmail" placeholder="admin@gmail.com" value="<?= $admin_data['email'] ?>">
+                    <input type="email" name="email" id="adminEmail" placeholder="admin@gmail.com" value="<?= $admin_data['email'] ?>" pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9._%+-]+\.[a-zA-Z]{2,}" required>
                 </div>
                 <div class="input-box">
                     <label for="">Foto do usuário</label>
