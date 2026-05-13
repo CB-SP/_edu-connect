@@ -847,7 +847,7 @@
         height: 350px;
         width: 100%;
         margin: auto;
-        overflow: hidden;
+        overflow: auto;
     }
 
     .users-list .text-users-header {
@@ -868,6 +868,7 @@
         font-size: var(--text-md);
         border-radius: var(--radius-lg);
         width: 100%;
+        overflow: auto;
     }
 
     .tbl-schools thead th,
@@ -1344,7 +1345,7 @@
         max-height: 400px;
         width: 100%;
         margin: auto;
-        overflow: hidden;
+        overflow: auto;
         height: 300px;
     }
 
