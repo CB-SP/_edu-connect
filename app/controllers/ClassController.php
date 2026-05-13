@@ -1,10 +1,11 @@
 <?php
     class ClassController extends Controller {
-        private $class, $name, $teacher, $school, $chat;
+        private $class, $name, $teacher, $school, $chat, $student;
 
         public function __construct() {
             $this->class = new ClassModel;
             $this->chat = new ChatController;
+            $this->student = new StudentController;
         }
 
         //create a class
@@ -118,17 +119,60 @@
         }
 
         //get class data
-        public function get_class_data(int $id) {
+        public function get_class_data(int $id, int $school) {
             if (empty($id)) {
                 return null;
             }
 
             try {
-                return $this->class->get_class_data($id);
+                return $this->class->get_class_data($id, $school);
             } catch (PDOException $e) {
                 error_log("ERRO_BUSCAR_TURMA: ". $e->getMessage(). "\n". $e->getTraceAsString());
                 return null;
             }
+        }
+
+        //get all students of a school
+        public function fetch_school_students(int $school) {
+            return $this->student->fetch_school_students($school);
+        }
+
+        //add class student
+        public function add_class_student(int $student, int $class) {
+            if (empty($student) || empty($class)) {
+                $this->redirect("teacher/class/$class/error");
+            }
+
+            try {
+                if (!($this->class->add_class_student($student, $class))) {
+                    $this->redirect("teacher/class/$class/error");
+                }
+
+            } catch (PDOException $e) {
+                error_log("ERRO_ADICIONAR_ALUNO: ". $e->getMessage(). "\n". $e->getTraceAsString());
+                $this->redirect("teacher/class/$class/error");
+            }
+
+            $this->redirect("teacher/class/$class");
+        }
+
+        //remove class student
+        public function remove_class_student(int $student, int $class) {
+            if (empty($student) || empty($class)) {
+                $this->redirect("teacher/class/$class/error");
+            }
+
+            try {
+                if (!($this->class->remove_class_student($student, $class))) {
+                    $this->redirect("teacher/class/$class/error");
+                }
+
+            } catch (PDOException $e) {
+                error_log("ERRO_ADICIONAR_ALUNO: ". $e->getMessage(). "\n". $e->getTraceAsString());
+                $this->redirect("teacher/class/$class/error");
+            }
+
+            $this->redirect("teacher/class/$class");
         }
 
         //get class id

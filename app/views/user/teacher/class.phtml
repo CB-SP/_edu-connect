@@ -7,8 +7,9 @@
     $chats = new ChatController;
 
     $class_chat = $chats->get_chat($class_id, $_SESSION['school_id']);
-    $class_data = $class->get_class_data($class_id);
+    $class_data = $class->get_class_data($class_id, $_SESSION['school_id']);
     $students = $class->get_class_students($class_id);
+    $school_students = $class->fetch_school_students($_SESSION['school_id']);
 ?>
 
 <div class="current-class-wrapper">
@@ -58,74 +59,35 @@
                         </div>
                     </div>
                     <div class="list" id="usersResults">
-                        <div class="student-item" >
-                            <div class="info-student">
-                                <div class="student-profile">
-                                    <img src="" alt=" ">
-                                </div>
-                                <div class="student-name-email">
-                                    <h4>Nome Estudante Nome Estudante</h4>
-                                    <p>emailestudanteteste</p>
-                                </div>
-                            </div>
-                            <button class="student-action add">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-user-plus-icon lucide-user-plus">
-                                    <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
-                                    <circle cx="9" cy="7" r="4" />
-                                    <line x1="19" x2="19" y1="8" y2="14" />
-                                    <line x1="22" x2="16" y1="11" y2="11" />
-                                </svg>
+                        <?php if (!empty($school_students)):?>
+                            <?php foreach ($school_students as $student):?>
+                                <div class="student-item" >
+                                    <div class="info-student">
+                                        <div class="student-profile">
+                                            <img src="" alt=" ">
+                                        </div>
+                                        <div class="student-name-email">
+                                            <h4><?= $student['nome'] ?></h4>
+                                            <p><?= $student['email'] ?></p>
+                                        </div>
+                                    </div>
+                                    <button class="student-action add" onclick="window.location.href='<?= URL ?>class/add_class_student/<?= $student['id'] ?>/<?= $class_id ?>'">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-user-plus-icon lucide-user-plus">
+                                            <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
+                                            <circle cx="9" cy="7" r="4" />
+                                            <line x1="19" x2="19" y1="8" y2="14" />
+                                            <line x1="22" x2="16" y1="11" y2="11" />
+                                        </svg>
 
 
-                                <p>Adicionar</p>
-                            </button>
-                        </div>
-                        <div class="student-item">
-                            <div class="info-student">
-                                <div class="student-profile">
-                                    <img src="" alt=" ">
+                                        <p>Adicionar</p>
+                                    </button>
                                 </div>
-                                <div class="student-name-email">
-                                    <h4>Nome Estudante Nome Estudante</h4>
-                                    <p>emailestudanteteste</p>
-                                </div>
-                            </div>
-                            <button class="student-action add">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-user-plus-icon lucide-user-plus">
-                                    <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
-                                    <circle cx="9" cy="7" r="4" />
-                                    <line x1="19" x2="19" y1="8" y2="14" />
-                                    <line x1="22" x2="16" y1="11" y2="11" />
-                                </svg>
-
-
-                                <p>Adicionar</p>
-                            </button>
-                        </div>
-
-                        <div class="student-item">
-                            <div class="info-student">
-                                <div class="student-profile">
-                                    <img src="" alt=" ">
-                                </div>
-                                <div class="student-name-email">
-                                    <h4>Nome Estudante Nome Estudante</h4>
-                                    <p>emailestudanteteste</p>
-                                </div>
-                            </div>
-                            <button class="student-action drop">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-user-minus-icon lucide-user-minus">
-                                    <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
-                                    <circle cx="9" cy="7" r="4" />
-                                    <line x1="22" x2="16" y1="11" y2="11" />
-                                </svg>
-
-                                <p>Remover</p>
-                            </button>
-                        </div>
+                            <?php endforeach;?>
+                        <?php endif;?>
                     </div>
                     <div class="bottom-side">
-                        <p>Número estudantes</p>
+                        <p><?= $class_data['school_students'] === 1 ? $class_data['school_students']. " Aluno" : $class_data['school_students']. "Alunos"?></p>
                         <button class="btn-close-student-modal">Fechar</button>
                     </div>
                 </div>
@@ -169,7 +131,7 @@
                     <circle cx="9" cy="7" r="4" />
                 </svg>
 
-                <p>Alunos (2)</p>
+                <p>Alunos (<?= $class_data['students'] ?>)</p>
             </button>
         </div>
         <!--CHAT SECTION-->
@@ -277,7 +239,7 @@
                                 <p><?= $s['email'] ?></p>
                             </div>
                         </div>
-                        <button class="student-action">
+                        <button class="student-action" onclick="window.location.href='<?= URL ?>class/remove_class_student/<?= $student['id'] ?>/<?= $class_id ?>'">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-user-minus-icon lucide-user-minus">
                                 <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
                                 <circle cx="9" cy="7" r="4" />
