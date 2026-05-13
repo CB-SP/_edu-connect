@@ -138,14 +138,15 @@
         }
 
         //get class data
-        public function get_class_data(int $id) {
+        public function get_class_data(int $id, int $school) {
             try {
-                $this->stmt = $this->pdo->prepare("SELECT c.nome AS class, t.nome AS teacher, t.foto
+                $this->stmt = $this->pdo->prepare("SELECT c.nome AS class, t.nome AS teacher, t.foto, COUNT(sc_all.id) AS students, (SELECT COUNT(id) FROM usuarios WHERE role = 'aluno' AND escola = ?) AS school_students
                     FROM turmas AS c
                     JOIN usuarios AS t ON t.id = c.professor
+                    LEFT JOIN alunos_turmas AS sc_all ON sc_all.turma = c.id
                     WHERE c.id = ?
                 ");
-                $this->stmt->execute([$id]);
+                $this->stmt->execute([$school, $id]);
 
                 $class_data = $this->stmt->fetch(PDO::FETCH_ASSOC);
                 
@@ -164,6 +165,28 @@
                 $id = $this->stmt->fetch(PDO::FETCH_ASSOC)['id'];
 
                 return !empty($id) ? $id : null;
+            } catch (PDOException $e) {
+                throw $e;
+            }
+        }
+
+        //add class student
+        public function add_class_student(int $student, int $class) {
+            try {
+                $this->stmt = $this->pdo->prepare("INSERT INTO alunos_turmas (aluno, turma) VALUES (?, ?)");
+                
+                return $this->stmt->execute([$student, $class]) ?: false;
+            } catch (PDOException $e) {
+                throw $e;
+            }
+        }
+
+        //remove class student
+        public function remove_class_student(int $student, int $class) {
+            try {
+                $this->stmt = $this->pdo->prepare("DELETE FROM alunos_turmas WHERE aluno = ? AND turma = ? LIMIT 1");
+                
+                return $this->stmt->execute([$student, $class]) ?: false;
             } catch (PDOException $e) {
                 throw $e;
             }

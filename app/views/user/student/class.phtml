@@ -7,7 +7,7 @@
     $chats = new ChatController;
 
     $class_chat = $chats->get_chat($class_id, $_SESSION['school_id']);
-    $class_data = $class->get_class_data($class_id);
+    $class_data = $class->get_class_data($class_id, $_SESSION['school_id']);
     $students = $class->get_class_students($class_id);
 ?>
 
@@ -70,7 +70,7 @@
                     <circle cx="9" cy="7" r="4" />
                 </svg>
 
-                <p>Membros (2)</p>
+                <p>Membros (<?= $class_data['students'] ?>)</p>
             </button>
         </div>
         <!--CHAT SECTION-->
