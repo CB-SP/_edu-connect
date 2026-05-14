@@ -13,9 +13,9 @@ body {
     min-height: 100vh;
 }
 
-  .input-box .fileName {
-        color: var(--MutedForegroundC);
-    }
+.input-box .fileName {
+    color: var(--MutedForegroundC);
+}
 
 @media screen and (max-width: 768px) {
 
@@ -51,7 +51,8 @@ body {
         justify-content: center;
         margin-bottom: 15px;
     }
-    .logo svg{
+
+    .logo svg {
         color: var(--Background);
         height: 40px;
         width: 40px;
@@ -103,7 +104,7 @@ body {
         color: black;
     }
 
-    input:focus,
+    .id-input:focus,
     select:focus {
         outline-color: var(--SwitchBackground);
         border-color: gray;
@@ -112,6 +113,63 @@ body {
 
     input:-webkit-autofill {
         -webkit-box-shadow: 0 0 0 1000px var(--Background) inset !important;
+    }
+
+    .input-senha {
+        display: flex;
+        align-items: center;
+        width: 100%;
+        border: 1px solid transparent;
+        outline: 3px solid transparent;
+        border-radius: 8px;
+        background-color: #f0f1f1;
+        font-size: 14px;
+        transition: 0.2s;
+        color: black;
+    }
+
+    .input-senha .btn-hide-senha {
+        display: flex;
+        align-items: center;
+        padding-right: 6px;
+        border: none;
+        outline: none;
+    }
+
+    .input-senha svg {
+        color: var(--MutedForegroundC);
+    }
+
+    .input-senha .lucide-eye-off {
+        display: none;
+    }
+
+    .lucide-eye-off.openEye {
+        display: block;
+    }
+
+    .lucide-eye.closeEye {
+        display: none;
+    }
+
+    .id-input {
+        transition: 0.2s;
+    }
+
+    .input-senha:focus-within {
+        outline-color: var(--SwitchBackground);
+        border-color: gray;
+        background: white;
+    }
+
+    .input-senha:focus-within .btn-hide-senha {
+        background: white;
+    }
+
+    .input-senha input:focus-within {
+        outline-color: none;
+        border-color: none;
+        background: white;
     }
 
     .btn {
@@ -164,7 +222,7 @@ body {
     }
 }
 
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 769px) {
 
 
     .login-modal,
@@ -197,7 +255,8 @@ body {
         justify-content: center;
         margin-bottom: 15px;
     }
-      .logo svg{
+
+    .logo svg {
         color: var(--Background);
         height: 45px;
         width: 45px;
@@ -255,11 +314,68 @@ body {
         color: var(--MutedForeground);
     }
 
+    .input-senha {
+        display: flex;
+        align-items: center;
+        width: 100%;
+        border: 1px solid transparent;
+        outline: 3px solid transparent;
+        border-radius: 8px;
+        background-color: #f0f1f1;
+        font-size: 14px;
+        transition: 0.2s;
+        color: black;
+    }
+
+    .input-senha .btn-hide-senha {
+        display: flex;
+        align-items: center;
+        padding-right: 6px;
+        border: none;
+        outline: none;
+    }
+
+    .input-senha svg {
+        color: var(--MutedForegroundC);
+    }
+
+    .input-senha .lucide-eye-off {
+        display: none;
+    }
+
+    .lucide-eye-off.openEye {
+        display: block;
+    }
+
+    .lucide-eye.closeEye {
+        display: none;
+    }
+
+    .id-input {
+        transition: 0.2s;
+    }
+
+    .input-senha:focus-within {
+        outline-color: var(--SwitchBackground);
+        border-color: gray;
+        background: white;
+    }
+
+    .input-senha:focus-within .btn-hide-senha {
+        background: white;
+    }
+
+    .input-senha input:focus-within {
+        outline-color: none;
+        border-color: none;
+        background: white;
+    }
+
     select {
         color: var(--MutedForeground);
     }
 
-    input:focus-within,
+    .id-input:focus-within,
     select:focus-within {
         outline-color: var(--SwitchBackground);
         border-color: gray;
