@@ -30,7 +30,7 @@
         <form action="<?= URL ?>user/login_user" method="post" class="form">
             <div class="input-box">
                 <label for="nif">NIF</label>
-                <input type="text" placeholder="Seu NIF" id="nif" name="nif" class="id-input" maxlength="14" required pattern="\d{14}">
+                <input type="text" placeholder="Seu NIF" id="nif" name="nif" class="id-input" maxlength="14" required pattern="[a-zA-Z0-9]{14}">
             </div>
 
             <div class="input-box">
