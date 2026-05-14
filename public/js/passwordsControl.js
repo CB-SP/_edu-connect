@@ -1,22 +1,30 @@
-const btnHide = document.querySelector('.btn-hide-senha')
+const btnHide = document.querySelectorAll('.btn-hide-senha')
 
-const lucideEyeOff = document.querySelector('.lucide-eye-off')
-const lucideEye = document.querySelector('.lucide-eye')
+btnHide.forEach(btn => {
+    btn.addEventListener('click', () => {
+        input = btn.previousElementSibling
+        eyeOffIcon = btn.querySelectorAll('.lucide-eye-off')
+        eyeOffIcon.forEach(eyeOff => {
+            if (eyeOff.classList.contains('openEye')) {
+                eyeOff.classList.remove('openEye')
+                input.type = "password"
+            } else {
+                eyeOff.classList.add('openEye')
+                input.type = "text"
+            }
 
-btnHide.addEventListener('click', () => {
-    input = btnHide.previousElementSibling
-    if (lucideEyeOff.classList.contains('openEye')) {
-        lucideEyeOff.classList.remove('openEye')
-        input.type = "password"
-    } else {
-        lucideEyeOff.classList.add('openEye')
-        input.type = "text"
-    }
+        })
 
-    if (lucideEye.classList.contains('closeEye')) {
-        lucideEye.classList.remove('closeEye')
-    } else {
-        lucideEye.classList.add('closeEye')
-    }
+        eyeIcon = btn.querySelectorAll('.lucide-eye')
+        eyeIcon.forEach(eye => {
+            if (eye.classList.contains('closeEye')) {
+                eye.classList.remove('closeEye')
+            } else {
+                eye.classList.add('closeEye')
+            }
+
+        })
+    })
+
 })
 
