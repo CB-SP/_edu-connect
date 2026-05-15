@@ -553,6 +553,9 @@
     }
 
 
+    input:-webkit-autofill {
+        -webkit-box-shadow: 0 0 0 1000px var(--InputBackground) inset !important;
+    }
 
 }
 
@@ -1131,5 +1134,10 @@
     .overlay-modal.active {
         opacity: 1;
         visibility: visible;
+    }
+
+    
+    input:-webkit-autofill {
+        -webkit-box-shadow: 0 0 0 1000px var(--InputBackground) inset !important;
     }
 }

@@ -28,3 +28,18 @@ btnHide.forEach(btn => {
 
 })
 
+// ADDING FORM MASKS
+const inputs = document.querySelectorAll('.contact-input')
+inputs.forEach(input => {
+    input.addEventListener('input', () => {
+        let valor = input.value
+        valor = valor.replace(/[^\d+]/g, "")
+     
+        valor = valor.replace(/^\+?(\d{3})(\d{3})(\d{3})(\d{0,3}).*/,
+            "+$1 $2 $3 $4"
+        )
+        input.value = valor.trim()
+        
+        //console.log('VALOR INPUT', valor)
+    })
+})
