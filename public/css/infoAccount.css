@@ -301,6 +301,77 @@
         border-color: gray;
     }
 
+    .alter-form .input-box .input-senha input:focus {
+        outline-color: transparent;
+        border-color: transparent;
+    }
+
+    .input-senha {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        border: 1px solid transparent;
+        outline: 3px solid transparent;
+        border-radius: 8px;
+        background-color: #f0f1f1;
+        font-size: 14px;
+        transition: 0.2s;
+        color: black;
+    }
+
+    .input-senha input {
+        border: none;
+        outline: none;
+        width: 100%;
+    }
+
+    .input-senha .btn-hide-senha {
+        display: flex;
+        align-items: center;
+        padding-right: 6px;
+        border: none;
+        outline: none;
+    }
+
+    .input-senha svg {
+        color: var(--MutedForegroundC);
+    }
+
+    .input-senha .lucide-eye-off {
+        display: none;
+    }
+
+    .lucide-eye-off.openEye {
+        display: block;
+    }
+
+    .lucide-eye.closeEye {
+        display: none;
+    }
+
+    .id-input {
+        transition: 0.2s;
+    }
+
+    .input-senha:focus-within {
+        outline-color: var(--SwitchBackground);
+        border-color: gray;
+        background: white;
+    }
+
+    .input-senha:focus-within .btn-hide-senha {
+        background: white;
+    }
+
+    .input-senha input:focus-within {
+        outline-color: none;
+        border-color: none;
+        background: white;
+    }
+
+
+
     .alter-form .btn-box {
         display: flex;
         flex-direction: column-reverse;
