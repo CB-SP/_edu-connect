@@ -467,6 +467,10 @@
         font-size: var(--text-sm);
         color: var(--MutedForegroundC);
     }
+
+    input:-webkit-autofill {
+        -webkit-box-shadow: 0 0 0 1000px var(--InputBackground) inset !important;
+    }
 }
 
 
@@ -786,6 +790,7 @@
         outline-color: var(--SwitchBackground);
         border-color: gray;
     }
+
     .alter-form .input-box .input-senha input:focus {
         outline-color: transparent;
         border-color: transparent;
@@ -954,5 +959,9 @@
 
     .tip-item p {
         color: var(--MutedForegroundC);
+    }
+
+    input:-webkit-autofill {
+        -webkit-box-shadow: 0 0 0 1000px var(--InputBackground) inset !important;
     }
 }
