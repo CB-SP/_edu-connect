@@ -138,6 +138,8 @@ body {
 
     .input-senha svg {
         color: var(--MutedForegroundC);
+        width: 21px;
+        height: 21px;
     }
 
     .input-senha .lucide-eye-off {
@@ -337,6 +339,8 @@ body {
 
     .input-senha svg {
         color: var(--MutedForegroundC);
+        width: 22px;
+        height: 22px;
     }
 
     .input-senha .lucide-eye-off {

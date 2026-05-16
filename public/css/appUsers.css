@@ -41,7 +41,7 @@ body {
 
     .layout-admin .header .open-menu {
         padding: 2px;
-        transition: all .5s ease-in-out;
+        transition: all .2s ease-in-out;
         border-radius: var(--radius-sm);
     }
 
@@ -56,7 +56,7 @@ body {
     }
 
     .layout-admin .sideBar #close-menu:hover {
-        background-color: var(--SwitchBackground);
+        background-color: var(--Muted);
     }
 
     .layout-admin .overlay {
@@ -93,6 +93,14 @@ body {
         font-weight: lighter;
     }
 
+    .layout-admin .logo-system svg {
+        color: var(--Background);
+        background-color: var(--AccentBlue);
+        border-radius: var(--radius-md);
+        height: 40px;
+        width: 40px;
+        flex-shrink: 0;
+    }
 
     .layout-admin .logo-system img {
         margin-right: 25px;
@@ -357,10 +365,17 @@ body {
         border-bottom: .5px solid var(--SwitchBackground);
         height: 55%;
         display: flex;
-        justify-content: space-between;
         align-items: center;
         font-size: var(--text-sm);
         font-weight: lighter;
+        gap: 20px;
+    }
+    .layout-admin .logo-system svg {
+        color: var(--Background);
+        background-color: var(--AccentBlue);
+        border-radius: var(--radius-md);
+        height: 45px;
+        width: 45px;
     }
 
     .layout-admin .logo-system img {
