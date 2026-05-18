@@ -1,9 +1,9 @@
 <?php
-    require_once './app/views/layouts/adminMain.phtml';
-    $admin = new AdminController;
-    $schools = $admin->fetch_schools();
-    $users = $admin->fetch_users();
-    $total_entities = $admin->total_entities();
+require_once './app/views/layouts/adminMain.phtml';
+$admin = new AdminController;
+$schools = $admin->fetch_schools();
+$users = $admin->fetch_users();
+$total_entities = $admin->total_entities();
 ?>
 
 <div class="painel-dash">
@@ -83,6 +83,12 @@
                         <circle cx="9" cy="7" r="4" />
                     </svg>
                     <span>Usuários</span>
+                </button>
+                <button class="tab" data-target="admins-section">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-shield-icon lucide-shield">
+                        <path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z" />
+                    </svg>
+                    <span>Admins</span>
                 </button>
             </div>
             <!--SCHOOL SECTION-->
@@ -220,7 +226,13 @@
                                                         Editar
                                                     </button>
                                                     <button class="delete-action" onclick="window.location.href='<?= URL ?>admin/delete_school/<?= $school['id'] ?>'">
-                                                       <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-trash2-icon lucide-trash-2"><path d="M10 11v6"/><path d="M14 11v6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6"/><path d="M3 6h18"/><path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-trash2-icon lucide-trash-2">
+                                                            <path d="M10 11v6" />
+                                                            <path d="M14 11v6" />
+                                                            <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6" />
+                                                            <path d="M3 6h18" />
+                                                            <path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" />
+                                                        </svg>
                                                         Eliminar
                                                     </button>
                                                 <?php endif; ?>
@@ -435,11 +447,152 @@
                     </div>
                 </div>
             </section>
+            <!--ADMINS SECTION-->
+            <section class="tab-content" id="admins-section">
+                <div class="search-add-area">
+                    <div class="search-user-box">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-search-icon lucide-search">
+                            <path d="m21 21-4.34-4.34" />
+                            <circle cx="11" cy="11" r="8" />
+                        </svg>
+                        <input type="search" name="searchUser" id="searchUser" placeholder="Pesquisar admins">
+                    </div>
+                    <button class="add-user-btn add-button" id="btn-add-user">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-user-plus-icon lucide-user-plus">
+                            <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
+                            <circle cx="9" cy="7" r="4" />
+                            <line x1="19" x2="19" y1="8" y2="14" />
+                            <line x1="22" x2="16" y1="11" y2="11" />
+                        </svg>
+                        <p>Novo Admin</p>
+                    </button>
+                    <!--ADD ADMIN MODAL-->
+                    <div class="add-modal" id="add-user-modal">
+                        <div class="desc-form">
+                            <h3>Novo admin</h3>
+                            <p>Cadastre um novo admin no sistema</p>
+                            <img src="<?= URL ?>public/assets/icons/x.png" alt="" class="close-modal-icon">
+                        </div>
+                        <form action="<?= URL ?>admin/add_user" method="post" enctype="multipart/form-data">
+                            <div class="input-box">
+                                <label for="userName">Nome Completo</label>
+                                <input type="text" name="name" placeholder="Nome completo do usuário" required>
+                            </div>
+                            <div class="input-box">
+                                <label for="emailUser">Email</label>
+                                <input type="email" name="email" placeholder="usuario@email.com" pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9._%+-]+\.[a-zA-Z]{2,}" required>
+                            </div>
+                            <div class="input-box">
+                                <label for="userPassword">Senha</label>
+                                <input type="text" name="password" placeholder="Digite uma senha segura" autocomplete="off" minlength="8" maxlength="25" required>
+                            </div>
+                            <div class="input-box">
+                                <label for="">Foto do usuário</label>
+                                <label for="fotoFile" class="labelFile">
+                                    <input type="file" name="photo" class="fotoFile" hidden>
+                                    Escolher ficheiro.
+                                    <span class="fileName">Nenhum ficheiro escolhido</span>
+                                </label>
+                            </div>
+                            <div class="final-btn-actions">
+                                <button type="button" class="btn" id="btn-cancel">Cancelar</button>
+                                <button type="submit" class="btn" id="btn-create">Criar admin</button>
+                            </div>
+                        </form>
+                    </div>
+                    <!--EDIT ADMIN MODAL-->
+                    <div class="edit-modal" id="edit-user-modal">
+                        <div class="desc-form">
+                            <h3>Editar admin</h3>
+                            <p>Edite as informações de admin</p>
+                            <img src="<?= URL ?>public/assets/icons/x.png" alt="" class="close-modal-icon">
+                        </div>
+                        <form action="<?= URL ?>admin/edit_user" method="post" enctype="multipart/form-data">
+                            <div class="input-box">
+                                <label for="userName">Nome Completo</label>
+                                <input type="text" name="name" id="userName" placeholder="Nome completo do usuário" required>
+                            </div>
+                            <div class="input-box">
+                                <label for="emailUser">Email</label>
+                                <input type="text" name="email" id="emailUser" placeholder="usuario@gmail.com" autocomplete="email" required>
+                            </div>
+                            <div class="input-box">
+                                <label for="">Foto do usuário</label>
+                                <label for="fotoFile" class="labelFile">
+                                    <input type="file" name="photo" id="fotoFile" class="fotoFile" hidden>
+                                    Escolher ficheiro.
+                                    <span class="fileName">Nenhum ficheiro escolhido</span>
+                                </label>
+                            </div>
+                            <input type="hidden" name="id" id="userId">
+                            <input type="hidden" name="current_photo" id="current_photo">
+                            <div class="final-btn-actions">
+                                <button type="button" class="btn" id="btn-cancel">Cancelar</button>
+                                <button type="submit" class="btn" id="btn-create">Editar admin</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <!--ADMINS LIST-->
+                <div class="users-list">
+                    <div class="text-users-header">
+                        <p><span>Administradores do sistema.</span></p>
+                    </div>
+                    <div class="tbl" id="usersResults">
+                        <?php if (!empty($users)): ?>
+                            <table class="tbl-users">
+                                <thead>
+                                    <tr>
+                                        <th>Administrador</th>
+                                        <th>Função</th>
+                                        <th>Estado</th>
+                                        <th>Acções</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php foreach ($users as $user): ?>
+                                        <tr>
+                                            <td><?= $user['nome'] ?></td>
+                                            <td><?= empty($user['coordinator_role']) ? $user['role'] : $user['coordinator_role'] ?></td>
+                                            <td>
+                                                <?= $status = empty($user['deleted_at']) && empty($user['estado_escola']) ? 'Activo' : 'Inactivo' ?>
+                                            </td>
+                                            <td class="btn-down-actions ">
+                                                <button class="action-btn">Acções</button>
+                                                <div class="drop-actions">
+                                                    <?php if ($status == 'Inactivo'): ?>
+                                                        <button class="restore-action" onclick="window.location.href='<?= URL ?>admin/restore_user/<?= $user['id'] ?>'"><img src="" alt=" ">Restaurar</button>
+                                                    <?php else: ?>
+                                                        <button class="edit-action" data-id="<?= $user['id'] ?>" data-type="user">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-pencil-icon lucide-pencil">
+                                                                <path d="M21.174 6.812a1 1 0 0 0-3.986-3.987L3.842 16.174a2 2 0 0 0-.5.83l-1.321 4.352a.5.5 0 0 0 .623.622l4.353-1.32a2 2 0 0 0 .83-.497z" />
+                                                                <path d="m15 5 4 4" />
+                                                            </svg>
+                                                            Editar</button>
+                                                        <button class="delete-action" onclick="window.location.href='<?= URL ?>admin/delete_user/<?= $user['id'] ?>'">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-trash2-icon lucide-trash-2">
+                                                                <path d="M10 11v6" />
+                                                                <path d="M14 11v6" />
+                                                                <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6" />
+                                                                <path d="M3 6h18" />
+                                                                <path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" />
+                                                            </svg>
+                                                            Eliminar</button>
+                                                    <?php endif; ?>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    <?php endforeach; ?>
+                                </tbody>
+                            </table>
+                        <?php endif; ?>
+                    </div>
+                </div>
+            </section>
         </section>
     </section>
 </div>
 <script>
-
     const input = document.getElementById('searchUser');
     const results = document.getElementById('usersResults');
 
@@ -539,12 +692,10 @@
         `;
 
         results.innerHTML = html;
-}
-
+    }
 </script>
 
 <script>
-
     const inputSchool = document.getElementById('searchSchool');
     const schoolsResults = document.getElementById('schoolsResults');
 
@@ -638,8 +789,7 @@
         `;
 
         schoolsResults.innerHTML = html;
-}
-
+    }
 </script>
 
 <?php require_once './app/views/layouts/closure.phtml' ?>

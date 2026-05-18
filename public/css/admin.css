@@ -84,7 +84,6 @@
         gap: 10px;
         padding: 3px;
         background-color: var(--Muted);
-        width: 210px;
         border-radius: var(--radius-lg);
     }
 
@@ -593,7 +592,7 @@
         gap: 10px;
         padding: 3px;
         background-color: var(--Muted);
-        width: 210px;
+        width: 350px;
         border-radius: var(--radius-lg);
     }
 
@@ -1092,7 +1091,7 @@
         gap: 10px;
         padding: 3px;
         background-color: var(--Muted);
-        width: 210px;
+        width: 300px;
         border-radius: var(--radius-lg);
     }
 
@@ -1380,6 +1379,7 @@
         border-bottom: 1px solid var(--SwitchBackground);
         text-align: left;
         font-weight: var(--weight-sb);
+        z-index: 1;
     }
 
     .tbl-schools th,
@@ -1409,6 +1409,7 @@
         cursor: pointer;
         padding: 5px 12px;
         border-radius: var(--radius-md);
+        z-index: 0;
     }
 
     .tbl-schools .action-btn:hover,
