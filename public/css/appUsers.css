@@ -256,7 +256,7 @@ body {
         overflow: scroll;
     }
 
-    body.no-scroll {
+    body.noScroll {
         overflow: hidden;
 
     }
@@ -347,6 +347,8 @@ body {
         height: 100%;
         border-right: 1px solid var(--SwitchBackground);
         background-color: var(--Background);
+        overflow-y: auto;
+        overscroll-behavior: contain;
     }
 
     .layout-admin .sideBar #close-menu {
