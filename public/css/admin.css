@@ -214,7 +214,7 @@
         display: block;
     }
 
-    .no-scroll {
+    .noScroll {
         overflow: hidden;
     }
 
@@ -312,6 +312,12 @@
         display: flex;
         gap: 10px;
         justify-content: end;
+    }
+
+    .short-form {
+        bottom: 30px;
+        right: 20px;
+        position: absolute;
     }
 
     .final-btn-actions .btn {
@@ -818,6 +824,12 @@
         justify-content: end;
     }
 
+    .short-form {
+        bottom: 30px;
+        right: 20px;
+        position: absolute;
+    }
+
     .final-btn-actions .btn {
         padding: 10px 13px;
         border: 1px solid var(--SwitchBackground);
@@ -1317,6 +1329,12 @@
         display: flex;
         gap: 10px;
         justify-content: end;
+    }
+
+    .short-form {
+        bottom: 30px;
+        right: 20px;
+        position: absolute;
     }
 
     .final-btn-actions .btn {

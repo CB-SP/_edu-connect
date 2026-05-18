@@ -349,6 +349,12 @@
         justify-content: end;
     }
 
+    .short-form {
+        bottom: 30px;
+        right: 20px;
+        position: absolute;
+    }
+
     .final-btn-actions .btn {
         padding: 10px 13px;
         border: 1px solid var(--SwitchBackground);
@@ -936,6 +942,12 @@
         justify-content: end;
     }
 
+    .short-form {
+        bottom: 30px;
+        right: 20px;
+        position: absolute;
+    }
+
     .final-btn-actions .btn {
         padding: 10px 13px;
         border: 1px solid var(--SwitchBackground);
@@ -1136,7 +1148,7 @@
         visibility: visible;
     }
 
-    
+
     input:-webkit-autofill {
         -webkit-box-shadow: 0 0 0 1000px var(--InputBackground) inset !important;
     }
