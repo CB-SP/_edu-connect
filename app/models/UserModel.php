@@ -1,7 +1,7 @@
 <?php
     class UserModel extends Model {
         //add users
-        public function add_user(string $name, string $email, string $first_contact, string $second_contact, string $nif, int $school, string $role, string $photo, string $password) {
+        public function add_user($name, $email, $first_contact, $second_contact, $nif, $school, $role, $photo, $password) {
             try {
                 $this->stmt = $this->pdo->prepare("INSERT INTO usuarios (nome, contacto_1, contacto_2, nif, email, foto, password, role, escola) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
 

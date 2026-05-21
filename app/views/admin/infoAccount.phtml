@@ -1,7 +1,7 @@
 <?php
-require_once './app/views/layouts/adminMain.phtml';
-$admin = new AdminController;
-$admin_data = $admin->find_admin($_SESSION['id']);
+    require_once './app/views/layouts/adminMain.phtml';
+    $admin = new AdminController;
+    $admin_data = $admin->find_admin($_SESSION['id']);
 ?>
 
 <section class="info-account">
@@ -50,15 +50,15 @@ $admin_data = $admin->find_admin($_SESSION['id']);
                 </div>
                 <div class="input-box">
                     <label for="">Foto do usuário</label>
-                    <label for="fotoFile" class="labelFile">
-                        <input type="file" name="photo" id="fotoFile" class="fotoFile" hidden>
+                    <label for="avatarFile" class="labelFile">
+                        <input type="file" name="avatar" id="avatarFile" hidden>
                         Escolher ficheiro.
                         <span class="fileName">Nenhum ficheiro escolhido</span>
                     </label>
                 </div>
 
                 <input type="hidden" name="id" id="userId" value="<?= $_SESSION['id'] ?>">
-                <input type="hidden" name="current_photo" id="current_photo">
+                <input type="hidden" name="current_avatar" value="<?= $admin_data['foto'] ?>">
 
                 <div class="final-btn-actions">
                     <button type="button" class="btn" id="btn-cancel">Cancelar</button>

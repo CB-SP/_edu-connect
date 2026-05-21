@@ -1,6 +1,6 @@
 <?php
     class AdminController extends Controller {
-        private $admin, $school, $user, $id, $name, $photo, $email, $password;
+        private $admin, $school, $user, $id, $name, $avatar, $email, $password;
 
         public function __construct() {
             $this->admin = new AdminModel;
@@ -23,16 +23,19 @@
             $this->isAdmin();
             $this->show_page("register");
         }
+
         public function settings() {
             $this->isLoged();
             $this->isAdmin();
             $this->show_page("settings");
         }
+
         public function infoAccount() {
             $this->isLoged();
             $this->isAdmin();
             $this->show_page("infoAccount");
         }
+
         public function security() {
             $this->isLoged();
             $this->isAdmin();
@@ -40,7 +43,7 @@
         }
 
         //add admins
-        public function add_admin(string $name, string $photo, string $email, string $password) {
+        public function add_admin(string $name, string $avatar, string $email, string $password) {
             if (empty($name) || empty($email) || empty($password)) {
                 return false;
             }
@@ -52,7 +55,7 @@
             $password = password_hash($password, PASSWORD_DEFAULT);
 
             try {
-                if (!($this->admin->add_admin($name, $photo, $email, $password))) {
+                if (!($this->admin->add_admin($name, $avatar, $email, $password))) {
                     return false;
                 }
             } catch (PDOException $e) {
@@ -61,6 +64,20 @@
             }
 
             return true;
+        }
+
+        //redirect after add admin
+        public function redirect_add_admin() {
+            $this->name = $_POST['name'] ?? "";
+            $this->email = $_POST['email'] ?? "";
+            $this->password = $_POST['password'] ?? "";
+            $this->avatar = Utils::uploadAvatar() ?? null;
+
+            if (!$this->add_admin($this->name, $this->avatar, $this->email, $this->password)) {
+                $this->redirect("admin/index/error");
+            }
+
+            $this->redirect("admin/index");
         }
 
         //add standard admin
@@ -79,6 +96,15 @@
             }
 
             return true;
+        }
+
+        //fetch admins
+        public function fetch_admins(int $id) {
+            try {
+                return $this->admin->fetch_admins($id);
+            } catch (PDOException $e) {
+                error_log("ERRO_BUSCAR_ADMINS: ". $e->getMessage(). "\n". $e->getTraceAsString());
+            }
         }
 
         //admins login
@@ -132,16 +158,34 @@
             $this->email = $_POST['email'] ?? null;
             $this->id = $_POST['id'] ?? null;
 
+            $currentAvatar = $_POST['current_avatar'] ?? null;
+            $newAvatar = Utils::uploadAvatar() ?? null;
+
             if (empty($this->name) || empty($this->email) || empty($this->id)) {
                 return false;
             }
 
+            if ($newAvatar !== null) {
+                $this->avatar = $newAvatar;
+
+                if (!empty($currentPhoto)) {
+                    $oldPath = __DIR__ . "/../../public/" . $currentAvatar;
+
+                    if (file_exists($oldPath)) {
+                        unlink($oldPath);
+                    }
+                }
+
+            } else {
+                $this->avatar = $currentAvatar;
+            }
+
             try {
-                if (!$this->admin->edit_admin($this->name, $this->email, $this->id)) {
+                if (!$this->admin->edit_admin($this->name, $this->email, $this->avatar, $this->id)) {
                     $this->redirect("admin/index");
                 }
             } catch (PDOException $e) {
-                error_log("ERRO_BUSCAR_ADMIN: ". $e->getMessage(). "\n". $e->getTraceAsString());
+                error_log("ERRO_EDITAR_ADMIN: ". $e->getMessage(). "\n". $e->getTraceAsString());
                 $this->redirect("admin/index");
             }
 
@@ -194,6 +238,40 @@
                 error_log("ERRO_CONSULTAR_ENTIDADES: ". $e->getMessage(). "\n". $e->getTraceAsString());
                 return null;
             }
+        }
+
+        //restore admins
+        public function restore_admin(int $id) {
+            if (empty($id)) {
+                $this->redirect("admin/index/error");
+            }
+
+            try {
+                if (!$this->admin->restore_admin($id)) {
+                    $this->redirect("admin/index/error");
+                }
+            } catch (PDOException $e) {
+                error_log("ERRO_RESTAURAR_ADMIN: ". $e->getMessage(). "\n". $e->getTraceAsString());
+            }
+
+            $this->redirect("admin/index");
+        }
+
+        //delete admins
+        public function delete_admin(int $id) {
+            if (empty($id)) {
+                $this->redirect("admin/index/error");
+            }
+
+            try {
+                if (!$this->admin->delete_admin($id)) {
+                    $this->redirect("admin/index/error");
+                }
+            } catch (PDOException $e) {
+                error_log("ERRO_ELIMINAR_ADMIN: ". $e->getMessage(). "\n". $e->getTraceAsString());
+            }
+
+            $this->redirect("admin/index");
         }
 
         //==========schools managemant==========

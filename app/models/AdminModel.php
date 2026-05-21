@@ -24,6 +24,24 @@
             }
         }
 
+        //fetch admins
+        public function fetch_admins(int $id) {
+            try {
+                $this->stmt = $this->pdo->prepare("SELECT id, nome, foto, email, deleted_at FROM admins WHERE id != ?");
+                $this->stmt->execute([$id]);
+
+                $admins = [];
+
+                while ($result = $this->stmt->fetch(PDO::FETCH_ASSOC)) {
+                    $admins[] = $result;
+                }
+
+                return !empty($admins) ? $admins : null;
+            } catch (PDOException $e) {
+                throw $e;
+            }
+        }
+
         //search admins password hash
         public function fetch_password_hash($email) {
             try {
@@ -81,11 +99,11 @@
         }
 
         //edit admin
-        public function edit_admin($name, $email, $id) {
+        public function edit_admin($name, $email, $avatar, $id) {
             try {
-                $this->stmt = $this->pdo->prepare("UPDATE admins SET nome = ?, email = ? WHERE id = ? AND deleted_at IS NULL");
+                $this->stmt = $this->pdo->prepare("UPDATE admins SET nome = ?, email = ?, foto = ? WHERE id = ? AND deleted_at IS NULL");
 
-                return $this->stmt->execute([$name, $email, $id]) ?: false;
+                return $this->stmt->execute([$name, $email, $avatar, $id]) ?: false;
             } catch (PDOException $e) {
                 throw $e;
             }
@@ -118,6 +136,28 @@
                 $total_entities = $this->stmt->fetchAll(PDO::FETCH_ASSOC);
 
                 return !empty($total_entities) ? $total_entities : null;
+            } catch (PDOException $e) {
+                throw $e;
+            }
+        }
+
+        //restore admins
+        public function restore_admin(int $id) {
+            try {
+                $this->stmt = $this->pdo->prepare("UPDATE admins SET deleted_at = null WHERE id = ?");
+
+                return $this->stmt->execute([$id]) ?: false;
+            } catch (PDOException $e) {
+                throw $e;
+            }
+        }
+
+        //delete admins
+        public function delete_admin(int $id) {
+            try {
+                $this->stmt = $this->pdo->prepare("UPDATE admins SET deleted_at = ? WHERE id = ?");
+
+                return $this->stmt->execute([DATE, $id]) ?: false;
             } catch (PDOException $e) {
                 throw $e;
             }

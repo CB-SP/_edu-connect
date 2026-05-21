@@ -59,11 +59,11 @@
 
         public static function uploadAvatar() {
 
-            if (!isset($_FILES['photo']) && !isset($_FILES['logo'])) {
+            if (!isset($_FILES['photo']) && !isset($_FILES['logo']) && !isset($_FILES['avatar'])) {
                 return null;
             }
 
-            $file = $_FILES['photo'] ?? $_FILES['logo'];
+            $file = $_FILES['photo'] ?? $_FILES['logo'] ?? $_FILES['avatar'];
 
             if ($file['error'] === 4) {
                 return "null";
