@@ -101,12 +101,13 @@ Permite comunicação interna e publicação de avisos.
 
 ---
 
-## 💬 Tabelas: `chats`, `mensagens`
+## 💬 Tabelas: `chats`, `mensagens`, `mensagens_lidas`
 
 Implementa chats por turma.
 
 - **`chats`**: cada turma possui um chat, vinculado à escola  
 - **`mensagens`**: mensagens enviadas por usuários dentro do chat
+- **`mensagens_lidas`**: mensagens visualizadas pelos usuários dentro do chat
 
 ---
 
