@@ -1,9 +1,10 @@
 <?php
-require_once './app/views/layouts/adminMain.phtml';
-$admin = new AdminController;
-$schools = $admin->fetch_schools();
-$users = $admin->fetch_users();
-$total_entities = $admin->total_entities();
+    require_once './app/views/layouts/adminMain.phtml';
+    $admin = new AdminController;
+    $schools = $admin->fetch_schools();
+    $users = $admin->fetch_users();
+    $total_entities = $admin->total_entities();
+    $admins = $admin->fetch_admins($_SESSION['id']);
 ?>
 
 <div class="painel-dash">
@@ -473,7 +474,7 @@ $total_entities = $admin->total_entities();
                             <p>Cadastre um novo admin no sistema</p>
                             <img src="<?= URL ?>public/assets/icons/x.png" alt="" class="close-modal-icon">
                         </div>
-                        <form action="<?= URL ?>admin/add_user" method="post" enctype="multipart/form-data">
+                        <form action="<?= URL ?>admin/redirect_add_admin" method="post" enctype="multipart/form-data">
                             <div class="input-box">
                                 <label for="userName">Nome Completo</label>
                                 <input type="text" name="name" placeholder="Nome completo do usuário" required>
@@ -488,8 +489,8 @@ $total_entities = $admin->total_entities();
                             </div>
                             <div class="input-box">
                                 <label for="">Foto do usuário</label>
-                                <label for="fotoFile" class="labelFile">
-                                    <input type="file" name="photo" class="fotoFile" hidden>
+                                <label for="avatarFile" class="labelFile">
+                                    <input type="file" name="avatar" id="avatarFile" hidden>
                                     Escolher ficheiro.
                                     <span class="fileName">Nenhum ficheiro escolhido</span>
                                 </label>
@@ -500,38 +501,6 @@ $total_entities = $admin->total_entities();
                             </div>
                         </form>
                     </div>
-                    <!--EDIT ADMIN MODAL-->
-                    <div class="edit-modal" id="edit-user-modal">
-                        <div class="desc-form">
-                            <h3>Editar admin</h3>
-                            <p>Edite as informações de admin</p>
-                            <img src="<?= URL ?>public/assets/icons/x.png" alt="" class="close-modal-icon">
-                        </div>
-                        <form action="<?= URL ?>admin/edit_user" method="post" enctype="multipart/form-data">
-                            <div class="input-box">
-                                <label for="userName">Nome Completo</label>
-                                <input type="text" name="name" id="userName" placeholder="Nome completo do usuário" required>
-                            </div>
-                            <div class="input-box">
-                                <label for="emailUser">Email</label>
-                                <input type="text" name="email" id="emailUser" placeholder="usuario@gmail.com" autocomplete="email" required>
-                            </div>
-                            <div class="input-box">
-                                <label for="">Foto do usuário</label>
-                                <label for="fotoFile" class="labelFile">
-                                    <input type="file" name="photo" id="fotoFile" class="fotoFile" hidden>
-                                    Escolher ficheiro.
-                                    <span class="fileName">Nenhum ficheiro escolhido</span>
-                                </label>
-                            </div>
-                            <input type="hidden" name="id" id="userId">
-                            <input type="hidden" name="current_photo" id="current_photo">
-                            <div class="final-btn-actions short-form">
-                                <button type="button" class="btn" id="btn-cancel">Cancelar</button>
-                                <button type="submit" class="btn" id="btn-create">Editar admin</button>
-                            </div>
-                        </form>
-                    </div>
                 </div>
                 <!--ADMINS LIST-->
                 <div class="users-list">
@@ -539,7 +508,7 @@ $total_entities = $admin->total_entities();
                         <p><span>Administradores do sistema.</span></p>
                     </div>
                     <div class="tbl" id="usersResults">
-                        <?php if (!empty($users)): ?>
+                        <?php if (!empty($admins)): ?>
                             <table class="tbl-users">
                                 <thead>
                                     <tr>
@@ -550,26 +519,20 @@ $total_entities = $admin->total_entities();
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <?php foreach ($users as $user): ?>
+                                    <?php foreach ($admins as $ad): ?>
                                         <tr>
-                                            <td><?= $user['nome'] ?></td>
-                                            <td><?= empty($user['coordinator_role']) ? $user['role'] : $user['coordinator_role'] ?></td>
+                                            <td><?= $ad['nome'] ?></td>
+                                            <td>admin</td>
                                             <td>
-                                                <?= $status = empty($user['deleted_at']) && empty($user['estado_escola']) ? 'Activo' : 'Inactivo' ?>
+                                                <?= $status = empty($ad['deleted_at']) ? 'Activo' : 'Inactivo' ?>
                                             </td>
                                             <td class="btn-down-actions ">
                                                 <button class="action-btn">Acções</button>
                                                 <div class="drop-actions">
                                                     <?php if ($status == 'Inactivo'): ?>
-                                                        <button class="restore-action" onclick="window.location.href='<?= URL ?>admin/restore_user/<?= $user['id'] ?>'"><img src="" alt=" ">Restaurar</button>
+                                                        <button class="restore-action" onclick="window.location.href='<?= URL ?>admin/restore_admin/<?= $ad['id'] ?>'"><img src="" alt=" ">Restaurar</button>
                                                     <?php else: ?>
-                                                        <button class="edit-action" data-id="<?= $user['id'] ?>" data-type="user">
-                                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-pencil-icon lucide-pencil">
-                                                                <path d="M21.174 6.812a1 1 0 0 0-3.986-3.987L3.842 16.174a2 2 0 0 0-.5.83l-1.321 4.352a.5.5 0 0 0 .623.622l4.353-1.32a2 2 0 0 0 .83-.497z" />
-                                                                <path d="m15 5 4 4" />
-                                                            </svg>
-                                                            Editar</button>
-                                                        <button class="delete-action" onclick="window.location.href='<?= URL ?>admin/delete_user/<?= $user['id'] ?>'">
+                                                        <button class="delete-action" onclick="window.location.href='<?= URL ?>admin/delete_admin/<?= $ad['id'] ?>'">
                                                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-trash2-icon lucide-trash-2">
                                                                 <path d="M10 11v6" />
                                                                 <path d="M14 11v6" />
