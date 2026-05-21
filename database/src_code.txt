@@ -233,6 +233,19 @@ create table mensagens (
 );
 
 -- =========================
+-- MENSAGENS LIDAS
+-- =========================
+create table mensagens_lidas (
+    id int auto_increment primary key,
+    mensagem int not null,
+    usuario int not null,
+    viewed_at timestamp default current_timestamp,
+    unique(mensagem, usuario),
+    foreign key (mensagem) references mensagens(id) on delete cascade,
+    foreign key (usuario) references usuarios(id) on delete cascade
+);
+
+-- =========================
 -- ANEXOS
 -- =========================
 create table anexos (
