@@ -46,6 +46,7 @@
                         m.created_at AS hora_envio,
                         
                         u.nome AS remetente,
+                        u.foto AS remetente_foto,
                         t.nome AS turma,
                         t.id AS turma_id
 
