@@ -14,7 +14,7 @@
         //get teachers classes
         public function get_teachers_classes(int $id) {
             try {
-                $this->stmt = $this->pdo->prepare("SELECT t.id, t.nome AS class, p.nome as teacher, COUNT(sc.id) AS students
+                $this->stmt = $this->pdo->prepare("SELECT t.id, t.nome AS class, p.nome AS teacher, p.foto AS teacher_photo, COUNT(sc.id) AS students
                     FROM turmas AS t
                     JOIN usuarios AS p ON p.id = t.professor
                     LEFT JOIN alunos_turmas AS sc ON sc.turma = t.id
@@ -38,7 +38,7 @@
         //search teachers classes
         public function search_teachers_classes(string $search, int $id) {
             try {
-                $this->stmt = $this->pdo->prepare("SELECT t.id, t.nome AS class, p.nome as teacher, COUNT(sc.id) AS students
+                $this->stmt = $this->pdo->prepare("SELECT t.id, t.nome AS class, p.nome as teacher, p.foto AS teacher_photo, COUNT(sc.id) AS students
                     FROM turmas AS t
                     JOIN usuarios AS p ON p.id = t.professor
                     LEFT JOIN alunos_turmas AS sc ON sc.turma = t.id
@@ -88,7 +88,7 @@
         //get students classes
         public function get_students_classes(int $id) {
             try {
-                $this->stmt = $this->pdo->prepare("SELECT t.id, t.nome AS class, p.nome AS teacher, COUNT(sc_all.id) AS students
+                $this->stmt = $this->pdo->prepare("SELECT t.id, t.nome AS class, p.nome AS teacher, p.foto AS teacher_photo, COUNT(sc_all.id) AS students
                     FROM turmas AS t
                     JOIN usuarios AS p ON p.id = t.professor
                     JOIN alunos_turmas AS sc_filter ON sc_filter.turma = t.id
@@ -113,7 +113,7 @@
         //search students classes
         public function search_students_classes(string $search, int $id) {
             try {
-                $this->stmt = $this->pdo->prepare("SELECT t.id, t.nome AS class, p.nome AS teacher, COUNT(sc_all.id) AS students
+                $this->stmt = $this->pdo->prepare("SELECT t.id, t.nome AS class, p.nome AS teacher, p.foto AS teacher_photo, COUNT(sc_all.id) AS students
                     FROM turmas AS t
                     JOIN usuarios AS p ON p.id = t.professor
                     JOIN alunos_turmas AS sc_filter ON sc_filter.turma = t.id

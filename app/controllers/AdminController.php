@@ -190,6 +190,7 @@
             }
 
             $_SESSION['name'] = $this->name;
+            $_SESSION['photo'] = $this->avatar;
             $this->redirect("admin/index");
         }
 

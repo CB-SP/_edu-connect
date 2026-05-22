@@ -121,14 +121,15 @@ $interactionsCount = null;
                         <div class="header-publication-card">
                             <div class="info-user-publication-card">
                                 <div class="img-user">
-                                    <?php $photo = empty($publication['foto']) ? 'assets/icons/circle-user-round.svg' : $publication['foto'] ?>
-                                    <!--img src="<//?= URL. "public/". $photo ?>"-->
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-circle-user-round-icon lucide-circle-user-round">
-                                        <path d="M17.925 20.056a6 6 0 0 0-11.851.001" />
-                                        <circle cx="12" cy="11" r="4" />
-                                        <circle cx="12" cy="12" r="10" />
-                                    </svg>
-
+                                    <?php if ($publication['foto'] !== "null"):?>
+                                        <img src="<?= URL. "public/". $publication['foto'] ?>">
+                                    <?php else:?>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-circle-user-round-icon lucide-circle-user-round">
+                                            <path d="M17.925 20.056a6 6 0 0 0-11.851.001" />
+                                            <circle cx="12" cy="11" r="4" />
+                                            <circle cx="12" cy="12" r="10" />
+                                        </svg>
+                                    <?php endif;?>
                                 </div>
                                 <div class="name-user">
                                     <h4><?= $publication['user'] ?></h4>
@@ -255,12 +256,15 @@ $interactionsCount = null;
                         <section class="comment-section">
                             <div class="comment-area">
                                 <div class="img-user">
-                                    <!--<img src="" alt=" ">-->
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-circle-user-round-icon lucide-circle-user-round">
-                                        <path d="M17.925 20.056a6 6 0 0 0-11.851.001" />
-                                        <circle cx="12" cy="11" r="4" />
-                                        <circle cx="12" cy="12" r="10" />
-                                    </svg>
+                                    <?php if ($_SESSION['photo'] !== "null"):?>
+                                        <img src="<?= URL. "public/". $_SESSION['photo'] ?>">
+                                    <?php else:?>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-circle-user-round-icon lucide-circle-user-round">
+                                            <path d="M17.925 20.056a6 6 0 0 0-11.851.001" />
+                                            <circle cx="12" cy="11" r="4" />
+                                            <circle cx="12" cy="12" r="10" />
+                                        </svg>
+                                    <?php endif;?>
                                 </div>
                                 <form action="<?= URL ?>user/comment" method="post">
                                     <div class="comment-box">
@@ -276,12 +280,15 @@ $interactionsCount = null;
                                 <?php foreach ($comments as $comment): ?>
                                     <div class="show-comment-area">
                                         <div class="img-user">
-                                            <!--<img src="" alt=" ">-->
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-circle-user-round-icon lucide-circle-user-round">
-                                                <path d="M17.925 20.056a6 6 0 0 0-11.851.001" />
-                                                <circle cx="12" cy="11" r="4" />
-                                                <circle cx="12" cy="12" r="10" />
-                                            </svg>
+                                            <?php if ($comment['foto'] !== "null"):?>
+                                                <img src="<?= URL. "public/". $comment['foto'] ?>">
+                                            <?php else:?>
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-circle-user-round-icon lucide-circle-user-round">
+                                                    <path d="M17.925 20.056a6 6 0 0 0-11.851.001" />
+                                                    <circle cx="12" cy="11" r="4" />
+                                                    <circle cx="12" cy="12" r="10" />
+                                                </svg>
+                                            <?php endif;?>
                                         </div>
                                         <div class="show-comment-box">
                                             <div class="show-comment">
@@ -316,14 +323,15 @@ $interactionsCount = null;
                         <div class="header-publication-card">
                             <div class="info-user-publication-card">
                                 <div class="img-user">
-                                    <?php $photo = empty($notice['foto']) ? 'assets/icons/circle-user-round.svg' : $notice['foto'] ?>
-                                    <!--img src="<//?= URL. "public/". $photo ?>"-->
-
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-circle-user-round-icon lucide-circle-user-round">
-                                        <path d="M17.925 20.056a6 6 0 0 0-11.851.001" />
-                                        <circle cx="12" cy="11" r="4" />
-                                        <circle cx="12" cy="12" r="10" />
-                                    </svg>
+                                    <?php if ($notice['foto'] !== "null"):?>
+                                        <img src="<?= URL. "public/". $notice['foto'] ?>">
+                                    <?php else:?>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-circle-user-round-icon lucide-circle-user-round">
+                                            <path d="M17.925 20.056a6 6 0 0 0-11.851.001" />
+                                            <circle cx="12" cy="11" r="4" />
+                                            <circle cx="12" cy="12" r="10" />
+                                        </svg>
+                                    <?php endif;?>
                                 </div>
                                 <div class="name-user">
                                     <h4><?= $notice['user'] ?></h4>
@@ -448,12 +456,15 @@ $interactionsCount = null;
                         <section class="comment-section">
                             <div class="comment-area">
                                 <div class="img-user">
-                                    <!--<img src="" alt=" ">-->
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-circle-user-round-icon lucide-circle-user-round">
-                                        <path d="M17.925 20.056a6 6 0 0 0-11.851.001" />
-                                        <circle cx="12" cy="11" r="4" />
-                                        <circle cx="12" cy="12" r="10" />
-                                    </svg>
+                                    <?php if ($_SESSION['photo'] !== "null"):?>
+                                        <img src="<?= URL. "public/". $_SESSION['photo'] ?>">
+                                    <?php else:?>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-circle-user-round-icon lucide-circle-user-round">
+                                            <path d="M17.925 20.056a6 6 0 0 0-11.851.001" />
+                                            <circle cx="12" cy="11" r="4" />
+                                            <circle cx="12" cy="12" r="10" />
+                                        </svg>
+                                    <?php endif;?>
                                 </div>
                                 <form action="<?= URL ?>user/comment" method="post">
                                     <div class="comment-box">
@@ -469,12 +480,15 @@ $interactionsCount = null;
                                 <?php foreach ($comments as $comment): ?>
                                     <div class="show-comment-area">
                                         <div class="img-user">
-                                            <!--<img src="" alt=" ">-->
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-circle-user-round-icon lucide-circle-user-round">
-                                                <path d="M17.925 20.056a6 6 0 0 0-11.851.001" />
-                                                <circle cx="12" cy="11" r="4" />
-                                                <circle cx="12" cy="12" r="10" />
-                                            </svg>
+                                            <?php if ($comment['foto'] !== "null"):?>
+                                                <img src="<?= URL. "public/". $comment['foto'] ?>">
+                                            <?php else:?>
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-circle-user-round-icon lucide-circle-user-round">
+                                                    <path d="M17.925 20.056a6 6 0 0 0-11.851.001" />
+                                                    <circle cx="12" cy="11" r="4" />
+                                                    <circle cx="12" cy="12" r="10" />
+                                                </svg>
+                                            <?php endif;?>
                                         </div>
                                         <div class="show-comment-box">
                                             <div class="show-comment">

@@ -34,11 +34,15 @@
                 <?php foreach ($unread_messages as $urm):?>
                     <a href="<?= URL ?>message/view_message/<?= $urm['id'] ?>/<?= $_SESSION['id'] ?>/<?= $urm['turma_id'] ?>/aluno" class="message-item">
                         <div class="sender-profile">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-circle-user-round-icon lucide-circle-user-round">
-                                <path d="M17.925 20.056a6 6 0 0 0-11.851.001" />
-                                <circle cx="12" cy="11" r="4" />
-                                <circle cx="12" cy="12" r="10" />
-                            </svg>
+                            <?php if ($urm['remetente_foto'] !== "null"):?>
+                                <img src="<?= URL. "public/". $urm['remetente_foto'] ?>">
+                            <?php else:?>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-circle-user-round-icon lucide-circle-user-round">
+                                    <path d="M17.925 20.056a6 6 0 0 0-11.851.001" />
+                                    <circle cx="12" cy="11" r="4" />
+                                    <circle cx="12" cy="12" r="10" />
+                                </svg>
+                            <?php endif;?>
                         </div>
                         <div class="desc-message">
                             <div class="info-class">

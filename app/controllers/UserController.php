@@ -170,6 +170,7 @@
                 return false;
             }
 
+            $_SESSION['photo'] = $this->photo;
             return true;
         }
 

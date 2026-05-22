@@ -31,11 +31,15 @@ const renderMessages = (messages) => {
                 `
                     <div class="message received">
                         <div class="sender-profile">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-circle-user-round-icon lucide-circle-user-round">
-                                <path d="M17.925 20.056a6 6 0 0 0-11.851.001" />
-                                <circle cx="12" cy="11" r="4" />
-                                <circle cx="12" cy="12" r="10" />
-                            </svg>
+                            ${message.user_foto !== "null" ?
+                                    `<img src="http://localhost/_edu-connect/public/${message.user_foto}">`
+                                :
+                                    `<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-circle-user-round-icon lucide-circle-user-round">
+                                        <path d="M17.925 20.056a6 6 0 0 0-11.851.001" />
+                                        <circle cx="12" cy="11" r="4" />
+                                        <circle cx="12" cy="12" r="10" />
+                                    </svg>`
+                            }
                         </div>
                         <div class="message-box">
                             <div class="message-content">
@@ -50,11 +54,15 @@ const renderMessages = (messages) => {
                 `
                     <div class="message sent">
                         <div class="sender-profile">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-circle-user-round-icon lucide-circle-user-round">
-                                <path d="M17.925 20.056a6 6 0 0 0-11.851.001" />
-                                <circle cx="12" cy="11" r="4" />
-                                <circle cx="12" cy="12" r="10" />
-                            </svg>
+                            ${message.user_foto !== "null" ?
+                                    `<img src="http://localhost/_edu-connect/public/${message.user_foto}">`
+                                :
+                                    `<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-circle-user-round-icon lucide-circle-user-round">
+                                        <path d="M17.925 20.056a6 6 0 0 0-11.851.001" />
+                                        <circle cx="12" cy="11" r="4" />
+                                        <circle cx="12" cy="12" r="10" />
+                                    </svg>`
+                            }
                         </div>
                         <div class="message-box">
                             <div class="message-content">
