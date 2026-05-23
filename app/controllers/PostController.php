@@ -58,5 +58,23 @@
                 return null;
             }
         }
+
+        //remove posts
+        public function remove_post(int $id) {
+            if (empty($id)) {
+                $this->redirect("user/index/error");
+            }
+
+            try {
+                if (!$this->post->remove_post($id)) {
+                    $this->redirect("user/index/error");
+                }
+            } catch (PDOException $e) {
+                error_log("ERRO_ELIMINAR_POST: ". $e->getMessage(). "\n". $e->getTraceAsString());
+                $this->redirect("user/index/error");
+            }
+
+            $this->redirect("user/index");
+        }
     }
 ?>
