@@ -2,7 +2,7 @@ const input = document.getElementById('searchUser')
 const results = document.getElementById('usersResults')
 const school = document.getElementById('schoolId').value
 const role = document.getElementById('userRole').value
-const type = document.getElementById('type').value ?? ''
+const type = document.getElementById('type').value
 
 let timeout
 
@@ -38,14 +38,13 @@ function renderUsers(users) {
         return
     }
 
-    if (type === '') {
+    if (type === 'generalSearch') {
         let html = `
             <table class="tbl-users">
                 <thead>
                     <tr>
                         <th>Usuário</th>
-                        <th>Escola</th>
-                        <th>Função</th>
+                        <th>Contacto</th>
                         <th>Estado</th>
                         <th>Acções</th>
                     </tr>
@@ -62,8 +61,7 @@ function renderUsers(users) {
             html += `
                     <tr>
                         <td>${user.nome}</td>
-                        <td>${user.escola}</td>
-                        <td>${role}</td>
+                        <td>${user.contacto_1}</td>
                         <td>${status}</td>
 
                         <td class="btn-down-actions">
