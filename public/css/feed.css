@@ -298,6 +298,7 @@
     }
 
     .img-user img {
+        border-radius: var(--radius-full);
         height: 100%;
         width: 100%;
         aspect-ratio: 3/4;
@@ -923,6 +924,7 @@
     }
 
     .img-user img {
+        border-radius: var(--radius-full);
         height: 100%;
         width: 100%;
         aspect-ratio: 3/4;

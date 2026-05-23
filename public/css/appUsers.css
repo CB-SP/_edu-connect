@@ -130,6 +130,13 @@ body {
         flex-shrink: 0;
     }
 
+    .info-profile .profile-poto img {
+        border-radius: var(--radius-full);
+        height: 100%;
+        width: 100%;
+        aspect-ratio: 3/4;
+    }
+
     .profile-poto svg {
         border-radius: var(--radius-full);
         height: 100%;
@@ -372,6 +379,7 @@ body {
         font-weight: lighter;
         gap: 20px;
     }
+
     .layout-admin .logo-system svg {
         color: var(--Background);
         background-color: var(--AccentBlue);
@@ -405,6 +413,13 @@ body {
         align-items: center;
         background-color: var(--Secondary);
         flex-shrink: 0;
+    }
+
+    .info-profile .profile-poto img {
+        border-radius: var(--radius-full);
+        height: 100%;
+        width: 100%;
+        aspect-ratio: 3/4;
     }
 
     .profile-poto svg {
