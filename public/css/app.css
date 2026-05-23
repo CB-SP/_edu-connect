@@ -102,6 +102,8 @@ body {
     }
 
     .layout-admin .logo-system img {
+        height: 100%;
+        width: 100%;
         margin-right: 25px;
     }
 
@@ -129,8 +131,10 @@ body {
     }
 
     .info-profile .profile-poto img {
+        border-radius: var(--radius-full);
         height: 100%;
         width: 100%;
+        aspect-ratio: 3/4;
     }
 
     .info-profile .profile-poto svg {
@@ -340,6 +344,8 @@ body {
     }
 
     .layout-admin .logo-system img {
+        height: 100%;
+        width: 100%;
         margin-right: 25px;
     }
 
@@ -368,8 +374,10 @@ body {
     }
 
     .info-profile .profile-poto img {
+        border-radius: var(--radius-full);
         height: 100%;
         width: 100%;
+        aspect-ratio: 3/4;
     }
 
     .info-profile .profile-poto svg {
