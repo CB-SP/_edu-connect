@@ -107,6 +107,26 @@
             }
         }
 
+        //search admins
+        public function search_admins(int $id, string $term) {
+            try {
+                header('Content-Type: application/json');
+
+                $t = $term;
+
+                $admins = null;
+
+                $admins = $this->admin->search_admins($id, $t);
+
+                echo json_encode([
+                    'success' => true,
+                    'admins' => $admins
+                ]);
+            } catch (PDOException $e) {
+                error_log("ERRO_PESQUISAR_ADMINS: ". $e->getMessage(). "\n". $e->getTraceAsString());
+            }
+        }
+
         //admins login
         public function login_admin() {
             $this->email = $_POST['email'] ?? null;

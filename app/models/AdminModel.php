@@ -42,6 +42,28 @@
             }
         }
 
+        //search admins
+        public function search_admins(int $id, string $term) {
+            try {
+                $this->stmt = $this->pdo->prepare("SELECT id, nome, foto, email, deleted_at
+                    FROM admins
+                    WHERE id != ? AND nome LIKE ?
+                ");
+                $search = "%$term%";
+                $this->stmt->execute([$id, $search]);
+
+                $admins = [];
+
+                while ($result = $this->stmt->fetch(PDO::FETCH_ASSOC)) {
+                    $admins[] = $result;
+                }
+
+                return !empty($admins) ? $admins : null;
+            } catch (PDOException $e) {
+                throw $e;
+            }
+        }
+
         //search admins password hash
         public function fetch_password_hash($email) {
             try {

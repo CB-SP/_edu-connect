@@ -456,7 +456,7 @@
                             <path d="m21 21-4.34-4.34" />
                             <circle cx="11" cy="11" r="8" />
                         </svg>
-                        <input type="search" name="searchUser" id="searchUser" placeholder="Pesquisar admins">
+                        <input type="search" name="searchAdmin" id="searchAdmin" placeholder="Pesquisar admins">
                     </div>
                     <button class="add-user-btn add-button" id="btn-add-user">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-user-plus-icon lucide-user-plus">
@@ -507,7 +507,7 @@
                     <div class="text-users-header">
                         <p><span>Administradores do sistema.</span></p>
                     </div>
-                    <div class="tbl" id="usersResults">
+                    <div class="tbl" id="adminResults">
                         <?php if (!empty($admins)): ?>
                             <table class="tbl-users">
                                 <thead>
@@ -752,6 +752,100 @@
         `;
 
         schoolsResults.innerHTML = html;
+    }
+</script>
+
+<input type="hidden" name="id" value="<?= $_SESSION['id'] ?>" id="idAdmin">
+
+<script>
+    const inputAdmin = document.getElementById('searchAdmin');
+    const adminResults = document.getElementById('adminResults');
+    const idAdmin = document.getElementById('idAdmin').value;
+
+    inputAdmin.addEventListener('input', () => {
+
+        clearTimeout(timeout);
+
+        timeout = setTimeout(async () => {
+
+            const term = inputAdmin.value.trim();
+
+            try {
+
+                const response = await fetch(
+                    `http://localhost/_edu-connect/admin/search_admins/${encodeURIComponent(idAdmin)}/${encodeURIComponent(term)}`
+                );
+
+                const data = await response.json();
+
+                renderAdmins(data.admins);
+
+            } catch (error) {
+                console.log(error);
+            }
+
+        }, 300);
+
+    });
+
+    function renderAdmins(admins) {
+        if (!admins || admins.length === 0) {
+            adminResults.innerHTML = `<p>Nenhum administrador encontrado.</p>`;
+            return;
+        }
+
+        let html = `
+            <table class="tbl-users">
+                <thead>
+                    <tr>
+                        <th>Administrador</th>
+                        <th>Função</th>
+                        <th>Estado</th>
+                        <th>Acções</th>
+                    </tr>
+                </thead>
+                <tbody>
+        `;
+
+        admins.forEach(admin => {
+
+            const isInactive = admin.deleted_at !== null;
+            const status = isInactive ? 'Inactivo' : 'Activo';
+
+            html += `
+                <tr>
+                    <td>${admin.nome}</td>
+                    <td>admin</td>
+                    <td>${status}</td>
+                    <td class="btn-down-actions">
+                        <button class="action-btn">Acções</button>
+
+                        <div class="drop-actions">
+
+                            ${isInactive ? `
+                                <button class="restore-action"
+                                    onclick="window.location.href='/_edu-connect/admin/restore_admin/${admin.id}'">
+                                    Restaurar
+                                </button>
+                            ` : `
+                                <button class="delete-action"
+                                    onclick="window.location.href='/_edu-connect/admin/delete_admin/${admin.id}'">
+                                    Eliminar
+                                </button>
+                            `}
+
+                        </div>
+                    </td>
+                </tr>
+            `;
+        });
+
+        html += `
+                </tbody>
+            </table>
+        `;
+
+        adminResults.innerHTML = html;
     }
 </script>
 
