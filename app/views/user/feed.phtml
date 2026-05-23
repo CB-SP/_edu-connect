@@ -64,14 +64,6 @@
                     <label for="publication-content">Conteúdo *</label>
                     <textarea name="content" id="publication-content" placeholder="O que deseja compartilhar?"></textarea>
                 </div>
-                <div class="input-box">
-                    <label for="">Anexos</label>
-                    <label for="publication-file" class="labelFile">
-                        <input type="file" name="file" id="publication-file" class="fotoFile" hidden>
-                        Anexar Ficheiros.
-                        <span class="fileName">Nenhum ficheiro escolhido</span>
-                    </label>
-                </div>
                 <div class="btn-publish-box">
                     <button id="btn-cancel-feed" type="button">Cancelar</button>
                     <button>Publicar</button>
@@ -164,7 +156,8 @@
                                     <?php if (!($_SESSION['role'] === 'director' || $_SESSION['role'] === 'professor') && !($_SESSION['id'] === $publication['user_id'])): ?>
                                         <div class="drop-post-card-action">
                                             <div class="icon-area">
-                                                <img src="" alt=" ">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-circle-minus-icon lucide-circle-minus"><circle cx="12" cy="12" r="10"/><path d="M8 12h8"/></svg>
+
                                             </div>
                                             <p>Sem acções</p>
                                         </div>
@@ -174,22 +167,6 @@
                         </div>
                         <div class="publication-card-content">
                             <p><?= $publication['conteudo'] ?></p>
-                            <div class="attachment">
-                                <a href="" class="file-info">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-link-icon lucide-link">
-                                        <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" />
-                                        <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" />
-                                    </svg>
-
-                                    <div class="file-name">
-                                        <p>Nome do ficheiro</p>
-                                        <span>Link</span>
-                                    </div>
-                                </a>
-                                <a href="" download="" class="btn-download">
-                                    Baixar
-                                </a>
-                            </div>
                         </div>
                         <div class="reactions-info">
                             <!--Likes info-->
@@ -353,7 +330,8 @@
                                     <?php if (!($_SESSION['role'] === 'director' || $_SESSION['role'] === 'professor') && !($_SESSION['id'] === $notice['user_id'])): ?>
                                         <div class="drop-post-card-action">
                                             <div class="icon-area">
-                                                <img src="" alt=" ">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-circle-minus-icon lucide-circle-minus"><circle cx="12" cy="12" r="10"/><path d="M8 12h8"/></svg>
+
                                             </div>
                                             <p>Sem acções</p>
                                         </div>
@@ -363,22 +341,6 @@
                         </div>
                         <div class="publication-card-content">
                             <p><?= $notice['conteudo'] ?></p>
-                            <div class="attachment">
-                                <a href="" class="file-info">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-link-icon lucide-link">
-                                        <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" />
-                                        <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" />
-                                    </svg>
-
-                                    <div class="file-name">
-                                        <p>Nome do ficheiro</p>
-                                        <span>Link</span>
-                                    </div>
-                                </a>
-                                <a href="" download="" class="btn-download">
-                                    Baixar
-                                </a>
-                            </div>
                         </div>
                         <div class="reactions-info">
                             <!--Likes info-->

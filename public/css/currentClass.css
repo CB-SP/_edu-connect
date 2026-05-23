@@ -129,8 +129,10 @@
     }
 
     .teacher-photo img {
+        border-radius: var(--radius-full);
         height: 100%;
         width: 100%;
+        aspect-ratio: 3/4;
     }
 
     .teacher-photo svg {
@@ -164,7 +166,7 @@
     }
 
     .tabs-class .tab-class {
-        width: 33%;
+        width: 50%;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -258,8 +260,10 @@
     }
 
     .sender-profile img {
+        border-radius: var(--radius-full);
         height: 100%;
         width: 100%;
+        aspect-ratio: 3/4;
     }
 
     .sender-profile svg {
@@ -311,6 +315,7 @@
     }
 
     .img-profile img {
+        border-radius: var(--radius-full);
         height: 100%;
         width: 100%;
         aspect-ratio: 3/4;
@@ -400,6 +405,7 @@
     }
 
     .student-profile img {
+        border-radius: var(--radius-full);
         height: 100%;
         width: 100%;
         aspect-ratio: 3/4;
@@ -715,8 +721,10 @@
     }
 
     .teacher-photo img {
+        border-radius: var(--radius-full);
         height: 100%;
         width: 100%;
+        aspect-ratio: 3/4;
     }
 
     .teacher-photo svg {
@@ -750,7 +758,7 @@
     }
 
     .tabs-class .tab-class {
-        width: 33%;
+        width: 50%;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -850,8 +858,10 @@
     }
 
     .sender-profile img {
+        border-radius: var(--radius-full);
         height: 100%;
         width: 100%;
+        aspect-ratio: 3/4;
     }
 
     .sender-profile svg {
@@ -903,6 +913,7 @@
     }
 
     .img-profile img {
+        border-radius: var(--radius-full);
         height: 100%;
         width: 100%;
         aspect-ratio: 3/4;
@@ -1001,6 +1012,7 @@
     }
 
     .student-profile img {
+        border-radius: var(--radius-full);
         height: 100%;
         width: 100%;
         aspect-ratio: 3/4;
