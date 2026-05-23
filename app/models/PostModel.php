@@ -69,5 +69,16 @@
                 throw $e;
             }
         }
+
+        //remove posts
+        public function remove_post(int $id) {
+            try {
+                $this->stmt = $this->pdo->prepare("DELETE FROM posts WHERE id = ?");
+
+                return $this->stmt->execute([$id]) ?: false;
+            } catch (PDOException $e) {
+                throw $e;
+            }
+        }
     }
 ?>
