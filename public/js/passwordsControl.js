@@ -2,7 +2,7 @@ const btnHide = document.querySelectorAll('.btn-hide-senha')
 
 btnHide.forEach(btn => {
     btn.addEventListener('click', () => {
-        input = btn.previousElementSibling
+        let input = btn.previousElementSibling
         eyeOffIcon = btn.querySelectorAll('.lucide-eye-off')
         eyeOffIcon.forEach(eyeOff => {
             if (eyeOff.classList.contains('openEye')) {
