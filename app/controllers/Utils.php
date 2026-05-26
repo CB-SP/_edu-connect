@@ -114,7 +114,7 @@
         //private routes
         public static function private_route($role) {
             if ($_SESSION['role'] !== $role) {
-                header('Location: '. URL. 'user/index');
+                header('Location: '. URL. 'user/feed');
                 exit;
             }
         }

@@ -1,3 +1,5 @@
+
+
 document.addEventListener('click', (e) => {
 
     const btn = e.target.closest('.action-btn');
@@ -135,7 +137,7 @@ document.addEventListener('click', async (e) => {
 
         if (type === "user") {
 
-            const response = await fetch(`http://localhost/_edu-connect/admin/fetch_user/${id}`);
+            const response = await fetch(`${url}admin/fetch_user/${id}`);
             const user = await response.json();
 
             document.querySelector('#userId').value = id;
@@ -148,7 +150,7 @@ document.addEventListener('click', async (e) => {
 
         } else {
 
-            const response = await fetch(`http://localhost/_edu-connect/admin/fetch_school/${id}`);
+            const response = await fetch(`${url}admin/fetch_school/${id}`);
             const school = await response.json();
 
             document.querySelector('#schoolId').value = id;

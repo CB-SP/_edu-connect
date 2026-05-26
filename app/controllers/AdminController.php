@@ -87,7 +87,7 @@
                     return false;
                 }
 
-                if (!($this->add_admin("Admin", "", "admin@gmail.com", "123456789"))) {
+                if (!($this->add_admin("Admin", "null", "admin@gmail.com", "123456789"))) {
                     return false;
                 }
             } catch (PDOException $e) {
@@ -133,18 +133,18 @@
             $this->password = $_POST['password'] ?? null;
 
             if (empty($this->email) || empty($this->password)) {
-                $this->redirect("admin/login");
+                $this->redirect("admin/login/error");
             }
 
             if (!(Utils::verify_password($this->password, $this->fetch_password_hash($this->email)))) {
-                $this->redirect("admin/login");
+                $this->redirect("admin/login/error");
             }
 
             try {
                 $admin = $this->admin->fetch_admin($this->email);
 
                 if (empty($admin)) {
-                    $this->redirect("admin/login");
+                    $this->redirect("admin/login/error");
                 }
 
                 $_SESSION['id'] = $admin['id'];
@@ -168,7 +168,7 @@
                 return $this->admin->find_admin($id);
             } catch (PDOException $e) {
                 error_log("ERRO_BUSCAR_ADMIN: ". $e->getMessage(). "\n". $e->getTraceAsString());
-                $this->redirect("admin/index");
+                $this->redirect("admin/index/error");
             }
         }
 
@@ -182,7 +182,7 @@
             $newAvatar = Utils::uploadAvatar() ?? null;
 
             if (empty($this->name) || empty($this->email) || empty($this->id)) {
-                return false;
+                $this->redirect("admin/index/error");
             }
 
             if ($newAvatar !== null) {
@@ -202,11 +202,11 @@
 
             try {
                 if (!$this->admin->edit_admin($this->name, $this->email, $this->avatar, $this->id)) {
-                    $this->redirect("admin/index");
+                    $this->redirect("admin/index/error");
                 }
             } catch (PDOException $e) {
                 error_log("ERRO_EDITAR_ADMIN: ". $e->getMessage(). "\n". $e->getTraceAsString());
-                $this->redirect("admin/index");
+                $this->redirect("admin/index/error");
             }
 
             $_SESSION['name'] = $this->name;
@@ -241,11 +241,11 @@
 
             try {
                 if (!$this->admin->change_password($this->password, $this->id)) {
-                    $this->redirect("admin/index");
+                    $this->redirect("admin/index/error");
                 }
             } catch (PDOException $e) {
                 error_log("ERRO_ALTERAR_PASSWORD: ". $e->getMessage(). "\n". $e->getTraceAsString());
-                $this->redirect("admin/index");
+                $this->redirect("admin/index/error");
             }
 
             $this->redirect("admin/index");
@@ -412,7 +412,7 @@
         //verify if the entity is an admin
         private function isAdmin() {
             if (isset($_SESSION['role'])) {
-                $this->redirect('user/index');
+                $this->redirect('user/feed');
             }
         }
     }

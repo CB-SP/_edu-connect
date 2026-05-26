@@ -3,6 +3,7 @@ const results = document.getElementById('usersResults')
 const school = document.getElementById('schoolId').value
 const role = document.getElementById('userRole').value
 const type = document.getElementById('type').value
+const url = document.getElementById('url').value
 
 let timeout
 
@@ -17,7 +18,7 @@ input.addEventListener('input', () => {
         try {
 
             const response = await fetch(
-                `http://localhost/_edu-connect/user/search_school_users/${encodeURIComponent(term)}/${encodeURIComponent(school)}/${encodeURIComponent(role)}`
+                `${url}user/search_school_users/${encodeURIComponent(term)}/${encodeURIComponent(school)}/${encodeURIComponent(role)}`
             )
 
             const data = await response.json()
@@ -78,11 +79,22 @@ function renderUsers(users) {
                                     <button class="edit-action"
                                         data-id="${user.id}"
                                         data-type="user">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-pencil-icon lucide-pencil">
+                                            <path d="M21.174 6.812a1 1 0 0 0-3.986-3.987L3.842 16.174a2 2 0 0 0-.5.83l-1.321 4.352a.5.5 0 0 0 .623.622l4.353-1.32a2 2 0 0 0 .83-.497z" />
+                                            <path d="m15 5 4 4" />
+                                        </svg>
                                         Editar
                                     </button>
 
                                     <button class="delete-action"
                                         onclick="window.location.href='/_edu-connect/admin/delete_user/${user.id}'">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-trash2-icon lucide-trash-2">
+                                            <path d="M10 11v6" />
+                                            <path d="M14 11v6" />
+                                            <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6" />
+                                            <path d="M3 6h18" />
+                                            <path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" />
+                                        </svg>
                                         Eliminar
                                     </button>
                                 `}
@@ -108,7 +120,7 @@ function renderUsers(users) {
                     <div class="info-student">
                         <div class="student-profile">
                             ${user.foto !== "null" ?
-                                    `<img src="http://localhost/_edu-connect/public/${user.foto}">`
+                                    `<img src="${url}public/${user.foto}">`
                                 :
                                     `<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-circle-user-round-icon lucide-circle-user-round">
                                         <path d="M17.925 20.056a6 6 0 0 0-11.851.001" />

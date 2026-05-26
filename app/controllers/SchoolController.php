@@ -78,6 +78,7 @@
                 return false;
             }
 
+            $_SESSION['logo'] = $this->logo;
             return true;
         }
 
