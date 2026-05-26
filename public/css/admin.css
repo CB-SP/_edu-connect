@@ -191,6 +191,70 @@
         width: 18px;
     }
 
+    .input-senha input {
+        outline-color: transparent !important;
+        border-color: transparent !important;
+    }
+
+    .input-senha {
+        display: flex;
+        align-items: center;
+        width: 100%;
+        border: 1px solid transparent;
+        outline: 3px solid transparent;
+        border-radius: 8px;
+        background-color: #f0f1f1;
+        font-size: 14px;
+        transition: 0.2s;
+        color: black;
+    }
+
+    .input-senha .btn-hide-senha {
+        display: flex;
+        align-items: center;
+        padding-right: 6px;
+        border: none;
+        outline: none;
+    }
+
+    .input-senha svg {
+        color: var(--MutedForegroundC);
+        width: 21px;
+        height: 21px;
+    }
+
+    .input-senha .lucide-eye-off {
+        display: none;
+    }
+
+    .lucide-eye-off.openEye {
+        display: block;
+    }
+
+    .lucide-eye.closeEye {
+        display: none;
+    }
+
+    .id-input {
+        transition: 0.2s;
+    }
+
+    .input-senha:focus-within {
+        outline-color: var(--SwitchBackground);
+        border-color: gray;
+        background: white;
+    }
+
+    .input-senha:focus-within .btn-hide-senha {
+        background: white;
+    }
+
+    .input-senha input:focus-within {
+        outline-color: none;
+        border-color: none;
+        background: white;
+    }
+
     /*ADD MODAL*/
     .search-add-area .add-modal,
     .edit-modal {
@@ -275,6 +339,7 @@
     .add-modal .input-box select,
     .edit-modal .input-box input,
     .edit-modal .input-box select {
+        width: 100%;
         height: 40px;
         border: none;
         border: 1px solid transparent;
@@ -781,10 +846,16 @@
         font-weight: var(--weight-sb);
     }
 
+    .input-senha input {
+        outline-color: transparent !important;
+        border-color: transparent !important;
+    }
+
     .add-modal .input-box input,
     .add-modal .input-box select,
     .edit-modal .input-box input,
     .edit-modal .input-box select {
+        width: 100%;
         height: 40px;
         border: none;
         border: 1px solid transparent;
@@ -1208,6 +1279,70 @@
         width: 19px;
     }
 
+    .input-senha {
+        display: flex;
+        align-items: center;
+        width: 100%;
+        border: 1px solid transparent;
+        outline: 3px solid transparent;
+        border-radius: 8px;
+        background-color: #f0f1f1;
+        font-size: 14px;
+        transition: 0.2s;
+        color: black;
+    }
+
+    .input-senha input {
+        outline-color: transparent !important;
+        border-color: transparent !important;
+    }
+
+    .input-senha .btn-hide-senha {
+        display: flex;
+        align-items: center;
+        padding-right: 6px;
+        border: none;
+        outline: none;
+    }
+
+    .input-senha svg {
+        color: var(--MutedForegroundC);
+        width: 21px;
+        height: 21px;
+    }
+
+    .input-senha .lucide-eye-off {
+        display: none;
+    }
+
+    .lucide-eye-off.openEye {
+        display: block;
+    }
+
+    .lucide-eye.closeEye {
+        display: none;
+    }
+
+    .id-input {
+        transition: 0.2s;
+    }
+
+    .input-senha:focus-within {
+        outline-color: var(--SwitchBackground);
+        border-color: gray;
+        background: white;
+    }
+
+    .input-senha:focus-within .btn-hide-senha {
+        background: white;
+    }
+
+    .input-senha input:focus-within {
+        outline-color: none;
+        border-color: none;
+        background: white;
+    }
+
     /*ADD USER MODAL*/
     .search-add-area .add-modal,
     .edit-modal {
@@ -1292,6 +1427,7 @@
     .add-modal .input-box select,
     .edit-modal .input-box input,
     .edit-modal .input-box select {
+        width: 100%;
         height: 40px;
         border: none;
         border: 1px solid transparent;
