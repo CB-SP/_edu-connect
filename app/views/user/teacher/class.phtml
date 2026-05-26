@@ -95,7 +95,7 @@
                         <?php endif;?>
                     </div>
                     <div class="bottom-side">
-                        <p><?= $class_data['school_students'] === 1 ? $class_data['school_students']. " Aluno" : $class_data['school_students']. "Alunos"?></p>
+                        <p><?= $class_data['school_students'] === 1 ? $class_data['school_students']. " Aluno" : $class_data['school_students']. " Alunos"?></p>
                         <button class="btn-close-student-modal">Fechar</button>
                     </div>
                 </div>
@@ -195,7 +195,7 @@
                                 <p><?= $s['email'] ?></p>
                             </div>
                         </div>
-                        <button class="student-action" onclick="window.location.href='<?= URL ?>class/remove_class_student/<?= $student['id'] ?>/<?= $class_id ?>'">
+                        <button class="student-action" onclick="window.location.href='<?= URL ?>class/remove_class_student/<?= $s['id'] ?>/<?= $class_id ?>'">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-user-minus-icon lucide-user-minus">
                                 <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
                                 <circle cx="9" cy="7" r="4" />
@@ -211,6 +211,9 @@
 
     </section>
 </div>
+<input type="hidden" name="url" id="url" value="<?= URL ?>">
+<input type="hidden" name="urlC" id="urlC" value="<?= URL ?>">
+
 <input type="hidden" id="schoolId" value="<?= $_SESSION['school_id'] ?>">
 <input type="hidden" id="userRole" value="aluno">
 <input type="hidden" id="type" value="classSearch">

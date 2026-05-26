@@ -137,6 +137,8 @@
 <input type="hidden" id="school" value="<?= $_SESSION['school_id'] ?>">
 <input type="hidden" id="chat" value="<?= $class_chat ?>">
 <input type="hidden" id="user" value="<?= $_SESSION['id'] ?>">
+<input type="hidden" name="url" id="url" value="<?= URL ?>">
+<input type="hidden" name="urlC" id="urlC" value="<?= URL ?>">
 <script src="<?= URL ?>public/js/chatRealTime.js"></script>
 
 <?php require_once './app/views/layouts/closure.phtml' ?>

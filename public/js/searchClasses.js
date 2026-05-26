@@ -2,6 +2,7 @@ const input = document.getElementById('searcClasses')
 const results = document.getElementById('classResults')
 const user = document.getElementById('userId').value
 const role = document.getElementById('userRole').value
+const url = document.getElementById('url').value
 
 let timeout
 
@@ -17,7 +18,7 @@ input.addEventListener('input', () => {
 
             if (role === 'professor') {
                 const response = await fetch(
-                    `http://localhost/_edu-connect/class/search_teachers_classes/${encodeURIComponent(term)}/${encodeURIComponent(user)}`
+                    `${url}class/search_teachers_classes/${encodeURIComponent(term)}/${encodeURIComponent(user)}`
                 )
 
                 const data = await response.json();
@@ -25,7 +26,7 @@ input.addEventListener('input', () => {
                 renderClasses(data.classes)
             } else {
                 const response = await fetch(
-                    `http://localhost/_edu-connect/class/search_students_classes/${encodeURIComponent(term)}/${encodeURIComponent(user)}`
+                    `${url}class/search_students_classes/${encodeURIComponent(term)}/${encodeURIComponent(user)}`
                 );
 
                 const data = await response.json()
@@ -52,7 +53,7 @@ function renderClasses(classes) {
     classes.forEach(classs => {
 
         html += `
-            <a href="http://localhost/_edu-connect/teacher/class/${classs.id}" class="class-card">
+            <a href="${url}teacher/class/${classs.id}" class="class-card">
                 <h3>${classs.class}</h3>
 
                 <div class="prof-info">
@@ -60,7 +61,7 @@ function renderClasses(classes) {
 
                         ${
                             classs.teacher_photo !== "null" ?
-                                    `<img src="http://localhost/_edu-connect/public/${classs.teacher_photo}">`
+                                    `<img src="${url}public/${classs.teacher_photo}">`
                                 :
                                     `<svg xmlns="http://www.w3.org/2000/svg"
                                         width="48"

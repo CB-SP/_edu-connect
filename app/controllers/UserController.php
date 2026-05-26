@@ -13,6 +13,12 @@
         public function index() {
             $this->isLoged();
             $this->is_user();
+            $this->show_page("landig");
+        }
+
+        public function feed() {
+            $this->isLoged();
+            $this->is_user();
             $this->show_page("feed");
         }
 
@@ -71,7 +77,7 @@
                 $this->redirect("user/login");
             }
 
-            $this->redirect("user/index");
+            $this->redirect("user/feed");
         }
 
         //add users
@@ -223,7 +229,7 @@
                 return $this->user->find_user($id);
             } catch (PDOException $e) {
                 error_log("ERRO_BUSCAR_USUARIO: ". $e->getMessage(). "\n". $e->getTraceAsString());
-                $this->redirect("user/index");
+                $this->redirect("user/feed");
             }
         }
 
@@ -298,20 +304,20 @@
 
             try {
                 if (!$this->user->change_password($this->password, $this->id)) {
-                    $this->redirect("user/index");
+                    $this->redirect("user/feed");
                 }
             } catch (PDOException $e) {
                 error_log("ERRO_ALTERAR_PASSWORD: ". $e->getMessage(). "\n". $e->getTraceAsString());
-                $this->redirect("user/index");
+                $this->redirect("user/feed");
             }
 
-            $this->redirect("user/index");
+            $this->redirect("user/feed");
         }
 
         //==========posts managemant==========
         //make a post
         public function publish() {
-            $this->redirect($this->post->publish() ? 'user/index' : 'user/index');
+            $this->redirect($this->post->publish() ? 'user/feed' : 'user/feed');
         }
 
         //get all posts of a school
@@ -326,7 +332,7 @@
 
         //react in posts
         public function react() {
-            $this->redirect($this->reaction->react() ? 'user/index' : 'user/index');
+            $this->redirect($this->reaction->react() ? 'user/feed' : 'user/feed');
         }
 
         //get user reactions
@@ -336,7 +342,7 @@
 
         //comment in posts
         public function comment() {
-            $this->redirect($this->comment->comment() ? 'user/index' : 'user/index');
+            $this->redirect($this->comment->comment() ? 'user/feed' : 'user/feed');
         }
 
         //get post comments

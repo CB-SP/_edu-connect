@@ -65,16 +65,16 @@
         //view messages
         public function view_message(int $message, int $user, int $class, string $role) {
             if (empty($message) || (empty($user)) || empty($role) || empty($class)) {
-                $this->redirect("user/index/error");
+                $this->redirect("user/feed/error");
             }
 
             try {
                 if (!$this->message->view_message($message, $user)) {
-                    $this->redirect("user/index/error");
+                    $this->redirect("user/feed/error");
                 }
             } catch (PDOException $e) {
                 error_log("ERRO_VISUALIZAR_MENSAGENS: ". $e->getMessage(). "\n". $e->getTraceAsString());
-                $this->redirect("user/index/error");
+                $this->redirect("user/feed/error");
             }
 
             $this->redirect($role === "professor" ? "teacher/class/$class" : "student/class/$class");
