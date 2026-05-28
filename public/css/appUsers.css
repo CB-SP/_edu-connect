@@ -46,7 +46,7 @@ body {
     }
 
     .layout-admin .header .open-menu:hover {
-        background-color: var(--SwitchBackground);
+        background-color: var(--Muted);
     }
 
     .layout-admin .sideBar #close-menu {
@@ -103,8 +103,6 @@ body {
     }
 
     .layout-admin .logo-system img {
-        height: 100%;
-        width: 100%;
         margin-right: 25px;
     }
 
@@ -231,7 +229,6 @@ body {
         gap: 12px;
         color: var(--Primary);
         font-size: var(--text-xm);
-
     }
 
 
@@ -309,18 +306,20 @@ body {
 
     .head-section .icon-school-area {
         display: flex;
-        justify-content: center;
         align-items: center;
+        gap: 20px;
         background-color: var(--Secondary);
-        height: 40px;
-        width: 40px;
+        height: 42px;
+        width: 42px;
         border-radius: var(--radius-md);
         background-color: var(--Background);
     }
 
     .icon-school-area img {
+        border-radius: var(--radius-md);
         height: 100%;
         width: 100%;
+        flex-shrink: 0;
     }
 
     .icon-school-area svg {
@@ -391,8 +390,6 @@ body {
     }
 
     .layout-admin .logo-system img {
-        height: 100%;
-        width: 100%;
         margin-right: 25px;
     }
 
@@ -546,8 +543,8 @@ body {
 
     .head-section .icon-school-area {
         display: flex;
-        justify-content: center;
         align-items: center;
+        gap: 20px;
         background-color: var(--Secondary);
         height: 50px;
         width: 50px;
@@ -555,12 +552,15 @@ body {
         background-color: var(--Background);
     }
 
-    /*
+
     .icon-school-area img {
         border-radius: var(--radius-md);
         height: 100%;
         width: 100%;
-    }*/
+        aspect-ratio: 3/4;
+        flex-shrink: 0;
+    }
+
     .icon-school-area svg {
         height: 100%;
         width: 100%;

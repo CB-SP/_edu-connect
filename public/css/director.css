@@ -306,6 +306,12 @@
         font-weight: var(--weight-sb);
     }
 
+    .input-senha input {
+        width: 100%;
+        border-color: transparent !important;
+        outline-color: transparent !important;
+    }
+
     .add-modal .input-box input,
     .add-modal .input-box select,
     .edit-modal .input-box input,
@@ -884,6 +890,12 @@
 
     .contacts-box .input-box {
         width: 50%;
+    }
+
+    .input-senha input {
+        width: 100%;
+        border-color: transparent !important;
+        outline-color: transparent !important;
     }
 
     .add-modal form .input-box,

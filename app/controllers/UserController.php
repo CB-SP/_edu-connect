@@ -17,6 +17,12 @@
         public function feed() {
             $this->isLoged();
             $this->is_user();
+            $this->show_page("landig");
+        }
+
+        public function feed() {
+            $this->isLoged();
+            $this->is_user();
             $this->show_page("feed");
         }
 
