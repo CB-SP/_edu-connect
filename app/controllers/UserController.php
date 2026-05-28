@@ -11,9 +11,7 @@
         }
 
         public function index() {
-            $this->isLoged();
-            $this->is_user();
-            $this->show_page("landig");
+            $this->show_page("landing");
         }
 
         public function feed() {

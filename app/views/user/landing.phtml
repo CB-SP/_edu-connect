@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="pt-AO">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>eduConnect</title>
+    <link rel="stylesheet" href="<?= URL ?>public/css/landing.css">
+    <link rel="shortcut icon" href="<?= URL ?>public/assets/icons/favicon.svg" type="image/x-icon">
+</head>
+
+<body>
+    <header class="header">
+        <nav class="nav">
+            <a href="" class="logo-section">
+                <div class="logo-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none"
+                        stroke="#ececf0" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"
+                        class="lucide lucide-graduation-cap-icon lucide-graduation-cap">
+                        <path
+                            d="M21.42 10.922a1 1 0 0 0-.019-1.838L12.83 5.18a2 2 0 0 0-1.66 0L2.6 9.08a1 1 0 0 0 0 1.832l8.57 3.908a2 2 0 0 0 1.66 0z" />
+                        <path d="M22 10v6" />
+                        <path d="M6 12.5V16a6 3 0 0 0 12 0v-3.5" />
+                    </svg>
+                </div>
+                <h2>EduConnect</h2>
+            </a>
+            <div class="actions-section">
+                <button id="btn-login">
+                    <a href="<?= URL ?>user/login">Entrar</a>
+                </button>
+                <button>
+                    <a href="">Começar Agora</a>
+                </button>
+            </div>
+        </nav>
+    </header>
+    <main class="main">
+        <section class="hero-section">
+            <div class="future-quote">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                    class="lucide lucide-sparkles-icon lucide-sparkles">
+                    <path
+                        d="M11.017 2.814a1 1 0 0 1 1.966 0l1.051 5.558a2 2 0 0 0 1.594 1.594l5.558 1.051a1 1 0 0 1 0 1.966l-5.558 1.051a2 2 0 0 0-1.594 1.594l-1.051 5.558a1 1 0 0 1-1.966 0l-1.051-5.558a2 2 0 0 0-1.594-1.594l-5.558-1.051a1 1 0 0 1 0-1.966l5.558-1.051a2 2 0 0 0 1.594-1.594z" />
+                    <path d="M20 2v4" />
+                    <path d="M22 4h-4" />
+                    <circle cx="4" cy="20" r="2" />
+                </svg>
+
+                <p>Plataforma Educacional do Futuro</p>
+            </div>
+            <h1>Transforme a Educação da Sua Escola</h1>
+            <p>A plataforma completa que conecta escolas, professores e alunos numa rede social educacional moderna e
+                intuitiva</p>
+            <div class="btn-actions">
+
+                <button>
+                    <a href="">Criar Conta Grátis
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            class="lucide lucide-arrow-right-icon lucide-arrow-right">
+                            <path d="M5 12h14" />
+                            <path d="m12 5 7 7-7 7" />
+                        </svg>
+
+                    </a>
+                </button>
+                <button>
+                    <a href="">Já Tenho Conta</a>
+                </button>
+            </div>
+        </section>
+        <!--FEATURES SECTION-->
+        <section class="features-section" id="features">
+            <div class="title-area">
+                <h1>Funcionalidades que <span>Fazem a Diferença</span></h1>
+                <p>Tudo que você precisa para gerir e conectar sua comunidade educacional.</p>
+            </div>
+            <div class="feature-cards">
+                <div class="feature-card">
+                    <div class="img-area">
+                        <img src="<?= URL ?>public/assets/images/feature-1.jpg" alt="">
+                        <div class="icon-feature">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" class="lucide lucide-users-icon lucide-users">
+                                <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
+                                <path d="M16 3.128a4 4 0 0 1 0 7.744" />
+                                <path d="M22 21v-2a4 4 0 0 0-3-3.87" />
+                                <circle cx="9" cy="7" r="4" />
+                            </svg>
+
+                        </div>
+                    </div>
+                    <div class="desc-feature">
+                        <h2>Rede Social Educacional</h2>
+                        <p>Conecte toda a comunidade escolar numa plataforma colaborativa e interativa.</p>
+                    </div>
+                </div>
+                <div class="feature-card">
+                    <div class="img-area">
+                        <img src="<?= URL ?>public/assets/images/feature-2.jpg" alt="">
+                        <div class="icon-feature">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" class="lucide lucide-book-open-icon lucide-book-open">
+                                <path d="M12 7v14" />
+                                <path
+                                    d="M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z" />
+                            </svg>
+
+                        </div>
+                    </div>
+                    <div class="desc-feature">
+                        <h2>Gestão de Turmas</h2>
+                        <p>Organize turmas por disciplina com controle completo de materiais e atividades.</p>
+                    </div>
+                </div>
+                <div class="feature-card">
+                    <div class="img-area">
+                        <img src="<?= URL ?>public/assets/images/feature-3.jpg" alt="">
+                        <div class="icon-feature">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" class="lucide lucide-message-square-icon lucide-message-square">
+                                <path
+                                    d="M22 17a2 2 0 0 1-2 2H6.828a2 2 0 0 0-1.414.586l-2.202 2.202A.71.71 0 0 1 2 21.286V5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2z" />
+                            </svg>
+
+                        </div>
+                    </div>
+                    <div class="desc-feature">
+                        <h2>Comunicação Integrada</h2>
+                        <p>Chat em tempo real entre professores e alunos dentro de cada turma.</p>
+                    </div>
+                </div>
+                <div class="feature-card">
+                    <div class="img-area">
+                        <img src="<?= URL ?>public/assets/images/feature-4.jpg" alt="">
+                        <div class="icon-feature">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" class="lucide lucide-shield-icon lucide-shield">
+                                <path
+                                    d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z" />
+                            </svg>
+
+                        </div>
+                    </div>
+                    <div class="desc-feature">
+                        <h2>Controle Hierárquico</h2>
+                        <p>Sistema completo de permissões para Admin, Director, Coordenador, Professor e Aluno.</p>
+                    </div>
+                </div>
+                <div class="feature-card">
+                    <div class="img-area">
+                        <img src="<?= URL ?>public/assets/images/feature-5.jpg" alt="">
+                        <div class="icon-feature">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" class="lucide lucide-award-icon lucide-award">
+                                <path
+                                    d="m15.477 12.89 1.515 8.526a.5.5 0 0 1-.81.47l-3.58-2.687a1 1 0 0 0-1.197 0l-3.586 2.686a.5.5 0 0 1-.81-.469l1.514-8.526" />
+                                <circle cx="12" cy="8" r="6" />
+                            </svg>
+
+                        </div>
+                    </div>
+                    <div class="desc-feature">
+                        <h2>Multi-Escola</h2>
+                        <p>Suporte para múltiplas instituições com isolamento total de dados e segurança.</p>
+                    </div>
+                </div>
+                <div class="feature-card">
+                    <div class="img-area">
+                        <img src="<?= URL ?>public/assets/images/feature-6.jpg" alt="">
+                        <div class="icon-feature">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" class="lucide lucide-globe-icon lucide-globe">
+                                <circle cx="12" cy="12" r="10" />
+                                <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20" />
+                                <path d="M2 12h20" />
+                            </svg>
+
+                        </div>
+                    </div>
+                    <div class="desc-feature">
+                        <h2>Acesso Universal</h2>
+                        <p>Plataforma responsiva acessível de qualquer dispositivo, a qualquer hora.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!--WORKING MODE SECTION-->
+        <section class="working-mode-section">
+            <div class="title-area">
+                <h1>Como Funciona</h1>
+                <p>Comece em 3 passos simples</p>
+            </div>
+            <div class="steps-area">
+                <div class="line"></div>
+                <div class="step-box">
+                    <div class="box">
+                        <h2>01</h2>
+                    </div>
+                    <h2>Registe-se</h2>
+                    <p>Crie sua conta gratuitamente em menos de 2 minutos</p>
+                </div>
+                <div class="step-box">
+                    <div class="box">
+                        <h2>02</h2>
+                    </div>
+                    <h2>Configure</h2>
+                    <p>Adicione sua escola, professores e alunos</p>
+                </div>
+                <div class="step-box">
+                    <div class="box">
+                        <h2>03</h2>
+                    </div>
+                    <h2>Colabore</h2>
+                    <p>Comece a compartilhar conteúdos e interagir</p>
+                </div>
+            </div>
+        </section>
+        <!--BENEFITS SECTION-->
+        <section class="benefits-section" id="security">
+            <div class="title-area">
+                <h1>Por que escolher a <span>EduConnect?</span></h1>
+                <p>Uma plataforma completa que transforma a forma como sua escola se comunica, colabora e cresce.</p>
+            </div>
+            <div class="benefits-area">
+                <div class="benefits-list">
+                    <div class="benefit-item">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            class="lucide lucide-circle-check-icon lucide-circle-check">
+                            <circle cx="12" cy="12" r="10" />
+                            <path d="m9 12 2 2 4-4" />
+                        </svg>
+
+                        <p>Segurança avançada de dados</p>
+                    </div>
+                    <div class="benefit-item">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            class="lucide lucide-circle-check-icon lucide-circle-check">
+                            <circle cx="12" cy="12" r="10" />
+                            <path d="m9 12 2 2 4-4" />
+                        </svg>
+
+                        <p>Redução de custos operacionais</p>
+                    </div>
+                    <div class="benefit-item">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            class="lucide lucide-circle-check-icon lucide-circle-check">
+                            <circle cx="12" cy="12" r="10" />
+                            <path d="m9 12 2 2 4-4" />
+                        </svg>
+
+                        <p>Comunicação centralizada e eficiente</p>
+                    </div>
+                    <div class="benefit-item">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            class="lucide lucide-circle-check-icon lucide-circle-check">
+                            <circle cx="12" cy="12" r="10" />
+                            <path d="m9 12 2 2 4-4" />
+                        </svg>
+
+                        <p>Aumento do engajamento dos alunos</p>
+                    </div>
+                    <div class="benefit-item">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            class="lucide lucide-circle-check-icon lucide-circle-check">
+                            <circle cx="12" cy="12" r="10" />
+                            <path d="m9 12 2 2 4-4" />
+                        </svg>
+
+                        <p>Gestão simplificada de conteúdos</p>
+                    </div>
+                    <div class="benefit-item">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            class="lucide lucide-circle-check-icon lucide-circle-check">
+                            <circle cx="12" cy="12" r="10" />
+                            <path d="m9 12 2 2 4-4" />
+                        </svg>
+
+                        <p>Relatórios e métricas em tempo real</p>
+                    </div>
+
+                    <button class="try-freely-btn">
+                        <a href="">Experimentar Gratuitamente</a>
+                    </button>
+                </div>
+                <div class="benefits-image">
+                    <img src="<?= URL ?>public/assets/images/feature-1.jpg" alt="">
+                </div>
+            </div>
+        </section>
+        <!--ACTION SECTION-->
+        <section class="action-section">
+            <h1>Pronto para Começar?</h1>
+            <p>Transforme a experiência educacional da sua escola com a EduConnect</p>
+            <div class="btn-actions">
+                <button>
+                    <a href="">Começar Gratuitamente
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            class="lucide lucide-arrow-right-icon lucide-arrow-right">
+                            <path d="M5 12h14" />
+                            <path d="m12 5 7 7-7 7" />
+                        </svg>
+
+                    </a>
+                </button>
+                <button>
+                    <a href="<?= URL ?>user/login">Entrar na Plataforma</a>
+                </button>
+            </div>
+        </section>
+    </main>
+    <footer class="footer">
+        <div class="nav-footer">
+            <div class="nav-section">
+                <a href="" class="logo-section">
+                    <div class="logo-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none"
+                            stroke="#ececf0" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"
+                            class="lucide lucide-graduation-cap-icon lucide-graduation-cap">
+                            <path
+                                d="M21.42 10.922a1 1 0 0 0-.019-1.838L12.83 5.18a2 2 0 0 0-1.66 0L2.6 9.08a1 1 0 0 0 0 1.832l8.57 3.908a2 2 0 0 0 1.66 0z" />
+                            <path d="M22 10v6" />
+                            <path d="M6 12.5V16a6 3 0 0 0 12 0v-3.5" />
+                        </svg>
+                    </div>
+                    <h2>EduConnect</h2>
+                </a>
+                <p>
+                    Transformando a educação através da tecnologia e colaboração.
+                </p>
+            </div>
+            <div class="nav-section">
+                <h4>Produto</h4>
+                <ul>
+                    <li><a href="#features">Funcionalidades</a></li>
+                    <li><a href="https://cbsp-website.vercel.app">Planos</a></li>
+                    <li><a href="#security">Segurança</a></li>
+                </ul>
+            </div>
+            <div class="nav-section">
+                <h4>Empresa</h4>
+                <ul>
+                    <li><a href="https://cbsp-website.vercel.app">Sobre Nós</a></li>
+                    <li><a href="#">Novidades</a></li>
+                    <li><a href="https://wa.me/244944137349?text=Ol%C3%A1,%20vi%20o%20vosso%20site%20e%20gostaria%20de%20solicitar%20um%20or%C3%A7amento%20para%20um%20sistema%20ou%20servi%C3%A7o.">Contacto</a></li>
+                </ul>
+            </div>
+            <div class="nav-section">
+                <h4>Suporte</h4>
+                <ul>
+                    <li><a href="https://wa.me/244944137349?text=Olá,%20preciso%20de%20ajuda%20na%20EduConnect">Ajuda</a></li>
+                    <li><a href="mailto:suporte.cbsp@gmail.com?subject=Pedido%20de%20Or%C3%A7amento&body=Ol%C3%A1,%20encontrei%20o%20site%20da%20CBSP%20e%20gostaria%20de%20solicitar%20um%20or%C3%A7amento%20para%20um%20sistema%20ou%20servi%C3%A7o.">Email</a></li>
+                    <li><a href="">FAQ</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="signature">
+            <p>&copy; 2026 EduConnect. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+</body>
+
+</html>
