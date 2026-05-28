@@ -11,6 +11,10 @@
         }
 
         public function index() {
+            $this->show_page("landing");
+        }
+
+        public function feed() {
             $this->isLoged();
             $this->is_user();
             $this->show_page("landig");
